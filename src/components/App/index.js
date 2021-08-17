@@ -1,14 +1,15 @@
 // == Import npm
 import React from 'react';
-
+import Header from 'src/components/Header';
+import Footer from 'src/components/Footer';
 // == Import
 import './styles.scss';
 
 // == Composant
 const App = () => (
   <div className="app">
-    <h1>Header</h1>
-    <h1>Footer</h1>
+    <Header />
+    <Footer />
   </div>
 );
 
