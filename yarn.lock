@@ -7899,7 +7899,7 @@ tslib@^2.2.0:
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.3.1.tgz#e8a335add5ceae51aa261d32a490158ef042ef01"
   integrity sha512-77EbyPPpMz+FRFRuAFlWMtmgUWGe9UOG2Z25NqCwiIjRhOf5iKGuzSe5P2w1laq+FkRy4p+PCuVkJSGkzTEKVw==
 
-tui-calendar@^1.12.5:
+tui-calendar@^1.12.5, tui-calendar@^1.13.1:
   version "1.13.1"
   resolved "https://registry.yarnpkg.com/tui-calendar/-/tui-calendar-1.13.1.tgz#dd57c70176499d707ead2b9ba600f11a736b30cf"
   integrity sha512-6d+/JMQyPK4fAudrbsUClIAPsjZqPoY4xrYP7d624Ix2bAkmVbFpnp6UHaBVO7wHOEh6BVzoN88sUiZPcMY8rA==
@@ -7913,7 +7913,7 @@ tui-code-snippet@^1.5.0:
   resolved "https://registry.yarnpkg.com/tui-code-snippet/-/tui-code-snippet-1.5.2.tgz#f4b8f0f1ac996b0b5b621f77c9507af19a0de238"
   integrity sha512-6UqTlQaaC1KLcmC0HAoq5dtl1G4Fib+R+NC7pmaV7kiIlZ7JqKhUmnOoGRcreAyzd81UTK/vCvhrw9QJskpCFQ==
 
-tui-date-picker@^4.0.2:
+tui-date-picker@^4.0.2, tui-date-picker@^4.3.0:
   version "4.3.0"
   resolved "https://registry.yarnpkg.com/tui-date-picker/-/tui-date-picker-4.3.0.tgz#6e53e7473828658b3fa19b250b17e41ad2b84dd1"
   integrity sha512-RBPIPYbJdbmTKaiSzE43wmOWE57cvoq5iFPOUuOwytGLqE0pyWwTMcwLNQnUgFYoyIX1okmWAJq/T9arRsij2g==

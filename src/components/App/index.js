@@ -2,13 +2,18 @@
 import React from 'react';
 import Header from 'src/components/Header';
 import Footer from 'src/components/Footer';
-// == Import
+
+// == Import css
 import './styles.scss';
 
-// == Composant
+// == Import Components
+import VisitorCalendar from 'src/containers/visitorCalendar';
+
+// == App component
 const App = () => (
   <div className="app">
     <Header />
+    <VisitorCalendar />
     <Footer />
   </div>
 );
