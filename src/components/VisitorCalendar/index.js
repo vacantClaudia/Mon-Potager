@@ -10,14 +10,20 @@ import 'tui-time-picker/dist/tui-time-picker.css';
 
 // == VisitorCalendar Component
 // == props from initial state visitorCalendarReducer
-const VisitorCalendar = ({ view, daynames, startDayOfWeek }) => (
-  <div className="app">
+const VisitorCalendar = ({
+  view,
+  daynames,
+  startDayOfWeek,
+  myTheme,
+}) => (
+  <div className="visiTorCalendar">
     <Calendar
       view={view}
       month={{
         daynames: daynames,
         startDayOfWeek: startDayOfWeek,
       }}
+      theme={myTheme}
     />
   </div>
 );
@@ -29,4 +35,8 @@ VisitorCalendar.propTypes = {
   view: PropTypes.string.isRequired,
   daynames: PropTypes.array.isRequired,
   startDayOfWeek: PropTypes.number.isRequired,
+  // myTheme: PropTypes.arrayOf(
+  //   PropTypes.shape({
+  //   }).isRequired,
+  // ).isRequired,
 };

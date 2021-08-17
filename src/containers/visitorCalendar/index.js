@@ -8,6 +8,7 @@ const mapStateToProps = (state) => ({
   view: state.visitorCalendar.view,
   daynames: state.visitorCalendar.daynames,
   startDayOfWeek: state.visitorCalendar.startDayOfWeek,
+  myTheme: state.visitorCalendar.myTheme,
 });
 
 // === mapDispatchToProps
