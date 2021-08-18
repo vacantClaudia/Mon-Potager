@@ -28,9 +28,6 @@ const VisitorCalendar = ({
   </div>
 );
 
-// == Export
-export default VisitorCalendar;
-
 VisitorCalendar.propTypes = {
   view: PropTypes.string.isRequired,
   daynames: PropTypes.array.isRequired,
@@ -40,3 +37,6 @@ VisitorCalendar.propTypes = {
   //   }).isRequired,
   // ).isRequired,
 };
+
+// == Export
+export default VisitorCalendar;

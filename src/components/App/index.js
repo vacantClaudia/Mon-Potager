@@ -9,12 +9,15 @@ import './styles.scss';
 
 // == Import Components
 import VisitorCalendar from 'src/containers/visitorCalendar';
+import ButtonsTodayMonth from 'src/components/ButtonsTodayMonth';
 
 // == App component
 const App = () => (
   <div className="app">
     <Header />
     <SelectRegion />
+    <ButtonsTodayMonth />
+    <VisitorCalendar />
     <Footer />
   </div>
 );
