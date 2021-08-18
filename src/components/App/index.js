@@ -1,14 +1,14 @@
 // == Import npm
 import React from 'react';
-import Header from 'src/components/Header';
-import SelectRegion from 'src/components/SelectRegion';
-import Footer from 'src/components/Footer';
 
 // == Import css
 import './styles.scss';
 
 // == Import Components
-import VisitorCalendar from 'src/containers/visitorCalendar';
+import Header from 'src/components/Header';
+import SelectRegion from 'src/components/SelectRegion';
+import VisitorCalendar from 'src/containers/VisitorCalendar';
+import Footer from 'src/components/Footer';
 
 // == App component
 const App = () => (

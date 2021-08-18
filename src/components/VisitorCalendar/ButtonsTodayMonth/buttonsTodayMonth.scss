@@ -1,0 +1,28 @@
+// == style css buttons Today Prev and Next
+
+// == use vars file
+@use 'src/styles/vars';
+
+.buttonsTodayMonth {
+  margin: 1em 0;
+  
+  .buttonsTodayMonth-button {
+    background-color: vars.$grey;
+    border: none;
+    border-radius: 5px;
+    color: vars.$orange;
+    margin-right: 1em;
+    padding: 0.6em;
+    transition: 0.3s ease-out;
+
+    &.buttonsTodayMonth-button:hover {
+      background-color: vars.$orange;
+      color: vars.$black;
+    }
+
+    &.buttonsTodayMonth-button:active {
+      background-color: vars.$lightOrange;
+      transform: scale(0.8);
+    }
+  }
+}

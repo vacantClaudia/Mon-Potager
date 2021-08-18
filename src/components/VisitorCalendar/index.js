@@ -8,6 +8,11 @@ import 'tui-calendar/dist/tui-calendar.css';
 import 'tui-date-picker/dist/tui-date-picker.css';
 import 'tui-time-picker/dist/tui-time-picker.css';
 
+// == import sub-component buttons to changer month et come back today
+import ButtonsTodayMonth from 'src/containers/VisitorCalendar/ButtonsTodayMonth';
+
+// think to change css et put here the link to visitorCalendar.scss
+
 // == VisitorCalendar Component
 // == props from initial state visitorCalendarReducer
 const VisitorCalendar = ({
@@ -17,6 +22,7 @@ const VisitorCalendar = ({
   myTheme,
 }) => (
   <div className="visiTorCalendar">
+    <ButtonsTodayMonth />
     <Calendar
       view={view}
       month={{
@@ -28,9 +34,6 @@ const VisitorCalendar = ({
   </div>
 );
 
-// == Export
-export default VisitorCalendar;
-
 VisitorCalendar.propTypes = {
   view: PropTypes.string.isRequired,
   daynames: PropTypes.array.isRequired,
@@ -40,3 +43,6 @@ VisitorCalendar.propTypes = {
   //   }).isRequired,
   // ).isRequired,
 };
+
+// == Export
+export default VisitorCalendar;
