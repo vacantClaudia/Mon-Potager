@@ -11,8 +11,8 @@ const Header = () => (
     />
     <div className="nav">
       <a className="nav_item">Accueil</a>
-      <a className="nav_item">Compte</a>
       <a className="nav_item">Plantes</a>
+      <a className="nav_item">Inscription</a>
     </div>
   </div>
 );
