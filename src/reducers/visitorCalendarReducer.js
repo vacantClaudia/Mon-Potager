@@ -7,6 +7,7 @@ import {
 
 // == Visitor Calendar initialState : just calendar display, not data schedules
 const initialState = {
+  // == maybe use calendar and calendarId to filter by place
   // == calendar view monthly
   view: 'month',
   // == day names on the top of the calendar
@@ -47,8 +48,10 @@ const initialState = {
     // default value 14px
     'month.day.fontSize': '15px',
     // month schedule style
-    'month.schedule.borderRadius': '2px',
-    'month.schedule.height': '24px',
+    // default value 5px
+    'month.schedule.borderRadius': '5px',
+    // default value 24px
+    'month.schedule.height': '27px',
     'month.schedule.marginTop': '2px',
     'month.schedule.marginLeft': '8px',
     'month.schedule.marginRight': '8px',
@@ -149,7 +152,7 @@ const initialState = {
       id: '3',
       title: 'Fraises',
       category: 'time',
-      start: '2021-09-05',
+      start: '2021-09-01',
       end: '2021-09-18',
       color: '#fad689',
       bgColor: '#f46d5f',
@@ -164,6 +167,16 @@ const initialState = {
       color: '#fad689',
       bgColor: '#f46d5f',
       borderColor: '#f8cba9',
+    },
+    {
+      id: '5',
+      title: 'Poireaux',
+      category: 'time',
+      start: '2021-08-29',
+      end: '2021-09-10',
+      color: '#f46d5f',
+      bgColor: '#9ed2bf',
+      borderColor: '#daece5',
     },
   ],
   // == impossible to click on the calendar or schedule may be use
