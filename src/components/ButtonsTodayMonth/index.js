@@ -7,9 +7,9 @@ import './buttonsTodayMonth.scss';
 // == Buttons Component to change months and come back today
 const ButtonsTodayMonth = () => (
   <div className="buttonsTodayMonth">
-    <button>Today</button>
-    <button>Prev</button>
-    <button>Next</button>
+    <button type="button" className="buttonsTodayMonth-button">Today</button>
+    <button type="button" className="buttonsTodayMonth-button">Prev</button>
+    <button type="button" className="buttonsTodayMonth-button">Next</button>
   </div>
 );
 
