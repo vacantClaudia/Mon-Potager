@@ -3,13 +3,15 @@ import PropTypes from 'prop-types';
 
 import './selectRegion.scss';
 
-const SelectRegion = ({ setValue }) => (
+const SelectRegion = ({ setValue, displayPlants, auvergne }) => (
   <form>
     <select
       name="select-group"
       id="select-group"
       onChange={(event) => {
-        setValue(event.currentTarget.value);
+        setValue({ auvergne: event.target.value });
+        console.log(`${auvergne}: event.target.value`);
+        displayPlants();
       }}
     >
       <option value="">Choisis ta région!</option>
@@ -33,5 +35,7 @@ const SelectRegion = ({ setValue }) => (
 SelectRegion.propTypes = {
   // value: PropTypes.string.isRequired,
   setValue: PropTypes.func.isRequired,
+  displayPlants: PropTypes.func.isRequired,
+  auvergne: PropTypes.string.isRequired,
 };
 export default SelectRegion;

@@ -1,20 +1,8 @@
-import { CHANGE_INPUT_VALUE } from 'src/actions/selectRegion';
+import { CHANGE_INPUT_VALUE, DISPLAY_PLANTS } from 'src/actions/selectRegion';
 
 const initialState = {
-  regions: [
-    {
-      value: 'auvergne-rhône-alpes',
-    },
-    {
-      value: 'bourgogne-franche-comte',
-    },
-    {
-      value: 'Bretagne',
-    },
-    {
-      value: 'centre-val-de-loire',
-    },
-  ],
+  auvergne: 'fraises',
+  bourgogne: 'pommes',
 };
 
 function selectRegionReducer(state = initialState, action = {}) {
@@ -23,6 +11,11 @@ function selectRegionReducer(state = initialState, action = {}) {
       return {
         ...state,
         value: action.value,
+      };
+    case DISPLAY_PLANTS:
+      return {
+        ...state,
+        auvergne: action.auvergne,
       };
 
     default:
