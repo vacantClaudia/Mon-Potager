@@ -1,7 +1,7 @@
 // == Import npm
 import React from 'react';
 import Header from 'src/components/Header';
-import SelectRegion from 'src/components/SelectRegion';
+import SelectRegion from 'src/containers/SelectRegion';
 import Footer from 'src/components/Footer';
 
 // == Import css

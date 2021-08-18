@@ -1,10 +1,17 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import './selectRegion.scss';
 
-const SelectRegion = () => (
+const SelectRegion = ({ setValue }) => (
   <form>
-    <select name="select-group" id="select-group">
+    <select
+      name="select-group"
+      id="select-group"
+      onChange={(event) => {
+        setValue(event.currentTarget.value);
+      }}
+    >
       <option value="">Choisis ta région!</option>
       <option value="auvergne-rhône-alpes">Auvergne-Rhône-Alpes</option>
       <option value="bourgogne-franche-comte">Bourgogne-Franche-Comté</option>
@@ -23,4 +30,8 @@ const SelectRegion = () => (
   </form>
 );
 
+SelectRegion.propTypes = {
+  // value: PropTypes.string.isRequired,
+  setValue: PropTypes.func.isRequired,
+};
 export default SelectRegion;
