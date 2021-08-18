@@ -11,7 +11,8 @@ import 'tui-time-picker/dist/tui-time-picker.css';
 // == import sub-component buttons to changer month et come back today
 import ButtonsTodayMonth from 'src/containers/VisitorCalendar/ButtonsTodayMonth';
 
-// think to change css et put here the link to visitorCalendar.scss
+// == Import css
+import './visitorCalendar.scss';
 
 // == VisitorCalendar Component
 // == props from initial state visitorCalendarReducer
@@ -20,16 +21,25 @@ const VisitorCalendar = ({
   daynames,
   startDayOfWeek,
   myTheme,
+  plantsSchedules,
+  isReadOnly,
 }) => (
   <div className="visiTorCalendar">
     <ButtonsTodayMonth />
     <Calendar
+    // == view monthly
       view={view}
+    // == calendar options
       month={{
         daynames: daynames,
         startDayOfWeek: startDayOfWeek,
       }}
+      // == layout calendar and schedules
       theme={myTheme}
+      // == plants schedules data
+      schedules={plantsSchedules}
+      // == possible or not to click on calendar or schedules (boolean)
+      isReadOnly={isReadOnly}
     />
   </div>
 );

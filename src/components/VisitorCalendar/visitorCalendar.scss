@@ -1,1 +1,9 @@
+// == style css buttons Today Prev and Next
 
+// == use vars file
+@use 'src/styles/vars';
+
+.visiTorCalendar {
+  margin: 3em auto 0;
+  width: 95vw;
+}
