@@ -1,7 +1,10 @@
 import { combineReducers } from 'redux';
 
+// == Reducers
+import visitorCalendarReducer from './visitorCalendarReducer';
+
 const rootReducer = combineReducers({
-  // todo
+  visitorCalendar: visitorCalendarReducer,
 });
 
 export default rootReducer;
