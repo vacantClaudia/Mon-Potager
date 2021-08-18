@@ -131,7 +131,9 @@ const initialState = {
       category: 'time',
       start: '2021-08-05',
       end: '2021-08-15',
-      location: 'Auvergne',
+      color: '#fad689',
+      bgColor: '#f46d5f',
+      borderColor: '#f8cba9',
     },
     {
       id: '2',
@@ -139,6 +141,9 @@ const initialState = {
       category: 'time',
       start: '2021-08-25',
       end: '2021-09-07',
+      color: '#f46d5f',
+      bgColor: '#9ed2bf',
+      borderColor: '#daece5',
     },
     {
       id: '3',
@@ -146,6 +151,9 @@ const initialState = {
       category: 'time',
       start: '2021-09-05',
       end: '2021-09-18',
+      color: '#fad689',
+      bgColor: '#f46d5f',
+      borderColor: '#f8cba9',
     },
     {
       id: '4',
@@ -153,6 +161,9 @@ const initialState = {
       category: 'time',
       start: '2021-07-05',
       end: '2021-08-02',
+      color: '#fad689',
+      bgColor: '#f46d5f',
+      borderColor: '#f8cba9',
     },
   ],
   // == impossible to click on the calendar or schedule may be use
