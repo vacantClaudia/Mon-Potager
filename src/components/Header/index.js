@@ -4,16 +4,20 @@ import './header.scss';
 
 const Header = () => (
   <div className="header">
-    <img
-      // src=
-      alt="logo"
-      className="header-logo"
-    />
-    <div className="nav">
-      <a className="nav_item">Accueil</a>
-      <a className="nav_item">Plantes</a>
-      <a className="nav_item">Inscription</a>
+    <div className="header-picture">
+      <img
+        // src=
+        alt="logo-MonPotager"
+        className="header-logo"
+      />
     </div>
+
+    <div className="nav">
+      <a className="nav-item" href="#">Accueil</a>
+      <a className="nav-item" href="#">Plantes</a>
+      <a className="nav-item" href="#">Inscription</a>
+    </div>
+
   </div>
 );
 
