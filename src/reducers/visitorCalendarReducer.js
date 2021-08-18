@@ -51,7 +51,7 @@ const initialState = {
     // default value 5px
     'month.schedule.borderRadius': '5px',
     // default value 24px
-    'month.schedule.height': '27px',
+    'month.schedule.height': '25px',
     'month.schedule.marginTop': '2px',
     'month.schedule.marginLeft': '8px',
     'month.schedule.marginRight': '8px',
@@ -178,10 +178,20 @@ const initialState = {
       bgColor: '#9ed2bf',
       borderColor: '#daece5',
     },
+    {
+      id: '6',
+      title: 'Artichauts',
+      category: 'time',
+      start: '2021-08-16',
+      end: '2021-09-04',
+      color: '#f46d5f',
+      bgColor: '#9ed2bf',
+      borderColor: '#daece5',
+    },
   ],
   // == impossible to click on the calendar or schedule may be use
-  // == false for the moment, i will put it on true later
-  isReadOnly: false,
+  // == change to false when you code
+  isReadOnly: true,
 };
 
 function visitorCalendarReducer(state = initialState, action = {}) {
