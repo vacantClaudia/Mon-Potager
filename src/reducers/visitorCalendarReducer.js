@@ -1,3 +1,10 @@
+// == import action types for buttons witch change month or comeback today
+import {
+  CHANGE_TO_TODAY,
+  CHANGE_TO_PREV_MONTH,
+  CHANGE_TO_NEXT_MONTH,
+} from 'src/actions';
+
 // == Visitor Calendar initialState : just calendar display, not data schedules
 const initialState = {
   // == calendar view monthly
@@ -119,6 +126,21 @@ const initialState = {
 
 function visitorCalendarReducer(state = initialState, action = {}) {
   switch (action.type) {
+    case CHANGE_TO_TODAY:
+      return {
+        ...state,
+        // what else ?
+      };
+    case CHANGE_TO_PREV_MONTH:
+      return {
+        ...state,
+        // what else ?
+      };
+    case CHANGE_TO_NEXT_MONTH:
+      return {
+        ...state,
+        // what else ?
+      };
     default:
       return state;
   }
