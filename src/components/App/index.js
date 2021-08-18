@@ -13,7 +13,6 @@ import VisitorCalendar from 'src/containers/visitorCalendar';
 const App = () => (
   <div className="app">
     <Header />
-    <VisitorCalendar />
     <Footer />
   </div>
 );
