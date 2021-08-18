@@ -1,12 +1,13 @@
 import React from 'react';
 // import logo from 'src/assets/pictures/Logo2-monPotager.jpg';
 import './header.scss';
+import logo from 'src/assets/images/Logo2.jpg';
 
 const Header = () => (
   <div className="header">
     <div className="header-picture">
       <img
-        // src=
+        src={logo}
         alt="logo-MonPotager"
         className="header-logo"
       />
