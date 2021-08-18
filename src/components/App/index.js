@@ -15,6 +15,7 @@ const App = () => (
   <div className="app">
     <Header />
     <SelectRegion />
+    <VisitorCalendar />
     <Footer />
   </div>
 );

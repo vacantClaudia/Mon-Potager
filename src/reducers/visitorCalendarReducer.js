@@ -122,6 +122,42 @@ const initialState = {
     'week.dayGridSchedule.marginLeft': '8px',
     'week.dayGridSchedule.marginRight': '8px',
   },
+  // == test plants in initial state - use keys names to consume api
+  plantsSchedules: [
+    {
+      id: '1',
+      title: 'Abricots',
+      // = category must be use to display. I don't know it utility
+      category: 'time',
+      start: '2021-08-05',
+      end: '2021-08-15',
+      location: 'Auvergne',
+    },
+    {
+      id: '2',
+      title: 'Carottes',
+      category: 'time',
+      start: '2021-08-25',
+      end: '2021-09-07',
+    },
+    {
+      id: '3',
+      title: 'Fraises',
+      category: 'time',
+      start: '2021-09-05',
+      end: '2021-09-18',
+    },
+    {
+      id: '4',
+      title: 'Tomates',
+      category: 'time',
+      start: '2021-07-05',
+      end: '2021-08-02',
+    },
+  ],
+  // == impossible to click on the calendar or schedule may be use
+  // == false for the moment, i will put it on true later
+  isReadOnly: false,
 };
 
 function visitorCalendarReducer(state = initialState, action = {}) {

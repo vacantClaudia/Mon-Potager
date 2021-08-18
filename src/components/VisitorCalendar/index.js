@@ -20,16 +20,25 @@ const VisitorCalendar = ({
   daynames,
   startDayOfWeek,
   myTheme,
+  plantsSchedules,
+  isReadOnly,
 }) => (
   <div className="visiTorCalendar">
     <ButtonsTodayMonth />
     <Calendar
+    // == view monthly
       view={view}
+    // == calendar options
       month={{
         daynames: daynames,
         startDayOfWeek: startDayOfWeek,
       }}
+      // == layout calendar and schedules
       theme={myTheme}
+      // == plants schedules data
+      schedules={plantsSchedules}
+      // == possible or not to click on calendar or schedules (boolean)
+      isReadOnly={isReadOnly}
     />
   </div>
 );
