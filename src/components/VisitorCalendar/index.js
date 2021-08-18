@@ -8,6 +8,8 @@ import 'tui-calendar/dist/tui-calendar.css';
 import 'tui-date-picker/dist/tui-date-picker.css';
 import 'tui-time-picker/dist/tui-time-picker.css';
 
+// think to change css et put here the link to visitorCalendar.scss
+
 // == VisitorCalendar Component
 // == props from initial state visitorCalendarReducer
 const VisitorCalendar = ({
