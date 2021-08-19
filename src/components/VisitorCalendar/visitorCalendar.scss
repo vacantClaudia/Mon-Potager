@@ -3,15 +3,15 @@
 // == use vars file
 @use 'src/styles/vars';
 
-.visiTorCalendar {
+.visitorCalendar {
   margin: 3em auto 0;
   width: 95vw;
 
   // == style css buttons Today Prev and Next
-  .visiTorCalendar-buttonsTodayMonth {
+  .visitorCalendar-buttonsTodayMonth {
     margin: 1em 0;
     
-    .visiTorCalendar-buttonsTodayMonth-button {
+    .visitorCalendar-buttonsTodayMonth-button {
       background-color: vars.$grey;
       border: none;
       border-radius: 5px;
@@ -20,12 +20,12 @@
       padding: 0.6em;
       transition: 0.3s ease-out;
   
-      &.visiTorCalendar-buttonsTodayMonth-button:hover {
+      &.visitorCalendar-buttonsTodayMonth-button:hover {
         background-color: vars.$orange;
         color: vars.$black;
       }
   
-      &.visiTorCalendar-buttonsTodayMonth-button:active {
+      &.visitorCalendar-buttonsTodayMonth-button:active {
         background-color: vars.$lightOrange;
         transform: scale(0.8);
       }

@@ -11,6 +11,7 @@ import 'tui-time-picker/dist/tui-time-picker.css';
 
 // == Import css
 import './visitorCalendar.scss';
+import { TZDate } from 'tui-calendar';
 
 // == VisitorCalendar Component
 // == props from initial state visitorCalendarReducer
@@ -24,31 +25,38 @@ const VisitorCalendar = ({
 }) => {
   const calendarRef = createRef();
 
-  const handleClickNextButton = () => {
-    const calendarInstance = calendarRef.current.getInstance();
+  // == get current date to display on the top of calendar
+  const currentMonth = new Date();
 
-    calendarInstance.next();
+  // == functions to dynamise buttons today prev and next month
+  const handleClickTodayButton = () => {
+    const calendarInstance = calendarRef.current.getInstance();
+    calendarInstance.today();
+    const changeMonth = document.querySelector('.visitorCalendar-currentMonth');
+    changeMonth.textContent = calendarInstance._renderDate._date;
   };
 
   const handleClickPrevButton = () => {
     const calendarInstance = calendarRef.current.getInstance();
-
     calendarInstance.prev();
+    const changeMonth = document.querySelector('.visitorCalendar-currentMonth');
+    changeMonth.textContent = calendarInstance._renderDate._date;
   };
 
-  const handleClickTodayButton = () => {
+  const handleClickNextButton = () => {
     const calendarInstance = calendarRef.current.getInstance();
-
-    calendarInstance.today();
+    calendarInstance.next();
+    const changeMonth = document.querySelector('.visitorCalendar-currentMonth');
+    changeMonth.textContent = calendarInstance._renderDate._date;
   };
   return (
-    <div className="visiTorCalendar">
-      <div className="visiTorCalendar-buttonsTodayMonth">
+    <div className="visitorCalendar">
+      <div className="visitorCalendar-buttonsTodayMonth">
         {/* click to access to next or prev month or today */}
-        <button type="button" className="visiTorCalendar-buttonsTodayMonth-button" onClick={handleClickTodayButton}>Today</button>
-        <button type="button" className="visiTorCalendar-buttonsTodayMonth-button" onClick={handleClickPrevButton}>Prev</button>
-        <button type="button" className="visiTorCalendar-buttonsTodayMonth-button" onClick={handleClickNextButton}>Next</button>
-        <p>Month</p>
+        <button type="button" className="visitorCalendar-buttonsTodayMonth-button" onClick={handleClickTodayButton}>Today</button>
+        <button type="button" className="visitorCalendar-buttonsTodayMonth-button" onClick={handleClickPrevButton}>Prev</button>
+        <button type="button" className="visitorCalendar-buttonsTodayMonth-button" onClick={handleClickNextButton}>Next</button>
+        <p className="visitorCalendar-currentMonth">{currentMonth.toUTCString()}</p>
       </div>
       <Calendar
       // == i have to understand better this calendarRef
