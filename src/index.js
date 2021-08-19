@@ -1,6 +1,7 @@
 // == Import : npm
 import React from 'react';
 import { render } from 'react-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
 // == Import store
@@ -12,7 +13,9 @@ import App from 'src/components/App';
 // == Root
 const rootReactElement = (
   <Provider store={store}>
-    <App />
+    <Router>
+      <App />
+    </Router>
   </Provider>
 );
 

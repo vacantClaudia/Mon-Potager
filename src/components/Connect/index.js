@@ -4,19 +4,8 @@ import PropTypes from 'prop-types';
 import Field from 'src/components/Field';
 import './connect.scss';
 
-const Connect = ({ isOpen, toggleOpen }) => (
+const Connect = () => (
   <div className="connect">
-    <button
-      type="button"
-      className="connect-toggle"
-      onClick={() => {
-        console.log({ isOpen });
-        toggleOpen();
-      }}
-    >
-      👤
-    </button>
-    {isOpen && (
     <form className="connect-form">
       <Field
         identifier="username"
@@ -42,11 +31,9 @@ const Connect = ({ isOpen, toggleOpen }) => (
         Valider
       </button>
     </form>
-    )}
   </div>
 );
 Connect.propTypes = {
-  isOpen: PropTypes.bool.isRequired,
-  toggleOpen: PropTypes.func.isRequired,
+//  futur propTypes
 };
 export default Connect;

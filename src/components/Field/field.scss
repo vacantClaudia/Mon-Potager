@@ -17,12 +17,12 @@
     padding: 0.8rem;
     border-radius: 5px;
     width: 50%;
-    border: 2px solid black;
+    border: 2px solid vars.$lightGreen;
     font-size: 1.2em;
     
     
     &:focus {
-      border-color: vars.$red;
+      border-color: vars.$lightOrange;
       & + .label {
         color: vars.$orange;
       }

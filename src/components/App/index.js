@@ -1,5 +1,6 @@
 // == Import npm
 import React from 'react';
+import { Route } from 'react-router-dom';
 
 // == Import css
 import './styles.scss';
@@ -15,8 +16,12 @@ import Footer from 'src/components/Footer';
 const App = () => (
   <div className="app">
     <Header />
-    <Connect />
-    <SelectRegion />
+    <Route path="/connection" exact>
+      <Connect />
+    </Route>
+    <Route path="/" exact>
+      <SelectRegion />
+    </Route>
     <Footer />
   </div>
 );

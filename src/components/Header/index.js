@@ -1,5 +1,6 @@
 import React from 'react';
-// import logo from 'src/assets/pictures/Logo2-monPotager.jpg';
+import { NavLink } from 'react-router-dom';
+
 import './header.scss';
 import logo from 'src/assets/images/Logo2.jpg';
 
@@ -14,9 +15,38 @@ const Header = () => (
     </div>
 
     <div className="nav">
-      <a className="nav-item" href="#">Accueil</a>
-      <a className="nav-item" href="#">Plantes</a>
-      <a className="nav-item" href="#">Inscription</a>
+      <NavLink
+        to="/"
+        className="nav-item"
+        activeClassName="nav-item--active"
+        exact
+      >
+        Accueil
+      </NavLink>
+      <NavLink
+        to="/plantes"
+        className="nav-item"
+        activeClassName="nav-item--active"
+        exact
+      >
+        Plantes
+      </NavLink>
+      <NavLink
+        to="/inscription"
+        className="nav-item"
+        activeClassName="nav-item--active"
+        exact
+      >
+        Inscription
+      </NavLink>
+      <NavLink
+        to="/connection"
+        className="nav-item"
+        activeClassName="nav-item--active"
+        exact
+      >
+        Connection
+      </NavLink>
     </div>
 
   </div>
