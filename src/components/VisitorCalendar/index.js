@@ -26,7 +26,16 @@ const VisitorCalendar = ({
   const calendarRef = createRef();
 
   // == get current date to display on the top of calendar
-  const currentMonth = new Date();
+  const currentDate = new Date();
+  const currentMonthAndYear = currentDate.toLocaleString('fr-FR', {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    hour: 'numeric',
+    minute: 'numeric',
+    second: 'numeric',
+  });
 
   // == functions to dynamise buttons today prev and next month
   const handleClickTodayButton = () => {
@@ -56,7 +65,7 @@ const VisitorCalendar = ({
         <button type="button" className="visitorCalendar-buttonsTodayMonth-button" onClick={handleClickTodayButton}>Today</button>
         <button type="button" className="visitorCalendar-buttonsTodayMonth-button" onClick={handleClickPrevButton}>Prev</button>
         <button type="button" className="visitorCalendar-buttonsTodayMonth-button" onClick={handleClickNextButton}>Next</button>
-        <p className="visitorCalendar-currentMonth">{currentMonth.toUTCString()}</p>
+        <p className="visitorCalendar-currentMonth">{currentMonthAndYear}</p>
       </div>
       <Calendar
       // == i have to understand better this calendarRef
