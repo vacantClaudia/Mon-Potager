@@ -6,6 +6,7 @@ import './styles.scss';
 
 // == Import Components
 import Header from 'src/components/Header';
+import Connect from 'src/containers/Connect';
 import SelectRegion from 'src/components/SelectRegion';
 import VisitorCalendar from 'src/containers/VisitorCalendar';
 import Footer from 'src/components/Footer';
@@ -14,6 +15,7 @@ import Footer from 'src/components/Footer';
 const App = () => (
   <div className="app">
     <Header />
+    <Connect />
     <SelectRegion />
     <Footer />
   </div>
