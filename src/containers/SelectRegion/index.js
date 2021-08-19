@@ -5,7 +5,8 @@ import SelectRegion from 'src/components/SelectRegion';
 import { changeInputValue, displayPlants } from '../../actions/selectRegion';
 
 const mapStateToProps = (state) => ({
-  // value: state.selectedValue,
+  auvergne: state.auvergne,
+  bourgogne: state.bourgogne,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -13,8 +14,8 @@ const mapDispatchToProps = (dispatch) => ({
     const action = changeInputValue(newValue);
     dispatch(action);
   },
-  displayPlants: (auvergne) => {
-    const action = displayPlants(auvergne);
+  displayPlants: (value) => {
+    const action = displayPlants(value);
     dispatch(action);
   },
 });

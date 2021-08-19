@@ -1,8 +1,12 @@
 import { CHANGE_INPUT_VALUE, DISPLAY_PLANTS } from 'src/actions/selectRegion';
 
 const initialState = {
-  auvergne: 'fraises',
-  bourgogne: 'pommes',
+  auvergne: {
+    name: 'fraises',
+  },
+  bourgogne: {
+    name: 'pommes',
+  },
 };
 
 function selectRegionReducer(state = initialState, action = {}) {
@@ -15,7 +19,6 @@ function selectRegionReducer(state = initialState, action = {}) {
     case DISPLAY_PLANTS:
       return {
         ...state,
-        auvergne: action.auvergne,
       };
 
     default:
