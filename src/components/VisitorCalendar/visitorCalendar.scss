@@ -30,5 +30,13 @@
         transform: scale(0.8);
       }
     }
+    // == style css display text current month and year
+    .visitorCalendar-currentMonth {
+      color: vars.$orange;
+      font-size: 0.8em;
+      font-weight: bold;
+      margin-top: 1em;
+      text-transform: uppercase;
+    }
   }
 }
