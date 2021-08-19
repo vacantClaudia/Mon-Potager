@@ -3,21 +3,17 @@ import PropTypes from 'prop-types';
 
 import './selectRegion.scss';
 
-const SelectRegion = ({
-  id,
-  title,
-  region,
-}) => (
+const SelectRegion = ({ data }) => (
   <>
     <form
-    // onSubmit={(event) => {
-    //   event.preventDefault();
-    // }}
+      onSubmit={(event) => {
+        event.preventDefault();
+      }}
     >
       <select
-        // name="select-group"
+        name="select-group"
         id="select-group"
-      // value={auvergne.name}
+        value={data.region}
       // onChange={(event) => {
       //   setValue(event.target.auvergne);
       //   console.log(event.target.auvergne);
@@ -38,21 +34,28 @@ const SelectRegion = ({
         <option value="12">Pays de la Loire</option>
         <option value="13">Provence-Alpes-Côte d'Azur</option>
       </select>
-
-      <div className="list">
-        <div>L'id: {id}</div>
-        <div>Nom: {title}</div>
-        <div>L'id de la région: {region}</div>
-      </div>
-
+      <ul>
+        {data.map((item) => (
+          <li
+            className="list-item"
+            key={item.id}
+          >
+            {item.title}
+          </li>
+        ))}
+      </ul>
     </form>
   </>
 );
 
 SelectRegion.propTypes = {
-  id: PropTypes.number.isRequired,
-  title: PropTypes.string.isRequired,
-  region: PropTypes.array.isRequired,
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+      region: PropTypes.string.isRequired,
+    }).isRequired,
+  ).isRequired,
 };
 
 export default SelectRegion;

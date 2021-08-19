@@ -15,9 +15,7 @@ export default [
     "status": "publish",
     "type": "plante",
     "link": "http://ec2-54-89-4-11.compute-1.amazonaws.com/projet-mon-potager-back/public/plante/tomate/",
-    "title": {
-      "rendered": "tomate"
-    },
+    "title": "tomate",
     "content": {
       "rendered": "<p>Je suis une belle tomate</p>\n",
       "protected": false
@@ -27,9 +25,7 @@ export default [
     "plante_type": [
       2
     ],
-    "regions": [
-      3
-    ],
+    "regions": "auvergne",
     "season": [
       4
     ],

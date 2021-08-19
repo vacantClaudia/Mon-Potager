@@ -5,19 +5,18 @@ import SelectRegion from 'src/components/SelectRegion';
 import { changeInputValue, displayPlants } from '../../actions/selectRegion';
 
 const mapStateToProps = (state) => ({
-  auvergne: state.selectRegion.auvergne,
-  bourgogne: state.selectRegion.bourgogne,
+  data: state.selectRegion.data,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  setValue: (newValue) => {
-    const action = changeInputValue(newValue);
-    dispatch(action);
-  },
-  displayPlants: (value) => {
-    const action = displayPlants(value);
-    dispatch(action);
-  },
+  // setValue: (newValue) => {
+  //   const action = changeInputValue(newValue);
+  //   dispatch(action);
+  // },
+  // displayPlants: (value) => {
+  //   const action = displayPlants(value);
+  //   dispatch(action);
+  // },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SelectRegion);
