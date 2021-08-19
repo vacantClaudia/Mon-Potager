@@ -43,11 +43,12 @@ const VisitorCalendar = ({
   };
   return (
     <div className="visiTorCalendar">
-      <div className="buttonsTodayMonth">
+      <div className="visiTorCalendar-buttonsTodayMonth">
         {/* click to access to next or prev month or today */}
-        <button type="button" className="buttonsTodayMonth-button" onClick={handleClickTodayButton}>Today</button>
-        <button type="button" className="buttonsTodayMonth-button" onClick={handleClickPrevButton}>Prev</button>
-        <button type="button" className="buttonsTodayMonth-button" onClick={handleClickNextButton}>Next</button>
+        <button type="button" className="visiTorCalendar-buttonsTodayMonth-button" onClick={handleClickTodayButton}>Today</button>
+        <button type="button" className="visiTorCalendar-buttonsTodayMonth-button" onClick={handleClickPrevButton}>Prev</button>
+        <button type="button" className="visiTorCalendar-buttonsTodayMonth-button" onClick={handleClickNextButton}>Next</button>
+        <p>Month</p>
       </div>
       <Calendar
       // == i have to understand better this calendarRef
