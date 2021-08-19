@@ -7,6 +7,7 @@ import {
 
 // == Visitor Calendar initialState : just calendar display, not data schedules
 const initialState = {
+  // == maybe use calendar and calendarId to filter by place
   // == calendar view monthly
   view: 'month',
   // == day names on the top of the calendar
@@ -47,8 +48,10 @@ const initialState = {
     // default value 14px
     'month.day.fontSize': '15px',
     // month schedule style
-    'month.schedule.borderRadius': '2px',
-    'month.schedule.height': '24px',
+    // default value 5px
+    'month.schedule.borderRadius': '5px',
+    // default value 24px
+    'month.schedule.height': '25px',
     'month.schedule.marginTop': '2px',
     'month.schedule.marginLeft': '8px',
     'month.schedule.marginRight': '8px',
@@ -122,6 +125,73 @@ const initialState = {
     'week.dayGridSchedule.marginLeft': '8px',
     'week.dayGridSchedule.marginRight': '8px',
   },
+  // == test plants in initial state - use keys names to consume api
+  plantsSchedules: [
+    {
+      id: '1',
+      title: 'Abricots',
+      // = category must be use to display. I don't know it utility
+      category: 'time',
+      start: '2021-08-05',
+      end: '2021-08-15',
+      color: '#fad689',
+      bgColor: '#f46d5f',
+      borderColor: '#f8cba9',
+    },
+    {
+      id: '2',
+      title: 'Carottes',
+      category: 'time',
+      start: '2021-08-25',
+      end: '2021-09-07',
+      color: '#f46d5f',
+      bgColor: '#9ed2bf',
+      borderColor: '#daece5',
+    },
+    {
+      id: '3',
+      title: 'Fraises',
+      category: 'time',
+      start: '2021-09-01',
+      end: '2021-09-18',
+      color: '#fad689',
+      bgColor: '#f46d5f',
+      borderColor: '#f8cba9',
+    },
+    {
+      id: '4',
+      title: 'Tomates',
+      category: 'time',
+      start: '2021-07-05',
+      end: '2021-08-02',
+      color: '#fad689',
+      bgColor: '#f46d5f',
+      borderColor: '#f8cba9',
+    },
+    {
+      id: '5',
+      title: 'Poireaux',
+      category: 'time',
+      start: '2021-08-29',
+      end: '2021-09-10',
+      color: '#f46d5f',
+      bgColor: '#9ed2bf',
+      borderColor: '#daece5',
+    },
+    {
+      id: '6',
+      title: 'Artichauts',
+      category: 'time',
+      start: '2021-08-16',
+      end: '2021-09-04',
+      color: '#f46d5f',
+      bgColor: '#9ed2bf',
+      borderColor: '#daece5',
+    },
+  ],
+  // == impossible to click on the calendar or schedule may be use
+  // == change to false when you code
+  isReadOnly: true,
 };
 
 function visitorCalendarReducer(state = initialState, action = {}) {

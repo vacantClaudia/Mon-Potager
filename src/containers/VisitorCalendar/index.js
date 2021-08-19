@@ -9,6 +9,8 @@ const mapStateToProps = (state) => ({
   daynames: state.visitorCalendar.daynames,
   startDayOfWeek: state.visitorCalendar.startDayOfWeek,
   myTheme: state.visitorCalendar.myTheme,
+  plantsSchedules: state.visitorCalendar.plantsSchedules,
+  isReadOnly: state.visitorCalendar.isReadOnly,
 });
 
 // === mapDispatchToProps
