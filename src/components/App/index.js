@@ -21,6 +21,7 @@ const App = () => (
     </Route>
     <Route path="/" exact>
       <SelectRegion />
+      <VisitorCalendar />
     </Route>
     <Footer />
   </div>

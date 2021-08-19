@@ -1,12 +1,15 @@
 import React, { createRef } from 'react';
 import PropTypes from 'prop-types';
 
+// == import externals libraries
 import Calendar from '@toast-ui/react-calendar';
 import 'tui-calendar/dist/tui-calendar.css';
 
 // If you use the default popups, use this.
 import 'tui-date-picker/dist/tui-date-picker.css';
 import 'tui-time-picker/dist/tui-time-picker.css';
+
+import { ChevronLeft, ChevronRight } from 'react-feather';
 
 // == Import css
 import './visitorCalendar.scss';
@@ -73,8 +76,12 @@ const VisitorCalendar = ({
       <div className="visitorCalendar-buttonsTodayMonth">
         {/* click to access to next or prev month or today */}
         <button type="button" className="visitorCalendar-buttonsTodayMonth-button" onClick={handleClickTodayButton}>Today</button>
-        <button type="button" className="visitorCalendar-buttonsTodayMonth-button" onClick={handleClickPrevButton}>Prev</button>
-        <button type="button" className="visitorCalendar-buttonsTodayMonth-button" onClick={handleClickNextButton}>Next</button>
+        <button type="button" className="visitorCalendar-buttonsTodayMonth-button" onClick={handleClickPrevButton}>
+          <ChevronLeft size={12} />
+        </button>
+        <button type="button" className="visitorCalendar-buttonsTodayMonth-button" onClick={handleClickNextButton}>
+          <ChevronRight size={12} />
+        </button>
         <p className="visitorCalendar-currentMonth">{currentMonthAndYear}</p>
       </div>
       <Calendar
