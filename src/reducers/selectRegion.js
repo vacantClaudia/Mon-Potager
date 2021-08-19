@@ -1,12 +1,16 @@
 import { CHANGE_INPUT_VALUE, DISPLAY_PLANTS } from 'src/actions/selectRegion';
 
+// import data from 'src/data';
+
+// console.log(data);
+
 const initialState = {
-  auvergne: {
-    name: 'fraises',
-  },
-  bourgogne: {
-    name: 'pommes',
-  },
+  // auvergne: {
+  //   name: 'fraises',
+  // },
+  // bourgogne: {
+  //   name: 'pommes',
+  // },
 };
 
 function selectRegionReducer(state = initialState, action = {}) {

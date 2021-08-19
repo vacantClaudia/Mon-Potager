@@ -8,7 +8,7 @@ export const changeInputValue = (value) => ({
   value,
 });
 
-export const displayPlants = (value) => ({
+export const displayPlants = (auvergne) => ({
   type: DISPLAY_PLANTS,
-  value,
+  auvergne,
 });
