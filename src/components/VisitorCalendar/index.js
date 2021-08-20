@@ -64,6 +64,7 @@ const VisitorCalendar = ({
   const handleClickNextButton = () => {
     const calendarInstance = calendarRef.current.getInstance();
     calendarInstance.next();
+    console.log(calendarInstance);
     const getDate = document.querySelector('.visitorCalendar-currentMonth');
     // eslint-disable-next-line no-underscore-dangle
     getDate.textContent = calendarInstance._renderDate._date.toLocaleString('fr-FR', {

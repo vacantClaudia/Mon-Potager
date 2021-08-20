@@ -142,6 +142,8 @@ const initialState = {
       color: '#fad689',
       bgColor: '#f46d5f',
       borderColor: '#f8cba9',
+      // == conditionnal display to code with calendarId
+      isVisible: false,
     },
     {
       id: '2',
@@ -153,6 +155,7 @@ const initialState = {
       color: '#f46d5f',
       bgColor: '#9ed2bf',
       borderColor: '#daece5',
+      isVisible: false,
     },
     {
       id: '3',
@@ -164,6 +167,7 @@ const initialState = {
       color: '#fad689',
       bgColor: '#f46d5f',
       borderColor: '#f8cba9',
+      isVisible: false,
     },
     {
       id: '4',
@@ -175,6 +179,7 @@ const initialState = {
       color: '#fad689',
       bgColor: '#f46d5f',
       borderColor: '#f8cba9',
+      isVisible: true,
     },
     {
       id: '5',
@@ -186,6 +191,7 @@ const initialState = {
       color: '#f46d5f',
       bgColor: '#9ed2bf',
       borderColor: '#daece5',
+      isVisible: true,
     },
     {
       id: '6',
@@ -197,6 +203,7 @@ const initialState = {
       color: '#f46d5f',
       bgColor: '#9ed2bf',
       borderColor: '#daece5',
+      isVisible: true,
     },
   ],
   // == impossible to click on the calendar or schedule may be use
