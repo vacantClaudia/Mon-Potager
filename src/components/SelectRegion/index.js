@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+/* eslint-disable arrow-body-style */
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import VisitorCalendar from 'src/components/VisitorCalendar';
@@ -9,12 +10,12 @@ const SelectRegion = ({
   setValue,
   isSelected,
   displayPlants,
-  isDisplay,
-  deselectRegion,
+  // isDisplay,
+  // deselectRegion,
 }) => {
-  useEffect(() => {
-    { !isSelected}
-  });
+  // useEffect(() => {
+  //   deselectRegion();
+  // });
 
   return (
     <>
@@ -31,6 +32,7 @@ const SelectRegion = ({
             setValue(event.currentTarget.value);
             // display a calendar
             displayPlants();
+            // deselectRegion();
           }}
         >
           <option value="">Choisis ta région!</option>
@@ -49,7 +51,7 @@ const SelectRegion = ({
           <option value="13">Provence-Alpes-Côte d'Azur</option>
         </select>
       </form>
-      {isSelected && (<VisitorCalendar value={value[0]} />)}
+      {isSelected && (<VisitorCalendar value={value[0]} />) /*&& deselectRegion()*/}
     </>
   );
 };
@@ -59,8 +61,8 @@ SelectRegion.propTypes = {
   setValue: PropTypes.func.isRequired,
   isSelected: PropTypes.bool.isRequired,
   displayPlants: PropTypes.func.isRequired,
-  isDisplay: PropTypes.bool.isRequired,
-  deselectRegion: PropTypes.func.isRequired,
+  // isDisplay: PropTypes.bool.isRequired,
+  // deselectRegion: PropTypes.func.isRequired,
 };
 
 export default SelectRegion;

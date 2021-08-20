@@ -1,6 +1,6 @@
 /* eslint-disable quotes */
 /* eslint-disable quote-props */
-import { CHANGE_INPUT_VALUE, DISPLAY_PLANTS, DESELECT_REGION } from 'src/actions/selectRegion';
+import { CHANGE_INPUT_VALUE, DISPLAY_PLANTS, /*DESELECT_REGION*/ } from 'src/actions/selectRegion';
 
 const initialState = {
   data: [
@@ -240,7 +240,7 @@ const initialState = {
     },
   ],
   isSelected: false,
-  isDisplay: true,
+  // isDisplay: false,
 };
 
 function selectRegionReducer(state = initialState, action = {}) {
@@ -256,12 +256,11 @@ function selectRegionReducer(state = initialState, action = {}) {
         isSelected: !state.isSelected,
       };
 
-    case DESELECT_REGION:
-      return {
-        ...state,
-        isDisplay: !state.isDisplay,
-      };
-
+    // case DESELECT_REGION:
+    //   return {
+    //     ...state,
+    //     isDisplay: state.isDisplay,
+    //   };
 
     default:
       return state;

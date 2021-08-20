@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 
 import SelectRegion from 'src/components/SelectRegion';
 
-import { changeInputValue, displayPlants } from '../../actions/selectRegion';
+import { changeInputValue, displayPlants, /*deselectRegion*/ } from '../../actions/selectRegion';
 
 const mapStateToProps = (state) => ({
   value: state.selectRegion.data,
@@ -21,6 +21,11 @@ const mapDispatchToProps = (dispatch) => ({
     const action = displayPlants(value);
     dispatch(action);
   },
+
+  // deselectRegion: () => {
+  //   const action = deselectRegion();
+  //   dispatch(action);
+  // },
 
 });
 
