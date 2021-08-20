@@ -6,6 +6,7 @@ import { changeInputValue } from '../../actions/selectRegion';
 
 const mapStateToProps = (state) => ({
   value: state.selectRegion.data,
+  isSelected: state.selectRegion.isSelected,
 });
 
 const mapDispatchToProps = (dispatch) => ({

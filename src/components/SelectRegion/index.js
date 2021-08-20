@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import VisitorCalendar from 'src/components/VisitorCalendar';
 import './selectRegion.scss';
 
-const SelectRegion = ({ value, setValue }) => {
-  const result = value.find((item) => item.title === value.title);
-  console.log(result);
+const SelectRegion = ({ value, setValue, isSelected, displayPlants }) => {
+  // get plants by region
+  const result = value.find((item) => item[0] === value);
+  console.log(value);
 
   return (
     <>
@@ -21,6 +23,7 @@ const SelectRegion = ({ value, setValue }) => {
           onChange={(event) => {
             setValue(event.currentTarget.value);
             console.log(event.currentTarget.value);
+            displayPlants(result);
           }}
         >
           <option value="">Choisis ta région!</option>
@@ -38,22 +41,17 @@ const SelectRegion = ({ value, setValue }) => {
           <option value="12">Pays de la Loire</option>
           <option value="13">Provence-Alpes-Côte d'Azur</option>
         </select>
-        
       </form>
+      {isSelected && (<VisitorCalendar result={result} />)}
     </>
   );
-
-}
+};
 
 SelectRegion.propTypes = {
-  value: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      title: PropTypes.string.isRequired,
-      region: PropTypes.string.isRequired,
-    }).isRequired,
-  ).isRequired,
+  value: PropTypes.array.isRequired,
   setValue: PropTypes.func.isRequired,
+  isSelected: PropTypes.bool.isRequired,
+  displayPlants: PropTypes.func.isRequired,
 };
 
 export default SelectRegion;

@@ -2,9 +2,10 @@
 /* eslint-disable quote-props */
 import { CHANGE_INPUT_VALUE } from 'src/actions/selectRegion';
 
-// import data from 'src/data';
+import data from 'src/data/data';
 
-// console.log(data);
+console.log(data);
+console.log(data[0].regions);
 
 const initialState = {
   data: [
@@ -34,7 +35,7 @@ const initialState = {
         2,
       ],
       "regions": [
-        1
+        1,
       ],
       "season": [
         4,
@@ -243,6 +244,7 @@ const initialState = {
       },
     },
   ],
+  isSelected: false,
 };
 
 function selectRegionReducer(state = initialState, action = {}) {
