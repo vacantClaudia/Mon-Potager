@@ -1,7 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import './footer.scss';
-import { User, Home } from 'react-feather';
 import { Icon } from 'semantic-ui-react';
 
 const Footer = () => (
