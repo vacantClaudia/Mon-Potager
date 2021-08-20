@@ -17,7 +17,7 @@ import Footer from 'src/components/Footer';
 const App = () => (
   <div className="app">
     <Header />
-    <Route path="/connection" exact>
+    <Route path="/connexion" exact>
       <Connect />
     </Route>
     <Route path="/" exact>

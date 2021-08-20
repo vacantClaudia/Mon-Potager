@@ -21,6 +21,7 @@ const Footer = () => (
     </nav>
 
     <div className="nav-mobile">
+
       <NavLink
         to="/"
         className="nav-item"
@@ -30,9 +31,11 @@ const Footer = () => (
         <Icon name="home" size="large" className="nav-icon" />
         Accueil
       </NavLink>
+
+
       <NavLink
-        to="/connection"
-        className="nav-item"
+        to="/connexion"
+        className="nav-item "
         activeClassName="nav-item--active"
         exact
       >
