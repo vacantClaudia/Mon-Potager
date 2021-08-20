@@ -4,8 +4,9 @@ import PropTypes from 'prop-types';
 import './selectRegion.scss';
 
 const SelectRegion = ({ value, setValue }) => {
-  // const result = value.find((item) => item.title === value.title);
-  // console.log(result);
+  const result = value.find((item) => item.title === value.title);
+  console.log(result);
+
   return (
     <>
       <form
@@ -37,16 +38,7 @@ const SelectRegion = ({ value, setValue }) => {
           <option value="12">Pays de la Loire</option>
           <option value="13">Provence-Alpes-Côte d'Azur</option>
         </select>
-        {/* <ul>
-          {value.map((result) => (
-            <li
-              className="list-item"
-              key={result.id}
-            >
-              {result.title}
-            </li>
-          ))}
-        </ul> */}
+        
       </form>
     </>
   );

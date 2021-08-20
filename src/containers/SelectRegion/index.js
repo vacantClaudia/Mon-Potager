@@ -5,7 +5,7 @@ import SelectRegion from 'src/components/SelectRegion';
 import { changeInputValue } from '../../actions/selectRegion';
 
 const mapStateToProps = (state) => ({
-  value: state.selectRegion.value,
+  value: state.selectRegion.data,
 });
 
 const mapDispatchToProps = (dispatch) => ({
