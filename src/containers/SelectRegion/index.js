@@ -7,6 +7,7 @@ import { changeInputValue, displayPlants } from '../../actions/selectRegion';
 const mapStateToProps = (state) => ({
   value: state.selectRegion.data,
   isSelected: state.selectRegion.isSelected,
+  // isDisplay: state.selectRegion.isDisplay,
 });
 
 const mapDispatchToProps = (dispatch) => ({
