@@ -23,6 +23,7 @@ const VisitorCalendar = ({
   myTheme,
   plantsSchedules,
   isReadOnly,
+  plantsCalendars,
 }) => {
   const calendarRef = createRef();
 
@@ -98,6 +99,8 @@ const VisitorCalendar = ({
         theme={myTheme}
         // == plants schedules data
         schedules={plantsSchedules}
+        // == plants calendars data
+        calendars={plantsCalendars}
         // == possible or not to click on calendar or schedules (boolean)
         isReadOnly={isReadOnly}
       />

@@ -118,10 +118,22 @@ const initialState = {
     'week.dayGridSchedule.marginLeft': '8px',
     'week.dayGridSchedule.marginRight': '8px',
   },
+  // == test creation of two calendars for 2 lands et think to apply calendar-id to schedules
+  plantsCalendars: [
+    {
+      id: '0',
+      name: 'Auvergne-Rhône-Alpes',
+    },
+    {
+      id: '1',
+      name: 'Bretagne',
+    },
+  ],
   // == test plants in initial state - use keys names to consume api
   plantsSchedules: [
     {
       id: '1',
+      calendarId: '0',
       title: 'Abricots',
       // = category must be use to display. I don't know it utility
       category: 'time',
@@ -133,6 +145,7 @@ const initialState = {
     },
     {
       id: '2',
+      calendarId: '0',
       title: 'Carottes',
       category: 'time',
       start: '2021-08-25',
@@ -143,6 +156,7 @@ const initialState = {
     },
     {
       id: '3',
+      calendarId: '0',
       title: 'Fraises',
       category: 'time',
       start: '2021-09-01',
@@ -153,6 +167,7 @@ const initialState = {
     },
     {
       id: '4',
+      calendarId: '1',
       title: 'Tomates',
       category: 'time',
       start: '2021-07-05',
@@ -163,6 +178,7 @@ const initialState = {
     },
     {
       id: '5',
+      calendarId: '1',
       title: 'Poireaux',
       category: 'time',
       start: '2021-08-29',
@@ -173,6 +189,7 @@ const initialState = {
     },
     {
       id: '6',
+      calendarId: '1',
       title: 'Artichauts',
       category: 'time',
       start: '2021-08-16',
