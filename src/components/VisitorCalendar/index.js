@@ -64,7 +64,6 @@ const VisitorCalendar = ({
   const handleClickNextButton = () => {
     const calendarInstance = calendarRef.current.getInstance();
     calendarInstance.next();
-    console.log(calendarInstance);
     const getDate = document.querySelector('.visitorCalendar-currentMonth');
     // eslint-disable-next-line no-underscore-dangle
     getDate.textContent = calendarInstance._renderDate._date.toLocaleString('fr-FR', {
@@ -73,9 +72,29 @@ const VisitorCalendar = ({
       month: 'long',
     });
   };
+  const handleOptionSelect = (evt) => {
+    const calendarInstance = calendarRef.current.getInstance();
+    const getOptionValue = evt.target.value;
+    console.log(calendarInstance);
+    switch (getOptionValue) {
+      case '0':
+        calendarInstance.getSchedule();
+        break;
+      case '1':
+        console.log(getOptionValue);
+        break;
+      default:
+    }
+  };
+
   return (
     <div className="visitorCalendar">
       <div className="visitorCalendar-buttonsTodayMonth">
+        <select className="visitorCalendarSelectRegion" onChange={handleOptionSelect}>
+          <option value="">Choisis ta région!</option>
+          <option value="0">Auvergne-Rhône-Alpes</option>
+          <option value="1">Bretagne</option>
+        </select>
         {/* click to access to next or prev month or today */}
         <button type="button" className="visitorCalendar-buttonsTodayMonth-button" onClick={handleClickTodayButton}>Today</button>
         <button type="button" className="visitorCalendar-buttonsTodayMonth-button" onClick={handleClickPrevButton}>

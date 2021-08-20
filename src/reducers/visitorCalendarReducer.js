@@ -143,7 +143,7 @@ const initialState = {
       bgColor: '#f46d5f',
       borderColor: '#f8cba9',
       // == conditionnal display to code with calendarId
-      isVisible: false,
+      isVisible: true,
     },
     {
       id: '2',
@@ -155,7 +155,7 @@ const initialState = {
       color: '#f46d5f',
       bgColor: '#9ed2bf',
       borderColor: '#daece5',
-      isVisible: false,
+      isVisible: true,
     },
     {
       id: '3',
@@ -167,7 +167,7 @@ const initialState = {
       color: '#fad689',
       bgColor: '#f46d5f',
       borderColor: '#f8cba9',
-      isVisible: false,
+      isVisible: true,
     },
     {
       id: '4',
