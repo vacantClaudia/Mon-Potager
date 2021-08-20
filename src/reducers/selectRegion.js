@@ -2,11 +2,6 @@
 /* eslint-disable quote-props */
 import { CHANGE_INPUT_VALUE, DISPLAY_PLANTS } from 'src/actions/selectRegion';
 
-import data from 'src/data/data';
-
-console.log(data);
-console.log(data[0].regions);
-
 const initialState = {
   data: [
     {

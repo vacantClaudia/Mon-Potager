@@ -10,14 +10,17 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
+
   setValue: (value) => {
     const action = changeInputValue(value);
     dispatch(action);
   },
+
   displayPlants: (value) => {
     const action = displayPlants(value);
     dispatch(action);
   },
+
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SelectRegion);
