@@ -23,6 +23,7 @@ const VisitorCalendar = ({
   myTheme,
   plantsSchedules,
   isReadOnly,
+  plantsCalendars,
 }) => {
   const calendarRef = createRef();
 
@@ -63,6 +64,7 @@ const VisitorCalendar = ({
   const handleClickNextButton = () => {
     const calendarInstance = calendarRef.current.getInstance();
     calendarInstance.next();
+    console.log(calendarInstance);
     const getDate = document.querySelector('.visitorCalendar-currentMonth');
     // eslint-disable-next-line no-underscore-dangle
     getDate.textContent = calendarInstance._renderDate._date.toLocaleString('fr-FR', {
@@ -98,6 +100,8 @@ const VisitorCalendar = ({
         theme={myTheme}
         // == plants schedules data
         schedules={plantsSchedules}
+        // == plants calendars data
+        calendars={plantsCalendars}
         // == possible or not to click on calendar or schedules (boolean)
         isReadOnly={isReadOnly}
       />
