@@ -1,6 +1,6 @@
 /* eslint-disable quotes */
 /* eslint-disable quote-props */
-import { CHANGE_INPUT_VALUE } from 'src/actions/selectRegion';
+import { CHANGE_INPUT_VALUE, DISPLAY_PLANTS } from 'src/actions/selectRegion';
 
 import data from 'src/data/data';
 
@@ -252,6 +252,12 @@ function selectRegionReducer(state = initialState, action = {}) {
     case CHANGE_INPUT_VALUE:
       return {
         ...state,
+      };
+
+    case DISPLAY_PLANTS:
+      return {
+        ...state,
+        isSelected: !state.isSelected,
       };
 
     default:

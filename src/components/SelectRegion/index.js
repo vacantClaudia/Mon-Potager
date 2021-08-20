@@ -24,6 +24,7 @@ const SelectRegion = ({ value, setValue, isSelected, displayPlants }) => {
             setValue(event.currentTarget.value);
             console.log(event.currentTarget.value);
             displayPlants(result);
+            console.log(displayPlants);
           }}
         >
           <option value="">Choisis ta région!</option>
