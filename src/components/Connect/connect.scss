@@ -1,12 +1,9 @@
 @use 'src/styles/vars';
 
 .connect{
-     @media (max-width: 1000px){
-      display: none;
-    }
   .connect-form{
     position: relative;
-    z-index: 1;
+  
     background-color: vars.$green;
     border-radius: 2em;
     padding: 1em;
@@ -14,6 +11,7 @@
     margin: auto;
     display: flex;
     flex-direction: column;
+
     .connect-submit{
       color: #fff;
       border: none;

@@ -8,3 +8,13 @@
     padding-left: 2rem;
   }
 }
+.nav-mobile{
+  display: block;
+  position: fixed;
+  bottom: 0;
+  .nav-item{
+    padding: 1em;
+    text-align: center;
+    margin: 0 auto;
+  }
+}
