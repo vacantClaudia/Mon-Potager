@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import './selectRegion.scss';
 
 const SelectRegion = ({ value, setValue }) => {
-  const result = value.find((item) => item.title === value.title);
-  console.log(result);
+  // const result = value.find((item) => item.title === value.title);
+  // console.log(result);
   return (
     <>
       <form
