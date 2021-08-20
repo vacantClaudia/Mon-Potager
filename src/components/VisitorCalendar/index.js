@@ -64,7 +64,6 @@ const VisitorCalendar = ({
   const handleClickNextButton = () => {
     const calendarInstance = calendarRef.current.getInstance();
     calendarInstance.next();
-    console.log(calendarInstance);
     const getDate = document.querySelector('.visitorCalendar-currentMonth');
     // eslint-disable-next-line no-underscore-dangle
     getDate.textContent = calendarInstance._renderDate._date.toLocaleString('fr-FR', {
@@ -73,15 +72,18 @@ const VisitorCalendar = ({
       month: 'long',
     });
   };
-  const handleOptionSelect = () => {
+  const handleOptionSelect = (evt) => {
     const calendarInstance = calendarRef.current.getInstance();
-    const getOptionValue = document.querySelector('.visitorCalendarSelectRegion').value;
+    const getOptionValue = evt.target.value;
     console.log(calendarInstance);
     switch (getOptionValue) {
-      case 0:
-        return calendarInstance.getSchedule(0);
+      case '0':
+        calendarInstance.getSchedule();
+        break;
+      case '1':
+        console.log(getOptionValue);
+        break;
       default:
-        return calendarInstance;
     }
   };
 
