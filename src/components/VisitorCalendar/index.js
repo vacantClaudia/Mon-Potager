@@ -1,13 +1,15 @@
-import React from 'react';
-import { createRef } from 'react';
+import React, { createRef } from 'react';
 import PropTypes from 'prop-types';
 
+// == import externals libraries
 import Calendar from '@toast-ui/react-calendar';
 import 'tui-calendar/dist/tui-calendar.css';
 
 // If you use the default popups, use this.
 import 'tui-date-picker/dist/tui-date-picker.css';
 import 'tui-time-picker/dist/tui-time-picker.css';
+
+import { ChevronLeft, ChevronRight } from 'react-feather';
 
 // == Import css
 import './visitorCalendar.scss';
@@ -24,30 +26,63 @@ const VisitorCalendar = ({
 }) => {
   const calendarRef = createRef();
 
-  const handleClickNextButton = () => {
-    const calendarInstance = calendarRef.current.getInstance();
+  // == get current date to display on the top of calendar
+  const currentDate = new Date();
+  const currentMonthAndYear = currentDate.toLocaleString('fr-FR', {
+    timeZone: 'Europe/Paris',
+    year: 'numeric',
+    month: 'long',
+  });
 
-    calendarInstance.next();
+  // == functions to dynamise buttons today prev and next month
+  // == and display date on the top of calendar
+  const handleClickTodayButton = () => {
+    const calendarInstance = calendarRef.current.getInstance();
+    calendarInstance.today();
+    const getDate = document.querySelector('.visitorCalendar-currentMonth');
+    // eslint-disable-next-line no-underscore-dangle
+    getDate.textContent = calendarInstance._renderDate._date.toLocaleString('fr-FR', {
+      timeZone: 'Europe/Paris',
+      year: 'numeric',
+      month: 'long',
+    });
   };
 
   const handleClickPrevButton = () => {
     const calendarInstance = calendarRef.current.getInstance();
-
     calendarInstance.prev();
+    const getDate = document.querySelector('.visitorCalendar-currentMonth');
+    // eslint-disable-next-line no-underscore-dangle
+    getDate.textContent = calendarInstance._renderDate._date.toLocaleString('fr-FR', {
+      timeZone: 'Europe/Paris',
+      year: 'numeric',
+      month: 'long',
+    });
   };
 
-  const handleClickTodayButton = () => {
+  const handleClickNextButton = () => {
     const calendarInstance = calendarRef.current.getInstance();
-
-    calendarInstance.today();
+    calendarInstance.next();
+    const getDate = document.querySelector('.visitorCalendar-currentMonth');
+    // eslint-disable-next-line no-underscore-dangle
+    getDate.textContent = calendarInstance._renderDate._date.toLocaleString('fr-FR', {
+      timeZone: 'Europe/Paris',
+      year: 'numeric',
+      month: 'long',
+    });
   };
   return (
-    <div className="visiTorCalendar">
-      <div className="buttonsTodayMonth">
+    <div className="visitorCalendar">
+      <div className="visitorCalendar-buttonsTodayMonth">
         {/* click to access to next or prev month or today */}
-        <button type="button" className="buttonsTodayMonth-button" onClick={handleClickTodayButton}>Today</button>
-        <button type="button" className="buttonsTodayMonth-button" onClick={handleClickPrevButton}>Prev</button>
-        <button type="button" className="buttonsTodayMonth-button" onClick={handleClickNextButton}>Next</button>
+        <button type="button" className="visitorCalendar-buttonsTodayMonth-button" onClick={handleClickTodayButton}>Today</button>
+        <button type="button" className="visitorCalendar-buttonsTodayMonth-button" onClick={handleClickPrevButton}>
+          <ChevronLeft size={12} />
+        </button>
+        <button type="button" className="visitorCalendar-buttonsTodayMonth-button" onClick={handleClickNextButton}>
+          <ChevronRight size={12} />
+        </button>
+        <p className="visitorCalendar-currentMonth">{currentMonthAndYear}</p>
       </div>
       <Calendar
       // == i have to understand better this calendarRef
@@ -74,6 +109,7 @@ VisitorCalendar.propTypes = {
   view: PropTypes.string.isRequired,
   daynames: PropTypes.array.isRequired,
   startDayOfWeek: PropTypes.number.isRequired,
+  isReadOnly: PropTypes.bool.isRequired,
   // myTheme: PropTypes.arrayOf(
   //   PropTypes.shape({
   //   }).isRequired,

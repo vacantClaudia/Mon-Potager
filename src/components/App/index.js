@@ -1,23 +1,13 @@
 // == Import npm
 import React from 'react';
-<<<<<<< HEAD
-=======
-import Header from 'src/components/Header';
-import SelectRegion from 'src/containers/SelectRegion';
-import Footer from 'src/components/Footer';
->>>>>>> feature/homeSelect
+import { Route } from 'react-router-dom';
 
 // == Import css
 import './styles.scss';
-// import data from 'src/data/data';
-
-// console.log(data);
-// console.log(data.[0].id);
-// console.log(data.[0].title.rendered);
-// console.log(data.[0].regions);
 
 // == Import Components
 import Header from 'src/components/Header';
+import Connect from 'src/containers/Connect';
 import SelectRegion from 'src/components/SelectRegion';
 import VisitorCalendar from 'src/containers/VisitorCalendar';
 import Footer from 'src/components/Footer';
@@ -26,16 +16,13 @@ import Footer from 'src/components/Footer';
 const App = () => (
   <div className="app">
     <Header />
-<<<<<<< HEAD
-    <SelectRegion />
-    <VisitorCalendar />
-=======
-    <SelectRegion
-      // id={data.[0].id}
-      // title={data.[0].title.rendered}
-      // region={data.[0].regions}
-    />
->>>>>>> feature/homeSelect
+    <Route path="/connection" exact>
+      <Connect />
+    </Route>
+    <Route path="/" exact>
+      <SelectRegion />
+      <VisitorCalendar />
+    </Route>
     <Footer />
   </div>
 );
