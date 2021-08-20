@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Field from 'src/components/Field';
 import './connect.scss';
 
-const Connect = () => (
+const Connect = ({ userName, password, changeFieldValue }) => (
   <div className="connect">
     <form className="connect-form">
       <Field
@@ -13,7 +13,9 @@ const Connect = () => (
         label="Nom d'utilisateur"
         changeField={(identifier, newValue) => {
           console.log(`changeField sur username : identifier=${identifier}, newValue=${newValue}`);
+          changeFieldValue(identifier, newValue);
         }}
+        value={userName}
       />
       <Field
         identifier="password"
@@ -22,7 +24,9 @@ const Connect = () => (
         type="password"
         changeField={(identifier, newValue) => {
           console.log(`changeField sur password : identifier=${identifier}, newValue=${newValue}`);
+          changeFieldValue(identifier, newValue);
         }}
+        value={password}
       />
       <button
         type="submit"
@@ -35,5 +39,8 @@ const Connect = () => (
 );
 Connect.propTypes = {
 //  futur propTypes
+  userName: PropTypes.string.isRequired,
+  password: PropTypes.string.isRequired,
+  changeFieldValue: PropTypes.func.isRequired,
 };
 export default Connect;
