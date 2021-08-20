@@ -1,23 +1,23 @@
-import { CHANGE_INPUT_VALUE, DISPLAY_PLANTS } from 'src/actions/selectRegion';
+import { CHANGE_INPUT_VALUE } from 'src/actions/selectRegion';
 
 // import data from 'src/data';
 
 // console.log(data);
 
 const initialState = {
-  data: [
+  value: [
     {
       id: 6,
       title: 'salade',
       regions: 'auvergne',
     },
     {
-      id: 6,
+      id: 7,
       title: 'tomate',
       regions: 'auvergne',
     },
     {
-      id: 6,
+      id: 8,
       title: 'oignon',
       regions: 'auvergne',
     },
@@ -26,15 +26,10 @@ const initialState = {
 
 function selectRegionReducer(state = initialState, action = {}) {
   switch (action.type) {
-    // case CHANGE_INPUT_VALUE:
-    //   return {
-    //     ...state,
-    //     value: action.value,
-    //   };
-    // case DISPLAY_PLANTS:
-    //   return {
-    //     ...state,
-    //   };
+    case CHANGE_INPUT_VALUE:
+      return {
+        ...state,
+      };
 
     default:
       return state;
