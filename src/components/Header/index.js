@@ -40,12 +40,12 @@ const Header = () => (
         Inscription
       </NavLink>
       <NavLink
-        to="/connection"
+        to="/connexion"
         className="nav-item"
         activeClassName="nav-item--active"
         exact
       >
-        Connection
+        Connexion
       </NavLink>
     </div>
 

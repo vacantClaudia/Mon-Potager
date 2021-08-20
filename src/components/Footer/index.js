@@ -1,6 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import './footer.scss';
+import { User, Home } from 'react-feather';
+import { Icon } from 'semantic-ui-react';
 
 const Footer = () => (
   <>
@@ -19,13 +21,26 @@ const Footer = () => (
     </nav>
 
     <div className="nav-mobile">
+
       <NavLink
         to="/"
         className="nav-item"
         activeClassName="nav-item--active"
         exact
       >
+        <Icon name="home" size="large" className="nav-icon" />
         Accueil
+      </NavLink>
+
+
+      <NavLink
+        to="/connexion"
+        className="nav-item "
+        activeClassName="nav-item--active"
+        exact
+      >
+        <Icon name="user circle outline" size="big" className="nav-icon" />
+        Compte
       </NavLink>
       <NavLink
         to="/plantes"
@@ -33,23 +48,8 @@ const Footer = () => (
         activeClassName="nav-item--active"
         exact
       >
+        <Icon name="leaf" size="large" className="nav-icon" />
         Plantes
-      </NavLink>
-      {/* <NavLink
-        to="/inscription"
-        className="nav-item"
-        activeClassName="nav-item--active"
-        exact
-      >
-        Inscription
-      </NavLink> */}
-      <NavLink
-        to="/connection"
-        className="nav-item"
-        activeClassName="nav-item--active"
-        exact
-      >
-        Connection
       </NavLink>
     </div>
   </>
