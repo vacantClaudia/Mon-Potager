@@ -1,12 +1,21 @@
-import { createStore } from 'redux';
-import { devToolsEnhancer } from 'redux-devtools-extension';
+import { createStore, applyMiddleware } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 import reducer from 'src/reducers';
 
-const store = createStore(
+import plantsMiddleware from 'src/middlewares/plantsMiddleware';
 
-  reducer,
-
-  devToolsEnhancer(),
+const enhancer = composeWithDevTools(
+  applyMiddleware(
+    plantsMiddleware,
+  ),
 );
+
+const store = createStore(
+  // reducer
+  reducer,
+  // enhancer
+  enhancer,
+);
+
 export default store;
