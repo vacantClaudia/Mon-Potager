@@ -24,6 +24,8 @@ const VisitorCalendar = ({
   plantsSchedules,
   isReadOnly,
   plantsCalendars,
+  changeIsVisible,
+  isVisible,
 }) => {
   const calendarRef = createRef();
 
@@ -38,7 +40,7 @@ const VisitorCalendar = ({
   // == functions to dynamise buttons today prev and next month
   // == and display date on the top of calendar
   const handleClickTodayButton = () => {
-    const calendarInstance = calendarRef.current.getInstance();
+    const calendarInstance = calendarRef.current.calendarInst;
     calendarInstance.today();
     const getDate = document.querySelector('.visitorCalendar-currentMonth');
     // eslint-disable-next-line no-underscore-dangle
@@ -50,7 +52,7 @@ const VisitorCalendar = ({
   };
 
   const handleClickPrevButton = () => {
-    const calendarInstance = calendarRef.current.getInstance();
+    const calendarInstance = calendarRef.current.calendarInst;
     calendarInstance.prev();
     const getDate = document.querySelector('.visitorCalendar-currentMonth');
     // eslint-disable-next-line no-underscore-dangle
@@ -62,7 +64,7 @@ const VisitorCalendar = ({
   };
 
   const handleClickNextButton = () => {
-    const calendarInstance = calendarRef.current.getInstance();
+    const calendarInstance = calendarRef.current.calendarInst;
     calendarInstance.next();
     const getDate = document.querySelector('.visitorCalendar-currentMonth');
     // eslint-disable-next-line no-underscore-dangle
@@ -72,19 +74,22 @@ const VisitorCalendar = ({
       month: 'long',
     });
   };
+
+  // == to change plantsSchedules.isVisible on true if id of calendar === calendarId
   const handleOptionSelect = (evt) => {
-    const calendarInstance = calendarRef.current.getInstance();
     const getOptionValue = evt.target.value;
-    console.log(calendarInstance);
-    switch (getOptionValue) {
-      case '0':
-        calendarInstance.getSchedule();
-        break;
-      case '1':
-        console.log(getOptionValue);
-        break;
-      default:
-    }
+    const currentSchedules = calendarRef.current.props.schedules;
+    currentSchedules.map((item) => {
+      if (item.calendarId === getOptionValue) {
+        item.isVisible = true;
+      }
+      else {
+        item.isVisible = false;
+      }
+    });
+    changeIsVisible(currentSchedules);
+    // eslint-disable-next-line no-underscore-dangle
+    console.log(calendarRef.current.calendarInst._controller.schedules.items);
   };
 
   return (
@@ -106,7 +111,9 @@ const VisitorCalendar = ({
         <p className="visitorCalendar-currentMonth">{currentMonthAndYear}</p>
       </div>
       <Calendar
-      // == i have to understand better this calendarRef
+      // == I put key here for new render
+        key={isVisible}
+      // == ref to current calendar ?
         ref={calendarRef}
       // == view monthly
         view={view}

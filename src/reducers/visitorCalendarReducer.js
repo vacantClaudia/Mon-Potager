@@ -1,3 +1,8 @@
+// import actions types
+import {
+  CHANGE_IS_VISIBLE,
+} from 'src/actions/visitorCalendar';
+
 // == Visitor Calendar initialState : just calendar display, not data schedules
 const initialState = {
   // == maybe use calendar and calendarId to filter by place
@@ -143,7 +148,7 @@ const initialState = {
       bgColor: '#f46d5f',
       borderColor: '#f8cba9',
       // == conditionnal display to code with calendarId
-      isVisible: true,
+      isVisible: false,
     },
     {
       id: '2',
@@ -155,7 +160,7 @@ const initialState = {
       color: '#f46d5f',
       bgColor: '#9ed2bf',
       borderColor: '#daece5',
-      isVisible: true,
+      isVisible: false,
     },
     {
       id: '3',
@@ -167,7 +172,7 @@ const initialState = {
       color: '#fad689',
       bgColor: '#f46d5f',
       borderColor: '#f8cba9',
-      isVisible: true,
+      isVisible: false,
     },
     {
       id: '4',
@@ -179,7 +184,7 @@ const initialState = {
       color: '#fad689',
       bgColor: '#f46d5f',
       borderColor: '#f8cba9',
-      isVisible: true,
+      isVisible: false,
     },
     {
       id: '5',
@@ -191,7 +196,7 @@ const initialState = {
       color: '#f46d5f',
       bgColor: '#9ed2bf',
       borderColor: '#daece5',
-      isVisible: true,
+      isVisible: false,
     },
     {
       id: '6',
@@ -203,7 +208,7 @@ const initialState = {
       color: '#f46d5f',
       bgColor: '#9ed2bf',
       borderColor: '#daece5',
-      isVisible: true,
+      isVisible: false,
     },
   ],
   // == impossible to click on the calendar or schedule may be use
@@ -213,6 +218,12 @@ const initialState = {
 
 function visitorCalendarReducer(state = initialState, action = {}) {
   switch (action.type) {
+    // == action.type to change key isVisible to true or false
+    case CHANGE_IS_VISIBLE:
+      return {
+        ...state,
+        plantsSchedules: action.value,
+      };
     default:
       return state;
   }
