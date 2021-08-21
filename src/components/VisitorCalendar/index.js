@@ -27,10 +27,13 @@ const VisitorCalendar = ({
   changeIsVisible,
   isVisible,
 }) => {
+  // == ref to calendar to get instance
   const calendarRef = createRef();
 
   // == get current date to display on the top of calendar
+  // == today's date
   const currentDate = new Date();
+  // == Format the date to see just month and year, and change timezone to Paris
   const currentMonthAndYear = currentDate.toLocaleString('fr-FR', {
     timeZone: 'Europe/Paris',
     year: 'numeric',
@@ -75,7 +78,8 @@ const VisitorCalendar = ({
     });
   };
 
-  // == to change plantsSchedules.isVisible on true if id of calendar === calendarId
+  // == function to display plants by region
+  // == (change isVisible on true if value of option === calendarId)
   const handleOptionSelect = (evt) => {
     const getOptionValue = evt.target.value;
     const currentSchedules = calendarRef.current.props.schedules;
@@ -88,13 +92,12 @@ const VisitorCalendar = ({
       }
     });
     changeIsVisible(currentSchedules);
-    // eslint-disable-next-line no-underscore-dangle
-    console.log(calendarRef.current.calendarInst._controller.schedules.items);
   };
 
   return (
     <div className="visitorCalendar">
       <div className="visitorCalendar-buttonsTodayMonth">
+        {/* Select by region */}
         <select className="visitorCalendarSelectRegion" onChange={handleOptionSelect}>
           <option value="">Choisis ta région!</option>
           <option value="0">Auvergne-Rhône-Alpes</option>
@@ -111,7 +114,7 @@ const VisitorCalendar = ({
         <p className="visitorCalendar-currentMonth">{currentMonthAndYear}</p>
       </div>
       <Calendar
-      // == I put key here for new render
+      // == I put key here for new render when change option select
         key={isVisible}
       // == ref to current calendar ?
         ref={calendarRef}
@@ -140,6 +143,8 @@ VisitorCalendar.propTypes = {
   daynames: PropTypes.array.isRequired,
   startDayOfWeek: PropTypes.number.isRequired,
   isReadOnly: PropTypes.bool.isRequired,
+  isVisible: PropTypes.bool.isRequired,
+  changeIsVisible: PropTypes.func.isRequired,
   // myTheme: PropTypes.arrayOf(
   //   PropTypes.shape({
   //   }).isRequired,
