@@ -3,7 +3,6 @@ import {
   CHANGE_IS_VISIBLE,
 } from 'src/actions/visitorCalendar';
 
-
 // == Visitor Calendar initialState : just calendar display, not data schedules
 const initialState = {
   // == maybe use calendar and calendarId to filter by place
@@ -219,10 +218,10 @@ const initialState = {
 
 function visitorCalendarReducer(state = initialState, action = {}) {
   switch (action.type) {
+    // == action.type to change key isVisible to true or false
     case CHANGE_IS_VISIBLE:
       return {
         ...state,
-        // TODO TROUVER LE BON EXEMPLE
         plantsSchedules: action.value,
       };
     default:
