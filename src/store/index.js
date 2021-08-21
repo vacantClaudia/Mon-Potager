@@ -7,7 +7,6 @@ import plantsMiddleware from 'src/middlewares/plantsMiddleware';
 
 const enhancer = composeWithDevTools(
   applyMiddleware(
-    plantsMiddleware,
   ),
 );
 

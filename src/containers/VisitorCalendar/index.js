@@ -3,6 +3,9 @@ import { connect } from 'react-redux';
 // import component
 import VisitorCalendar from 'src/components/VisitorCalendar';
 
+// import actions creators
+import { changeIsVisible } from 'src/actions/visitorCalendar';
+
 // === mapStateToProps
 const mapStateToProps = (state) => ({
   view: state.visitorCalendar.view,
@@ -16,6 +19,10 @@ const mapStateToProps = (state) => ({
 
 // === mapDispatchToProps
 const mapDispatchToProps = (dispatch) => ({
+  changeIsVisible: (plantsSchedules) => {
+    const action = changeIsVisible(plantsSchedules);
+    dispatch(action);
+  },
 });
 
 // === export to component

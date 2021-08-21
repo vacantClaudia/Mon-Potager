@@ -24,6 +24,7 @@ const VisitorCalendar = ({
   plantsSchedules,
   isReadOnly,
   plantsCalendars,
+  changeIsVisible,
 }) => {
   const calendarRef = createRef();
 
@@ -72,19 +73,19 @@ const VisitorCalendar = ({
       month: 'long',
     });
   };
+  // TODO IL VA FALLOIR FAIRE UNE ACTION ET MODIFIER LE STATE AVEC DISPATCH
   const handleOptionSelect = (evt) => {
-    const calendarInstance = calendarRef.current.getInstance();
+    evt.preventDefault();
     const getOptionValue = evt.target.value;
-    console.log(calendarInstance);
-    switch (getOptionValue) {
-      case '0':
-        calendarInstance.getSchedule();
-        break;
-      case '1':
-        console.log(getOptionValue);
-        break;
-      default:
-    }
+    plantsSchedules.map((item) => {
+      if (item.calendarId === getOptionValue) {
+        item.isVisible = true;
+      }
+      else {
+        item.isVisible = false;
+      }
+    });
+    changeIsVisible(plantsSchedules);
   };
 
   return (
