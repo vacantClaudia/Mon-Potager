@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import VisitorCalendar from 'src/components/VisitorCalendar';
 
 // import actions creators
-import { changeIsVisible } from 'src/actions/visitorCalendar';
+import { changeIsVisible, fetchPlants } from 'src/actions/visitorCalendar';
 
 // === mapStateToProps
 const mapStateToProps = (state) => ({
@@ -25,7 +25,12 @@ const mapDispatchToProps = (dispatch) => ({
     const action = changeIsVisible(newValue);
     dispatch(action);
   },
-});
+  fetchPlants: () => {
+    const action = fetchPlants();
+    dispatch(action);
+  },
+}
+);
 
 // === export to component
 export default connect(mapStateToProps, mapDispatchToProps)(VisitorCalendar);

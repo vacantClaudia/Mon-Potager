@@ -26,6 +26,7 @@ const VisitorCalendar = ({
   plantsCalendars,
   changeIsVisible,
   isVisible,
+  fetchPlants,
 }) => {
   // == ref to calendar to get instance
   const calendarRef = createRef();
@@ -93,6 +94,8 @@ const VisitorCalendar = ({
     });
     changeIsVisible(currentSchedules);
   };
+  // test response api action case fetchPlants
+  fetchPlants();
 
   return (
     <div className="visitorCalendar">
