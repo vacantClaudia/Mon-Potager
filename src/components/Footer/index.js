@@ -4,6 +4,7 @@ import './footer.scss';
 import { Icon } from 'semantic-ui-react';
 
 const Footer = () => (
+  // footer menu
   <>
     <div className="nav">
       <NavLink
@@ -33,7 +34,6 @@ const Footer = () => (
     </div>
 
     <div className="nav-mobile">
-
       <NavLink
         to="/"
         className="nav-item"
@@ -43,7 +43,6 @@ const Footer = () => (
         <Icon name="home" size="large" className="nav-icon" />
         Accueil
       </NavLink>
-
       <NavLink
         to="/connexion"
         className="nav-item "
@@ -53,7 +52,6 @@ const Footer = () => (
         <Icon name="user circle outline" size="big" className="nav-icon" />
         Compte
       </NavLink>
-
       <NavLink
         to="/plantes"
         className="nav-item"
@@ -63,7 +61,6 @@ const Footer = () => (
         <Icon name="leaf" size="large" className="nav-icon" />
         Plantes
       </NavLink>
-
     </div>
   </>
 );
