@@ -1,4 +1,4 @@
-import React, { createRef } from 'react';
+import React, { createRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 // == import externals libraries
@@ -28,11 +28,15 @@ const VisitorCalendar = ({
   isVisible,
   selected,
   displayPlants,
+  fetchPlants,
 }) => {
+  // == ref to calendar to get instance
   const calendarRef = createRef();
 
   // == get current date to display on the top of calendar
+  // == today's date
   const currentDate = new Date();
+  // == Format the date to see just month and year, and change timezone to Paris
   const currentMonthAndYear = currentDate.toLocaleString('fr-FR', {
     timeZone: 'Europe/Paris',
     year: 'numeric',
@@ -77,7 +81,8 @@ const VisitorCalendar = ({
     });
   };
 
-  // == to change plantsSchedules.isVisible on true if id of calendar === calendarId
+  // == function to display plants by region
+  // == (change isVisible on true if value of option === calendarId)
   const handleOptionSelect = (evt) => {
     displayPlants();
     const getOptionValue = evt.target.value;
@@ -91,9 +96,11 @@ const VisitorCalendar = ({
       }
     });
     changeIsVisible(currentSchedules);
-    // eslint-disable-next-line no-underscore-dangle
-    console.log(calendarRef.current.calendarInst._controller.schedules.items);
   };
+  // test response api action case fetchPlants
+  useEffect(() => {
+    fetchPlants();
+  }, []);
 
   return (
     <div className="visitorCalendar">
@@ -159,6 +166,8 @@ VisitorCalendar.propTypes = {
   isReadOnly: PropTypes.bool.isRequired,
   selected: PropTypes.bool.isRequired,
   displayPlants: PropTypes.func.isRequired,
+  isVisible: PropTypes.bool.isRequired,
+  changeIsVisible: PropTypes.func.isRequired,
   // myTheme: PropTypes.arrayOf(
   //   PropTypes.shape({
   //   }).isRequired,
