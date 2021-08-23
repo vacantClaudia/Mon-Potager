@@ -19,7 +19,6 @@ const mapDispatchToProps = (dispatch) => ({
   changeFieldValue: (identifier, newValue) => {
     const action = updateConnectField(identifier, newValue);
     dispatch(action);
-    console.log('mon action');
   },
 
   handleSubmit: () => {
