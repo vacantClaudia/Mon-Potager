@@ -9,9 +9,9 @@ import './styles.scss';
 // == Import Components
 import Header from 'src/components/Header';
 import Connect from 'src/containers/Connect';
-// import SelectRegion from 'src/containers/SelectRegion';
 import VisitorCalendar from 'src/containers/VisitorCalendar';
 import Footer from 'src/components/Footer';
+import PlantsList from 'src/components/PlantsList';
 
 // == App component
 const App = () => (
@@ -21,8 +21,8 @@ const App = () => (
       <Connect />
     </Route>
     <Route path="/" exact>
-      {/* <SelectRegion /> */}
       <VisitorCalendar />
+      <PlantsList />
     </Route>
     <Footer />
   </div>
