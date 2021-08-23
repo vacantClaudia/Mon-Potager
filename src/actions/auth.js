@@ -5,11 +5,14 @@ export const SUBMIT_LOGIN = 'SUBMIT_LOGIN';
 
 // === action creators
 
-export const updateConnectField = (name, newValue) => ({
-  type: UPDATE_CONNECT_FIELD,
-  name: name,
-  newValue: newValue,
-});
+export const updateConnectField = (name, newValue) => {
+  console.log(name, newValue);
+  return ({
+    type: UPDATE_CONNECT_FIELD,
+    name: name,
+    newValue: newValue,
+  });
+};
 
 export const submitLogin = () => ({
   type: SUBMIT_LOGIN,

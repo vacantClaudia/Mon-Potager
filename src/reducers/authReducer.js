@@ -9,15 +9,9 @@ const initialState = {
 function authReducer(state = initialState, action = {}) {
   switch (action.type) {
     case UPDATE_CONNECT_FIELD:
-      if (action.name === 'userName') {
-        return {
-          ...state,
-          userName: action.newValue,
-        };
-      }
       return {
         ...state,
-        password: action.newValue,
+        [action.name]: action.newValue,
       };
 
     default:

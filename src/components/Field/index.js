@@ -16,7 +16,7 @@ const Field = ({
 }) => {
   const handleChange = (event) => {
     const { value: inputValue, name } = event.target;
-
+    console.log('handleChange');
     // c'est équivalent à :
     // const inputValue = event.target.value;
     // const name = event.target.name;
