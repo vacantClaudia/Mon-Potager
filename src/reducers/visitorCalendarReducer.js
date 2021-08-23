@@ -1,6 +1,6 @@
 // import actions types
 import {
-  CHANGE_IS_VISIBLE,
+  CHANGE_IS_VISIBLE, SAVE_PLANTS,
 } from 'src/actions/visitorCalendar';
 
 // == Visitor Calendar initialState : just calendar display, not data schedules
@@ -137,7 +137,7 @@ const initialState = {
   // == test plants in initial state - use keys names to consume api
   plantsSchedules: [
     {
-      id: '1',
+      id: '3',
       calendarId: '0',
       title: 'Abricots',
       // = category must be use to display. I don't know it utility
@@ -151,7 +151,7 @@ const initialState = {
       isVisible: false,
     },
     {
-      id: '2',
+      id: '4',
       calendarId: '0',
       title: 'Carottes',
       category: 'time',
@@ -163,7 +163,7 @@ const initialState = {
       isVisible: false,
     },
     {
-      id: '3',
+      id: '5',
       calendarId: '0',
       title: 'Fraises',
       category: 'time',
@@ -175,7 +175,7 @@ const initialState = {
       isVisible: false,
     },
     {
-      id: '4',
+      id: '16',
       calendarId: '1',
       title: 'Tomates',
       category: 'time',
@@ -187,7 +187,7 @@ const initialState = {
       isVisible: false,
     },
     {
-      id: '5',
+      id: '7',
       calendarId: '1',
       title: 'Poireaux',
       category: 'time',
@@ -199,7 +199,7 @@ const initialState = {
       isVisible: false,
     },
     {
-      id: '6',
+      id: '8',
       calendarId: '1',
       title: 'Artichauts',
       category: 'time',
@@ -224,6 +224,12 @@ function visitorCalendarReducer(state = initialState, action = {}) {
         ...state,
         plantsSchedules: action.value,
       };
+    case SAVE_PLANTS:
+      return {
+        ...state,
+        plantsSchedules: action.plantsSchedules,
+      };
+
     default:
       return state;
   }

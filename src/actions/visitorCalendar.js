@@ -15,7 +15,7 @@ export const fetchPlants = () => ({
   type: FETCH_PLANTS,
 });
 
-export const savePlants = (plants) => ({
+export const savePlants = (plantsSchedules) => ({
   type: SAVE_PLANTS,
-  plantsSchedules: plants,
+  plantsSchedules: plantsSchedules,
 });

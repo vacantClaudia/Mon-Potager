@@ -1,4 +1,4 @@
-import React, { createRef } from 'react';
+import React, { createRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 // == import externals libraries
@@ -95,17 +95,19 @@ const VisitorCalendar = ({
     changeIsVisible(currentSchedules);
   };
   // test response api action case fetchPlants
-  fetchPlants();
+  useEffect(() => {
+    fetchPlants();
+  }, []);
 
   return (
     <div className="visitorCalendar">
+      {/* Select by region */}
+      <select className="visitorCalendarSelectRegion" onChange={handleOptionSelect}>
+        <option value="">Choisis ta région!</option>
+        <option value="0">Auvergne-Rhône-Alpes</option>
+        <option value="1">Bretagne</option>
+      </select>
       <div className="visitorCalendar-buttonsTodayMonth">
-        {/* Select by region */}
-        <select className="visitorCalendarSelectRegion" onChange={handleOptionSelect}>
-          <option value="">Choisis ta région!</option>
-          <option value="0">Auvergne-Rhône-Alpes</option>
-          <option value="1">Bretagne</option>
-        </select>
         {/* click to access to next or prev month or today */}
         <button type="button" className="visitorCalendar-buttonsTodayMonth-button" onClick={handleClickTodayButton}>Today</button>
         <button type="button" className="visitorCalendar-buttonsTodayMonth-button" onClick={handleClickPrevButton}>

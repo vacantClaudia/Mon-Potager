@@ -5,7 +5,7 @@ const plantsMiddleware = (store) => (next) => (action) => {
   // console.log('on a intercepté une action dans le middleware: ', action);
 
   switch (action.type) {
-    case FETCH_PLANTS:
+    case FETCH_PLANTS: {
       // console.log('on va envoyer une requête pour récupérer les recettes');
       axios.get('http://ec2-54-89-4-11.compute-1.amazonaws.com/projet-mon-potager-back/public/wp-json/wp/v2/plante')
         .then((response) => {
@@ -15,13 +15,14 @@ const plantsMiddleware = (store) => (next) => (action) => {
           // => on dispatch une action qui sera traitée par le reducer
           const newAction = savePlants(response.data);
           store.dispatch(newAction);
+          console.log(newAction);
         })
         .catch((error) => {
           console.log(error);
         });
 
       break;
-
+    }
     default:
   }
 
