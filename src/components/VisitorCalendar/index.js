@@ -26,6 +26,8 @@ const VisitorCalendar = ({
   plantsCalendars,
   changeIsVisible,
   isVisible,
+  selected,
+  displayPlants,
 }) => {
   const calendarRef = createRef();
 
@@ -77,6 +79,7 @@ const VisitorCalendar = ({
 
   // == to change plantsSchedules.isVisible on true if id of calendar === calendarId
   const handleOptionSelect = (evt) => {
+    displayPlants();
     const getOptionValue = evt.target.value;
     const currentSchedules = calendarRef.current.props.schedules;
     currentSchedules.map((item) => {
@@ -94,43 +97,57 @@ const VisitorCalendar = ({
 
   return (
     <div className="visitorCalendar">
-      <div className="visitorCalendar-buttonsTodayMonth">
-        <select className="visitorCalendarSelectRegion" onChange={handleOptionSelect}>
-          <option value="">Choisis ta région!</option>
-          <option value="0">Auvergne-Rhône-Alpes</option>
-          <option value="1">Bretagne</option>
-        </select>
-        {/* click to access to next or prev month or today */}
-        <button type="button" className="visitorCalendar-buttonsTodayMonth-button" onClick={handleClickTodayButton}>Today</button>
-        <button type="button" className="visitorCalendar-buttonsTodayMonth-button" onClick={handleClickPrevButton}>
-          <ChevronLeft size={12} />
-        </button>
-        <button type="button" className="visitorCalendar-buttonsTodayMonth-button" onClick={handleClickNextButton}>
-          <ChevronRight size={12} />
-        </button>
-        <p className="visitorCalendar-currentMonth">{currentMonthAndYear}</p>
-      </div>
-      <Calendar
-      // == I put key here for new render
-        key={isVisible}
-      // == ref to current calendar ?
-        ref={calendarRef}
-      // == view monthly
-        view={view}
-      // == calendar options
-        month={{
-          daynames: daynames,
-          startDayOfWeek: startDayOfWeek,
-        }}
-        // == layout calendar and schedules
-        theme={myTheme}
-        // == plants schedules data
-        schedules={plantsSchedules}
-        // == plants calendars data
-        calendars={plantsCalendars}
-        // == possible or not to click on calendar or schedules (boolean)
-        isReadOnly={isReadOnly}
-      />
+      <select className="visitorCalendarSelectRegion" onChange={handleOptionSelect}>
+        <option value="">Choisis ta région!</option>
+        <option value="0">Auvergne-Rhône-Alpes</option>
+        <option value="1">Bourgogne-Franche-Comté</option>
+        <option value="2">Bretagne</option>
+        <option value="3">Centre-Val de Loire</option>
+        <option value="4">Corse</option>
+        <option value="5">Grand Est</option>
+        <option value="6">Hauts-de-France</option>
+        <option value="7">Île-de-France</option>
+        <option value="8">Normandie</option>
+        <option value="9">Nouvelle-Aquitaine</option>
+        <option value="10">Occitanie</option>
+        <option value="11">Pays de la Loire</option>
+        <option value="12">Provence-Alpes-Côte d'Azur</option>
+      </select>
+      {selected && (
+        <>
+          <div className="visitorCalendar-buttonsTodayMonth">
+            <button type="button" className="visitorCalendar-buttonsTodayMonth-button" onClick={handleClickTodayButton}>Today</button>
+            <button type="button" className="visitorCalendar-buttonsTodayMonth-button" onClick={handleClickPrevButton}>
+              <ChevronLeft size={12} />
+            </button>
+            <button type="button" className="visitorCalendar-buttonsTodayMonth-button" onClick={handleClickNextButton}>
+              <ChevronRight size={12} />
+            </button>
+            <p className="visitorCalendar-currentMonth">{currentMonthAndYear}</p>
+          </div>
+          <Calendar
+            // == I put key here for new render
+            key={isVisible}
+            // == ref to current calendar ?
+            ref={calendarRef}
+            // == view monthly
+            view={view}
+            // == calendar options
+            month={{
+              daynames: daynames,
+              startDayOfWeek: startDayOfWeek,
+            }}
+            // == layout calendar and schedules
+            theme={myTheme}
+            // == plants schedules data
+            schedules={plantsSchedules}
+            // == plants calendars data
+            calendars={plantsCalendars}
+            // == possible or not to click on calendar or schedules (boolean)
+            isReadOnly={isReadOnly}
+          />
+        </>
+      )}
     </div>
   );
 };
@@ -140,6 +157,8 @@ VisitorCalendar.propTypes = {
   daynames: PropTypes.array.isRequired,
   startDayOfWeek: PropTypes.number.isRequired,
   isReadOnly: PropTypes.bool.isRequired,
+  selected: PropTypes.bool.isRequired,
+  displayPlants: PropTypes.func.isRequired,
   // myTheme: PropTypes.arrayOf(
   //   PropTypes.shape({
   //   }).isRequired,

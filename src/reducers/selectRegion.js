@@ -239,7 +239,7 @@ const initialState = {
       },
     },
   ],
-  isSelected: false,
+  selected: 0,
 };
 
 function selectRegionReducer(state = initialState, action = {}) {
@@ -252,7 +252,7 @@ function selectRegionReducer(state = initialState, action = {}) {
     case DISPLAY_PLANTS:
       return {
         ...state,
-        isSelected: !state.isSelected,
+        selected: !state.selected,
       };
 
     default:

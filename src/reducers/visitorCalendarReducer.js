@@ -1,6 +1,7 @@
 // import actions types
 import {
   CHANGE_IS_VISIBLE,
+  DISPLAY_PLANTS,
 } from 'src/actions/visitorCalendar';
 
 // == Visitor Calendar initialState : just calendar display, not data schedules
@@ -214,6 +215,7 @@ const initialState = {
   // == impossible to click on the calendar or schedule may be use
   // == change to false when you code
   isReadOnly: true,
+  selected: false,
 };
 
 function visitorCalendarReducer(state = initialState, action = {}) {
@@ -224,6 +226,13 @@ function visitorCalendarReducer(state = initialState, action = {}) {
         ...state,
         plantsSchedules: action.value,
       };
+
+    case DISPLAY_PLANTS:
+      return {
+        ...state,
+        selected: true,
+      };
+
     default:
       return state;
   }

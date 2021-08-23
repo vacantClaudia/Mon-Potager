@@ -7,7 +7,7 @@ import './selectRegion.scss';
 const SelectRegion = ({
   value,
   setValue,
-  isSelected,
+  selected,
   displayPlants,
 }) => (
   <>
@@ -42,14 +42,14 @@ const SelectRegion = ({
         <option value="13">Provence-Alpes-Côte d'Azur</option>
       </select>
     </form>
-    {isSelected && (<VisitorCalendar value={value[0]} />)}
+    {selected && (<VisitorCalendar />)}
   </>
 );
 
 SelectRegion.propTypes = {
   value: PropTypes.array.isRequired,
   setValue: PropTypes.func.isRequired,
-  isSelected: PropTypes.bool.isRequired,
+  selected: PropTypes.bool.isRequired,
   displayPlants: PropTypes.func.isRequired,
 };
 

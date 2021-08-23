@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import VisitorCalendar from 'src/components/VisitorCalendar';
 
 // import actions creators
-import { changeIsVisible } from 'src/actions/visitorCalendar';
+import { changeIsVisible, displayPlants } from 'src/actions/visitorCalendar';
 
 // === mapStateToProps
 const mapStateToProps = (state) => ({
@@ -16,6 +16,7 @@ const mapStateToProps = (state) => ({
   plantsCalendars: state.visitorCalendar.plantsCalendars,
   isReadOnly: state.visitorCalendar.isReadOnly,
   isVisible: state.visitorCalendar.plantsSchedules[0].isVisible,
+  selected: state.visitorCalendar.selected,
 });
 
 // === mapDispatchToProps
@@ -23,6 +24,11 @@ const mapDispatchToProps = (dispatch) => ({
   // == get new state plantsSchedules.isVisible
   changeIsVisible: (newValue) => {
     const action = changeIsVisible(newValue);
+    dispatch(action);
+  },
+
+  displayPlants: () => {
+    const action = displayPlants();
     dispatch(action);
   },
 });
