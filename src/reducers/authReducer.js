@@ -12,7 +12,7 @@ function authReducer(state = initialState, action = {}) {
       if (action.name === 'userName') {
         return {
           ...state,
-          username: action.newValue,
+          userName: action.newValue,
         };
       }
       return {

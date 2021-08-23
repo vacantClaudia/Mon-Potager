@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 
 import Connect from 'src/components/Connect';
 
-import { updateConnectField } from 'src/actions/auth';
+import { updateConnectField, submitLogin } from 'src/actions/auth';
 
 // === mapStateToProps
 // si on a besoin de lire des informations dans le state
@@ -19,6 +19,11 @@ const mapDispatchToProps = (dispatch) => ({
   changeFieldValue: (identifier, newValue) => {
     const action = updateConnectField(identifier, newValue);
     dispatch(action);
+    console.log('mon action');
+  },
+
+  handleSubmit: () => {
+    dispatch(submitLogin());
   },
 
 });
