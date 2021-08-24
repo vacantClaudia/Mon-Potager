@@ -68,8 +68,11 @@ const Header = ({ nickname, isAuthentified }) => (
 );
 
 Header.propTypes = {
-  nickname: PropTypes.string.isRequired,
+  nickname: PropTypes.string,
   isAuthentified: PropTypes.bool.isRequired,
+};
+Header.defaultProps = {
+  nickname: null,
 };
 
 export default Header;
