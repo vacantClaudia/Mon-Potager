@@ -9,42 +9,51 @@ const Connect = ({
   password,
   changeFieldValue,
   handleSubmit,
+  isAuthentified,
 }) => (
   <div className="connect">
-    <form
-      className="connect-form"
-      onSubmit={(event) => {
-        event.preventDefault();
-        // console.log('soumission du formulaire');
-        handleSubmit();
-      }}
-    >
-      <Field
-        identifier="userName"
-        placeholder="User Name"
-        label="Nom d'utilisateur"
-        changeField={(identifier, newValue) => {
-          changeFieldValue(identifier, newValue);
-        }}
-        value={userName}
-      />
-      <Field
-        identifier="password"
-        placeholder="Mot de passe"
-        label="Mot de passe"
-        type="password"
-        changeField={(identifier, newValue) => {
-          changeFieldValue(identifier, newValue);
-        }}
-        value={password}
-      />
-      <button
-        type="submit"
-        className="connect-submit"
-      >
-        Valider
-      </button>
-    </form>
+    {!isAuthentified
+      ? (
+        <form
+          className="connect-form"
+          onSubmit={(event) => {
+            event.preventDefault();
+            // console.log('soumission du formulaire');
+            handleSubmit();
+          }}
+        >
+          <Field
+            identifier="userName"
+            placeholder="User Name"
+            label="Nom d'utilisateur"
+            changeField={(identifier, newValue) => {
+              changeFieldValue(identifier, newValue);
+            }}
+            value={userName}
+            required
+          />
+          <Field
+            identifier="password"
+            placeholder="Mot de passe"
+            label="Mot de passe"
+            type="password"
+            changeField={(identifier, newValue) => {
+              changeFieldValue(identifier, newValue);
+            }}
+            value={password}
+            isRequired
+          />
+          <button
+            type="submit"
+            className="connect-submit"
+          >
+            Valider
+          </button>
+        </form>
+      )
+      : (
+        'mon profil'
+      )}
   </div>
 );
 Connect.propTypes = {
@@ -53,5 +62,7 @@ Connect.propTypes = {
   password: PropTypes.string.isRequired,
   changeFieldValue: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
+  isAuthentified: PropTypes.bool.isRequired,
 };
+
 export default Connect;

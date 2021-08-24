@@ -21,10 +21,12 @@ const authMiddleware = (store) => (next) => (action) => {
       },
     )
       .then((response) => {
-        // console.log(response);
+        console.log(response);
         store.dispatch(connectUser(response.data.user_display_name));
       })
       .catch((error) => {
+        // TODO message d'erreur
+        alert('failed connection');
         console.log(error);
       });
   }
