@@ -1,6 +1,6 @@
 import React, { createRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
-
+import PlantsList from 'src/components/PlantsList';
 // == import externals libraries
 import Calendar from '@toast-ui/react-calendar';
 import 'tui-calendar/dist/tui-calendar.css';
@@ -29,6 +29,8 @@ const VisitorCalendar = ({
   selected,
   displayPlants,
   fetchPlants,
+  isCalendarMode,
+  changeCalendarMode,
 }) => {
   // == ref to calendar to get instance
   const calendarRef = createRef();
@@ -103,24 +105,36 @@ const VisitorCalendar = ({
   }, []);
 
   return (
-    <div className="visitorCalendar">
-      <select className="visitorCalendarSelectRegion" onChange={handleOptionSelect}>
-        <option value="">Choisis ta région!</option>
-        <option value="0">Auvergne-Rhône-Alpes</option>
-        <option value="1">Bourgogne-Franche-Comté</option>
-        <option value="2">Bretagne</option>
-        <option value="3">Centre-Val de Loire</option>
-        <option value="4">Corse</option>
-        <option value="5">Grand Est</option>
-        <option value="6">Hauts-de-France</option>
-        <option value="7">Île-de-France</option>
-        <option value="8">Normandie</option>
-        <option value="9">Nouvelle-Aquitaine</option>
-        <option value="10">Occitanie</option>
-        <option value="11">Pays de la Loire</option>
-        <option value="12">Provence-Alpes-Côte d'Azur</option>
-      </select>
-      {selected && (
+    <>
+      <div className="toggle">
+        <button
+          className="menu-btn"
+          type="button"
+          onClick={() => {
+            changeCalendarMode(!isCalendarMode);
+          }}
+        >
+          {isCalendarMode ? 'Désactiver' : 'Activer'} l'affichage en liste
+        </button>
+      </div>
+      <div className="visitorCalendar">
+        <select className="visitorCalendarSelectRegion" onChange={handleOptionSelect}>
+          <option value="">Choisis ta région!</option>
+          <option value="0">Auvergne-Rhône-Alpes</option>
+          <option value="1">Bourgogne-Franche-Comté</option>
+          <option value="2">Bretagne</option>
+          <option value="3">Centre-Val de Loire</option>
+          <option value="4">Corse</option>
+          <option value="5">Grand Est</option>
+          <option value="6">Hauts-de-France</option>
+          <option value="7">Île-de-France</option>
+          <option value="8">Normandie</option>
+          <option value="9">Nouvelle-Aquitaine</option>
+          <option value="10">Occitanie</option>
+          <option value="11">Pays de la Loire</option>
+          <option value="12">Provence-Alpes-Côte d'Azur</option>
+        </select>
+        {selected && (
         <>
           <div className="visitorCalendar-buttonsTodayMonth">
             <button type="button" className="visitorCalendar-buttonsTodayMonth-button" onClick={handleClickTodayButton}>Today</button>
@@ -154,8 +168,9 @@ const VisitorCalendar = ({
             isReadOnly={isReadOnly}
           />
         </>
-      )}
-    </div>
+        )}
+      </div>
+    </>
   );
 };
 
@@ -168,6 +183,7 @@ VisitorCalendar.propTypes = {
   displayPlants: PropTypes.func.isRequired,
   isVisible: PropTypes.bool.isRequired,
   changeIsVisible: PropTypes.func.isRequired,
+  isCalendarMode: PropTypes.bool.isRequired,
   // myTheme: PropTypes.arrayOf(
   //   PropTypes.shape({
   //   }).isRequired,

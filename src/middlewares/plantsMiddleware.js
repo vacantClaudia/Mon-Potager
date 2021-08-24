@@ -12,12 +12,12 @@ const plantsMiddleware = (store) => (next) => (action) => {
         // response.title: '0',
       })
         .then((response) => {
-          console.log(response);
+          // console.log(response);
           // aller placer response.data dans le state
           // => on dispatch une action qui sera traitée par le reducer
           const newAction = savePlants(response.data);
           store.dispatch(newAction);
-          console.log(newAction);
+          // console.log(newAction);
         })
         .catch((error) => {
           console.log(error);
