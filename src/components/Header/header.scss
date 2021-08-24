@@ -1,23 +1,56 @@
+@use 'src/styles/vars';
+
 .header{
   .header-logo{
     max-width: 100%;
-    // margin: auto;
-    border: 1px solid rgb(176, 211, 176);
+    background-size: cover;
+    border: 1px none rgb(176, 211, 176);
+    border-bottom: 1px solid vars.$black;
+    @media(min-width:600px){
+      height: 20em;
+    }
   }
   .nav{
   display: block;
   position: relative;
   top: -4em;
-   @media (max-width : 1000px){
-    display: none;
+ 
   } 
   .nav-item{
     padding: 2em;
     text-align: center;
     &:hover{
-      color: green;
+      color: green;  
+  }
+  @media (max-width : 600px){
+    display: none;
     }
   }
+  .nav-item-connect{
+    padding: 2em;
+    text-align: center;
+    color: vars.$orange;
+    background-color: RGBA(248,203,169,0.4);
+    box-shadow: 3px 1px 3px vars.$orange;
+    border-radius: 50px;
+    padding: 5px 5px;
+    &:hover{
+      color: green;
+    }
+    @media (max-width : 600px){
+      position: absolute;
+      right: 5px;
+      bottom: -50px;
+    }
+  }
+  .nav-authentified{
+    position: absolute;
+    top: 1em;
+    right: 1em;
+     background-color: vars.$lightOrange;
+     padding: 1rem;
+     border-radius: 50px;
+  
   }
  
  

@@ -1,10 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 
 import './header.scss';
 import logo from 'src/assets/images/Logo2.jpg';
 
-const Header = () => (
+const Header = ({ nickname, isAuthentified }) => (
   <div className="header">
     <div className="header-picture">
       <img
@@ -39,17 +40,36 @@ const Header = () => (
       >
         Inscription
       </NavLink>
-      <NavLink
-        to="/connexion"
-        className="nav-item"
-        activeClassName="nav-item--active"
-        exact
-      >
-        Connexion
-      </NavLink>
+
+      {!isAuthentified
+        ? (
+          <NavLink
+            to="/connexion"
+            className="nav-item"
+            activeClassName="nav-item--active"
+            exact
+          > Connexion
+          </NavLink>
+        )
+
+        : (
+          <NavLink
+            to="/connexion"
+            className="nav-item-connect"
+            activeClassName="nav-item--active"
+            exact
+          > Bonjour {nickname}
+          </NavLink>
+        )}
+
     </div>
 
   </div>
 );
+
+Header.propTypes = {
+  nickname: PropTypes.string.isRequired,
+  isAuthentified: PropTypes.bool.isRequired,
+};
 
 export default Header;
