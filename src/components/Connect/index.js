@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Field from 'src/components/Field';
+import UserCalendar from 'src/components/UserCalendar';
 import './connect.scss';
 
 const Connect = ({
@@ -51,9 +52,8 @@ const Connect = ({
           </button>
         </form>
       )
-      : (
-        'mon profil'
-      )}
+      : <UserCalendar />}
+
   </div>
 );
 Connect.propTypes = {
