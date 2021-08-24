@@ -30,6 +30,10 @@ const VisitorCalendar = ({
   displayPlants,
   fetchPlants,
 }) => {
+  // test response api action case fetchPlants
+  useEffect(() => {
+    fetchPlants();
+  }, []);
   // == ref to calendar to get instance
   const calendarRef = createRef();
 
@@ -86,8 +90,7 @@ const VisitorCalendar = ({
   const handleOptionSelect = (evt) => {
     displayPlants();
     const getOptionValue = evt.target.value;
-    const currentSchedules = plantsSchedules;
-    currentSchedules.map((item) => {
+    plantsSchedules.map((item) => {
       if (item.calendarId === getOptionValue) {
         item.isVisible = true;
       }
@@ -95,12 +98,8 @@ const VisitorCalendar = ({
         item.isVisible = false;
       }
     });
-    changeIsVisible(currentSchedules);
+    changeIsVisible(plantsSchedules);
   };
-  // test response api action case fetchPlants
-  useEffect(() => {
-    fetchPlants();
-  }, []);
 
   return (
     <div className="visitorCalendar">
@@ -166,12 +165,14 @@ VisitorCalendar.propTypes = {
   isReadOnly: PropTypes.bool.isRequired,
   selected: PropTypes.bool.isRequired,
   displayPlants: PropTypes.func.isRequired,
-  isVisible: PropTypes.bool.isRequired,
   changeIsVisible: PropTypes.func.isRequired,
-  // myTheme: PropTypes.arrayOf(
-  //   PropTypes.shape({
-  //   }).isRequired,
-  // ).isRequired,
+  isVisible: PropTypes.bool.isRequired,
+  myTheme: PropTypes.object.isRequired,
+  fetchPlants: PropTypes.func.isRequired,
+  plantsCalendars: PropTypes.arrayOf(
+    PropTypes.shape({
+    }).isRequired,
+  ).isRequired,
 };
 
 // == Export
