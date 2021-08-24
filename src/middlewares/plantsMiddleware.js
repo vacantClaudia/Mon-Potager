@@ -6,7 +6,7 @@ const plantsMiddleware = (store) => (next) => (action) => {
 
   switch (action.type) {
     case FETCH_PLANTS: {
-      // const { plantsSchedule } = 
+      // const { plantsSchedule } =
       // console.log('on va envoyer une requête pour récupérer les recettes');
       axios.get('http://ec2-54-89-4-11.compute-1.amazonaws.com/projet-mon-potager-back/public/wp-json/wp/v2/plante', {
         // response.title: '0',

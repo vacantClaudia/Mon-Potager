@@ -24,7 +24,6 @@ const Connect = ({
         placeholder="User Name"
         label="Nom d'utilisateur"
         changeField={(identifier, newValue) => {
-          console.log(`changeField sur email : identifier=${identifier}, newValue=${newValue}`);
           changeFieldValue(identifier, newValue);
         }}
         value={userName}
@@ -35,7 +34,6 @@ const Connect = ({
         label="Mot de passe"
         type="password"
         changeField={(identifier, newValue) => {
-          console.log(`changeField sur email : identifier=${identifier}, newValue=${newValue}`);
           changeFieldValue(identifier, newValue);
         }}
         value={password}
