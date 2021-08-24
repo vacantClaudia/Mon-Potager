@@ -4,7 +4,7 @@ import './plantsList.scss';
 
 const PlantsList = () => (
   <div className="accordion">
-    <input type="radio" name="select" className="accordion-select" checked />
+    <input type="radio" name="select" className="accordion-select" />
     <div className="accordion-title"><span>Salade</span></div>
     <div className="accordion-content">Elle n'est pas réservée qu'aux lapins!</div>
     <input type="radio" name="select" className="accordion-select" />
