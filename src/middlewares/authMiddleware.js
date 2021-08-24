@@ -3,10 +3,10 @@ import axios from 'axios';
 import { SUBMIT_LOGIN, connectUser } from '../actions/auth';
 
 const authMiddleware = (store) => (next) => (action) => {
-  console.log('on est dans le middleware, action');
+  // console.log('on est dans le middleware, action');
 
   if (action.type === SUBMIT_LOGIN) {
-    console.log('on va envoyer la requête');
+    // console.log('on va envoyer la requête');
 
     // on va piocher dans le state les infos nécessaires
     const { userName, password } = store.getState().auth;
