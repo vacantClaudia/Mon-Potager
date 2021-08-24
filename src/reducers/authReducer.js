@@ -3,7 +3,7 @@ import { UPDATE_CONNECT_FIELD, CONNECT_USER } from 'src/actions/auth';
 const initialState = {
   userName: '',
   password: '',
-  nickname: '',
+  nickname: null,
 
 };
 
