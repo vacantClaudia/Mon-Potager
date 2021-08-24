@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { SUBMIT_LOGIN } from 'src/actions/auth';
+import { SUBMIT_LOGIN, connectUser } from '../actions/auth';
 
 const authMiddleware = (store) => (next) => (action) => {
   console.log('on est dans le middleware, action');
@@ -9,14 +9,14 @@ const authMiddleware = (store) => (next) => (action) => {
     console.log('on va envoyer la requête');
 
     // on va piocher dans le state les infos nécessaires
-    const { userName, password } = store.getState();
+    const { userName, password } = store.getState().auth;
 
     axios.post(
       // URL
       'http://ec2-54-89-4-11.compute-1.amazonaws.com/projet-mon-potager-back/public/wp-json/jwt-auth/v1/token',
       // paramètres
       {
-        userName: userName,
+        username: userName,
         password: password,
       },
     )
