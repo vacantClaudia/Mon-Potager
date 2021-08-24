@@ -11,7 +11,7 @@ import Header from 'src/components/Header';
 import Connect from 'src/containers/Connect';
 import VisitorCalendar from 'src/containers/VisitorCalendar';
 import Footer from 'src/components/Footer';
-import PlantsList from 'src/components/PlantsList';
+import PlantsList from 'src/containers/PlantsList';
 
 // == App component
 const App = () => (

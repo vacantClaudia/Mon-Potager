@@ -1,19 +1,37 @@
-import React from 'react';
+/* eslint-disable arrow-body-style */
+import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 import './plantsList.scss';
 
-const PlantsList = () => (
-  <div className="accordion">
-    <input type="radio" name="select" className="accordion-select" />
-    <div className="accordion-title"><span>Salade</span></div>
-    <div className="accordion-content">Elle n'est pas réservée qu'aux lapins!</div>
-    <input type="radio" name="select" className="accordion-select" />
-    <div className="accordion-title"><span>Tomate</span></div>
-    <div className="accordion-content">Bien ronde!</div>
-    <input type="radio" name="select" className="accordion-select" />
-    <div className="accordion-title"><span>Oignon</span></div>
-    <div className="accordion-content">Pense aux freedent...</div>
-  </div>
-);
+const PlantsList = ({ plants, getPlantsList }) => {
+  useEffect(() => {
+    getPlantsList();
+  }, []);
+  return (
+    <div className="accordion">
+      {plants.map((plant) => {
+        return (
+          <>
+            <input key={plant.id} type="radio" name="select" className="accordion-select" />
+            <div className="accordion-title"><span>{plant.title.rendered}</span></div>
+            <div className="accordion-content">{plant.content.rendered}</div>
+          </>
+        );
+      })}
+    </div>
+  );
+};
+
+PlantsList.propTypes = {
+  plants: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.object.isRequired,
+      content: PropTypes.object.isRequired,
+    }).isRequired,
+  ).isRequired,
+  getPlantsList: PropTypes.func.isRequired,
+};
 
 export default PlantsList;
