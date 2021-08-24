@@ -86,7 +86,7 @@ const VisitorCalendar = ({
   const handleOptionSelect = (evt) => {
     displayPlants();
     const getOptionValue = evt.target.value;
-    const currentSchedules = calendarRef.current.props.schedules;
+    const currentSchedules = plantsSchedules;
     currentSchedules.map((item) => {
       if (item.calendarId === getOptionValue) {
         item.isVisible = true;
