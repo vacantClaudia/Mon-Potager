@@ -6,16 +6,30 @@ const plantsMiddleware = (store) => (next) => (action) => {
 
   switch (action.type) {
     case FETCH_PLANTS: {
-      // const { plantsSchedule } =
-      // console.log('on va envoyer une requête pour récupérer les recettes');
       axios.get('http://ec2-54-89-4-11.compute-1.amazonaws.com/projet-mon-potager-back/public/wp-json/wp/v2/plante', {
-        // response.title: '0',
       })
         .then((response) => {
-          console.log(response);
-          // aller placer response.data dans le state
-          // => on dispatch une action qui sera traitée par le reducer
-          const newAction = savePlants(response.data);
+          const apiData = response.data;
+          apiData.map((data) => {
+            // TODO gérer chaque région par un endpoint différent
+            // TODO comment appeler plusieurs fois la même plante avec 3
+            // TODO date start et end différentes
+            // TODO faire une condition. Si date === debut_semi alors
+            // TODO tel color, bgColor et borderColor
+            // for the moment forget calendarId, maybe we'll change
+            // isVisible by endpoint region. Just a test here
+            data.categoryId = '0';
+            data.id = JSON.stringify(data.id);
+            data.title = data.title.rendered;
+            data.category = 'time';
+            data.isVisible = false;
+            data.body = data.content.rendered;
+            // just for testing
+            data.start = '2021-05-12';
+            data.end = '2021-05-25';
+          });
+          // To put api data in plantsSchedules
+          const newAction = savePlants(apiData);
           store.dispatch(newAction);
           console.log(newAction);
         })
@@ -26,7 +40,7 @@ const plantsMiddleware = (store) => (next) => (action) => {
     }
     default:
   }
-  // on passe l'action au suivant (middleware suivant ou reducer)
+  // action to next middleware or reducer
   next(action);
 };
 
