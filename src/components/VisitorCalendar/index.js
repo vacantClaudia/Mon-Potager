@@ -1,6 +1,6 @@
 import React, { createRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
-
+import PlantsList from 'src/components/PlantsList';
 // == import externals libraries
 import Calendar from '@toast-ui/react-calendar';
 import 'tui-calendar/dist/tui-calendar.css';
@@ -29,6 +29,10 @@ const VisitorCalendar = ({
   selected,
   displayPlants,
   fetchPlants,
+  isCalendarMode,
+  changeCalendarMode,
+  plants,
+  getPlantsList,
 }) => {
   // == ref to calendar to get instance
   const calendarRef = createRef();
@@ -103,59 +107,81 @@ const VisitorCalendar = ({
   }, []);
 
   return (
-    <div className="visitorCalendar">
-      <select className="visitorCalendarSelectRegion" onChange={handleOptionSelect}>
-        <option value="">Choisis ta région!</option>
-        <option value="0">Auvergne-Rhône-Alpes</option>
-        <option value="1">Bourgogne-Franche-Comté</option>
-        <option value="2">Bretagne</option>
-        <option value="3">Centre-Val de Loire</option>
-        <option value="4">Corse</option>
-        <option value="5">Grand Est</option>
-        <option value="6">Hauts-de-France</option>
-        <option value="7">Île-de-France</option>
-        <option value="8">Normandie</option>
-        <option value="9">Nouvelle-Aquitaine</option>
-        <option value="10">Occitanie</option>
-        <option value="11">Pays de la Loire</option>
-        <option value="12">Provence-Alpes-Côte d'Azur</option>
-      </select>
-      {selected && (
-        <>
-          <div className="visitorCalendar-buttonsTodayMonth">
-            <button type="button" className="visitorCalendar-buttonsTodayMonth-button" onClick={handleClickTodayButton}>Today</button>
-            <button type="button" className="visitorCalendar-buttonsTodayMonth-button" onClick={handleClickPrevButton}>
-              <ChevronLeft size={12} />
-            </button>
-            <button type="button" className="visitorCalendar-buttonsTodayMonth-button" onClick={handleClickNextButton}>
-              <ChevronRight size={12} />
-            </button>
-            <p className="visitorCalendar-currentMonth">{currentMonthAndYear}</p>
-          </div>
-          <Calendar
-            // == I put key here for new render
-            key={isVisible}
-            // == ref to current calendar ?
-            ref={calendarRef}
-            // == view monthly
-            view={view}
-            // == calendar options
-            month={{
-              daynames: daynames,
-              startDayOfWeek: startDayOfWeek,
-            }}
-            // == layout calendar and schedules
-            theme={myTheme}
-            // == plants schedules data
-            schedules={plantsSchedules}
-            // == plants calendars data
-            calendars={plantsCalendars}
-            // == possible or not to click on calendar or schedules (boolean)
-            isReadOnly={isReadOnly}
-          />
-        </>
-      )}
-    </div>
+    <>
+      <div className="visitorCalendar">
+        <select className="visitorCalendarSelectRegion" onChange={handleOptionSelect}>
+          <option className="option" value="">Choisis ta région!</option>
+          <option className="option" value="0">Auvergne-Rhône-Alpes</option>
+          <option className="option" value="1">Bourgogne-Franche-Comté</option>
+          <option className="option" value="2">Bretagne</option>
+          <option className="option" value="3">Centre-Val de Loire</option>
+          <option className="option" value="4">Corse</option>
+          <option className="option" value="5">Grand Est</option>
+          <option className="option" value="6">Hauts-de-France</option>
+          <option className="option" value="7">Île-de-France</option>
+          <option className="option" value="8">Normandie</option>
+          <option className="option" value="9">Nouvelle-Aquitaine</option>
+          <option className="option" value="10">Occitanie</option>
+          <option className="option" value="11">Pays de la Loire</option>
+          <option className="option" value="12">Provence-Alpes-Côte d'Azur</option>
+        </select>
+        {selected && (
+          <>
+            <div className="toggle">
+              <button
+                className="toggle menu-btn"
+                type="button"
+                onClick={() => {
+                  changeCalendarMode(!isCalendarMode);
+                }}
+              >
+                {isCalendarMode ? 'Désactiver' : 'Activer'} l'affichage en liste
+              </button>
+            </div>
+            {!isCalendarMode
+              ? (
+                <>
+                  <div className="visitorCalendar-buttonsTodayMonth">
+                    <button type="button" className="visitorCalendar-buttonsTodayMonth-button" onClick={handleClickTodayButton}>Today</button>
+                    <button type="button" className="visitorCalendar-buttonsTodayMonth-button" onClick={handleClickPrevButton}>
+                      <ChevronLeft size={12} />
+                    </button>
+                    <button type="button" className="visitorCalendar-buttonsTodayMonth-button" onClick={handleClickNextButton}>
+                      <ChevronRight size={12} />
+                    </button>
+                    <p className="visitorCalendar-currentMonth">{currentMonthAndYear}</p>
+                  </div>
+
+                  <Calendar
+                    // == I put key here for new render
+                    key={isVisible}
+                    // == ref to current calendar ?
+                    ref={calendarRef}
+                    // == view monthly
+                    view={view}
+                    // == calendar options
+                    month={{
+                      daynames: daynames,
+                      startDayOfWeek: startDayOfWeek,
+                    }}
+                    // == layout calendar and schedules
+                    theme={myTheme}
+                    // == plants schedules data
+                    schedules={plantsSchedules}
+                    // == plants calendars data
+                    calendars={plantsCalendars}
+                    // == possible or not to click on calendar or schedules (boolean)
+                    isReadOnly={isReadOnly}
+                  />
+                </>
+              )
+              : (
+                <PlantsList plants={plants} getPlantsList={getPlantsList} />
+              )}
+          </>
+        )}
+      </div>
+    </>
   );
 };
 
@@ -168,6 +194,10 @@ VisitorCalendar.propTypes = {
   displayPlants: PropTypes.func.isRequired,
   isVisible: PropTypes.bool.isRequired,
   changeIsVisible: PropTypes.func.isRequired,
+  isCalendarMode: PropTypes.bool.isRequired,
+  changeCalendarMode: PropTypes.func.isRequired,
+  plants: PropTypes.array.isRequired,
+  getPlantsList: PropTypes.func.isRequired,
   // myTheme: PropTypes.arrayOf(
   //   PropTypes.shape({
   //   }).isRequired,

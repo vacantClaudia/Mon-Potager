@@ -3,6 +3,7 @@ import {
   CHANGE_IS_VISIBLE,
   DISPLAY_PLANTS,
   SAVE_PLANTS,
+  CHANGE_CALENDAR_MODE,
 } from 'src/actions/visitorCalendar';
 
 // == Visitor Calendar initialState : just calendar display, not data schedules
@@ -217,6 +218,7 @@ const initialState = {
   // == change to false when you code
   isReadOnly: true,
   selected: false,
+  isCalendarMode: false,
 };
 
 function visitorCalendarReducer(state = initialState, action = {}) {
@@ -239,6 +241,12 @@ function visitorCalendarReducer(state = initialState, action = {}) {
         ...state,
         // juste pour le test mettre ancien state + nouveau state plantsSchedules
         plantsSchedules: [...state.plantsSchedules, action.plantsSchedules],
+      };
+
+    case CHANGE_CALENDAR_MODE:
+      return {
+        ...state,
+        isCalendarMode: action.value,
       };
 
     default:

@@ -7,6 +7,26 @@
   margin: 3em auto 0;
   width: 95vw;
 
+  .visitorCalendarSelectRegion, .toggle.menu-btn {
+  border-radius: 5px;
+  padding: 5px;
+  font-family: 'Raleway',sans-serif;
+  background-color: vars.$green;
+  border: solid 1px vars.$green;
+  font-weight: vars.$fwBold;
+  }
+
+  .option {
+    background-color: vars.$lightGreen;
+    border: solid 1px vars.$lightGreen;  
+  }
+
+  .toggle.menu-btn {
+    margin-top: 20px;
+    background-color: vars.$yellow;
+    border: solid 1px vars.$yellow;
+  }
+
   // == style css buttons Today Prev and Next
   .visitorCalendar-buttonsTodayMonth {
     margin: 1em 0;
