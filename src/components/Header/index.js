@@ -16,6 +16,7 @@ const Header = ({ nickname, isAuthentified }) => (
     </div>
 
     <div className="nav">
+
       <NavLink
         to="/"
         className="nav-item"
@@ -53,10 +54,9 @@ const Header = ({ nickname, isAuthentified }) => (
           > Bonjour {nickname}
           </NavLink>
         )}
-
     </div>
-
   </div>
+  // </div>
 );
 
 Header.propTypes = {

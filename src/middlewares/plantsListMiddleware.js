@@ -6,10 +6,10 @@ const plantsListMiddleware = (store) => (next) => (action) => {
     case GET_PLANTS_LIST: {
       axios.get('http://ec2-54-89-4-11.compute-1.amazonaws.com/projet-mon-potager-back/public/wp-json/wp/v2/plante')
         .then((response) => {
-          console.log(response);
+          // console.log(response);
           const newAction = savePlantsList(response.data);
           store.dispatch(newAction);
-          console.log(response.data);
+          // console.log(response.data);
         })
         .catch((error) => {
           console.log(error);
