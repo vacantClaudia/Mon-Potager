@@ -25,7 +25,6 @@ const VisitorCalendar = ({
   isReadOnly,
   plantsCalendars,
   changeIsVisible,
-  isVisible,
   selected,
   displayPlants,
   fetchPlants,
@@ -99,6 +98,7 @@ const VisitorCalendar = ({
       }
     });
     changeIsVisible(plantsSchedules);
+    console.log(plantsSchedules);
   };
 
   // test response api action case fetchPlants
