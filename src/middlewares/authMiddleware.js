@@ -21,7 +21,7 @@ const authMiddleware = (store) => (next) => (action) => {
       },
     )
       .then((response) => {
-        // console.log(response);
+        console.log(response.data.token);
         store.dispatch(connectUser(response.data.user_display_name));
       })
       .catch((error) => {
