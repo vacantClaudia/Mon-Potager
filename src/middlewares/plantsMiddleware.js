@@ -1,14 +1,14 @@
 import axios from 'axios';
 import { FETCH_PLANTS, savePlants } from '../actions/visitorCalendar';
 
-const regionId = '';
-
 const plantsMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case FETCH_PLANTS: {
-      axios.get(`http://ec2-54-89-4-11.compute-1.amazonaws.com/projet-mon-potager-back/public/wp-json/wp/v2/plante=${regionId}`, {
+      const regionId = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']; // dynamiser regionId
+      axios.get(`http://ec2-54-89-4-11.compute-1.amazonaws.com/projet-mon-potager-back/public/wp-json/wp/v2/plante?regions=${regionId[10]}`, {
       })
         .then((response) => {
+          // TODO plus généralement boucler en amont peut être. Si response.data. = semi alors...
           const apiData = response.data;
           apiData.map((data) => {
             // TODO gérer chaque région par un endpoint différent
@@ -18,7 +18,7 @@ const plantsMiddleware = (store) => (next) => (action) => {
             // TODO tel color, bgColor et borderColor
             // for the moment forget calendarId, maybe we'll change
             // isVisible by endpoint region. Just a test here
-            data.calendarId = '0';
+            data.calendarId = regionId[10];
             data.id = JSON.stringify(data.id);
             // TODO peut être ajouter condition si = "debut_semi" dans la chaine de caractère
             // alors le titre = data.title.rendered + "Semi"
@@ -27,6 +27,7 @@ const plantsMiddleware = (store) => (next) => (action) => {
             data.isVisible = false;
             data.body = data.content.rendered;
             // just for testing
+            // TODO si semi data.start = data..... etc, si plantation etc...
             data.start = '2021-05-12';
             data.end = '2021-05-25';
           });
