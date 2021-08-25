@@ -15,7 +15,6 @@ const mapStateToProps = (state) => ({
   plantsSchedules: state.visitorCalendar.plantsSchedules,
   plantsCalendars: state.visitorCalendar.plantsCalendars,
   isReadOnly: state.visitorCalendar.isReadOnly,
-  isVisible: state.visitorCalendar.plantsSchedules[0].isVisible,
   selected: state.visitorCalendar.selected,
 });
 

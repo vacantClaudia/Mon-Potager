@@ -25,7 +25,6 @@ const VisitorCalendar = ({
   isReadOnly,
   plantsCalendars,
   changeIsVisible,
-  isVisible,
   selected,
   displayPlants,
   fetchPlants,
@@ -99,6 +98,7 @@ const VisitorCalendar = ({
       }
     });
     changeIsVisible(plantsSchedules);
+    console.log(plantsSchedules);
   };
 
   return (
@@ -133,7 +133,7 @@ const VisitorCalendar = ({
           </div>
           <Calendar
             // == I put key here for new render
-            key={isVisible}
+            // key={isVisible} trouver la bonne clé à mettre
             // == ref to current calendar ?
             ref={calendarRef}
             // == view monthly
@@ -166,7 +166,6 @@ VisitorCalendar.propTypes = {
   selected: PropTypes.bool.isRequired,
   displayPlants: PropTypes.func.isRequired,
   changeIsVisible: PropTypes.func.isRequired,
-  isVisible: PropTypes.bool.isRequired,
   myTheme: PropTypes.object.isRequired,
   fetchPlants: PropTypes.func.isRequired,
   plantsCalendars: PropTypes.arrayOf(

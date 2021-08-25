@@ -1,12 +1,12 @@
 import axios from 'axios';
 import { FETCH_PLANTS, savePlants } from '../actions/visitorCalendar';
 
-const plantsMiddleware = (store) => (next) => (action) => {
-  // console.log('on a intercepté une action dans le middleware: ', action);
+const regionId = '';
 
+const plantsMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case FETCH_PLANTS: {
-      axios.get('http://ec2-54-89-4-11.compute-1.amazonaws.com/projet-mon-potager-back/public/wp-json/wp/v2/plante', {
+      axios.get(`http://ec2-54-89-4-11.compute-1.amazonaws.com/projet-mon-potager-back/public/wp-json/wp/v2/plante=${regionId}`, {
       })
         .then((response) => {
           const apiData = response.data;
@@ -18,8 +18,10 @@ const plantsMiddleware = (store) => (next) => (action) => {
             // TODO tel color, bgColor et borderColor
             // for the moment forget calendarId, maybe we'll change
             // isVisible by endpoint region. Just a test here
-            data.categoryId = '0';
+            data.calendarId = '0';
             data.id = JSON.stringify(data.id);
+            // TODO peut être ajouter condition si = "debut_semi" dans la chaine de caractère
+            // alors le titre = data.title.rendered + "Semi"
             data.title = data.title.rendered;
             data.category = 'time';
             data.isVisible = false;
@@ -31,7 +33,7 @@ const plantsMiddleware = (store) => (next) => (action) => {
           // To put api data in plantsSchedules
           const newAction = savePlants(apiData);
           store.dispatch(newAction);
-          console.log(newAction);
+          // console.log(newAction);
         })
         .catch((error) => {
           console.log(error);
