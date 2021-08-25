@@ -25,7 +25,6 @@ const VisitorCalendar = ({
   isReadOnly,
   plantsCalendars,
   changeIsVisible,
-  isVisible,
   selected,
   displayPlants,
   fetchPlants,
@@ -99,6 +98,7 @@ const VisitorCalendar = ({
       }
     });
     changeIsVisible(plantsSchedules);
+    console.log(plantsSchedules);
   };
 
   // test response api action case fetchPlants
@@ -154,7 +154,7 @@ const VisitorCalendar = ({
 
                   <Calendar
                     // == I put key here for new render
-                    // TODO key={isVisible} find other key
+                    key={plantsSchedules[0].id}
                     // == ref to current calendar ?
                     ref={calendarRef}
                     // == view monthly
