@@ -90,8 +90,7 @@ const VisitorCalendar = ({
   const handleOptionSelect = (evt) => {
     displayPlants();
     const getOptionValue = evt.target.value;
-    const currentSchedules = plantsSchedules;
-    currentSchedules.map((item) => {
+    plantsSchedules.map((item) => {
       if (item.calendarId === getOptionValue) {
         item.isVisible = true;
       }
@@ -99,8 +98,9 @@ const VisitorCalendar = ({
         item.isVisible = false;
       }
     });
-    changeIsVisible(currentSchedules);
+    changeIsVisible(plantsSchedules);
   };
+
   // test response api action case fetchPlants
   useEffect(() => {
     fetchPlants();
@@ -176,7 +176,10 @@ const VisitorCalendar = ({
                 </>
               )
               : (
-                <PlantsList plants={plants} getPlantsList={getPlantsList} />
+                <PlantsList
+                  plants={plants}
+                  getPlantsList={getPlantsList}
+                />
               )}
           </>
         )}
