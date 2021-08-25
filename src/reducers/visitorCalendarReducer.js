@@ -218,7 +218,7 @@ const initialState = {
   // == change to false when you code
   isReadOnly: true,
   selected: false,
-  isCalendarMode: true,
+  isCalendarMode: false,
 };
 
 function visitorCalendarReducer(state = initialState, action = {}) {
@@ -246,7 +246,7 @@ function visitorCalendarReducer(state = initialState, action = {}) {
     case CHANGE_CALENDAR_MODE:
       return {
         ...state,
-        isCalendarMode: action.isCalendarMode,
+        isCalendarMode: action.value,
       };
 
     default:

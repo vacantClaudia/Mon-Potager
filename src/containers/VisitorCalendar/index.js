@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 
 // import component
 import VisitorCalendar from 'src/components/VisitorCalendar';
+import PlantsList from 'src/components/PlantsList';
 
 // import actions creators
 import {
@@ -10,6 +11,8 @@ import {
   fetchPlants,
   changeCalendarMode,
 } from 'src/actions/visitorCalendar';
+
+import { getPlantsList } from 'src/actions/plantsList';
 
 // === mapStateToProps
 const mapStateToProps = (state) => ({
@@ -23,6 +26,7 @@ const mapStateToProps = (state) => ({
   isVisible: state.visitorCalendar.plantsSchedules[0].isVisible,
   selected: state.visitorCalendar.selected,
   isCalendarMode: state.visitorCalendar.isCalendarMode,
+  plants: state.plants.plants,
 });
 
 // === mapDispatchToProps
@@ -48,8 +52,13 @@ const mapDispatchToProps = (dispatch) => ({
     console.log(`mise à jour de la valeur de changeCalendarMode, newValue=${newValue}`);
     dispatch(action);
   },
+
+  getPlantsList: () => {
+    const action = getPlantsList();
+    dispatch(action);
+  },
 }
 );
 
 // === export to component
-export default connect(mapStateToProps, mapDispatchToProps)(VisitorCalendar);
+export default connect(mapStateToProps, mapDispatchToProps)(VisitorCalendar, PlantsList);

@@ -31,6 +31,8 @@ const VisitorCalendar = ({
   fetchPlants,
   isCalendarMode,
   changeCalendarMode,
+  plants,
+  getPlantsList,
 }) => {
   // == ref to calendar to get instance
   const calendarRef = createRef();
@@ -106,17 +108,6 @@ const VisitorCalendar = ({
 
   return (
     <>
-      <div className="toggle">
-        <button
-          className="menu-btn"
-          type="button"
-          onClick={() => {
-            changeCalendarMode(!isCalendarMode);
-          }}
-        >
-          {isCalendarMode ? 'Désactiver' : 'Activer'} l'affichage en liste
-        </button>
-      </div>
       <div className="visitorCalendar">
         <select className="visitorCalendarSelectRegion" onChange={handleOptionSelect}>
           <option value="">Choisis ta région!</option>
@@ -135,39 +126,59 @@ const VisitorCalendar = ({
           <option value="12">Provence-Alpes-Côte d'Azur</option>
         </select>
         {selected && (
-        <>
-          <div className="visitorCalendar-buttonsTodayMonth">
-            <button type="button" className="visitorCalendar-buttonsTodayMonth-button" onClick={handleClickTodayButton}>Today</button>
-            <button type="button" className="visitorCalendar-buttonsTodayMonth-button" onClick={handleClickPrevButton}>
-              <ChevronLeft size={12} />
-            </button>
-            <button type="button" className="visitorCalendar-buttonsTodayMonth-button" onClick={handleClickNextButton}>
-              <ChevronRight size={12} />
-            </button>
-            <p className="visitorCalendar-currentMonth">{currentMonthAndYear}</p>
-          </div>
-          <Calendar
-            // == I put key here for new render
-            key={isVisible}
-            // == ref to current calendar ?
-            ref={calendarRef}
-            // == view monthly
-            view={view}
-            // == calendar options
-            month={{
-              daynames: daynames,
-              startDayOfWeek: startDayOfWeek,
-            }}
-            // == layout calendar and schedules
-            theme={myTheme}
-            // == plants schedules data
-            schedules={plantsSchedules}
-            // == plants calendars data
-            calendars={plantsCalendars}
-            // == possible or not to click on calendar or schedules (boolean)
-            isReadOnly={isReadOnly}
-          />
-        </>
+          <>
+            <div className="toggle">
+              <button
+                className="menu-btn"
+                type="button"
+                onClick={() => {
+                  changeCalendarMode(!isCalendarMode);
+                }}
+              >
+                {isCalendarMode ? 'Désactiver' : 'Activer'} l'affichage en liste
+              </button>
+            </div>
+            {!isCalendarMode
+              ? (
+                <>
+                  <div className="visitorCalendar-buttonsTodayMonth">
+                    <button type="button" className="visitorCalendar-buttonsTodayMonth-button" onClick={handleClickTodayButton}>Today</button>
+                    <button type="button" className="visitorCalendar-buttonsTodayMonth-button" onClick={handleClickPrevButton}>
+                      <ChevronLeft size={12} />
+                    </button>
+                    <button type="button" className="visitorCalendar-buttonsTodayMonth-button" onClick={handleClickNextButton}>
+                      <ChevronRight size={12} />
+                    </button>
+                    <p className="visitorCalendar-currentMonth">{currentMonthAndYear}</p>
+                  </div>
+
+                  <Calendar
+                    // == I put key here for new render
+                    key={isVisible}
+                    // == ref to current calendar ?
+                    ref={calendarRef}
+                    // == view monthly
+                    view={view}
+                    // == calendar options
+                    month={{
+                      daynames: daynames,
+                      startDayOfWeek: startDayOfWeek,
+                    }}
+                    // == layout calendar and schedules
+                    theme={myTheme}
+                    // == plants schedules data
+                    schedules={plantsSchedules}
+                    // == plants calendars data
+                    calendars={plantsCalendars}
+                    // == possible or not to click on calendar or schedules (boolean)
+                    isReadOnly={isReadOnly}
+                  />
+                </>
+              )
+              : (
+                <PlantsList plants={plants} getPlantsList={getPlantsList} />
+              )}
+          </>
         )}
       </div>
     </>
@@ -184,6 +195,7 @@ VisitorCalendar.propTypes = {
   isVisible: PropTypes.bool.isRequired,
   changeIsVisible: PropTypes.func.isRequired,
   isCalendarMode: PropTypes.bool.isRequired,
+  changeCalendarMode: PropTypes.func.isRequired,
   // myTheme: PropTypes.arrayOf(
   //   PropTypes.shape({
   //   }).isRequired,
