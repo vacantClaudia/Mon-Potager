@@ -1,9 +1,11 @@
-import { UPDATE_CONNECT_FIELD, CONNECT_USER } from 'src/actions/auth';
+import { UPDATE_CONNECT_FIELD, CONNECT_USER, SAVE_USER_DATA } from 'src/actions/auth';
 
 const initialState = {
   userName: '',
   password: '',
+  logged: false,
   nickname: null,
+  token: null,
 
 };
 
@@ -15,9 +17,11 @@ function authReducer(state = initialState, action = {}) {
         [action.name]: action.newValue,
       };
 
-    case CONNECT_USER:
+    case SAVE_USER_DATA:
       return {
         ...state,
+        logged: true,
+        token: action.token,
         nickname: action.nickname,
       };
 

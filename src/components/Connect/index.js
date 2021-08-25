@@ -10,10 +10,10 @@ const Connect = ({
   password,
   changeFieldValue,
   handleSubmit,
-  isAuthentified,
+  isLogged,
 }) => (
   <div className="connect">
-    {!isAuthentified
+    {!isLogged
       ? (
         <form
           className="connect-form"
@@ -62,7 +62,7 @@ Connect.propTypes = {
   password: PropTypes.string.isRequired,
   changeFieldValue: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
-  isAuthentified: PropTypes.bool.isRequired,
+  isLogged: PropTypes.bool.isRequired,
 };
 
 export default Connect;
