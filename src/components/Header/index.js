@@ -81,7 +81,7 @@ const Header = ({ nickname, isAuthentified }) => (
           )}
       </div>
     </div>
-  </>
+  </div>
 );
 
 Header.propTypes = {
@@ -93,3 +93,4 @@ Header.defaultProps = {
 };
 
 export default Header;
+
