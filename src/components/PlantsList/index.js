@@ -1,13 +1,8 @@
 /* eslint-disable arrow-body-style */
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import DOMPurify from 'dompurify';
 
 import './plantsList.scss';
-
-function createMarkup(data) {
-  return { __html: DOMPurify.sanitize(data) };
-}
 
 const PlantsList = ({ plants, getPlantsList }) => {
   useEffect(() => {
@@ -20,7 +15,7 @@ const PlantsList = ({ plants, getPlantsList }) => {
           <>
             <input key={plant.id} type="radio" name="select" className="accordion-select" />
             <div className="accordion-title"><span>{plant.title.rendered}</span></div>
-            <p className="accordion-content" dangerouslySetInnerHTML={createMarkup(plant.content.rendered)} />
+            <div className="accordion-content">{plant.content.rendered}</div>
           </>
         );
       })}
