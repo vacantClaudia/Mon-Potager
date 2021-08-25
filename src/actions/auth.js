@@ -4,6 +4,7 @@ export const UPDATE_CONNECT_FIELD = 'UPDATE_CONNECT_FIELD';
 export const SUBMIT_LOGIN = 'SUBMIT_LOGIN';
 export const SAVE_USER_DATA = 'SAVE_USER_DATA';
 export const USER_PLANTS = 'USER_PLANTS';
+export const LOG_OUT = 'LOG_OUT';
 
 // === action creators
 
@@ -26,4 +27,8 @@ export const saveUserData = (token, nickname, isLogged) => ({
 
 export const userPlants = () => ({
   type: USER_PLANTS,
+});
+
+export const logOut = () => ({
+  type: LOG_OUT,
 });

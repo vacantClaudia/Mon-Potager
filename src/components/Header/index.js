@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 import './header.scss';
 import logo from 'src/assets/images/Logo2.jpg';
 
-const Header = ({ nickname, isAuthentified }) => (
+const Header = ({ nickname, isLogged, handleLogout }) => (
   <div className="header">
     <div className="header-picture">
       <img
@@ -34,7 +34,7 @@ const Header = ({ nickname, isAuthentified }) => (
         Plantes
       </NavLink>
 
-      {!isAuthentified
+      {!isLogged
         ? (
           <NavLink
             to="/connexion"
@@ -46,13 +46,23 @@ const Header = ({ nickname, isAuthentified }) => (
         )
 
         : (
-          <NavLink
-            to="/connexion"
-            className="nav-item-connect"
-            activeClassName="nav-item--active"
-            exact
-          > Bonjour {nickname}
-          </NavLink>
+          <>
+            <NavLink
+              to="/connexion"
+              className="nav-item-connect"
+              activeClassName="nav-item--active"
+              exact
+            > Bonjour {nickname}
+              <button
+                type="submit"
+                className="logout-form"
+                onClick={handleLogout}
+              >
+                x
+              </button>
+            </NavLink>
+
+          </>
         )}
     </div>
   </div>
@@ -61,10 +71,10 @@ const Header = ({ nickname, isAuthentified }) => (
 
 Header.propTypes = {
   nickname: PropTypes.string,
-  isAuthentified: PropTypes.bool.isRequired,
+  isLogged: PropTypes.bool.isRequired,
+  handleLogout: PropTypes.func.isRequired,
 };
 Header.defaultProps = {
-  nickname: null,
+  nickname: '',
 };
-
 export default Header;

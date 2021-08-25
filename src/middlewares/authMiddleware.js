@@ -2,7 +2,6 @@ import axios from 'axios';
 
 import {
   SUBMIT_LOGIN,
-  // connectUser,
   saveUserData,
   // userPlants
 } from '../actions/auth';
@@ -26,8 +25,6 @@ const authMiddleware = (store) => (next) => (action) => {
         },
       )
         .then((response) => {
-          console.log(response.data);
-          // store.dispatch(connectUser(response.data.user_display_name));
           const newAction = saveUserData(
             response.data.token,
             response.data.user_display_name,
