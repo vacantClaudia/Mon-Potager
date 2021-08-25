@@ -110,26 +110,26 @@ const VisitorCalendar = ({
     <>
       <div className="visitorCalendar">
         <select className="visitorCalendarSelectRegion" onChange={handleOptionSelect}>
-          <option value="">Choisis ta région!</option>
-          <option value="0">Auvergne-Rhône-Alpes</option>
-          <option value="1">Bourgogne-Franche-Comté</option>
-          <option value="2">Bretagne</option>
-          <option value="3">Centre-Val de Loire</option>
-          <option value="4">Corse</option>
-          <option value="5">Grand Est</option>
-          <option value="6">Hauts-de-France</option>
-          <option value="7">Île-de-France</option>
-          <option value="8">Normandie</option>
-          <option value="9">Nouvelle-Aquitaine</option>
-          <option value="10">Occitanie</option>
-          <option value="11">Pays de la Loire</option>
-          <option value="12">Provence-Alpes-Côte d'Azur</option>
+          <option className="option" value="">Choisis ta région!</option>
+          <option className="option" value="0">Auvergne-Rhône-Alpes</option>
+          <option className="option" value="1">Bourgogne-Franche-Comté</option>
+          <option className="option" value="2">Bretagne</option>
+          <option className="option" value="3">Centre-Val de Loire</option>
+          <option className="option" value="4">Corse</option>
+          <option className="option" value="5">Grand Est</option>
+          <option className="option" value="6">Hauts-de-France</option>
+          <option className="option" value="7">Île-de-France</option>
+          <option className="option" value="8">Normandie</option>
+          <option className="option" value="9">Nouvelle-Aquitaine</option>
+          <option className="option" value="10">Occitanie</option>
+          <option className="option" value="11">Pays de la Loire</option>
+          <option className="option" value="12">Provence-Alpes-Côte d'Azur</option>
         </select>
         {selected && (
           <>
             <div className="toggle">
               <button
-                className="menu-btn"
+                className="toggle menu-btn"
                 type="button"
                 onClick={() => {
                   changeCalendarMode(!isCalendarMode);
@@ -196,6 +196,8 @@ VisitorCalendar.propTypes = {
   changeIsVisible: PropTypes.func.isRequired,
   isCalendarMode: PropTypes.bool.isRequired,
   changeCalendarMode: PropTypes.func.isRequired,
+  plants: PropTypes.array.isRequired,
+  getPlantsList: PropTypes.func.isRequired,
   // myTheme: PropTypes.arrayOf(
   //   PropTypes.shape({
   //   }).isRequired,
