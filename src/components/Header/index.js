@@ -16,6 +16,7 @@ const Header = ({ nickname, isAuthentified }) => (
     </div>
 
     <div className="nav">
+
       <NavLink
         to="/"
         className="nav-item"
@@ -33,55 +34,29 @@ const Header = ({ nickname, isAuthentified }) => (
         Plantes
       </NavLink>
 
-      <div className="nav">
-        <NavLink
-          to="/"
-          className="nav-item"
-          activeClassName="nav-item--active"
-          exact
-        >
-          Accueil
-        </NavLink>
-        <NavLink
-          to="/plantes"
-          className="nav-item"
-          activeClassName="nav-item--active"
-          exact
-        >
-          Plantes
-        </NavLink>
-        <NavLink
-          to="/inscription"
-          className="nav-item"
-          activeClassName="nav-item--active"
-          exact
-        >
-          Inscription
-        </NavLink>
+      {!isAuthentified
+        ? (
+          <NavLink
+            to="/connexion"
+            className="nav-item"
+            activeClassName="nav-item--active"
+            exact
+          > Connexion
+          </NavLink>
+        )
 
-        {!isAuthentified
-          ? (
-            <NavLink
-              to="/connexion"
-              className="nav-item"
-              activeClassName="nav-item--active"
-              exact
-            > Connexion
-            </NavLink>
-          )
-
-          : (
-            <NavLink
-              to="/connexion"
-              className="nav-item-connect"
-              activeClassName="nav-item--active"
-              exact
-            > Bonjour {nickname}
-            </NavLink>
-          )}
-      </div>
+        : (
+          <NavLink
+            to="/connexion"
+            className="nav-item-connect"
+            activeClassName="nav-item--active"
+            exact
+          > Bonjour {nickname}
+          </NavLink>
+        )}
     </div>
   </div>
+  // </div>
 );
 
 Header.propTypes = {
@@ -93,4 +68,3 @@ Header.defaultProps = {
 };
 
 export default Header;
-
