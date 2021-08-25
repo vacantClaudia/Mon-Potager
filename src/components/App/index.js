@@ -7,11 +7,11 @@ import 'semantic-ui-css/semantic.min.css';
 import './styles.scss';
 
 // == Import Components
-import Header from 'src/components/Header';
+import Header from 'src/containers/Header';
 import Connect from 'src/containers/Connect';
-// import SelectRegion from 'src/containers/SelectRegion';
 import VisitorCalendar from 'src/containers/VisitorCalendar';
 import Footer from 'src/components/Footer';
+import PlantsList from 'src/containers/PlantsList';
 
 // == App component
 const App = () => (
@@ -21,8 +21,10 @@ const App = () => (
       <Connect />
     </Route>
     <Route path="/" exact>
-      {/* <SelectRegion /> */}
       <VisitorCalendar />
+    </Route>
+    <Route path="/plantes" exact>
+      <PlantsList />
     </Route>
     <Footer />
   </div>

@@ -2,6 +2,8 @@
 import {
   CHANGE_IS_VISIBLE,
   DISPLAY_PLANTS,
+  SAVE_PLANTS,
+  CHANGE_CALENDAR_MODE,
 } from 'src/actions/visitorCalendar';
 
 // == Visitor Calendar initialState : just calendar display, not data schedules
@@ -138,7 +140,7 @@ const initialState = {
   // == test plants in initial state - use keys names to consume api
   plantsSchedules: [
     {
-      id: '1',
+      id: '3',
       calendarId: '0',
       title: 'Abricots',
       // = category must be use to display. I don't know it utility
@@ -152,7 +154,7 @@ const initialState = {
       isVisible: false,
     },
     {
-      id: '2',
+      id: '4',
       calendarId: '0',
       title: 'Carottes',
       category: 'time',
@@ -164,7 +166,7 @@ const initialState = {
       isVisible: false,
     },
     {
-      id: '3',
+      id: '5',
       calendarId: '0',
       title: 'Fraises',
       category: 'time',
@@ -176,7 +178,7 @@ const initialState = {
       isVisible: false,
     },
     {
-      id: '4',
+      id: '16',
       calendarId: '1',
       title: 'Tomates',
       category: 'time',
@@ -188,7 +190,7 @@ const initialState = {
       isVisible: false,
     },
     {
-      id: '5',
+      id: '7',
       calendarId: '1',
       title: 'Poireaux',
       category: 'time',
@@ -200,7 +202,7 @@ const initialState = {
       isVisible: false,
     },
     {
-      id: '6',
+      id: '8',
       calendarId: '1',
       title: 'Artichauts',
       category: 'time',
@@ -216,6 +218,7 @@ const initialState = {
   // == change to false when you code
   isReadOnly: true,
   selected: false,
+  isCalendarMode: false,
 };
 
 function visitorCalendarReducer(state = initialState, action = {}) {
@@ -231,6 +234,19 @@ function visitorCalendarReducer(state = initialState, action = {}) {
       return {
         ...state,
         selected: true,
+      };
+
+    case SAVE_PLANTS:
+      return {
+        ...state,
+        // juste pour le test mettre ancien state + nouveau state plantsSchedules
+        plantsSchedules: [...state.plantsSchedules, action.plantsSchedules],
+      };
+
+    case CHANGE_CALENDAR_MODE:
+      return {
+        ...state,
+        isCalendarMode: action.value,
       };
 
     default:
