@@ -32,14 +32,6 @@ const Header = ({ nickname, isAuthentified }) => (
       >
         Plantes
       </NavLink>
-      <NavLink
-        to="/inscription"
-        className="nav-item"
-        activeClassName="nav-item--active"
-        exact
-      >
-        Inscription
-      </NavLink>
 
       {!isAuthentified
         ? (
