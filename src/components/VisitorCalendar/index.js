@@ -98,7 +98,6 @@ const VisitorCalendar = ({
       }
     });
     changeIsVisible(plantsSchedules);
-    // console.log(plantsSchedules);
   };
 
   // test response api action case fetchPlants
