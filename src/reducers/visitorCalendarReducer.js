@@ -137,7 +137,7 @@ const initialState = {
       name: 'Bretagne',
     },
   ],
-  // == test plants in initial state - use keys names to consume api
+  // == List of plants
   plantsSchedules: [],
   //   {
   //     id: '3',

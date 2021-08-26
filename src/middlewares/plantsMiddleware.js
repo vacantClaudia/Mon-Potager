@@ -4,40 +4,72 @@ import { FETCH_PLANTS, savePlants } from '../actions/visitorCalendar';
 const plantsMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case FETCH_PLANTS: {
-      const regionId = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']; // dynamiser regionId
+      const regionId = ['6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18']; // dynamiser regionId si on a le temps
       const apiPlantsSchedule = [];
-      for (let i = 0; i < regionId.length; i += 1) {
-        axios.get(`http://ec2-54-89-4-11.compute-1.amazonaws.com/projet-mon-potager-back/public/wp-json/wp/v2/plante?regions=${regionId[i]}`)
+      // loop by region
+      for (let calendarId = 0; calendarId < regionId.length; calendarId += 1) {
+        axios.get(`http://ec2-54-89-4-11.compute-1.amazonaws.com/projet-mon-potager-back/public/wp-json/wp/v2/plante?regions=${regionId[calendarId]}`)
           .then((response) => {
-            // TODO plus généralement boucler en amont peut être. Si response.data. = semi alors...
-            const apiData = response.data;
-            apiData.map((data) => {
-              // TODO gérer chaque région par un endpoint différent
-              // TODO comment appeler plusieurs fois la même plante avec 3
-              // TODO date start et end différentes
-              // TODO faire une condition. Si date === debut_semi alors
-              // TODO tel color, bgColor et borderColor
-              // for the moment forget calendarId, maybe we'll change
-              // isVisible by endpoint region. Just a test here
-              data.calendarId = JSON.stringify(i);
-              console.log(data.calendarId);
-              data.id = JSON.stringify(data.id);
-              // TODO peut être ajouter condition si = "debut_semi" dans la chaine de caractère
-              // alors le titre = data.title.rendered + "Semi"
-              data.title = data.title.rendered;
-              data.category = 'time';
-              data.isVisible = false;
-              data.body = data.content.rendered;
-              // just for testing
-              // TODO si semi data.start = data..... etc, si plantation etc...
-              data.start = '2021-05-12';
-              data.end = '2021-05-25';
-              apiPlantsSchedule.push(data);
-            });
+            // push 3 times a plant to display 3 differents periods (semi, plantation, récolte)
+            for (let periodIndex = 0; periodIndex < 3; periodIndex += 1) {
+              const apiData = response.data;
+              // console.log(apiData);
+              apiData.map((data) => {
+                // condition each loop differents periods and colors
+                if (periodIndex === 0) {
+                  // Semi period
+                  data.calendarId = regionId[calendarId];
+                  data.id = JSON.stringify(data.id);
+                  data.title = data.title.rendered;
+                  data.category = 'time';
+                  data.isVisible = false;
+                  data.body = data.content.rendered;
+                  // just for testing start and end
+                  data.start = '2021-05-12';
+                  data.end = '2021-05-25';
+                  data.color = '#474647';
+                  data.bgColor = '#f3c465';
+                  data.borderColor = '#fad689';
+                  apiPlantsSchedule.push(data);
+                }
+                if (periodIndex === 1) {
+                  // Plantation period
+                  data.calendarId = regionId[calendarId];
+                  data.id = JSON.stringify(data.id);
+                  data.title = data.slug; // TODO trouver un moyen d'utiliser data.title.rendered
+                  data.category = 'time';
+                  data.isVisible = false;
+                  data.body = data.content.rendered;
+                  // just for testing
+                  data.start = '2021-06-12';
+                  data.end = '2021-06-25';
+                  data.color = '#474647';
+                  data.bgColor = '#9ed2bf';
+                  data.borderColor = '#daece5';
+                  apiPlantsSchedule.push(data);
+                }
+                if (periodIndex === 2) {
+                  // Recolte period
+                  data.calendarId = regionId[calendarId];
+                  data.id = JSON.stringify(data.id);
+                  data.title = data.slug; // TODO trouver un moyen d'utiliser data.title.rendered
+                  data.category = 'time';
+                  data.isVisible = false;
+                  data.body = data.content.rendered;
+                  // just for testing
+                  data.start = '2021-07-12';
+                  data.end = '2021-07-25';
+                  data.color = '#fad689';
+                  data.bgColor = '#f46d5f';
+                  data.borderColor = '#f8cba9';
+                  apiPlantsSchedule.push(data);
+                }
+              });
+            }
             // To put api data in plantsSchedules
             const newAction = savePlants(apiPlantsSchedule);
             store.dispatch(newAction);
-            console.log(newAction);
+            // console.log(newAction);
           })
           .catch((error) => {
             console.log(error);
