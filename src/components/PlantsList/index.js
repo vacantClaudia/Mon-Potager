@@ -17,20 +17,22 @@ const PlantsList = ({ plants, getPlantsList }) => {
   return (
     <div className="accordion">
       {plants.map((plant) => {
-        return (
-          <>
-            <input type="radio" name="select" className="accordion-select" />
-            <div className="accordion-title"><span>{plant.title.rendered}</span></div>
-            <div className="accordion-content">
-              <img
-                src={plant._embedded['wp:featuredmedia'][0].media_details.sizes.thumbnail.source_url}
-                alt="plante"
-                className="accordion-image"
-              />
-              <p dangerouslySetInnerHTML={createMarkup(plant.content.rendered)} />
-            </div>
-          </>
-        );
+        if (!plant.isVisible) {
+          return (
+            <>
+              <input type="radio" name="select" className="accordion-select" />
+              <div className="accordion-title"><span>{plant.title.rendered}</span></div>
+              <div className="accordion-content">
+                <img
+                  src={plant._embedded['wp:featuredmedia'][0].media_details.sizes.thumbnail.source_url}
+                  alt="plante"
+                  className="accordion-image"
+                />
+                <p dangerouslySetInnerHTML={createMarkup(plant.content.rendered)} />
+              </div>
+            </>
+          );
+        }
       })}
     </div>
   );
