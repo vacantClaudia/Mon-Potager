@@ -13,13 +13,12 @@ const Card = ({
     <div className="card-inner">
       <div className="card-front">
         <img
-          className="image"
-          src={_embedded['wp:featuredmedia'][0].source_url}
+          className="card-picture"
+          src={_embedded['wp:featuredmedia'][0].media_details.sizes.thumbnail.source_url}
           alt="plant"
         />
         <div className="card-content">
           <h2>{title.rendered}</h2>
-          <p>facile</p>
         </div>
       </div>
       <div className="card-back">
@@ -33,7 +32,7 @@ const Card = ({
 Card.propTypes = {
   title: PropTypes.object.isRequired,
   content: PropTypes.object.isRequired,
-  _embedded: PropTypes.object.isRequired,
+  _embedded: PropTypes.string.isRequired,
 };
 
 export default Card;

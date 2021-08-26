@@ -7,6 +7,7 @@ import VisitorCalendar from 'src/containers/VisitorCalendar';
 import Card from 'src/containers/Card';
 
 const Home = ({ plants, getPlantsList }) => {
+  console.log(plants);
   useEffect(() => {
     getPlantsList();
   }, []);
@@ -17,12 +18,15 @@ const Home = ({ plants, getPlantsList }) => {
         <VisitorCalendar />
       </div>
       <div className="plantsList">
-        {plants.map((plant) => (
-          <Card
-            {...plant}
-            key={plant.id}
-          />
-        ))}
+        {plants.map((plant) => {
+          console.log(plant);
+          return (
+            <Card
+              {...plant}
+              key={plant.id}
+            />
+          );
+        })}
       </div>
     </div>
   );
