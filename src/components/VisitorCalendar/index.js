@@ -25,7 +25,6 @@ const VisitorCalendar = ({
   isReadOnly,
   plantsCalendars,
   changeIsVisible,
-  isVisible,
   selected,
   displayPlants,
   fetchPlants,
@@ -99,6 +98,10 @@ const VisitorCalendar = ({
       }
     });
     changeIsVisible(plantsSchedules);
+<<<<<<< HEAD
+=======
+    console.log(plantsSchedules);
+>>>>>>> 22a523aaf75c7826686ae89c4e51558edf86cf00
   };
 
   // test response api action case fetchPlants
@@ -154,7 +157,7 @@ const VisitorCalendar = ({
 
                   <Calendar
                     // == I put key here for new render
-                    key={isVisible}
+                    key={plantsSchedules[0].id}
                     // == ref to current calendar ?
                     ref={calendarRef}
                     // == view monthly
@@ -195,7 +198,6 @@ VisitorCalendar.propTypes = {
   isReadOnly: PropTypes.bool.isRequired,
   selected: PropTypes.bool.isRequired,
   displayPlants: PropTypes.func.isRequired,
-  isVisible: PropTypes.bool.isRequired,
   changeIsVisible: PropTypes.func.isRequired,
   isCalendarMode: PropTypes.bool.isRequired,
   changeCalendarMode: PropTypes.func.isRequired,

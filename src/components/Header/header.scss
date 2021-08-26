@@ -42,6 +42,20 @@
       right: 5px;
       bottom: -50px;
     }
+    .logout-form{
+      margin-left: 4px;
+      border-radius: 50px;
+      color:vars.$green;
+      border: none;
+      background-color: vars.$lightGreen;
+      &:hover{
+        width: 26px;
+        height: 26px;
+        font-size: 20px;
+        box-shadow: 3px 3px 3px vars.$green;
+        content: 'Déconnexion';
+      }
+    }
   }
   .nav-authentified{
     position: absolute;

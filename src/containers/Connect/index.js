@@ -10,7 +10,7 @@ const mapStateToProps = (state) => ({
   // nom de la prop à remplir: élément à récupérer dans le state
   userName: state.auth.userName,
   password: state.auth.password,
-  isAuthentified: state.auth.nickname !== null,
+  isLogged: state.auth.logged,
 });
 
 // === mapDispatchToProps
