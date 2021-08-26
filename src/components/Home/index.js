@@ -6,8 +6,7 @@ import './home.scss';
 import VisitorCalendar from 'src/containers/VisitorCalendar';
 import Card from 'src/containers/Card';
 
-const Home = ({ plants, getPlantsList }) => {
-  console.log(plants);
+const Home = ({ plants, getPlantsList, selected }) => {
   useEffect(() => {
     getPlantsList();
   }, []);
@@ -17,17 +16,16 @@ const Home = ({ plants, getPlantsList }) => {
       <div className="selectRegion">
         <VisitorCalendar />
       </div>
+      {!selected && (
       <div className="plantsList">
-        {plants.map((plant) => {
-          console.log(plant);
-          return (
-            <Card
-              {...plant}
-              key={plant.id}
-            />
-          );
-        })}
+        {plants.map((plant) => (
+          <Card
+            {...plant}
+            key={plant.id}
+          />
+        ))}
       </div>
+      )}
     </div>
   );
 };
@@ -39,6 +37,7 @@ Home.propTypes = {
     }).isRequired,
   ).isRequired,
   getPlantsList: PropTypes.func.isRequired,
+  selected: PropTypes.bool.isRequired,
 };
 
 export default Home;

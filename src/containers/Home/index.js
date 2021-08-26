@@ -9,6 +9,7 @@ import { getPlantsList } from 'src/actions/plantsList';
 const mapStateToProps = (state) => ({
   // nom de la prop à remplir: élément à récupérer dans le state
   plants: state.plants.plants,
+  selected: state.visitorCalendar.selected,
 });
 
 // === mapDispatchToProps

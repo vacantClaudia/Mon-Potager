@@ -32,7 +32,7 @@ const Card = ({
 Card.propTypes = {
   title: PropTypes.object.isRequired,
   content: PropTypes.object.isRequired,
-  _embedded: PropTypes.string.isRequired,
+  _embedded: PropTypes.object.isRequired,
 };
 
 export default Card;
