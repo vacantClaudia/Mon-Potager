@@ -25,7 +25,7 @@ const PlantsList = ({ plants, getPlantsList }) => {
               <img
                 src={plant._embedded['wp:featuredmedia'][0].media_details.sizes.thumbnail.source_url}
                 alt="plante"
-                className="image-plante"
+                className="accordion-image"
               />
               <p dangerouslySetInnerHTML={createMarkup(plant.content.rendered)} />
             </div>
