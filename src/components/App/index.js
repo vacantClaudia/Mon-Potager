@@ -8,8 +8,8 @@ import './styles.scss';
 
 // == Import Components
 import Header from 'src/containers/Header';
+import Home from 'src/containers/Home';
 import Connect from 'src/containers/Connect';
-import VisitorCalendar from 'src/containers/VisitorCalendar';
 import Footer from 'src/components/Footer';
 import PlantsList from 'src/containers/PlantsList';
 import NotFound from 'src/components/NotFound';
@@ -27,7 +27,7 @@ const App = () => (
       </Route>
 
       <Route path="/" exact>
-        <VisitorCalendar />
+        <Home />
       </Route>
 
       <Route path="/plantes" exact>
