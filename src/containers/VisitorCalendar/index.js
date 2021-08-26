@@ -35,7 +35,7 @@ const mapDispatchToProps = (dispatch) => ({
     const action = changeIsVisible(newValue);
     dispatch(action);
   },
-  // display plants when region selected
+  // display all plants
   displayPlants: () => {
     const action = displayPlants();
     dispatch(action);

@@ -179,6 +179,7 @@ const VisitorCalendar = ({
                 <PlantsList
                   plants={plants}
                   getPlantsList={getPlantsList}
+                  handleOptionSelect={handleOptionSelect}
                 />
               )}
           </>
