@@ -98,10 +98,7 @@ const VisitorCalendar = ({
       }
     });
     changeIsVisible(plantsSchedules);
-<<<<<<< HEAD
-=======
     console.log(plantsSchedules);
->>>>>>> 22a523aaf75c7826686ae89c4e51558edf86cf00
   };
 
   // test response api action case fetchPlants
