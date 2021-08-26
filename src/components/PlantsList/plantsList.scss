@@ -3,11 +3,14 @@
 .accordion {
   box-sizing: border-box;
   display: flex;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Raleway', sans-serif;
+  color: vars.$black;
+  font-weight: vars.$fwBold;
   overflow: hidden;
-  width: 70%;
+  width: 60%;
   margin: auto;
   margin-top: 20px;
+  
 }
 
 .accordion-select {
@@ -66,7 +69,7 @@
 .accordion-title,
 .accordion-select  {
   background-color: #ffffff;
-  color: #7f8787;
+  color: vars.$black;
   width: 100%;
   height: 65px;
   font-size: 15px;
@@ -84,7 +87,7 @@
 
 .accordion-select:hover + .accordion-title,
 .accordion-select:checked + .accordion-title {
-  background-color: #ffffff;
+  background-color: vars.$lightGreen;
 } 
 
 .accordion-title span  {	
@@ -97,11 +100,23 @@
 } 
 
 .accordion-content {
-  background-color: #f7f7f7;
-  color: #7f8787;;
+  background-color: white;
+  color: vars.$black;
   height: 280px;
   margin-bottom: -280px;
   margin-right: 0;
-  padding: 30px;
+  padding: 10px;
   width: 100%;
+
 } 
+
+.accordion-image {
+  float: left;
+  width: 110px;
+  border-radius: 5px;
+}
+
+.accordion-content p {
+  padding-left: 60px;
+  text-align: left;
+}

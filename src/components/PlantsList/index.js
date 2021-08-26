@@ -1,3 +1,4 @@
+/* eslint-disable react/no-danger */
 /* eslint-disable arrow-body-style */
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
@@ -18,9 +19,16 @@ const PlantsList = ({ plants, getPlantsList }) => {
       {plants.map((plant) => {
         return (
           <>
-            <input key={plant.id} type="radio" name="select" className="accordion-select" />
+            <input type="radio" name="select" className="accordion-select" />
             <div className="accordion-title"><span>{plant.title.rendered}</span></div>
-            <p className="accordion-content" dangerouslySetInnerHTML={createMarkup(plant.content.rendered)} />
+            <div className="accordion-content">
+              <img
+                src={plant._embedded['wp:featuredmedia'][0].media_details.sizes.thumbnail.source_url}
+                alt="plante"
+                className="accordion-image"
+              />
+              <p dangerouslySetInnerHTML={createMarkup(plant.content.rendered)} />
+            </div>
           </>
         );
       })}
@@ -34,6 +42,12 @@ PlantsList.propTypes = {
       id: PropTypes.number.isRequired,
       title: PropTypes.object.isRequired,
       content: PropTypes.object.isRequired,
+      _embedded: PropTypes.object.isRequired,
+      // media_details: PropTypes.objectOf({
+      //   sizes: PropTypes.objectOf({
+      //     thumbnail: PropTypes.object.isRequired,
+      //   }).isRequired,
+      // }).isRequired,
     }).isRequired,
   ).isRequired,
   getPlantsList: PropTypes.func.isRequired,
