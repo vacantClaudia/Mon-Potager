@@ -29,11 +29,10 @@ const plantsMiddleware = (store) => (next) => (action) => {
               data.bgColor = '#f3c465';
               data.borderColor = '#fad689';
               apiSemiData.push(data);
-              console.log(apiSemiData);
             });
             apiPlantationData.map((data) => {
               // condition each loop differents periods and colors
-              // Semi period
+              // Plantation period
               data.calendarId = regionId[calendarId];
               data.id = JSON.stringify(data.id);
               data.title = data.slug; // TODO trouver un moyen d'utiliser data.title.rendered
@@ -47,11 +46,10 @@ const plantsMiddleware = (store) => (next) => (action) => {
               data.bgColor = '#f3c465';
               data.borderColor = '#f8cba9';
               apiPlantationData.push(data);
-              // console.log(apiPlantationData);
             });
             apiRecolteData.map((data) => {
             // condition each loop differents periods and colors
-              // Semi period
+              // Recolte period
               data.calendarId = regionId[calendarId];
               data.id = JSON.stringify(data.id);
               data.title = data.slug; // TODO trouver un moyen d'utiliser data.title.rendered
@@ -65,7 +63,6 @@ const plantsMiddleware = (store) => (next) => (action) => {
               data.bgColor = '#9ed2bf';
               data.borderColor = '#daece5';
               apiRecolteData.push(data);
-              // console.log(apiRecolteData);
             });
             const apiPlantsSchedule = [
               ...apiSemiData,
@@ -75,7 +72,7 @@ const plantsMiddleware = (store) => (next) => (action) => {
             // To put api data in plantsSchedules
             const newAction = savePlants(apiPlantsSchedule);
             store.dispatch(newAction);
-            // console.log(newAction);
+            console.log(newAction);
           })
           .catch((error) => {
             console.log(error);
