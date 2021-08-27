@@ -13,10 +13,10 @@ const SignUp = ({
   region,
   changeFieldValue,
   handleSubmit,
-  isLogged,
+  isSigned,
 }) => (
   <div className="signUp">
-    {!isLogged
+    {!isSigned
       ? (
         <form
           className="signUp-form"
@@ -100,7 +100,7 @@ SignUp.propTypes = {
   region: PropTypes.string.isRequired,
   changeFieldValue: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
-  isLogged: PropTypes.bool.isRequired,
+  isSigned: PropTypes.bool.isRequired,
 };
 
 export default SignUp;
