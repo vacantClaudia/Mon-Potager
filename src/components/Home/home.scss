@@ -1,0 +1,15 @@
+@use 'src/styles/vars';
+
+.home{
+  .selectRegion{
+
+  }
+  .plantsList{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: flex-end;
+  
+  }
+}

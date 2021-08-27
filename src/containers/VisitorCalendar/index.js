@@ -23,7 +23,6 @@ const mapStateToProps = (state) => ({
   plantsSchedules: state.visitorCalendar.plantsSchedules,
   plantsCalendars: state.visitorCalendar.plantsCalendars,
   isReadOnly: state.visitorCalendar.isReadOnly,
-  isVisible: state.visitorCalendar.plantsSchedules[0].isVisible,
   selected: state.visitorCalendar.selected,
   isCalendarMode: state.visitorCalendar.isCalendarMode,
   plants: state.plants.plants,
@@ -36,7 +35,7 @@ const mapDispatchToProps = (dispatch) => ({
     const action = changeIsVisible(newValue);
     dispatch(action);
   },
-  // display plants when region selected
+  // display all plants
   displayPlants: () => {
     const action = displayPlants();
     dispatch(action);

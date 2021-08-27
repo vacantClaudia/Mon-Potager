@@ -25,7 +25,6 @@ const VisitorCalendar = ({
   isReadOnly,
   plantsCalendars,
   changeIsVisible,
-  isVisible,
   selected,
   displayPlants,
   fetchPlants,
@@ -99,6 +98,7 @@ const VisitorCalendar = ({
       }
     });
     changeIsVisible(plantsSchedules);
+    // console.log(plantsSchedules);
   };
 
   // test response api action case fetchPlants
@@ -111,19 +111,19 @@ const VisitorCalendar = ({
       <div className="visitorCalendar">
         <select className="visitorCalendarSelectRegion" onChange={handleOptionSelect}>
           <option className="option" value="">Choisis ta région!</option>
-          <option className="option" value="0">Auvergne-Rhône-Alpes</option>
-          <option className="option" value="1">Bourgogne-Franche-Comté</option>
-          <option className="option" value="2">Bretagne</option>
-          <option className="option" value="3">Centre-Val de Loire</option>
-          <option className="option" value="4">Corse</option>
-          <option className="option" value="5">Grand Est</option>
-          <option className="option" value="6">Hauts-de-France</option>
-          <option className="option" value="7">Île-de-France</option>
-          <option className="option" value="8">Normandie</option>
-          <option className="option" value="9">Nouvelle-Aquitaine</option>
-          <option className="option" value="10">Occitanie</option>
-          <option className="option" value="11">Pays de la Loire</option>
-          <option className="option" value="12">Provence-Alpes-Côte d'Azur</option>
+          <option className="option" value="6">Auvergne-Rhône-Alpes</option>
+          <option className="option" value="7">Bourgogne-Franche-Comté</option>
+          <option className="option" value="8">Bretagne</option>
+          <option className="option" value="9">Centre-Val de Loire</option>
+          <option className="option" value="10">Corse</option>
+          <option className="option" value="11">Grand Est</option>
+          <option className="option" value="12">Hauts-de-France</option>
+          <option className="option" value="13">Île-de-France</option>
+          <option className="option" value="14">Normandie</option>
+          <option className="option" value="15">Nouvelle-Aquitaine</option>
+          <option className="option" value="16">Occitanie</option>
+          <option className="option" value="17">Pays de la Loire</option>
+          <option className="option" value="18">Provence-Alpes-Côte d'Azur</option>
         </select>
         {selected && (
           <>
@@ -154,7 +154,7 @@ const VisitorCalendar = ({
 
                   <Calendar
                     // == I put key here for new render
-                    key={isVisible}
+                    // key={plantsSchedules[0].id} get better key id undifined
                     // == ref to current calendar ?
                     ref={calendarRef}
                     // == view monthly
@@ -179,10 +179,13 @@ const VisitorCalendar = ({
                 <PlantsList
                   plants={plants}
                   getPlantsList={getPlantsList}
+                  handleOptionSelect={handleOptionSelect}
                 />
               )}
           </>
         )}
+
+
       </div>
     </>
   );
@@ -195,7 +198,6 @@ VisitorCalendar.propTypes = {
   isReadOnly: PropTypes.bool.isRequired,
   selected: PropTypes.bool.isRequired,
   displayPlants: PropTypes.func.isRequired,
-  isVisible: PropTypes.bool.isRequired,
   changeIsVisible: PropTypes.func.isRequired,
   isCalendarMode: PropTypes.bool.isRequired,
   changeCalendarMode: PropTypes.func.isRequired,
