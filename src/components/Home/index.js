@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
+
 import './home.scss';
 
 import VisitorCalendar from 'src/containers/VisitorCalendar';

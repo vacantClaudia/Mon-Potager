@@ -47,12 +47,13 @@
       position: absolute;
       width: 100%;
       height: 100%;
-      top: 0px;
-      background: linear-gradient(0deg, #9ed2bf, transparent);
+      top: -10px;
+      background: linear-gradient(0deg, #c4ecdd, vars.$lightGreen);
+      border-radius: 2em;
     }
     .card-content {
       position: relative;
-      top: -3em;
+      top: -8em;
       z-index: 5;
       color: white;
       h2{
@@ -72,7 +73,7 @@
     align-items: center;
     justify-content: center;
     background: linear-gradient(169deg, rgba(250,214,137,1) 0%, rgba(244,109,95,1) 100%);  
-    overflow: scroll;  
+    // overflow: scroll;  
   }
   
 }
