@@ -72,7 +72,7 @@ const plantsMiddleware = (store) => (next) => (action) => {
             // To put api data in plantsSchedules
             const newAction = savePlants(apiPlantsSchedule);
             store.dispatch(newAction);
-            console.log(newAction);
+            // console.log(newAction);
           })
           .catch((error) => {
             console.log(error);
