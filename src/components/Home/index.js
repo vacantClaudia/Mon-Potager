@@ -7,6 +7,7 @@ import VisitorCalendar from 'src/containers/VisitorCalendar';
 import Card from 'src/containers/Card';
 
 const Home = ({ plants, getPlantsList, selected }) => {
+  console.log(plants);
   useEffect(() => {
     getPlantsList();
   }, []);
