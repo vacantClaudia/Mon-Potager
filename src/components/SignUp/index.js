@@ -48,9 +48,9 @@ const SignUp = ({
             isRequired
           />
           <Field
-            identifier="confirm password"
+            identifier="confirmPassword"
             placeholder="Confirmez votre mot de passe"
-            label="confirm password"
+            label="confirmPassword"
             type="password"
             changeField={(identifier, newValue) => {
               changeFieldValue(identifier, newValue);

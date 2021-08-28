@@ -13,7 +13,7 @@ import Connect from 'src/containers/Connect';
 import Footer from 'src/components/Footer';
 import PlantsList from 'src/containers/PlantsList';
 import NotFound from 'src/components/NotFound';
-import SignUp from '../SignUp';
+import SignUp from 'src/containers/SignUp';
 
 // == App component
 const App = () => (

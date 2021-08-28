@@ -3,6 +3,8 @@ import axios from 'axios';
 import {
   SUBMIT_LOGIN,
   saveUserData,
+  SUBMIT_REGISTER,
+  saveUserRegister,
   // userPlants
 } from '../actions/auth';
 
@@ -39,8 +41,7 @@ const authMiddleware = (store) => (next) => (action) => {
           console.log(error);
         });
       break;
-    }
-
+    };
     // case USER_PLANTS:
     //   // console.log('on va aller chercher les recettes préférées');
 
@@ -66,11 +67,41 @@ const authMiddleware = (store) => (next) => (action) => {
     //       console.log(error);
     //     });
     //   break;
+    case SUBMIT_REGISTER: {
+      // console.log('on va envoyer la requête');
 
+      // on va piocher dans le state les infos nécessaires
+      const { username, password, confirmPassword, email, region } = store.getState().auth;
+
+      axios.post(
+        // URL
+        'http://ec2-54-89-4-11.compute-1.amazonaws.com/projet-mon-potager-back/public/wp-json/monpotager/v1/inscription',
+        // paramètres
+        {
+          username: username,
+          password: password,
+          confirmPassword: confirmPassword,
+          email: email,
+          region: region,
+        },
+      )
+        .then((response) => {
+          const newAction = saveUserRegister(
+            response.data.token,
+            response.data.user_display_name,
+            response.data.signed,
+          );
+          store.dispatch(newAction);
+        })
+        .catch((error) => {
+          // TODO message d'erreur
+          alert('failed register');
+          console.log(error);
+        });
+      break;
+    }
     default:
   }
-  // on passe l'action au suivant : le middleware suivant s'il y en un, sinon le
-  // reducer
   next(action);
 };
 
