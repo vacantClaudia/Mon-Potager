@@ -12,8 +12,8 @@ const plantsMiddleware = (store) => (next) => (action) => {
         axios.get(`http://ec2-54-89-4-11.compute-1.amazonaws.com/projet-mon-potager-back/public/wp-json/wp/v2/plante?regions=${regionId[calendarId]}`)
           .then((response) => {
             const apiData = response.data;
+            // eslint-disable-next-line array-callback-return
             apiData.map((plant) => {
-              // condition each loop differents periods and colors
               plant.calendarId = regionId[calendarId];
               plant.id = JSON.stringify(plant.id);
               plant.title = plant.slug;
@@ -22,8 +22,7 @@ const plantsMiddleware = (store) => (next) => (action) => {
               apiPlants.push(plant);
             });
 
-            console.log(apiPlants);
-
+            // get data by semi period
             const semiPlants = JSON.parse(JSON.stringify(apiPlants));
 
             for (let semiIndex = 0; semiIndex < semiPlants.length; semiIndex += 1) {
@@ -34,8 +33,7 @@ const plantsMiddleware = (store) => (next) => (action) => {
               semiPlants[semiIndex].borderColor = '#fad689';
             }
 
-            console.log (semiPlants);
-
+            // get data by plantation period
             const plantationPlants = JSON.parse(JSON.stringify(apiPlants));
 
             for (let semiIndex = 0; semiIndex < plantationPlants.length; semiIndex += 1) {
@@ -46,8 +44,7 @@ const plantsMiddleware = (store) => (next) => (action) => {
               plantationPlants[semiIndex].borderColor = '#e4bd9f';
             }
 
-            console.log (plantationPlants);
-
+            // get data by recolte period
             const recoltePlants = JSON.parse(JSON.stringify(apiPlants));
 
             for (let semiIndex = 0; semiIndex < recoltePlants.length; semiIndex += 1) {
@@ -58,19 +55,16 @@ const plantsMiddleware = (store) => (next) => (action) => {
               recoltePlants[semiIndex].borderColor = '#daece5';
             }
 
-            console.log (recoltePlants);
-
             const apiPlantsSchedules = [
               ...semiPlants,
               ...plantationPlants,
               ...recoltePlants,
             ];
 
-            // TODO faire le new action et dispatch après la boucle !
+            // TODO balancer les données au state une que tout est chargé
             // To put api data in plantsSchedules
             const newAction = savePlants(apiPlantsSchedules);
             store.dispatch(newAction);
-            console.log(apiPlantsSchedules);
           })
           .catch((error) => {
             console.log(error);
