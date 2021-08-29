@@ -29,7 +29,7 @@ const SignUp = ({
           <Field
             identifier="username"
             placeholder="Nom d'utilisateur"
-            label="username"
+            label="Votre nom d'utilisateur"
             changeField={(identifier, newValue) => {
               changeFieldValue(identifier, newValue);
             }}
@@ -39,7 +39,7 @@ const SignUp = ({
           <Field
             identifier="password"
             placeholder="Mot de passe"
-            label="password"
+            label="Votre mot de passe"
             type="password"
             changeField={(identifier, newValue) => {
               changeFieldValue(identifier, newValue);
@@ -50,7 +50,7 @@ const SignUp = ({
           <Field
             identifier="confirmPassword"
             placeholder="Confirmez votre mot de passe"
-            label="confirmPassword"
+            label="Confirmez votre mot de passe"
             type="password"
             changeField={(identifier, newValue) => {
               changeFieldValue(identifier, newValue);
@@ -60,8 +60,8 @@ const SignUp = ({
           />
           <Field
             identifier="email"
-            placeholder="Email"
-            label="email"
+            placeholder="Votre email"
+            label="Votre email"
             type="email"
             changeField={(identifier, newValue) => {
               changeFieldValue(identifier, newValue);
@@ -71,8 +71,8 @@ const SignUp = ({
           />
           <Field
             identifier="region"
-            placeholder="Région"
-            label="region"
+            placeholder="Votre région"
+            label="Votre région"
             type="region"
             changeField={(identifier, newValue) => {
               changeFieldValue(identifier, newValue);

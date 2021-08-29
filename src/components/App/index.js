@@ -23,17 +23,20 @@ const App = () => (
 
     <Switch>
 
-      <Route path="/connexion" exact>
-        <Connect />
-        <SignUp />
-      </Route>
-
       <Route path="/" exact>
         <Home />
       </Route>
 
       <Route path="/plantes" exact>
         <PlantsList />
+      </Route>
+
+      <Route path="/connexion" exact>
+        <Connect />
+      </Route>
+
+      <Route path="/inscription" exact>
+        <SignUp />
       </Route>
 
       <Route>

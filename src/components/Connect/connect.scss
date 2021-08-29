@@ -1,29 +1,51 @@
 @use 'src/styles/vars';
 
-.connect{
+.connect {
 
-  .connect-form{
-    // position: relative;
-  
+  .connect-form {
     background-color: vars.$green;
     border-radius: 2em;
-     padding-top: 1em;
-     padding-bottom: 1em;
-     width: 70%;
-     margin: auto;
-    //  display: flex;
-     flex-direction: column;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    width: 70%;
+    margin: auto;
+    flex-direction: column;
 
-    .connect-submit{
+    .connect-submit {
       color: #fff;
       border: none;
       border-radius: 5px;
       padding: 1rem;
-      margin: auto;
+      margin: 1rem;
       font-size: 1.2em;
       background-color: vars.$lightOrange;
       width: 10em;
-      ;
+
+      &:hover {
+        color: vars.$black;
+        border: vars.$black solid 1px;
+        background-color: transparent;
+      }
     }
+
+    .register-submit {
+      color: vars.$black;
+      border: vars.$black solid 1px;
+      border-radius: 5px;
+      padding: 1rem;
+      margin: 1rem;
+      font-size: 1.2em;
+      background-color: transparent;
+      width: 10em;
+
+      &:hover {
+        color: #fff;
+        border: none;
+        background-color: vars.$lightOrange;
+      }
+    }
+      a {
+        color: vars.$black;
+      }
   }
 }

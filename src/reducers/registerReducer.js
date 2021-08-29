@@ -12,7 +12,6 @@ const initialState = {
   signed: false,
   nickname: null,
   token: null,
-
 };
 
 function registerReducer(state = initialState, action = {}) {
