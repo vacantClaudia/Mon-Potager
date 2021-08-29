@@ -240,7 +240,7 @@ function visitorCalendarReducer(state = initialState, action = {}) {
     case SAVE_PLANTS:
       return {
         ...state,
-        // juste pour le test mettre ancien state + nouveau state plantsSchedules
+        // state save in plantsSchedules from api
         plantsSchedules: action.plantsSchedules,
       };
 

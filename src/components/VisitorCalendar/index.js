@@ -33,8 +33,14 @@ const VisitorCalendar = ({
   plants,
   getPlantsList,
 }) => {
+  // test response api action case fetchPlants
+  useEffect(() => {
+    fetchPlants();
+  }, []);
   // == ref to calendar to get instance
   const calendarRef = createRef();
+
+  // console.log(plantsSchedules);
 
   // == get current date to display on the top of calendar
   // == today's date
@@ -98,13 +104,7 @@ const VisitorCalendar = ({
       }
     });
     changeIsVisible(plantsSchedules);
-    // console.log(plantsSchedules);
   };
-
-  // test response api action case fetchPlants
-  useEffect(() => {
-    fetchPlants();
-  }, []);
 
   return (
     <>
