@@ -25,7 +25,7 @@ const Connect = ({
         >
           <Field
             identifier="userName"
-            placeholder="User Name"
+            placeholder="Nom d'utilisateur"
             label="Nom d'utilisateur"
             changeField={(identifier, newValue) => {
               changeFieldValue(identifier, newValue);
@@ -50,6 +50,12 @@ const Connect = ({
           >
             Valider
           </button>
+          <button
+            type="button"
+            className="register-submit"
+          >
+            <a href="/inscription" className="register-link">S'inscrire</a>
+          </button>
         </form>
       )
       : <UserCalendar />}
@@ -57,7 +63,7 @@ const Connect = ({
   </div>
 );
 Connect.propTypes = {
-//  futur propTypes
+  //  futur propTypes
   userName: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,
   changeFieldValue: PropTypes.func.isRequired,

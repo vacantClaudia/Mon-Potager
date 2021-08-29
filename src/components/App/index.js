@@ -13,6 +13,7 @@ import Connect from 'src/containers/Connect';
 import Footer from 'src/components/Footer';
 import PlantsList from 'src/containers/PlantsList';
 import NotFound from 'src/components/NotFound';
+import SignUp from 'src/containers/SignUp';
 
 // == App component
 const App = () => (
@@ -22,16 +23,20 @@ const App = () => (
 
     <Switch>
 
-      <Route path="/connexion" exact>
-        <Connect />
-      </Route>
-
       <Route path="/" exact>
         <Home />
       </Route>
 
       <Route path="/plantes" exact>
         <PlantsList />
+      </Route>
+
+      <Route path="/connexion" exact>
+        <Connect />
+      </Route>
+
+      <Route path="/inscription" exact>
+        <SignUp />
       </Route>
 
       <Route>
