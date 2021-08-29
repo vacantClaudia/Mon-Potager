@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Field from 'src/components/Field';
-import UserCalendar from 'src/components/UserCalendar';
+import UserCalendar from 'src/containers/UserCalendar';
 import './connect.scss';
 
 const Connect = ({

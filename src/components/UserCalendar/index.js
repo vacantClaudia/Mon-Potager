@@ -1,4 +1,4 @@
-import React, { createRef, useEffect } from 'react';
+import React, { createRef } from 'react';
 import PropTypes from 'prop-types';
 
 // == import externals libraries
@@ -14,17 +14,16 @@ import { ChevronLeft, ChevronRight } from 'react-feather';
 // == Import css
 import './userCalendar.scss';
 
-// == VisitorCalendar Component
-// == props from initial state visitorCalendarReducer
-const VisitorCalendar = ({
+// == UserCalendar Component
+// == props from initial state userCalendarReducer
+const UserCalendar = ({
   view,
   daynames,
   startDayOfWeek,
+  myTheme,
+  plantsSchedules,
   isReadOnly,
-  changeIsVisible,
-  isVisible,
-  selected,
-  displayPlants,
+  plantsCalendars,
 }) => {
   // == ref to calendar to get instance
   const calendarRef = createRef();
@@ -44,7 +43,7 @@ const VisitorCalendar = ({
   const handleClickTodayButton = () => {
     const calendarInstance = calendarRef.current.calendarInst;
     calendarInstance.today();
-    const getDate = document.querySelector('.visitorCalendar-currentMonth');
+    const getDate = document.querySelector('.userCalendar-currentMonth');
     // eslint-disable-next-line no-underscore-dangle
     getDate.textContent = calendarInstance._renderDate._date.toLocaleString('fr-FR', {
       timeZone: 'Europe/Paris',
@@ -56,7 +55,7 @@ const VisitorCalendar = ({
   const handleClickPrevButton = () => {
     const calendarInstance = calendarRef.current.calendarInst;
     calendarInstance.prev();
-    const getDate = document.querySelector('.visitorCalendar-currentMonth');
+    const getDate = document.querySelector('.userCalendar-currentMonth');
     // eslint-disable-next-line no-underscore-dangle
     getDate.textContent = calendarInstance._renderDate._date.toLocaleString('fr-FR', {
       timeZone: 'Europe/Paris',
@@ -68,7 +67,7 @@ const VisitorCalendar = ({
   const handleClickNextButton = () => {
     const calendarInstance = calendarRef.current.calendarInst;
     calendarInstance.next();
-    const getDate = document.querySelector('.visitorCalendar-currentMonth');
+    const getDate = document.querySelector('.userCalendar-currentMonth');
     // eslint-disable-next-line no-underscore-dangle
     getDate.textContent = calendarInstance._renderDate._date.toLocaleString('fr-FR', {
       timeZone: 'Europe/Paris',
@@ -77,38 +76,20 @@ const VisitorCalendar = ({
     });
   };
 
-  // == function to display plants by region
-  // == (change isVisible on true if value of option === calendarId)
-  const handleOptionSelect = (evt) => {
-    displayPlants();
-    const getOptionValue = evt.target.value;
-    const currentSchedules = calendarRef.current.props.schedules;
-    currentSchedules.map((item) => {
-      if (item.calendarId === getOptionValue) {
-        item.isVisible = true;
-      }
-      else {
-        item.isVisible = false;
-      }
-    });
-    changeIsVisible(currentSchedules);
-  };
-
   return (
-    <div className="visitorCalendar">
-      <div className="visitorCalendar-buttonsTodayMonth">
-        <button type="button" className="visitorCalendar-buttonsTodayMonth-button" onClick={handleClickTodayButton}>Today</button>
-        <button type="button" className="visitorCalendar-buttonsTodayMonth-button" onClick={handleClickPrevButton}>
+    <div className="userCalendar">
+      <div className="userCalendar-buttonsTodayMonth">
+        <button type="button" className="userCalendar-buttonsTodayMonth-button" onClick={handleClickTodayButton}>Today</button>
+        <button type="button" className="userCalendar-buttonsTodayMonth-button" onClick={handleClickPrevButton}>
           <ChevronLeft size={12} />
         </button>
-        <button type="button" className="visitorCalendar-buttonsTodayMonth-button" onClick={handleClickNextButton}>
+        <button type="button" className="userCalendar-buttonsTodayMonth-button" onClick={handleClickNextButton}>
           <ChevronRight size={12} />
         </button>
-        <p className="visitorCalendar-currentMonth">{currentMonthAndYear}</p>
+        <p className="userCalendar-currentMonth">{currentMonthAndYear}</p>
       </div>
       <Calendar
         // == I put key here for new render
-        key={isVisible}
         // == ref to current calendar ?
         ref={calendarRef}
         // == view monthly
@@ -118,6 +99,12 @@ const VisitorCalendar = ({
           daynames: daynames,
           startDayOfWeek: startDayOfWeek,
         }}
+         // == layout calendar and schedules
+        theme={myTheme}
+        // == plants schedules data
+        schedules={plantsSchedules}
+        // == plants calendars data
+        calendars={plantsCalendars}
         // == possible or not to click on calendar or schedules (boolean)
         isReadOnly={isReadOnly}
       />
@@ -125,16 +112,12 @@ const VisitorCalendar = ({
   );
 };
 
-VisitorCalendar.propTypes = {
+UserCalendar.propTypes = {
   // view: PropTypes.string.isRequired,
   // daynames: PropTypes.array.isRequired,
   // startDayOfWeek: PropTypes.number.isRequired,
   // isReadOnly: PropTypes.bool.isRequired,
-  // selected: PropTypes.bool.isRequired,
-  // displayPlants: PropTypes.func.isRequired,
-  // isVisible: PropTypes.bool.isRequired,
-  // changeIsVisible: PropTypes.func.isRequired,
 };
 
 // == Export
-export default VisitorCalendar;
+export default UserCalendar;
