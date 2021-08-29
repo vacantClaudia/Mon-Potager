@@ -95,6 +95,7 @@ const VisitorCalendar = ({
   const handleOptionSelect = (evt) => {
     displayPlants();
     const getOptionValue = evt.target.value;
+    // eslint-disable-next-line array-callback-return
     plantsSchedules.map((item) => {
       if (item.calendarId === getOptionValue) {
         item.isVisible = true;
@@ -185,7 +186,6 @@ const VisitorCalendar = ({
           </>
         )}
 
-
       </div>
     </>
   );
@@ -203,10 +203,10 @@ VisitorCalendar.propTypes = {
   changeCalendarMode: PropTypes.func.isRequired,
   plants: PropTypes.array.isRequired,
   getPlantsList: PropTypes.func.isRequired,
-  // myTheme: PropTypes.arrayOf(
-  //   PropTypes.shape({
-  //   }).isRequired,
-  // ).isRequired,
+  myTheme: PropTypes.object.isRequired,
+  plantsSchedules: PropTypes.array.isRequired,
+  plantsCalendars: PropTypes.array.isRequired,
+  fetchPlants: PropTypes.func.isRequired,
 };
 
 // == Export
