@@ -1,78 +1,76 @@
 import axios from 'axios';
 import { FETCH_PLANTS, savePlants } from '../actions/visitorCalendar';
 
+const regionId = ['6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18']; // dynamiser regionId si on a le temps
+const apiPlants = []; // plants from api loop to iterate regions
+
 const plantsMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case FETCH_PLANTS: {
-      const regionId = ['6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18']; // dynamiser regionId si on a le temps
       // loop by region
       for (let calendarId = 0; calendarId < regionId.length; calendarId += 1) {
         axios.get(`http://ec2-54-89-4-11.compute-1.amazonaws.com/projet-mon-potager-back/public/wp-json/wp/v2/plante?regions=${regionId[calendarId]}`)
           .then((response) => {
-            const apiSemiData = response.data;
-            const apiPlantationData = response.data;
-            const apiRecolteData = response.data;
-            // console.log(apiData);
-            apiSemiData.map((data) => {
+            const apiData = response.data;
+            apiData.map((plant) => {
               // condition each loop differents periods and colors
-              // Semi period
-              data.calendarId = regionId[calendarId];
-              data.id = JSON.stringify(data.id);
-              data.title = data.slug; // TODO trouver un moyen d'utiliser data.title.rendered
-              data.category = 'time';
-              data.isVisible = false;
-              data.body = data.content.rendered;
-              // just for testing start and end
-              data.start = '2021-05-12';
-              data.end = '2021-05-25';
-              data.color = '#474647';
-              data.bgColor = '#f3c465';
-              data.borderColor = '#fad689';
-              apiSemiData.push(data);
+              plant.calendarId = regionId[calendarId];
+              plant.id = JSON.stringify(plant.id);
+              plant.title = plant.slug;
+              plant.category = 'time';
+              plant.isVisible = false;
+              apiPlants.push(plant);
             });
-            apiPlantationData.map((data) => {
-              // condition each loop differents periods and colors
-              // Plantation period
-              data.calendarId = regionId[calendarId];
-              data.id = JSON.stringify(data.id);
-              data.title = data.slug; // TODO trouver un moyen d'utiliser data.title.rendered
-              data.category = 'time';
-              data.isVisible = false;
-              data.body = data.content.rendered;
-              // just for testing start and end
-              data.start = '2021-06-12';
-              data.end = '2021-06-25';
-              data.color = '#474647';
-              data.bgColor = '#f3c465';
-              data.borderColor = '#f8cba9';
-              apiPlantationData.push(data);
-            });
-            apiRecolteData.map((data) => {
-            // condition each loop differents periods and colors
-              // Recolte period
-              data.calendarId = regionId[calendarId];
-              data.id = JSON.stringify(data.id);
-              data.title = data.slug; // TODO trouver un moyen d'utiliser data.title.rendered
-              data.category = 'time';
-              data.isVisible = false;
-              data.body = data.content.rendered;
-              // just for testing start and end
-              data.start = '2021-07-12';
-              data.end = '2021-07-25';
-              data.color = '#474647';
-              data.bgColor = '#9ed2bf';
-              data.borderColor = '#daece5';
-              apiRecolteData.push(data);
-            });
-            const apiPlantsSchedule = [
-              ...apiSemiData,
-              ...apiPlantationData,
-              ...apiRecolteData,
+
+            console.log(apiPlants);
+
+            const semiPlants = JSON.parse(JSON.stringify(apiPlants));
+
+            for (let semiIndex = 0; semiIndex < semiPlants.length; semiIndex += 1) {
+              semiPlants[semiIndex].start = '2021-04-12';
+              semiPlants[semiIndex].end = '2021-04-25';
+              semiPlants[semiIndex].color = '#474647';
+              semiPlants[semiIndex].bgColor = '#f3c465';
+              semiPlants[semiIndex].borderColor = '#fad689';
+            }
+
+            console.log (semiPlants);
+
+            const plantationPlants = JSON.parse(JSON.stringify(apiPlants));
+
+            for (let semiIndex = 0; semiIndex < plantationPlants.length; semiIndex += 1) {
+              plantationPlants[semiIndex].start = '2021-06-12';
+              plantationPlants[semiIndex].end = '2021-06-25';
+              plantationPlants[semiIndex].color = '#474647';
+              plantationPlants[semiIndex].bgColor = '#f46d5f';
+              plantationPlants[semiIndex].borderColor = '#e4bd9f';
+            }
+
+            console.log (plantationPlants);
+
+            const recoltePlants = JSON.parse(JSON.stringify(apiPlants));
+
+            for (let semiIndex = 0; semiIndex < recoltePlants.length; semiIndex += 1) {
+              recoltePlants[semiIndex].start = '2021-07-12';
+              recoltePlants[semiIndex].end = '2021-07-25';
+              recoltePlants[semiIndex].color = '#474647';
+              recoltePlants[semiIndex].bgColor = '#9ed2bf';
+              recoltePlants[semiIndex].borderColor = '#daece5';
+            }
+
+            console.log (recoltePlants);
+
+            const apiPlantsSchedules = [
+              ...semiPlants,
+              ...plantationPlants,
+              ...recoltePlants,
             ];
+
+            // TODO faire le new action et dispatch après la boucle !
             // To put api data in plantsSchedules
-            const newAction = savePlants(apiPlantsSchedule);
+            const newAction = savePlants(apiPlantsSchedules);
             store.dispatch(newAction);
-            // console.log(newAction);
+            console.log(apiPlantsSchedules);
           })
           .catch((error) => {
             console.log(error);
