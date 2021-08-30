@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 import './header.scss';
 import logo from 'src/assets/images/Logo2.jpg';
 
-const Header = ({ nickname, isLogged, handleLogout }) => (
+const Header = ({ nickname, isLogged, handleLogout, isSigned }) => (
   <div className="header">
     <div className="header-picture">
       <img
@@ -34,7 +34,7 @@ const Header = ({ nickname, isLogged, handleLogout }) => (
         Plantes
       </NavLink>
 
-      {!isLogged
+      {!isLogged && !isSigned
         ? (
           <NavLink
             to="/connexion"
@@ -72,6 +72,7 @@ const Header = ({ nickname, isLogged, handleLogout }) => (
 Header.propTypes = {
   nickname: PropTypes.string,
   isLogged: PropTypes.bool.isRequired,
+  isSigned: PropTypes.bool.isRequired,
   handleLogout: PropTypes.func.isRequired,
 };
 Header.defaultProps = {

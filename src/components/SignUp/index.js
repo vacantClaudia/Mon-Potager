@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Field from 'src/components/Field';
-import UserCalendar from 'src/components/UserCalendar';
+import UserCalendar from 'src/containers/UserCalendar';
 import './signUp.scss';
 
 const SignUp = ({
@@ -34,7 +34,6 @@ const SignUp = ({
               changeFieldValue(identifier, newValue);
             }}
             value={username}
-            required
           />
           <Field
             identifier="password"
@@ -45,7 +44,6 @@ const SignUp = ({
               changeFieldValue(identifier, newValue);
             }}
             value={password}
-            isRequired
           />
           <Field
             identifier="confirmPassword"
@@ -56,7 +54,6 @@ const SignUp = ({
               changeFieldValue(identifier, newValue);
             }}
             value={confirmPassword}
-            isRequired
           />
           <Field
             identifier="email"
@@ -67,7 +64,6 @@ const SignUp = ({
               changeFieldValue(identifier, newValue);
             }}
             value={email}
-            isRequired
           />
           <Field
             identifier="region"
@@ -78,7 +74,6 @@ const SignUp = ({
               changeFieldValue(identifier, newValue);
             }}
             value={region}
-            isRequired
           />
           <button
             type="submit"
