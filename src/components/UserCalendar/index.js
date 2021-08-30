@@ -13,6 +13,7 @@ import { ChevronLeft, ChevronRight } from 'react-feather';
 
 // == Import css
 import './userCalendar.scss';
+import { addPlant } from '../../actions/userCalendar';
 
 // == UserCalendar Component
 // == props from initial state userCalendarReducer
@@ -24,6 +25,7 @@ const UserCalendar = ({
   plantsSchedules,
   isReadOnly,
   plantsCalendars,
+  addPlant,
 }) => {
   // == ref to calendar to get instance
   const calendarRef = createRef();
@@ -86,6 +88,8 @@ const UserCalendar = ({
   const onBeforeCreateSchedule = useCallback((scheduleData) => {
     console.log(scheduleData);
 
+    // TODO gerer les couleurs en fonction du calendarId
+
     const schedule = {
       id: String(Math.random()),
       title: scheduleData.title,
@@ -100,6 +104,9 @@ const UserCalendar = ({
       },
       state: scheduleData.state,
     };
+
+    // == schedule forwarded to state
+    addPlant(schedule);
 
     calendarRef.current.calendarInst.createSchedules([schedule]);
   }, []);
@@ -141,7 +148,8 @@ const UserCalendar = ({
     if (schedule.isPrivate) {
       html.push('<span class="calendar-font-icon ic-lock-b"></span>');
       html.push(' Private');
-    } else {
+    }
+    else {
       if (schedule.isReadOnly) {
         html.push('<span class="calendar-font-icon ic-readonly-b"></span>');
       } else if (schedule.recurrenceRule) {
@@ -215,6 +223,7 @@ UserCalendar.propTypes = {
   myTheme: PropTypes.object.isRequired,
   plantsSchedules: PropTypes.array.isRequired,
   plantsCalendars: PropTypes.array.isRequired,
+  addPlant: PropTypes.func.isRequired,
 };
 
 // == Export

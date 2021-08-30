@@ -3,6 +3,10 @@ import { connect } from 'react-redux';
 // import component
 import UserCalendar from 'src/components/UserCalendar';
 
+import {
+  addPlant
+} from 'src/actions/userCalendar';
+
 // === mapStateToProps
 const mapStateToProps = (state) => ({
   view: state.userCalendar.view,
@@ -16,7 +20,11 @@ const mapStateToProps = (state) => ({
 
 // === mapDispatchToProps
 const mapDispatchToProps = (dispatch) => ({
-
+  // == get new state plantsSchedules
+  addPlant: (plant) => {
+    const action = addPlant(plant);
+    dispatch(action);
+  },
 }
 );
 
