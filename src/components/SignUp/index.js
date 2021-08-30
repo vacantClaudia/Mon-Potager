@@ -78,7 +78,6 @@ const SignUp = ({
               changeFieldValue(identifier, newValue);
             }}
             value={region}
-            isRequired
           />
           <button
             type="submit"
