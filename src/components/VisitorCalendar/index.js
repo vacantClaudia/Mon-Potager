@@ -33,6 +33,7 @@ const VisitorCalendar = ({
   plants,
   getPlantsList,
   getSelectedRegion,
+  selectedRegion,
 }) => {
   // test response api action case fetchPlants
   useEffect(() => {
@@ -112,7 +113,7 @@ const VisitorCalendar = ({
   return (
     <>
       <div className="visitorCalendar">
-        <select className="visitorCalendarSelectRegion" onChange={handleOptionSelect}>
+        <select className="visitorCalendarSelectRegion" onChange={handleOptionSelect} value={selectedRegion}>
           <option className="option" value="">Choisis ta région!</option>
           <option className="option" value="6">Auvergne-Rhône-Alpes</option>
           <option className="option" value="7">Bourgogne-Franche-Comté</option>
@@ -157,7 +158,7 @@ const VisitorCalendar = ({
 
                   <Calendar
                     // == I put key here for new render
-                    // key={plantsSchedules[0].id} get better key id undifined
+                    key={selectedRegion}
                     // == ref to current calendar ?
                     ref={calendarRef}
                     // == view monthly
@@ -210,6 +211,7 @@ VisitorCalendar.propTypes = {
   plantsCalendars: PropTypes.array.isRequired,
   fetchPlants: PropTypes.func.isRequired,
   getSelectedRegion: PropTypes.func.isRequired,
+  selectedRegion: PropTypes.string.isRequired,
 };
 
 // == Export

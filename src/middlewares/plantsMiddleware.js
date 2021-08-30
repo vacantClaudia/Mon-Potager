@@ -85,8 +85,6 @@ const plantsMiddleware = (store) => (next) => (action) => {
               semiPlants[semiIndex].borderColor = '#fad689';
             }
 
-            console.log(semiPlants);
-
             // get data by plantation period
             const plantationPlants = JSON.parse(JSON.stringify(apiPlants));
 

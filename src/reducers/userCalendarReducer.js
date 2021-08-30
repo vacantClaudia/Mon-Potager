@@ -1,3 +1,7 @@
+import {
+  ADD_PLANT,
+} from 'src/actions/userCalendar';
+
 // == Visitor Calendar initialState : just calendar display, not data schedules
 const initialState = {
   // == maybe use calendar and calendarId to filter by place
@@ -119,17 +123,32 @@ const initialState = {
     'week.dayGridSchedule.marginRight': '8px',
   },
   // == List of regions
-  plantsCalendars: [],
+  plantsCalendars: [
+    {
+      id: '1',
+      name: 'Plante',
+      color: '#ffffff',
+      bgColor: '#9e5fff',
+      dragBgColor: '#9e5fff',
+      borderColor: '#9e5fff',
+    },
+  ],
   // == List of plants
   plantsSchedules: [],
 
-  // == impossible to click on the calendar or schedule may be use
-  // == change to false when you code
+  // == to click on the calendar
   isReadOnly: false,
 };
 
 function userCalendarReducer(state = initialState, action = {}) {
   switch (action.type) {
+    case ADD_PLANT: {
+      return {
+        ...state,
+        plantsSchedules: [...state.plantsSchedules, action.plant],
+      };
+    }
+
     default:
       return state;
   }

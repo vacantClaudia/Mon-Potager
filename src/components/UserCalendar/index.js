@@ -1,4 +1,4 @@
-import React, { createRef } from 'react';
+import React, { createRef, useRef, useCallback } from 'react';
 import PropTypes from 'prop-types';
 
 // == import externals libraries
@@ -76,6 +76,94 @@ const UserCalendar = ({
     });
   };
 
+  const onClickSchedule = useCallback((e) => {
+    const { calendarId, id } = e.schedule;
+    const el = calendarRef.current.calendarInst.getElement(id, calendarId);
+
+    console.log(e, el.getBoundingClientRect());
+  }, []);
+
+  const onBeforeCreateSchedule = useCallback((scheduleData) => {
+    console.log(scheduleData);
+
+    const schedule = {
+      id: String(Math.random()),
+      title: scheduleData.title,
+      isAllDay: scheduleData.isAllDay,
+      start: scheduleData.start,
+      end: scheduleData.end,
+      category: scheduleData.isAllDay ? 'allday' : 'time',
+      dueDateClass: '',
+      location: scheduleData.location,
+      raw: {
+        class: scheduleData.raw['class'],
+      },
+      state: scheduleData.state,
+    };
+
+    calendarRef.current.calendarInst.createSchedules([schedule]);
+  }, []);
+
+  const onBeforeDeleteSchedule = useCallback((res) => {
+    console.log(res);
+
+    const { id, calendarId } = res.schedule;
+
+    calendarRef.current.calendarInst.deleteSchedule(id, calendarId);
+  }, []);
+
+  const onBeforeUpdateSchedule = useCallback((e) => {
+    console.log(e);
+
+    const { schedule, changes } = e;
+
+    calendarRef.current.calendarInst.updateSchedule(
+      schedule.id,
+      schedule.calendarId,
+      changes,
+    );
+  }, []);
+
+  function getFormattedTime(time) {
+    const date = new Date(time);
+    const h = date.getHours();
+    const m = date.getMinutes();
+
+    return `${h}:${m}`;
+  }
+
+  function getTimeTemplate(schedule, isAllDay) {
+    const html = [];
+
+    if (!isAllDay) {
+      html.push('<strong>' + getFormattedTime(schedule.start) + '</strong> ');
+    }
+    if (schedule.isPrivate) {
+      html.push('<span class="calendar-font-icon ic-lock-b"></span>');
+      html.push(' Private');
+    } else {
+      if (schedule.isReadOnly) {
+        html.push('<span class="calendar-font-icon ic-readonly-b"></span>');
+      } else if (schedule.recurrenceRule) {
+        html.push('<span class="calendar-font-icon ic-repeat-b"></span>');
+      } else if (schedule.attendees.length) {
+        html.push('<span class="calendar-font-icon ic-user-b"></span>');
+      } else if (schedule.location) {
+        html.push('<span class="calendar-font-icon ic-location-b"></span>');
+      }
+      html.push(' ' + schedule.title);
+    }
+
+    return html.join('');
+  }
+
+  const templates = {
+    time: function (schedule) {
+      console.log(schedule);
+      return getTimeTemplate(schedule, false);
+    },
+  };
+
   return (
     <div className="userCalendar">
       <div className="userCalendar-buttonsTodayMonth">
@@ -107,6 +195,13 @@ const UserCalendar = ({
         calendars={plantsCalendars}
         // == possible or not to click on calendar or schedules (boolean)
         isReadOnly={isReadOnly}
+        useCreationPopup={true}
+        useDetailPopup={true}
+        template={templates}
+        onClickSchedule={onClickSchedule}
+        onBeforeCreateSchedule={onBeforeCreateSchedule}
+        onBeforeDeleteSchedule={onBeforeDeleteSchedule}
+        onBeforeUpdateSchedule={onBeforeUpdateSchedule}
       />
     </div>
   );
@@ -117,6 +212,9 @@ UserCalendar.propTypes = {
   daynames: PropTypes.array.isRequired,
   startDayOfWeek: PropTypes.number.isRequired,
   isReadOnly: PropTypes.bool.isRequired,
+  myTheme: PropTypes.object.isRequired,
+  plantsSchedules: PropTypes.array.isRequired,
+  plantsCalendars: PropTypes.array.isRequired,
 };
 
 // == Export
