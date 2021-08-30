@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
+import { Icon } from 'semantic-ui-react';
 
 import './header.scss';
 import logo from 'src/assets/images/Logo2.jpg';
@@ -64,9 +65,17 @@ const Header = ({ nickname, isLogged, handleLogout }) => (
 
           </>
         )}
+      <NavLink
+        to="/evenements"
+        className="nav-item"
+        activeClassName="nav-item--active"
+        exact
+      >
+        <Icon name="bell outline" size="large" className="nav-icon" />
+      </NavLink>
     </div>
   </div>
-  // </div>
+
 );
 
 Header.propTypes = {
