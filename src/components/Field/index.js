@@ -15,11 +15,65 @@ const Field = ({
   changeField,
 }) => {
   const handleChange = (event) => {
-    const { value: inputValue, name } = event.target;
-
+    // const { value: inputValue, name } = event.target;
     // c'est équivalent à :
-    // const inputValue = event.target.value;
-    // const name = event.target.name;
+    const inputValue = event.target.value;
+    const name = event.target.name;
+    if (event.target.name === 'username') {
+      if (event.target.value === '' || event.target.value === null) {
+        changeField({
+          usernameError: true,
+        });
+      }
+      else {
+        changeField({
+          usernameError: false,
+          username: event.target.value,
+        });
+      }
+    }
+
+    if (event.target.name === 'password') {
+      if (event.target.value === '' || event.target.value === null) {
+        changeField({
+          passwordError: true,
+        });
+      }
+      else {
+        changeField({
+          passwordError: false,
+          password: event.target.value,
+        });
+      }
+    }
+
+    if (event.target.name === 'confirmPassword') {
+      if (event.target.value !== event.target.value.password) {
+        changeField({
+          confirmPasswordError: true,
+        });
+      }
+      else {
+        changeField({
+          confirmPasswordError: false,
+          confirmPassword: event.target.value,
+        });
+      }
+    }
+
+    if (event.target.name === 'email') {
+      if (event.target.value === '' || event.target.value === null) {
+        changeField({
+          emailError: true,
+        });
+      }
+      else {
+        changeField({
+          emailError: false,
+          email: event.target.value,
+        });
+      }
+    }
 
     changeField(name, inputValue);
   };
