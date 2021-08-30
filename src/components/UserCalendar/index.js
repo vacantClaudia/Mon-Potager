@@ -113,10 +113,10 @@ const UserCalendar = ({
 };
 
 UserCalendar.propTypes = {
-  // view: PropTypes.string.isRequired,
-  // daynames: PropTypes.array.isRequired,
-  // startDayOfWeek: PropTypes.number.isRequired,
-  // isReadOnly: PropTypes.bool.isRequired,
+  view: PropTypes.string.isRequired,
+  daynames: PropTypes.array.isRequired,
+  startDayOfWeek: PropTypes.number.isRequired,
+  isReadOnly: PropTypes.bool.isRequired,
 };
 
 // == Export

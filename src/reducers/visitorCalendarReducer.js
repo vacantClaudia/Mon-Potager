@@ -4,11 +4,11 @@ import {
   DISPLAY_PLANTS,
   SAVE_PLANTS,
   CHANGE_CALENDAR_MODE,
+  SELECTED_REGION,
 } from 'src/actions/visitorCalendar';
 
-// == Visitor Calendar initialState : just calendar display, not data schedules
+// == Visitor Calendar initialState / selected region
 const initialState = {
-  // == maybe use calendar and calendarId to filter by place
   // == calendar view monthly
   view: 'month',
   // == day names on the top of the calendar
@@ -130,12 +130,14 @@ const initialState = {
   plantsCalendars: [],
   // == List of plants
   plantsSchedules: [],
-
   // == impossible to click on the calendar or schedule may be use
   // == change to false when you code
   isReadOnly: true,
   selected: false,
   isCalendarMode: false,
+
+  // == Selected region
+  selectedRegion: '',
 };
 
 function visitorCalendarReducer(state = initialState, action = {}) {
@@ -164,6 +166,12 @@ function visitorCalendarReducer(state = initialState, action = {}) {
       return {
         ...state,
         isCalendarMode: action.value,
+      };
+
+    case SELECTED_REGION:
+      return {
+        ...state,
+        selectedRegion: action.region,
       };
 
     default:

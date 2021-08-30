@@ -32,6 +32,7 @@ const VisitorCalendar = ({
   changeCalendarMode,
   plants,
   getPlantsList,
+  getSelectedRegion,
 }) => {
   // test response api action case fetchPlants
   useEffect(() => {
@@ -95,6 +96,7 @@ const VisitorCalendar = ({
   const handleOptionSelect = (evt) => {
     displayPlants();
     const getOptionValue = evt.target.value;
+    getSelectedRegion(getOptionValue);
     // eslint-disable-next-line array-callback-return
     plantsSchedules.map((item) => {
       if (item.calendarId === getOptionValue) {
@@ -207,6 +209,7 @@ VisitorCalendar.propTypes = {
   plantsSchedules: PropTypes.array.isRequired,
   plantsCalendars: PropTypes.array.isRequired,
   fetchPlants: PropTypes.func.isRequired,
+  getSelectedRegion: PropTypes.func.isRequired,
 };
 
 // == Export

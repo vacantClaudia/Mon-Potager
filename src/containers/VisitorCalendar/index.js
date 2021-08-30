@@ -10,6 +10,7 @@ import {
   displayPlants,
   fetchPlants,
   changeCalendarMode,
+  getSelectedRegion,
 } from 'src/actions/visitorCalendar';
 
 import { getPlantsList } from 'src/actions/plantsList';
@@ -54,6 +55,11 @@ const mapDispatchToProps = (dispatch) => ({
 
   getPlantsList: () => {
     const action = getPlantsList();
+    dispatch(action);
+  },
+
+  getSelectedRegion: (region) => {
+    const action = getSelectedRegion(region);
     dispatch(action);
   },
 }
