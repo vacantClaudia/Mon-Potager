@@ -48,7 +48,7 @@ const plantsMiddleware = (store) => (next) => (action) => {
                 semiPlants[semiIndex].start = semiPlants[semiIndex].periode_regions.debut_semi_corse[0];
                 semiPlants[semiIndex].end = semiPlants[semiIndex].periode_regions.fin_semi_corse[0];
               }
-              if (semiPlants[semiIndex].calendarId === '11') {
+              else if (semiPlants[semiIndex].calendarId === '11') {
                 semiPlants[semiIndex].start = semiPlants[semiIndex].periode_regions.debut_semi_est[0];
                 semiPlants[semiIndex].end = semiPlants[semiIndex].periode_regions.fin_semi_est[0];
               }
@@ -85,6 +85,8 @@ const plantsMiddleware = (store) => (next) => (action) => {
               semiPlants[semiIndex].borderColor = '#fad689';
             }
 
+            console.log(semiPlants);
+
             // get data by plantation period
             const plantationPlants = JSON.parse(JSON.stringify(apiPlants));
 
@@ -109,7 +111,7 @@ const plantsMiddleware = (store) => (next) => (action) => {
                 plantationPlants[plantationIndex].start = plantationPlants[plantationIndex].periode_regions.debut_plant_corse[0];
                 plantationPlants[plantationIndex].end = plantationPlants[plantationIndex].periode_regions.fin_plant_corse[0];
               }
-              if (plantationPlants[plantationIndex].calendarId === '11') {
+              else if (plantationPlants[plantationIndex].calendarId === '11') {
                 plantationPlants[plantationIndex].start = plantationPlants[plantationIndex].periode_regions.debut_plant_est[0];
                 plantationPlants[plantationIndex].end = plantationPlants[plantationIndex].periode_regions.fin_plant_est[0];
               }
@@ -170,7 +172,7 @@ const plantsMiddleware = (store) => (next) => (action) => {
                 recoltePlants[recolteIndex].start = recoltePlants[recolteIndex].periode_regions.debut_recolte_corse[0];
                 recoltePlants[recolteIndex].end = recoltePlants[recolteIndex].periode_regions.fin_recolte_corse[0];
               }
-              if (recoltePlants[recolteIndex].calendarId === '11') {
+              else if (recoltePlants[recolteIndex].calendarId === '11') {
                 recoltePlants[recolteIndex].start = recoltePlants[recolteIndex].periode_regions.debut_recolte_est[0];
                 recoltePlants[recolteIndex].end = recoltePlants[recolteIndex].periode_regions.fin_recolte_est[0];
               }
@@ -220,6 +222,7 @@ const plantsMiddleware = (store) => (next) => (action) => {
             // console.log(newAction);
           })
           .catch((error) => {
+            // eslint-disable-next-line no-console
             console.log(error);
           });
       }
