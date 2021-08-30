@@ -61,6 +61,16 @@ const Footer = () => (
         <Icon name="leaf" size="large" className="nav-icon" />
         Plantes
       </NavLink>
+
+      <NavLink
+        to="/evenements"
+        className="nav-item"
+        activeClassName="nav-item--active"
+        exact
+      >
+        <Icon name="bell outline" size="large" className="nav-icon" />
+        Evenements
+      </NavLink>
     </div>
   </>
 );

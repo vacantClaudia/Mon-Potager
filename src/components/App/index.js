@@ -14,6 +14,7 @@ import Footer from 'src/components/Footer';
 import PlantsList from 'src/containers/PlantsList';
 import NotFound from 'src/components/NotFound';
 import SignUp from 'src/containers/SignUp';
+import Events from 'src/containers/Events';
 
 // == App component
 const App = () => (
@@ -37,6 +38,10 @@ const App = () => (
 
       <Route path="/inscription" exact>
         <SignUp />
+      </Route>
+
+      <Route path="/evenements" exact>
+        <Events />
       </Route>
 
       <Route>
