@@ -80,6 +80,7 @@ const plantsMiddleware = (store) => (next) => (action) => {
                 semiPlants[semiIndex].start = semiPlants[semiIndex].periode_regions.debut_semi_azur[0];
                 semiPlants[semiIndex].end = semiPlants[semiIndex].periode_regions.fin_semi_azur[0];
               }
+              semiPlants[semiIndex].period = 'semi';
               semiPlants[semiIndex].color = '#474647';
               semiPlants[semiIndex].bgColor = '#f3c465';
               semiPlants[semiIndex].borderColor = '#fad689';
@@ -141,6 +142,7 @@ const plantsMiddleware = (store) => (next) => (action) => {
                 plantationPlants[plantationIndex].start = plantationPlants[plantationIndex].periode_regions.debut_plant_azur[0];
                 plantationPlants[plantationIndex].end = plantationPlants[plantationIndex].periode_regions.fin_plant_azur[0];
               }
+              plantationPlants[plantationIndex].period = 'plantation';
               plantationPlants[plantationIndex].color = '#474647';
               plantationPlants[plantationIndex].bgColor = '#f46d5f';
               plantationPlants[plantationIndex].borderColor = '#e4bd9f';
@@ -202,6 +204,7 @@ const plantsMiddleware = (store) => (next) => (action) => {
                 recoltePlants[recolteIndex].start = recoltePlants[recolteIndex].periode_regions.debut_recolte_azur[0];
                 recoltePlants[recolteIndex].end = recoltePlants[recolteIndex].periode_regions.fin_recolte_azur[0];
               }
+              recoltePlants[recolteIndex].period = 'récolte';
               recoltePlants[recolteIndex].color = '#474647';
               recoltePlants[recolteIndex].bgColor = '#9ed2bf';
               recoltePlants[recolteIndex].borderColor = '#daece5';
