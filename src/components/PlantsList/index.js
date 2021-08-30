@@ -15,26 +15,32 @@ const PlantsList = ({ plants, getPlantsList }) => {
     getPlantsList();
   }, []);
   return (
-    <div className="accordion">
-      {plants.map((plant) => {
-        if (!plant.isVisible) {
-          return (
-            <>
-              <input type="radio" name="select" className="accordion-select" />
-              <div className="accordion-title"><span>{plant.title.rendered}</span></div>
-              <div className="accordion-content">
-                <img
-                  src={plant._embedded['wp:featuredmedia'][0].media_details.sizes.thumbnail.source_url}
-                  alt="plante"
-                  className="accordion-image"
-                />
-                <p dangerouslySetInnerHTML={createMarkup(plant.content.rendered)} />
-              </div>
-            </>
-          );
-        }
-      })}
-    </div>
+    <>
+      <div className="accordion">
+        {plants.map((plant) => {
+          if (!plant.isVisible) {
+            return (
+              <>
+                <input type="radio" name="select" className="accordion-select" />
+                <div key={plant.title.rendered} className="accordion-title"><span>{plant.title.rendered}</span></div>
+                <div className="accordion-content">
+                  <img
+                    key={plant._embedded['wp:featuredmedia'][0].media_details.sizes.thumbnail.source_url}
+                    src={plant._embedded['wp:featuredmedia'][0].media_details.sizes.thumbnail.source_url}
+                    alt="plante"
+                    className="accordion-image"
+                  />
+                  <p
+                    key={plant.content.rendered}
+                    dangerouslySetInnerHTML={createMarkup(plant.content.rendered)}
+                  />
+                </div>
+              </>
+            );
+          }
+        })}
+      </div>
+    </>
   );
 };
 
@@ -45,11 +51,6 @@ PlantsList.propTypes = {
       title: PropTypes.object.isRequired,
       content: PropTypes.object.isRequired,
       _embedded: PropTypes.object.isRequired,
-      // media_details: PropTypes.objectOf({
-      //   sizes: PropTypes.objectOf({
-      //     thumbnail: PropTypes.object.isRequired,
-      //   }).isRequired,
-      // }).isRequired,
     }).isRequired,
   ).isRequired,
   getPlantsList: PropTypes.func.isRequired,
