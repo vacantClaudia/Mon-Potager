@@ -1,0 +1,60 @@
+@use 'src/styles/vars';
+
+.events{
+  @media (min-width: 600px){
+    text-align: center;
+    background-color: rgba($color: #c3e4a8, $alpha: 0.4);
+    height: 100%;
+    border-radius: 1em;
+    width: 80%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    .events-title{
+  
+    }
+    .sowing{
+      background-color: rgba($color: #c5c0c0, $alpha: 0.3);
+      border-radius: 1em;
+      width: 40%;
+      margin: 1em;
+      display: flex;
+      flex-direction: column;
+      .sowing-title{
+        margin: auto;
+      }
+  
+    }
+    .planting{
+      background-color: rgba($color: #c5c0c0, $alpha: 0.3);
+      border-radius: 1em;
+      width: 40%;
+      margin: 1em;
+      padding: auto;
+      display: flex;
+      justify-content: flex-end;
+      align-self: flex-end;
+      display: flex;
+      flex-direction: column;
+      .planting-title{
+        margin: auto;
+      }
+  
+    }
+    .harvest{
+      background-color: rgba($color: #c5c0c0, $alpha: 0.3);
+      border-radius: 1em;
+      width: 40%;
+      margin: 1em;
+      display: flex;
+      display: flex;
+      flex-direction: column;
+   
+      .harvest-title{
+        margin: auto;
+  
+      }
+    }
+  }
+
+}
