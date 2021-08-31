@@ -126,11 +126,27 @@ const initialState = {
   plantsCalendars: [
     {
       id: '1',
-      name: 'Plante',
-      color: '#ffffff',
-      bgColor: '#9e5fff',
-      dragBgColor: '#9e5fff',
-      borderColor: '#9e5fff',
+      name: 'Semi',
+      color: '#474647',
+      bgColor: '#f3c465',
+      dragBgColor: '#daece5',
+      borderColor: '#fad689',
+    },
+    {
+      id: '2',
+      name: 'Plantation',
+      color: '#474647',
+      bgColor: '#f46d5f',
+      dragBgColor: '#daece5',
+      borderColor: '#e4bd9f',
+    },
+    {
+      id: '3',
+      name: 'Récolte',
+      color: '#474647',
+      bgColor: '#9ed2bf',
+      dragBgColor: '#daece5',
+      borderColor: '#daece5',
     },
   ],
   // == List of plants

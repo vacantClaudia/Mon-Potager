@@ -14,6 +14,7 @@ const PlantsList = ({ plants, getPlantsList }) => {
   useEffect(() => {
     getPlantsList();
   }, []);
+
   return (
     <div className="accordion">
       {plants.map((plant) => {
@@ -24,7 +25,8 @@ const PlantsList = ({ plants, getPlantsList }) => {
               <div className="accordion-title"><span>{plant.title.rendered}</span></div>
               <div className="accordion-content">
                 <img
-                  src={plant._embedded['wp:featuredmedia'][0].media_details.sizes.thumbnail.source_url}
+                  // eslint-disable-next-line no-underscore-dangle
+                  src={plant._embedded["wp:featuredmedia"][0].media_details.sizes.thumbnail.source_url}
                   alt="plante"
                   className="accordion-image"
                 />

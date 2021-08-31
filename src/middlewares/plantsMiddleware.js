@@ -18,7 +18,7 @@ const plantsMiddleware = (store) => (next) => (action) => {
             apiData.map((plant) => {
               plant.calendarId = regionId[calendarId];
               plant.id = JSON.stringify(plant.id);
-              plant.title = plant.slug;
+              plant.title = plant.title.rendered;
               plant.category = 'time';
               plant.isVisible = false;
               apiPlants.push(plant);
@@ -85,8 +85,6 @@ const plantsMiddleware = (store) => (next) => (action) => {
               semiPlants[semiIndex].bgColor = '#f3c465';
               semiPlants[semiIndex].borderColor = '#fad689';
             }
-
-            console.log('semis:', semiPlants);
 
             // get data by plantation period
             const plantationPlants = JSON.parse(JSON.stringify(apiPlants));

@@ -1,4 +1,4 @@
-import React, { createRef, useRef, useCallback } from 'react';
+import React, { createRef, useCallback, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 
 // == import externals libraries
@@ -24,9 +24,20 @@ const UserCalendar = ({
   plantsSchedules,
   isReadOnly,
   plantsCalendars,
+  addPlant,
+  plants,
+  getPlantsList,
 }) => {
+  // == to use Api plants list in TUI CALENDAR
+  useEffect(() => {
+    getPlantsList();
+  }, []);
+
+  // TODO bien utiliser addPlant et peut être créer d'autres actions pour gérer
+  // TODO l'ajout, suppression et modification d'events
+
   // == ref to calendar to get instance
-  const calendarRef = createRef();
+  const calendarRef = useRef();
 
   // == get current date to display on the top of calendar
   // == today's date
@@ -86,6 +97,8 @@ const UserCalendar = ({
   const onBeforeCreateSchedule = useCallback((scheduleData) => {
     console.log(scheduleData);
 
+    // TODO gerer les couleurs en fonction du calendarId
+
     const schedule = {
       id: String(Math.random()),
       title: scheduleData.title,
@@ -141,7 +154,8 @@ const UserCalendar = ({
     if (schedule.isPrivate) {
       html.push('<span class="calendar-font-icon ic-lock-b"></span>');
       html.push(' Private');
-    } else {
+    }
+    else {
       if (schedule.isReadOnly) {
         html.push('<span class="calendar-font-icon ic-readonly-b"></span>');
       } else if (schedule.recurrenceRule) {
@@ -215,6 +229,9 @@ UserCalendar.propTypes = {
   myTheme: PropTypes.object.isRequired,
   plantsSchedules: PropTypes.array.isRequired,
   plantsCalendars: PropTypes.array.isRequired,
+  addPlant: PropTypes.func.isRequired,
+  plants: PropTypes.array.isRequired,
+  getPlantsList: PropTypes.func.isRequired,
 };
 
 // == Export
