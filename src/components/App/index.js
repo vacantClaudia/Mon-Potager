@@ -10,7 +10,7 @@ import './styles.scss';
 import Header from 'src/containers/Header';
 import Home from 'src/containers/Home';
 import Connect from 'src/containers/Connect';
-import Footer from 'src/components/Footer';
+import Footer from 'src/containers/Footer';
 import PlantsList from 'src/containers/PlantsList';
 import NotFound from 'src/components/NotFound';
 import SignUp from 'src/containers/SignUp';
