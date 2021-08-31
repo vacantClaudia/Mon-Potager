@@ -96,24 +96,68 @@ const UserCalendar = ({
 
   const onBeforeCreateSchedule = useCallback((scheduleData) => {
     console.log(scheduleData);
-
+    let schedule = {};
     // TODO gerer les couleurs en fonction du calendarId
-
-    const schedule = {
-      id: String(Math.random()),
-      title: scheduleData.title,
-      isAllDay: scheduleData.isAllDay,
-      start: scheduleData.start,
-      end: scheduleData.end,
-      category: scheduleData.isAllDay ? 'allday' : 'time',
-      dueDateClass: '',
-      location: scheduleData.location,
-      raw: {
-        class: scheduleData.raw['class'],
-      },
-      state: scheduleData.state,
-    };
-
+    if (scheduleData.calendarId === '1') {
+      schedule = {
+        id: String(Math.random()),
+        title: scheduleData.title,
+        isAllDay: scheduleData.isAllDay,
+        start: scheduleData.start,
+        end: scheduleData.end,
+        category: scheduleData.isAllDay ? 'allday' : 'time',
+        dueDateClass: '',
+        location: scheduleData.location,
+        raw: {
+          class: scheduleData.raw['class'],
+        },
+        state: scheduleData.state,
+        color: '#474647',
+        bgColor: '#f3c465',
+        dragBgColor: '#daece5',
+        borderColor: '#fad689',
+      };
+    }
+    else if (scheduleData.calendarId === '2') {
+      schedule = {
+        id: String(Math.random()),
+        title: scheduleData.title,
+        isAllDay: scheduleData.isAllDay,
+        start: scheduleData.start,
+        end: scheduleData.end,
+        category: scheduleData.isAllDay ? 'allday' : 'time',
+        dueDateClass: '',
+        location: scheduleData.location,
+        raw: {
+          class: scheduleData.raw['class'],
+        },
+        state: scheduleData.state,
+        color: '#474647',
+        bgColor: '#f46d5f',
+        dragBgColor: '#daece5',
+        borderColor: '#e4bd9f',
+      };
+    }
+    else if (scheduleData.calendarId === '3') {
+      schedule = {
+        id: String(Math.random()),
+        title: scheduleData.title,
+        isAllDay: scheduleData.isAllDay,
+        start: scheduleData.start,
+        end: scheduleData.end,
+        category: scheduleData.isAllDay ? 'allday' : 'time',
+        dueDateClass: '',
+        location: scheduleData.location,
+        raw: {
+          class: scheduleData.raw['class'],
+        },
+        state: scheduleData.state,
+        color: '#474647',
+        bgColor: '#9ed2bf',
+        dragBgColor: '#daece5',
+        borderColor: '#daece5',
+      };
+    }
     calendarRef.current.calendarInst.createSchedules([schedule]);
   }, []);
 
