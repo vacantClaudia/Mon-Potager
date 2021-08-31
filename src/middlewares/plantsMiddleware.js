@@ -18,7 +18,7 @@ const plantsMiddleware = (store) => (next) => (action) => {
             apiData.map((plant) => {
               plant.calendarId = regionId[calendarId];
               plant.id = JSON.stringify(plant.id);
-              plant.title = plant.slug;
+              plant.title = plant.title.rendered;
               plant.category = 'time';
               plant.isVisible = false;
               apiPlants.push(plant);

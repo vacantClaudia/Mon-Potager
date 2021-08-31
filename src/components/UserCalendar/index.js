@@ -13,7 +13,6 @@ import { ChevronLeft, ChevronRight } from 'react-feather';
 
 // == Import css
 import './userCalendar.scss';
-import { addPlant } from '../../actions/userCalendar';
 
 // == UserCalendar Component
 // == props from initial state userCalendarReducer
