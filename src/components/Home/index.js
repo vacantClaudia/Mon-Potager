@@ -20,7 +20,7 @@ const Home = ({ plants, getPlantsList, selected }) => {
       {!selected && (
       <div className="plantsList">
 
-        {plants.filter((plant) => plant.id > 67)
+        {plants.filter((plant) => plant.id > 71)
           .map((plant) => (
             <Card
               {...plant}
