@@ -1,8 +1,10 @@
+/* eslint-disable jsx-a11y/alt-text */
 import React from 'react';
 import PropTypes from 'prop-types';
 
 import Field from 'src/components/Field';
-import UserCalendar from 'src/components/UserCalendar';
+import jardiniers3 from 'src/assets/images/jardiniers3.png';
+
 import './signUp.scss';
 
 const SignUp = ({
@@ -34,7 +36,6 @@ const SignUp = ({
               changeFieldValue(identifier, newValue);
             }}
             value={username}
-            required
           />
           <Field
             identifier="password"
@@ -45,7 +46,6 @@ const SignUp = ({
               changeFieldValue(identifier, newValue);
             }}
             value={password}
-            isRequired
           />
           <Field
             identifier="confirmPassword"
@@ -56,7 +56,6 @@ const SignUp = ({
               changeFieldValue(identifier, newValue);
             }}
             value={confirmPassword}
-            isRequired
           />
           <Field
             identifier="email"
@@ -67,7 +66,6 @@ const SignUp = ({
               changeFieldValue(identifier, newValue);
             }}
             value={email}
-            isRequired
           />
           <Field
             identifier="region"
@@ -87,10 +85,27 @@ const SignUp = ({
           </button>
         </form>
       )
-      : <UserCalendar />}
-
+      : (
+        <>
+          <h1>Bienvenue dans le club des apprentis jardiniers!</h1>
+          <h4>Tu peux te connecter dès maintenant et commencer ton propre calendrier.</h4>
+          <button
+            type="submit"
+            className="connect-submit"
+          > <a href="/connexion">Me connecter</a>
+          </button>
+          <div className="container-jardinier">
+            <img
+              src={jardiniers3}
+              alt="jardiniers"
+              className="jardiniers"
+            />
+          </div>
+        </>
+      )}
   </div>
 );
+
 SignUp.propTypes = {
   username: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,

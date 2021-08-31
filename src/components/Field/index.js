@@ -16,10 +16,9 @@ const Field = ({
 }) => {
   const handleChange = (event) => {
     const { value: inputValue, name } = event.target;
-
     // c'est équivalent à :
     // const inputValue = event.target.value;
-    // const name = event.target.name;
+    // const { name } = event.target;
 
     changeField(name, inputValue);
   };
@@ -34,6 +33,7 @@ const Field = ({
         type={type}
         value={value}
         onChange={handleChange}
+        required
       />
       <label
         className="label"

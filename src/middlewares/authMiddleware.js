@@ -71,7 +71,13 @@ const authMiddleware = (store) => (next) => (action) => {
       // console.log('on va envoyer la requête');
 
       // on va piocher dans le state les infos nécessaires
-      const { username, password, confirmPassword, email, region } = store.getState().auth;
+      const {
+        username,
+        password,
+        confirmPassword,
+        email,
+        region,
+      } = store.getState().register;
 
       axios.post(
         // URL
@@ -86,8 +92,10 @@ const authMiddleware = (store) => (next) => (action) => {
         },
       )
         .then((response) => {
+          // console.log(response);
           const newAction = saveUserRegister(
             response.data.token,
+            console.log(response.data.token),
             response.data.user_display_name,
             response.data.signed,
           );

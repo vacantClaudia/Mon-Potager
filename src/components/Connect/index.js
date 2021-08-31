@@ -31,7 +31,6 @@ const Connect = ({
               changeFieldValue(identifier, newValue);
             }}
             value={userName}
-            required
           />
           <Field
             identifier="password"
@@ -42,7 +41,6 @@ const Connect = ({
               changeFieldValue(identifier, newValue);
             }}
             value={password}
-            isRequired
           />
           <button
             type="submit"

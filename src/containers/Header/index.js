@@ -10,6 +10,7 @@ const mapStateToProps = (state) => ({
   // nom de la prop à remplir: élément à récupérer dans le state
   nickname: state.auth.nickname,
   isLogged: state.auth.logged,
+  isSigned: state.register.signed,
 });
 
 // === mapDispatchToProps
