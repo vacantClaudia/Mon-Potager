@@ -1,4 +1,4 @@
-import React, { createRef, useRef, useCallback } from 'react';
+import React, { createRef, useCallback, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 
 // == import externals libraries
@@ -25,9 +25,19 @@ const UserCalendar = ({
   isReadOnly,
   plantsCalendars,
   addPlant,
+  plants,
+  getPlantsList,
 }) => {
+  // == to use Api plants list in TUI CALENDAR
+  useEffect(() => {
+    getPlantsList();
+  }, []);
+
+  // TODO bien utiliser addPlant et peut être créer d'autres actions pour gérer
+  // TODO l'ajout, suppression et modification d'events
+
   // == ref to calendar to get instance
-  const calendarRef = createRef();
+  const calendarRef = useRef();
 
   // == get current date to display on the top of calendar
   // == today's date
@@ -103,9 +113,6 @@ const UserCalendar = ({
       },
       state: scheduleData.state,
     };
-
-    // == schedule forwarded to state
-    addPlant(schedule);
 
     calendarRef.current.calendarInst.createSchedules([schedule]);
   }, []);
@@ -223,6 +230,8 @@ UserCalendar.propTypes = {
   plantsSchedules: PropTypes.array.isRequired,
   plantsCalendars: PropTypes.array.isRequired,
   addPlant: PropTypes.func.isRequired,
+  plants: PropTypes.array.isRequired,
+  getPlantsList: PropTypes.func.isRequired,
 };
 
 // == Export
