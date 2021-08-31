@@ -15,7 +15,6 @@ import PlantsList from 'src/containers/PlantsList';
 import NotFound from 'src/components/NotFound';
 import SignUp from 'src/containers/SignUp';
 import Events from 'src/containers/Events';
-import FruitsList from 'src/containers/FruitsList';
 
 // == App component
 const App = () => (
@@ -31,7 +30,6 @@ const App = () => (
 
       <Route path="/plantes" exact>
         <PlantsList />
-        <FruitsList />
       </Route>
 
       <Route path="/connexion" exact>

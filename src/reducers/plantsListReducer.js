@@ -1,10 +1,12 @@
 // import actions types
 import {
   SAVE_PLANTS_LIST,
+  DISPLAY_FRUITS,
 } from 'src/actions/plantsList';
 
 const initialState = {
   plants: [],
+  isFruits: false,
 };
 
 function plantsListReducer(state = initialState, action = {}) {
@@ -14,6 +16,13 @@ function plantsListReducer(state = initialState, action = {}) {
         ...state,
         plants: action.plants,
       };
+
+    case DISPLAY_FRUITS:
+      return {
+        ...state,
+        isFruits: action.value,
+      };
+
     default:
       return state;
   }

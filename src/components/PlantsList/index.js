@@ -10,38 +10,81 @@ function createMarkup(data) {
   return { __html: DOMPurify.sanitize(data) };
 }
 
-const PlantsList = ({ plants, getPlantsList }) => {
+const PlantsList = ({
+  plants,
+  getPlantsList,
+  isFruits,
+  displayFruits,
+}) => {
+  console.log(isFruits);
   useEffect(() => {
     getPlantsList();
   }, []);
   return (
     <>
-      <div className="accordion">
-        {plants.map((plant) => {
-          if (!plant.isVisible) {
-            return (
-              <>
-                <input type="radio" name="select" className="accordion-select" />
-                <div key={plant.title.rendered} className="accordion-title"><span>{plant.title.rendered}</span></div>
-                <div className="accordion-content">
-                  <p className="container-image">
-                    <img
-                      key={plant._embedded['wp:featuredmedia'][0].media_details.sizes.thumbnail.source_url}
-                      src={plant._embedded['wp:featuredmedia'][0].media_details.sizes.thumbnail.source_url}
-                      alt="plante"
-                      className="accordion-image"
-                    />
-                  </p>
-                  <p
-                    key={plant.content.rendered}
-                    dangerouslySetInnerHTML={createMarkup(plant.content.rendered)}
-                  />
-                </div>
-              </>
-            );
-          }
-        })}
-      </div>
+      <button type="button" onClick={displayFruits(!isFruits)}>
+        Fruits
+      </button>
+      <>{!isFruits
+        ? (
+          <>
+            <div className="accordion">
+              {plants.filter((plant) => plant.plante_type[0] === 19).map((plant) => {
+                if (!plant.isVisible) {
+                  return (
+                    <>
+                      <input type="radio" name="select" className="accordion-select" />
+                      <div key={plant.title.rendered} className="accordion-title"><span>{plant.title.rendered}</span></div>
+                      <div className="accordion-content">
+                        <p className="container-image">
+                          <img
+                            key={plant._embedded['wp:featuredmedia'][0].media_details.sizes.thumbnail.source_url}
+                            src={plant._embedded['wp:featuredmedia'][0].media_details.sizes.thumbnail.source_url}
+                            alt="plante"
+                            className="accordion-image"
+                          />
+                        </p>
+                        <p
+                          key={plant.content.rendered}
+                          dangerouslySetInnerHTML={createMarkup(plant.content.rendered)}
+                        />
+                      </div>
+                    </>
+                  );
+                }
+              })}
+            </div>
+          </>
+        )
+        : (
+          <div className="accordion">
+            {plants.map((plant) => {
+              if (!plant.isVisible) {
+                return (
+                  <>
+                    <input type="radio" name="select" className="accordion-select" />
+                    <div key={plant.title.rendered} className="accordion-title"><span>{plant.title.rendered}</span></div>
+                    <div className="accordion-content">
+                      <p className="container-image">
+                        <img
+                          key={plant._embedded['wp:featuredmedia'][0].media_details.sizes.thumbnail.source_url}
+                          src={plant._embedded['wp:featuredmedia'][0].media_details.sizes.thumbnail.source_url}
+                          alt="plante"
+                          className="accordion-image"
+                        />
+                      </p>
+                      <p
+                        key={plant.content.rendered}
+                        dangerouslySetInnerHTML={createMarkup(plant.content.rendered)}
+                      />
+                    </div>
+                  </>
+                );
+              }
+            })}
+          </div>
+        )}
+      </>
     </>
   );
 };
@@ -56,6 +99,8 @@ PlantsList.propTypes = {
     }).isRequired,
   ).isRequired,
   getPlantsList: PropTypes.func.isRequired,
+  isFruits: PropTypes.bool.isRequired,
+  displayFruits: PropTypes.func.isRequired,
 };
 
 export default PlantsList;

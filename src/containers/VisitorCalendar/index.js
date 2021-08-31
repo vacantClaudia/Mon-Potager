@@ -49,7 +49,6 @@ const mapDispatchToProps = (dispatch) => ({
   // toggle to change display on list
   changeCalendarMode: (newValue) => {
     const action = changeCalendarMode(newValue);
-    console.log(`mise à jour de la valeur de changeCalendarMode, newValue=${newValue}`);
     dispatch(action);
   },
 
