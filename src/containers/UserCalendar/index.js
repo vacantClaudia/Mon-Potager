@@ -3,8 +3,11 @@ import { connect } from 'react-redux';
 // import component
 import UserCalendar from 'src/components/UserCalendar';
 
+// import actions creators
+import { getPlantsList } from 'src/actions/plantsList';
+
 import {
-  addPlant
+  addPlant,
 } from 'src/actions/userCalendar';
 
 // === mapStateToProps
@@ -16,6 +19,7 @@ const mapStateToProps = (state) => ({
   plantsSchedules: state.userCalendar.plantsSchedules,
   plantsCalendars: state.userCalendar.plantsCalendars,
   isReadOnly: state.userCalendar.isReadOnly,
+  plants: state.plants.plants,
 });
 
 // === mapDispatchToProps
@@ -23,6 +27,10 @@ const mapDispatchToProps = (dispatch) => ({
   // == get new state plantsSchedules
   addPlant: (plant) => {
     const action = addPlant(plant);
+    dispatch(action);
+  },
+  getPlantsList: () => {
+    const action = getPlantsList();
     dispatch(action);
   },
 }
