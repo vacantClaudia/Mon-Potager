@@ -25,14 +25,7 @@ const UserCalendar = ({
   isReadOnly,
   plantsCalendars,
   addPlant,
-  plants,
-  getPlantsList,
 }) => {
-  // == to use Api plants list in TUI CALENDAR
-  useEffect(() => {
-    getPlantsList();
-  }, []);
-
   // TODO bien utiliser addPlant et peut être créer d'autres actions pour gérer
   // TODO l'ajout, suppression et modification d'events
 
@@ -90,12 +83,12 @@ const UserCalendar = ({
   const onClickSchedule = useCallback((e) => {
     const { calendarId, id } = e.schedule;
     const el = calendarRef.current.calendarInst.getElement(id, calendarId);
-
     console.log(e, el.getBoundingClientRect());
   }, []);
 
   const onBeforeCreateSchedule = useCallback((scheduleData) => {
     console.log(scheduleData);
+
     let schedule = {};
     // TODO gerer les couleurs en fonction du calendarId
     if (scheduleData.calendarId === '1') {
@@ -159,6 +152,7 @@ const UserCalendar = ({
       };
     }
     calendarRef.current.calendarInst.createSchedules([schedule]);
+    addPlant(schedule);
   }, []);
 
   const onBeforeDeleteSchedule = useCallback((res) => {
@@ -180,47 +174,6 @@ const UserCalendar = ({
       changes,
     );
   }, []);
-
-  function getFormattedTime(time) {
-    const date = new Date(time);
-    const h = date.getHours();
-    const m = date.getMinutes();
-
-    return `${h}:${m}`;
-  }
-
-  function getTimeTemplate(schedule, isAllDay) {
-    const html = [];
-
-    if (!isAllDay) {
-      html.push('<strong>' + getFormattedTime(schedule.start) + '</strong> ');
-    }
-    if (schedule.isPrivate) {
-      html.push('<span class="calendar-font-icon ic-lock-b"></span>');
-      html.push(' Private');
-    }
-    else {
-      if (schedule.isReadOnly) {
-        html.push('<span class="calendar-font-icon ic-readonly-b"></span>');
-      } else if (schedule.recurrenceRule) {
-        html.push('<span class="calendar-font-icon ic-repeat-b"></span>');
-      } else if (schedule.attendees.length) {
-        html.push('<span class="calendar-font-icon ic-user-b"></span>');
-      } else if (schedule.location) {
-        html.push('<span class="calendar-font-icon ic-location-b"></span>');
-      }
-      html.push(' ' + schedule.title);
-    }
-
-    return html.join('');
-  }
-
-  const templates = {
-    time: function (schedule) {
-      console.log(schedule);
-      return getTimeTemplate(schedule, false);
-    },
-  };
 
   return (
     <div className="userCalendar">
@@ -255,7 +208,6 @@ const UserCalendar = ({
         isReadOnly={isReadOnly}
         useCreationPopup={true}
         useDetailPopup={true}
-        template={templates}
         onClickSchedule={onClickSchedule}
         onBeforeCreateSchedule={onBeforeCreateSchedule}
         onBeforeDeleteSchedule={onBeforeDeleteSchedule}
@@ -274,8 +226,6 @@ UserCalendar.propTypes = {
   plantsSchedules: PropTypes.array.isRequired,
   plantsCalendars: PropTypes.array.isRequired,
   addPlant: PropTypes.func.isRequired,
-  plants: PropTypes.array.isRequired,
-  getPlantsList: PropTypes.func.isRequired,
 };
 
 // == Export
