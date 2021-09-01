@@ -11,7 +11,7 @@ const Events = ({ getPlantsList, plantsSchedules }) => {
   // ? les plants par action
   // Je filtre la liste des semis :
   const sowing = plantsSchedules.filter((plant) => plant.period === 'semi');
-  // console.log(sowing);
+  //  console.log('plantsSchedules:', plantsSchedules);
 
   const planting = plantsSchedules.filter((plant) => plant.period === 'plantation');
   const harvest = plantsSchedules.filter((plant) => plant.period === 'récolte');
