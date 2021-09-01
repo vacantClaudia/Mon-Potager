@@ -6,7 +6,7 @@ import './card.scss';
 
 const Card = ({
   title,
-  content,
+  excerpt,
   _embedded,
 
 }) => {
@@ -27,7 +27,7 @@ const Card = ({
           </div>
         </div>
         <div className="card-back">
-          <p dangerouslySetInnerHTML={createMarkup(content.rendered)} />
+          <p dangerouslySetInnerHTML={createMarkup(excerpt.rendered)} />
         </div>
       </div>
     </div>
@@ -37,7 +37,7 @@ const Card = ({
 
 Card.propTypes = {
   title: PropTypes.object.isRequired,
-  content: PropTypes.object.isRequired,
+  excerpt: PropTypes.object.isRequired,
   _embedded: PropTypes.object.isRequired,
 };
 

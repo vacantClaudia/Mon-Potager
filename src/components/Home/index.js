@@ -7,7 +7,7 @@ import VisitorCalendar from 'src/containers/VisitorCalendar';
 import Card from 'src/containers/Card';
 
 const Home = ({ plants, getPlantsList, selected }) => {
-  console.log(plants);
+  // console.log(plants);
   useEffect(() => {
     getPlantsList();
   }, []);
@@ -20,7 +20,7 @@ const Home = ({ plants, getPlantsList, selected }) => {
       {!selected && (
       <div className="plantsList">
 
-        {plants.filter((plant) => plant.id > 71)
+        {plants.filter((plant) => plant.id > 2)
           .map((plant) => (
             <Card
               {...plant}
