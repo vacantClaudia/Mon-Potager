@@ -7,8 +7,10 @@ import { getPlantsList } from 'src/actions/plantsList';
 // si on a besoin de lire des informations dans le state
 const mapStateToProps = (state) => ({
   // nom de la prop à remplir: élément à récupérer dans le state
-  plantsSchedules: state.visitorCalendar.plantsSchedules,
   plants: state.plants.plants,
+  selected: state.visitorCalendar.selected,
+  selectedRegion: state.visitorCalendar.selectedRegion,
+  plantsSchedules: state.visitorCalendar.plantsSchedules,
 });
 
 // === mapDispatchToProps

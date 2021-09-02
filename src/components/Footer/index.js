@@ -50,7 +50,7 @@ const Footer = ({selected}) => (
         activeClassName="nav-item--active"
         exact
       >
-        <Icon name="user circle outline" size="big" className="nav-icon" />
+        <Icon name="user circle outline" size="large" className="nav-icon" />
         Compte
       </NavLink>
       <NavLink
