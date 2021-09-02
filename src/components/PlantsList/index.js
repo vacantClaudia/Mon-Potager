@@ -24,13 +24,14 @@ const PlantsList = ({ plants, getPlantsList }) => {
               <input type="radio" name="select" className="accordion-select" />
               <div className="accordion-title"><span>{plant.title.rendered}</span></div>
               <div className="accordion-content">
-                <img
-                  // eslint-disable-next-line no-underscore-dangle
-                  src={plant._embedded["wp:featuredmedia"][0].media_details.sizes.thumbnail.source_url}
-                  alt="plante"
-                  className="accordion-image"
-                />
-                {/* <p>plant.</p> */}
+                <p className="container-image">
+                  <img
+                    // eslint-disable-next-line no-underscore-dangle
+                    src={plant._embedded["wp:featuredmedia"][0].media_details.sizes.thumbnail.source_url}
+                    alt="plante"
+                    className="accordion-image"
+                  />
+                </p>
                 <p dangerouslySetInnerHTML={createMarkup(plant.content.rendered)} />
               </div>
             </React.Fragment>
