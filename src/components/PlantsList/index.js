@@ -16,11 +16,11 @@ const PlantsList = ({ plants, getPlantsList }) => {
   }, []);
 
   return (
-    <div className="accordion">
+    <div className="accordion" >
       {plants.map((plant) => {
         if (!plant.isVisible) {
           return (
-            <>
+            <React.Fragment key={plant.id}>
               <input type="radio" name="select" className="accordion-select" />
               <div className="accordion-title"><span>{plant.title.rendered}</span></div>
               <div className="accordion-content">
@@ -30,9 +30,10 @@ const PlantsList = ({ plants, getPlantsList }) => {
                   alt="plante"
                   className="accordion-image"
                 />
+                {/* <p>plant.</p> */}
                 <p dangerouslySetInnerHTML={createMarkup(plant.content.rendered)} />
               </div>
-            </>
+            </React.Fragment>
           );
         }
       })}
@@ -47,6 +48,7 @@ PlantsList.propTypes = {
       title: PropTypes.object.isRequired,
       content: PropTypes.object.isRequired,
       _embedded: PropTypes.object.isRequired,
+      // periode_regions["debut_semi-month_aquitaine"]
       // media_details: PropTypes.objectOf({
       //   sizes: PropTypes.objectOf({
       //     thumbnail: PropTypes.object.isRequired,
