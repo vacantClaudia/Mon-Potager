@@ -1,0 +1,14 @@
+@use 'src/styles/vars';
+
+.mentionsLegales{
+  h2{
+    background-color: vars.$lightGreen;
+    width: 80%;
+    margin: auto;
+    border-radius: 1em;
+  }
+  p{
+    width: 80%;
+    margin: auto;
+  }
+}

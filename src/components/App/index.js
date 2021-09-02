@@ -15,6 +15,9 @@ import PlantsList from 'src/containers/PlantsList';
 import NotFound from 'src/components/NotFound';
 import SignUp from 'src/containers/SignUp';
 import Events from 'src/containers/Events';
+import Cgu from 'src/components/Cgu';
+import MentionsLegales from 'src/components/MentionsLegales';
+import QuiSommesNous from 'src/components/QuiSommesNous';
 
 // == App component
 const App = () => (
@@ -42,6 +45,17 @@ const App = () => (
 
       <Route path="/evenements" exact>
         <Events />
+      </Route>
+
+      <Route path="/cgu" exact>
+        <Cgu />
+      </Route>
+
+      <Route path="/mentions-legales" exact>
+        <MentionsLegales />
+      </Route>
+      <Route path="/qui-sommes-nous" exact>
+        <QuiSommesNous />
       </Route>
 
       <Route>
