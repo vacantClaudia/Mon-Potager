@@ -3,52 +3,31 @@ import PropTypes from 'prop-types';
 
 import './events.scss';
 
-const Events = ({ getPlantsList, plantsSchedules }) => {
+const Events = ({
+  getPlantsList,
+  plants,
+  selectedRegion,
+  plantsSchedules,
+  selected
+}) => {
   useEffect(() => {
     getPlantsList();
   }, []);
+  // console.log('plantsSchedules:', plantsSchedules);
 
-  // ? les plants par action
-  // Je filtre la liste des semis :
-  const sowing = plantsSchedules.filter((plant) => plant.period === 'semi');
-  //  console.log('plantsSchedules:', plantsSchedules);
-
-  const planting = plantsSchedules.filter((plant) => plant.period === 'plantation');
-  const harvest = plantsSchedules.filter((plant) => plant.period === 'récolte');
-
-  // ? les plants par date début
-  // Je converti la date du semis en mois
-  const sowingMonth = sowing
-    .map((plant) => plant.start)
-    .map((plant) => Date.parse(plant))
-    .map((date) => new Date(date))
-    .map((date) => (date.toLocaleString('fr-FR', {
-      timeZone: 'Europe/Paris',
-      year: 'numeric',
-      month: 'long',
-      day: '2-digit',
-    })));
-
-  // console.log(sowingMonth);
-  // const sowingFiltered = Object.assign(sowing, sowingMonth);
-  // console.log('Object.assign', sowingFiltered);
-
-  const plantingStart = planting.map((plant) => plant.start);
-  const harvestStart = harvest.map((plant) => plant.start);
+  const sowing = plantsSchedules.filter((plant) => plant.period === 'semi').filter((plant) => plant.month == 'Septembre');
+  // console.log(sowing);
+  const planting = plantsSchedules.filter((plant) => plant.period === 'plantation').filter((plant) => plant.month == 'Septembre');
+  // console.log(planting);
+  const harvest = plantsSchedules.filter((plant) => plant.period === 'recolte').filter((plant) => plant.month == 'Septembre');
+  // console.log(harvest);
 
   // Le mois en cours
   const currentDate = new Date();
   const currentMonth = currentDate.toLocaleString('fr-FR', {
     timeZone: 'Europe/Paris',
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
+    month: 'long',
   });
-  // console.log('date du jour: ', currentMonth);
-
-  // je filtre les semis pour avoir les semis du mois en cours
-  const sowingFilterMonth = sowing.filter((plant) => (plant.start) === currentMonth);
-  // console.log(sowingFilterMonth);
 
   return (
     <div className="events">
@@ -57,9 +36,8 @@ const Events = ({ getPlantsList, plantsSchedules }) => {
       <div className="sowing">
         <h3 className="sowing-title">Les semis à venir </h3>
         <ul className="plantList">
-
           {sowing.map((plant) => (
-            <li>{plant.title} {plant.start} </li>
+            <li key={plant.id}>{plant.title} : {plant.month}</li>
           ))}
         </ul>
       </div>
@@ -67,9 +45,8 @@ const Events = ({ getPlantsList, plantsSchedules }) => {
       <div className="planting">
         <h3 className="planting-title">Les plantations à venir</h3>
         <ul className="plantList">
-
           {planting.map((plant) => (
-            <li>{plant.title} {plant.start} </li>
+            <li key={plant.id}>{plant.title} : {plant.month}</li>
           ))}
         </ul>
       </div>
@@ -78,7 +55,7 @@ const Events = ({ getPlantsList, plantsSchedules }) => {
         <h3 className="harvest-title">Les récoltes à venir</h3>
         <ul className="plantList">
           {harvest.map((plant) => (
-            <li>{plant.title} {plant.start}</li>
+            <li key={plant.id}>{plant.title} : {plant.month}</li>
           ))}
         </ul>
       </div>
@@ -88,7 +65,22 @@ const Events = ({ getPlantsList, plantsSchedules }) => {
 
 Events.propTypes = {
   getPlantsList: PropTypes.func.isRequired,
+  selectedRegion: PropTypes.string.isRequired,
+  selected: PropTypes.bool.isRequired,
   plantsSchedules: PropTypes.array.isRequired,
+  plants: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.object.isRequired,
+      content: PropTypes.object.isRequired,
+      _embedded: PropTypes.object.isRequired,
+      // media_details: PropTypes.objectOf({
+      //   sizes: PropTypes.objectOf({
+      //     thumbnail: PropTypes.object.isRequired,
+      //   }).isRequired,
+      // }).isRequired,
+    }).isRequired,
+  ).isRequired,
 };
 
 export default Events;
