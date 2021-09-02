@@ -1,4 +1,4 @@
-import React, { createRef, useEffect } from 'react';
+import React, { createRef, useEffect, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import PlantsList from 'src/components/PlantsList';
 // == import externals libraries
@@ -35,14 +35,9 @@ const VisitorCalendar = ({
   getSelectedRegion,
   selectedRegion,
 }) => {
-  // test response api action case fetchPlants
-  useEffect(() => {
-    fetchPlants();
-  }, []);
+  // console.log(plantsSchedules);
   // == ref to calendar to get instance
   const calendarRef = createRef();
-
-  // console.log(plantsSchedules);
 
   // == get current date to display on the top of calendar
   // == today's date
@@ -107,8 +102,14 @@ const VisitorCalendar = ({
         item.isVisible = false;
       }
     });
-    changeIsVisible(plantsSchedules);
+    // TODO NE SERT A RIEN ?
+    // changeIsVisible(plantsSchedules);
   };
+
+  // test response api action case fetchPlants
+  useEffect(() => {
+    fetchPlants();
+  }, []);
 
   return (
     <>

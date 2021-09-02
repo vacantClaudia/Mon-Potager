@@ -4,9 +4,8 @@ import axios from 'axios';
 import { FETCH_PLANTS, savePlants } from '../actions/visitorCalendar';
 
 const regionId = ['6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18']; // dynamiser regionId si on a le temps
-const apiPlants = []; // plants from api loop to iterate regions
-
 const plantsMiddleware = (store) => (next) => (action) => {
+  const apiPlants = []; // plants from api loop to iterate regions
   switch (action.type) {
     case FETCH_PLANTS: {
       // loop by region
@@ -259,7 +258,7 @@ const plantsMiddleware = (store) => (next) => (action) => {
             // To put api data in plantsSchedules
             const newAction = savePlants(apiPlantsSchedules);
             store.dispatch(newAction);
-            // console.log(newAction);
+            console.log(newAction);
           })
           .catch((error) => {
             // eslint-disable-next-line no-console

@@ -10,13 +10,13 @@ const Events = ({
   plantsSchedules,
   selected
 }) => {
-  useEffect(() => {
-    getPlantsList();
-  }, []);
+  // useEffect(() => {
+  //   getPlantsList();
+  // }, []);
   // console.log('plantsSchedules:', plantsSchedules);
 
-  const sowing = plantsSchedules.filter((plant) => plant.period === 'semi').filter((plant) => plant.month == 'Septembre');
-  // console.log(sowing);
+  const sowing = plantsSchedules.filter((plant) => plant.period === 'semi' && plant.calendarId == selectedRegion).filter((plant) => plant.month == 'Septembre');
+  console.log(sowing);
   const planting = plantsSchedules.filter((plant) => plant.period === 'plantation').filter((plant) => plant.month == 'Septembre');
   // console.log(planting);
   const harvest = plantsSchedules.filter((plant) => plant.period === 'recolte').filter((plant) => plant.month == 'Septembre');
