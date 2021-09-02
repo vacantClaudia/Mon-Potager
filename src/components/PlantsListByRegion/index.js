@@ -4,26 +4,21 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import DOMPurify from 'dompurify';
 
-import './plantsList.scss';
+import 'src/components/PlantsList/plantsList.scss';
 
 function createMarkup(data) {
   return { __html: DOMPurify.sanitize(data) };
 }
 
-const PlantsList = ({ plants, getPlantsList }) => {
+const PlantsListByRegion = ({ plantsSchedules, getPlantsList }) => {
+  console.log(plantsSchedules);
   useEffect(() => {
     getPlantsList();
   }, []);
 
   return (
     <div className="accordion">
-      {plants.map((plant) => {
-        let semis = plant.periode_regions['debut_semi-month_aquitaine'];
-        console.log(semis);
-        if (plant.periode_regions['debut_semi-month_aquitaine'] !== plant.periode_regions['fin_semi-month_aquitaine']) {
-          semis = `${plant.periode_regions['debut_semi-month_aquitaine']} à ${plant.periode_regions['fin_semi-month_aquitaine']}`;
-        }
-        console.log(plant.periode_regions['fin_semi-month_aquitaine']);
+      {plantsSchedules.map((plant) => {
         if (!plant.isVisible) {
           return (
             <React.Fragment key={plant.id}>
@@ -32,16 +27,16 @@ const PlantsList = ({ plants, getPlantsList }) => {
               <div className="accordion-content">
 
                 <p className="container-image">
-                  <img
+                  {/* <img
                     // eslint-disable-next-line no-underscore-dangle
                     src={plant._embedded['wp:featuredmedia'][0].media_details.sizes.thumbnail.source_url}
                     alt="plante"
                     className="accordion-image"
-                  />
+                  /> */}
                 </p>
 
                 <p>
-                  Semis: {semis}
+                  Plantation: {plant.periode_regions['debut_semi-month_aquitaine']} à {plant.periode_regions['fin_semi-month_aquitaine']}
                 </p>
 
                 <p>
@@ -63,8 +58,8 @@ const PlantsList = ({ plants, getPlantsList }) => {
   );
 };
 
-PlantsList.propTypes = {
-  plants: PropTypes.arrayOf(
+PlantsListByRegion.propTypes = {
+  plantsSchedules: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
       title: PropTypes.object.isRequired,
@@ -76,4 +71,4 @@ PlantsList.propTypes = {
   getPlantsList: PropTypes.func.isRequired,
 };
 
-export default PlantsList;
+export default PlantsListByRegion;
