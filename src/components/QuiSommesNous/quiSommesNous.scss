@@ -1,0 +1,77 @@
+@use 'src/styles/vars';
+
+.quiSommesNous{
+  // background-image: url("https://images.unsplash.com/photo-1621459555843-9a77f1d03fae?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=634&q=80");
+  // background-size:cover;
+  width: 80%;
+  margin: auto;
+  border-radius: 1em ;
+  .intro{
+    
+    h1{
+      background-color: vars.$lightGreen;
+      width: 80%;
+      margin: auto;
+      border-radius: 1em;
+      padding: 1em;
+    }
+    p{
+      margin: 2em;
+    }
+
+  }
+  .team-front{
+  
+    h2{
+      background-color: vars.$lightGreen;
+      width: 80%;
+      margin: auto;
+      border-radius: 1em;   
+      display: flex;
+      justify-content: space-around;
+      flex-direction: row;
+    }
+    .team-dev{
+      display: flex;
+      justify-content: space-around;
+      flex-direction: row;
+      flex-wrap: wrap;
+      margin: 2em;
+      
+      .dev{ 
+        background-color: rgb(233, 240, 231);
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        box-shadow: 2px 2px 3px vars.$green;
+      }
+    }
+ 
+
+  }
+  .team-back{
+    h2{
+      background-color: rgba(255, 255, 255, 0.52);
+      width: 80%;
+      margin: auto;
+      border-radius: 1em;
+      background-color: vars.$lightGreen;
+    }
+    .team-dev{
+      display: flex;
+      justify-content: space-around;
+      flex-direction: row;
+      flex-wrap: wrap;
+      margin: 2em;
+
+      .dev{
+        flex-direction: row;
+        background-color: rgb(233, 240, 231);
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        box-shadow: 2px 2px 3px vars.$green;
+      }
+    }
+  }
+}

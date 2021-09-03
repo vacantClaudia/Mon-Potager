@@ -1,6 +1,6 @@
-import React, { createRef, useEffect } from 'react';
+import React, { createRef, useEffect, useMemo } from 'react';
 import PropTypes from 'prop-types';
-import PlantsList from 'src/components/PlantsList';
+import PlantsListByRegion from 'src/containers/PlantsListByRegion';
 // == import externals libraries
 import Calendar from '@toast-ui/react-calendar';
 import 'tui-calendar/dist/tui-calendar.css';
@@ -30,9 +30,11 @@ const VisitorCalendar = ({
   fetchPlants,
   isCalendarMode,
   changeCalendarMode,
-  plants,
   getPlantsList,
+  getSelectedRegion,
+  selectedRegion,
 }) => {
+  // console.log(plantsSchedules);
   // == ref to calendar to get instance
   const calendarRef = createRef();
 
@@ -89,6 +91,8 @@ const VisitorCalendar = ({
   const handleOptionSelect = (evt) => {
     displayPlants();
     const getOptionValue = evt.target.value;
+    getSelectedRegion(getOptionValue);
+    // eslint-disable-next-line array-callback-return
     plantsSchedules.map((item) => {
       if (item.calendarId === getOptionValue) {
         item.isVisible = true;
@@ -97,8 +101,8 @@ const VisitorCalendar = ({
         item.isVisible = false;
       }
     });
-    changeIsVisible(plantsSchedules);
-    // console.log(plantsSchedules);
+    // TODO NE SERT A RIEN ?
+    // changeIsVisible(plantsSchedules);
   };
 
   // test response api action case fetchPlants
@@ -109,7 +113,7 @@ const VisitorCalendar = ({
   return (
     <>
       <div className="visitorCalendar">
-        <select className="visitorCalendarSelectRegion" onChange={handleOptionSelect}>
+        <select className="visitorCalendarSelectRegion" onChange={handleOptionSelect} value={selectedRegion}>
           <option className="option" value="">Choisis ta région!</option>
           <option className="option" value="6">Auvergne-Rhône-Alpes</option>
           <option className="option" value="7">Bourgogne-Franche-Comté</option>
@@ -154,7 +158,7 @@ const VisitorCalendar = ({
 
                   <Calendar
                     // == I put key here for new render
-                    // key={plantsSchedules[0].id} get better key id undifined
+                    key={selectedRegion}
                     // == ref to current calendar ?
                     ref={calendarRef}
                     // == view monthly
@@ -176,15 +180,14 @@ const VisitorCalendar = ({
                 </>
               )
               : (
-                <PlantsList
-                  plants={plants}
+                // <p>Travail en cours</p>
+                <PlantsListByRegion
+                  plantsSchedules={plantsSchedules}
                   getPlantsList={getPlantsList}
-                  handleOptionSelect={handleOptionSelect}
                 />
               )}
           </>
         )}
-
 
       </div>
     </>
@@ -201,12 +204,13 @@ VisitorCalendar.propTypes = {
   changeIsVisible: PropTypes.func.isRequired,
   isCalendarMode: PropTypes.bool.isRequired,
   changeCalendarMode: PropTypes.func.isRequired,
-  plants: PropTypes.array.isRequired,
   getPlantsList: PropTypes.func.isRequired,
-  // myTheme: PropTypes.arrayOf(
-  //   PropTypes.shape({
-  //   }).isRequired,
-  // ).isRequired,
+  myTheme: PropTypes.object.isRequired,
+  plantsSchedules: PropTypes.array.isRequired,
+  plantsCalendars: PropTypes.array.isRequired,
+  fetchPlants: PropTypes.func.isRequired,
+  getSelectedRegion: PropTypes.func.isRequired,
+  selectedRegion: PropTypes.string.isRequired,
 };
 
 // == Export

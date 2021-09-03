@@ -3,13 +3,24 @@
 // footer menu
 .nav {
   position: relative;
-  top: 30rem;
+  @media(max-width: 600px){
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  margin: auto;
+  padding-bottom: 3.5em;
+  }
+
+
 
   &-item {
     display: inline-block;  
     padding: 1rem;
     padding-left: 2rem;
     color: vars.$black;
+    @media(max-width:600px){
+      padding: 0em;
+    }
 
     &--active {
       text-decoration: underline;
@@ -29,25 +40,24 @@
 
   width: 100%;
   height: 3.4em;
-  border: 1px solid vars.$green;
-
+  border: 0.5px solid vars.$green;
+  border-top-left-radius: 0.5em;
+  border-top-right-radius: 0.5em;
   position: fixed;
   display: flex;
   justify-content: space-around;
-  align-items: flex-end;
-
   bottom: 0;
   background-color: white;
     
   .nav-item{
-    width: 20px;
-    text-align: center;
-    align-items: baseline;
-    align-self: center;
-
+     display: flex;
+     align-items: center;
+     align-self: flex-end;
+     flex-direction: column;
+  
     .nav-icon{
     border: 1px solid vars.$yellow;
-    background-color: vars.$yellow;
+    background-color: vars.$lightYellow;
     border-radius: 50px; 
     }
   }

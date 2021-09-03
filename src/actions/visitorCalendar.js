@@ -5,6 +5,8 @@ export const DISPLAY_PLANTS = 'DISPLAY_PLANTS';
 // == to load and save plants from api
 export const FETCH_PLANTS = 'FETCH_PLANTS';
 export const SAVE_PLANTS = 'SAVE_PLANTS';
+// == to keep selected region in state
+export const SELECTED_REGION = 'SELECTED_REGION';
 
 // == toggle to change display
 export const CHANGE_CALENDAR_MODE = 'CHANGE_CALENDAR_MODE';
@@ -31,4 +33,9 @@ export const savePlants = (plantsSchedules) => ({
 export const changeCalendarMode = (value) => ({
   type: CHANGE_CALENDAR_MODE,
   value,
+});
+
+export const getSelectedRegion = (region) => ({
+  type: SELECTED_REGION,
+  region,
 });

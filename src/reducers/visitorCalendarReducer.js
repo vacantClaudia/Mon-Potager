@@ -4,11 +4,11 @@ import {
   DISPLAY_PLANTS,
   SAVE_PLANTS,
   CHANGE_CALENDAR_MODE,
+  SELECTED_REGION,
 } from 'src/actions/visitorCalendar';
 
-// == Visitor Calendar initialState : just calendar display, not data schedules
+// == Visitor Calendar initialState / selected region
 const initialState = {
-  // == maybe use calendar and calendarId to filter by place
   // == calendar view monthly
   view: 'month',
   // == day names on the top of the calendar
@@ -126,100 +126,18 @@ const initialState = {
     'week.dayGridSchedule.marginLeft': '8px',
     'week.dayGridSchedule.marginRight': '8px',
   },
-  // == test creation of two calendars for 2 lands et think to apply calendar-id to schedules
-  plantsCalendars: [
-    {
-      id: '0',
-      name: 'Auvergne-Rhône-Alpes',
-    },
-    {
-      id: '1',
-      name: 'Bretagne',
-    },
-  ],
+  // == List of regions
+  plantsCalendars: [],
   // == List of plants
   plantsSchedules: [],
-  //   {
-  //     id: '3',
-  //     calendarId: '0',
-  //     title: 'Abricots',
-  //     // = category must be use to display. I don't know it utility
-  //     category: 'time',
-  //     start: '2021-08-05',
-  //     end: '2021-08-15',
-  //     color: '#474647',
-  //     bgColor: '#f46d5f',
-  //     borderColor: '#f8cba9',
-
-  //     // == conditionnal display to code with calendarId
-  //     isVisible: false,
-  //   },
-  //   {
-  //     id: '4',
-  //     calendarId: '0',
-  //     title: 'Carottes',
-  //     category: 'time',
-  //     start: '2021-08-25',
-  //     end: '2021-09-07',
-  //     color: '#474647',
-  //     bgColor: '#9ed2bf',
-  //     borderColor: '#daece5',
-  //     isVisible: false,
-  //   },
-  //   {
-  //     id: '5',
-  //     calendarId: '0',
-  //     title: 'Fraises',
-  //     category: 'time',
-  //     start: '2021-09-01',
-  //     end: '2021-09-18',
-  //     color: '#fad689',
-  //     bgColor: '#f46d5f',
-  //     borderColor: '#f8cba9',
-  //     isVisible: false,
-  //   },
-  //   {
-  //     id: '16',
-  //     calendarId: '1',
-  //     title: 'Tomates',
-  //     category: 'time',
-  //     start: '2021-07-05',
-  //     end: '2021-08-02',
-  //     color: '#fad689',
-  //     bgColor: '#f46d5f',
-  //     borderColor: '#f8cba9',
-  //     isVisible: false,
-  //   },
-  //   {
-  //     id: '7',
-  //     calendarId: '1',
-  //     title: 'Poireaux',
-  //     category: 'time',
-  //     start: '2021-08-29',
-  //     end: '2021-09-10',
-  //     color: '#f46d5f',
-  //     bgColor: '#9ed2bf',
-  //     borderColor: '#daece5',
-  //     isVisible: false,
-  //   },
-  //   {
-  //     id: '8',
-  //     calendarId: '1',
-  //     title: 'Artichauts',
-  //     category: 'time',
-  //     start: '2021-08-16',
-  //     end: '2021-09-04',
-  //     color: '#f46d5f',
-  //     bgColor: '#9ed2bf',
-  //     borderColor: '#daece5',
-  //     isVisible: false,
-  //   },
-  // ],
   // == impossible to click on the calendar or schedule may be use
   // == change to false when you code
   isReadOnly: true,
   selected: false,
   isCalendarMode: false,
+
+  // == Selected region
+  selectedRegion: '',
 };
 
 function visitorCalendarReducer(state = initialState, action = {}) {
@@ -240,7 +158,7 @@ function visitorCalendarReducer(state = initialState, action = {}) {
     case SAVE_PLANTS:
       return {
         ...state,
-        // juste pour le test mettre ancien state + nouveau state plantsSchedules
+        // state save in plantsSchedules from api
         plantsSchedules: action.plantsSchedules,
       };
 
@@ -248,6 +166,12 @@ function visitorCalendarReducer(state = initialState, action = {}) {
       return {
         ...state,
         isCalendarMode: action.value,
+      };
+
+    case SELECTED_REGION:
+      return {
+        ...state,
+        selectedRegion: action.region,
       };
 
     default:

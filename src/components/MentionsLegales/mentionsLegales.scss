@@ -1,0 +1,21 @@
+@use 'src/styles/vars';
+
+.mentionsLegales{
+  // background-image: url("https://images.unsplash.com/photo-1515150144380-bca9f1650ed9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=634&q=80");
+  // background-size:cover;
+  background-color: rgba(255, 255, 255, 0.561);
+  width: 80%;
+  margin: auto;
+  border-radius: 1em ;
+  h2{
+    background-color: vars.$lightGreen;
+    width: 80%;
+    margin: auto;
+    border-radius: 1em;
+  }
+  p{
+    width: 80%;
+    margin: auto;
+    border-radius: 1em;
+  }
+}

@@ -1,0 +1,62 @@
+// == style css buttons Today Prev and Next
+
+// == use vars file
+@use 'src/styles/vars';
+
+.userCalendar {
+  margin: 3em auto 0;
+  width: 95vw;
+
+  .userCalendarSelectRegion, .toggle.menu-btn {
+  border-radius: 5px;
+  padding: 5px;
+  font-family: 'Raleway',sans-serif;
+  background-color: vars.$green;
+  border: solid 1px vars.$green;
+  font-weight: vars.$fwBold;
+  }
+
+  .option {
+    background-color: vars.$lightGreen;
+    border: solid 1px vars.$lightGreen;  
+  }
+
+  .toggle.menu-btn {
+    margin-top: 20px;
+    background-color: vars.$yellow;
+    border: solid 1px vars.$yellow;
+  }
+
+  // == style css buttons Today Prev and Next
+  .userCalendar-buttonsTodayMonth {
+    margin: 1em 0;
+    
+    .userCalendar-buttonsTodayMonth-button {
+      background-color: vars.$grey;
+      border: none;
+      border-radius: 5px;
+      color: vars.$orange;
+      margin-right: 1em;
+      padding: 0.6em;
+      transition: 0.3s ease-out;
+  
+      &.userCalendar-buttonsTodayMonth-button:hover {
+        background-color: vars.$orange;
+        color: vars.$black;
+      }
+  
+      &.userCalendar-buttonsTodayMonth-button:active {
+        background-color: vars.$lightOrange;
+        transform: scale(0.8);
+      }
+    }
+    // == style css display text current month and year
+    .userCalendar-currentMonth {
+      color: vars.$orange;
+      font-size: 0.8em;
+      font-weight: bold;
+      margin-top: 1em;
+      text-transform: uppercase;
+    }
+  }
+}

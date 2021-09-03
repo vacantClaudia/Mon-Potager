@@ -1,9 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import './footer.scss';
 import { Icon } from 'semantic-ui-react';
 
-const Footer = () => (
+const Footer = ({selected}) => (
   // footer menu
   <>
     <div className="nav">
@@ -49,7 +50,7 @@ const Footer = () => (
         activeClassName="nav-item--active"
         exact
       >
-        <Icon name="user circle outline" size="big" className="nav-icon" />
+        <Icon name="user circle outline" size="large" className="nav-icon" />
         Compte
       </NavLink>
       <NavLink
@@ -61,8 +62,24 @@ const Footer = () => (
         <Icon name="leaf" size="large" className="nav-icon" />
         Plantes
       </NavLink>
+
+      { selected && (
+        <NavLink
+          to="/evenements"
+          className="nav-item"
+          activeClassName="nav-item--active"
+          exact
+        >
+          <Icon name="bell outline" size="large" className="nav-icon" />
+          Evenements
+        </NavLink>
+      )}
     </div>
   </>
 );
+
+Footer.propTypes = {
+  selected: PropTypes.bool.isRequired,
+};
 
 export default Footer;

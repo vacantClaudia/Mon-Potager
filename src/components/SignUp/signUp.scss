@@ -1,0 +1,68 @@
+@use 'src/styles/vars';
+
+.signUp{
+ 
+  .signUp-form{
+    background-color: vars.$green;
+    border-radius: 2em;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    width: 70%;
+    margin: auto;
+    flex-direction: column;
+    display: flex;
+    
+    .signUp-submit{
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 1rem;
+      margin: auto;
+      font-size: 1.2em;
+      background-color: vars.$lightOrange;
+      width: 10em;
+    }
+    
+  }
+
+  h1 + h4 {
+    font-weight: vars.$fwLight;
+  }
+  
+  .connect-submit {
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 1rem;
+      margin: auto;
+      font-size: 1.2em;
+      background-color: vars.$lightOrange;
+      width: 10em;
+
+      &:hover {
+        color: vars.$black;
+        border: vars.$black solid 1px;
+        background-color: transparent;
+      }
+
+      a {
+        color: vars.$black;
+      }
+    }
+
+    .container-jardinier {
+      // background-color: vars.$lightOrange;
+      // border-radius: 10px;
+      // width: 300px;
+      // text-align: center;
+      margin: auto;
+      // padding: 10px;
+
+  .jardiniers {
+    width: 250px;
+    border-radius: 10px;
+    margin-top: 50px;
+  }
+}
+    
+}

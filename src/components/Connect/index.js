@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Field from 'src/components/Field';
-import UserCalendar from 'src/components/UserCalendar';
+import UserCalendar from 'src/containers/UserCalendar';
 import './connect.scss';
 
 const Connect = ({
@@ -25,13 +25,12 @@ const Connect = ({
         >
           <Field
             identifier="userName"
-            placeholder="User Name"
+            placeholder="Nom d'utilisateur"
             label="Nom d'utilisateur"
             changeField={(identifier, newValue) => {
               changeFieldValue(identifier, newValue);
             }}
             value={userName}
-            required
           />
           <Field
             identifier="password"
@@ -42,13 +41,18 @@ const Connect = ({
               changeFieldValue(identifier, newValue);
             }}
             value={password}
-            isRequired
           />
           <button
             type="submit"
             className="connect-submit"
           >
             Valider
+          </button>
+          <button
+            type="button"
+            className="register-submit"
+          >
+            <a href="/inscription" className="register-link">S'inscrire</a>
           </button>
         </form>
       )
@@ -57,7 +61,7 @@ const Connect = ({
   </div>
 );
 Connect.propTypes = {
-//  futur propTypes
+  //  futur propTypes
   userName: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,
   changeFieldValue: PropTypes.func.isRequired,

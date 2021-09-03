@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
+import { Icon } from 'semantic-ui-react';
 
 import './header.scss';
-import logo from 'src/assets/images/Logo2.jpg';
+import logo from 'src/assets/images/Logo2.png';
 
-const Header = ({ nickname, isLogged, handleLogout }) => (
+const Header = ({ nickname, isLogged, handleLogout, selected }) => (
   <div className="header">
     <div className="header-picture">
       <img
@@ -64,15 +65,26 @@ const Header = ({ nickname, isLogged, handleLogout }) => (
 
           </>
         )}
+      { selected && (
+        <NavLink
+          to="/evenements"
+          className="nav-item"
+          activeClassName="nav-item--active"
+          exact
+        >
+          <Icon name="bell outline" size="large" className="nav-icon" />
+        </NavLink>
+      )}
     </div>
   </div>
-  // </div>
+
 );
 
 Header.propTypes = {
   nickname: PropTypes.string,
   isLogged: PropTypes.bool.isRequired,
   handleLogout: PropTypes.func.isRequired,
+  selected: PropTypes.bool.isRequired,
 };
 Header.defaultProps = {
   nickname: '',
