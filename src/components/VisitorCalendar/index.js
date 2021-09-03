@@ -1,6 +1,6 @@
 import React, { createRef, useEffect, useMemo } from 'react';
 import PropTypes from 'prop-types';
-import PlantsList from 'src/components/PlantsList';
+import PlantsListByRegion from 'src/containers/PlantsListByRegion';
 // == import externals libraries
 import Calendar from '@toast-ui/react-calendar';
 import 'tui-calendar/dist/tui-calendar.css';
@@ -30,7 +30,6 @@ const VisitorCalendar = ({
   fetchPlants,
   isCalendarMode,
   changeCalendarMode,
-  plants,
   getPlantsList,
   getSelectedRegion,
   selectedRegion,
@@ -181,10 +180,10 @@ const VisitorCalendar = ({
                 </>
               )
               : (
-                <PlantsList
-                  plants={plants}
+                // <p>Travail en cours</p>
+                <PlantsListByRegion
+                  plantsSchedules={plantsSchedules}
                   getPlantsList={getPlantsList}
-                  handleOptionSelect={handleOptionSelect}
                 />
               )}
           </>
@@ -205,7 +204,6 @@ VisitorCalendar.propTypes = {
   changeIsVisible: PropTypes.func.isRequired,
   isCalendarMode: PropTypes.bool.isRequired,
   changeCalendarMode: PropTypes.func.isRequired,
-  plants: PropTypes.array.isRequired,
   getPlantsList: PropTypes.func.isRequired,
   myTheme: PropTypes.object.isRequired,
   plantsSchedules: PropTypes.array.isRequired,

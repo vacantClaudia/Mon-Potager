@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 
 // import component
 import VisitorCalendar from 'src/components/VisitorCalendar';
-import PlantsList from 'src/components/PlantsList';
+import PlantsListByRegion from 'src/components/PlantsListByRegion';
 
 // import actions creators
 import {
@@ -50,7 +50,6 @@ const mapDispatchToProps = (dispatch) => ({
   // toggle to change display on list
   changeCalendarMode: (newValue) => {
     const action = changeCalendarMode(newValue);
-    console.log(`mise à jour de la valeur de changeCalendarMode, newValue=${newValue}`);
     dispatch(action);
   },
 
@@ -67,4 +66,4 @@ const mapDispatchToProps = (dispatch) => ({
 );
 
 // === export to component
-export default connect(mapStateToProps, mapDispatchToProps)(VisitorCalendar, PlantsList);
+export default connect(mapStateToProps, mapDispatchToProps)(VisitorCalendar, PlantsListByRegion);
