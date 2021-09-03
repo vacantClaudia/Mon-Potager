@@ -179,6 +179,7 @@ const VisitorCalendar = ({
                 </>
               )
               : (
+                // <p>Travail en cours</p>
                 <PlantsListByRegion
                   plantsSchedules={plantsSchedules}
                   getPlantsList={getPlantsList}
@@ -202,7 +203,6 @@ VisitorCalendar.propTypes = {
   changeIsVisible: PropTypes.func.isRequired,
   isCalendarMode: PropTypes.bool.isRequired,
   changeCalendarMode: PropTypes.func.isRequired,
-  plants: PropTypes.array.isRequired,
   getPlantsList: PropTypes.func.isRequired,
   myTheme: PropTypes.object.isRequired,
   plantsSchedules: PropTypes.array.isRequired,

@@ -36,7 +36,7 @@ const PlantsListByRegion = ({ plantsSchedules, getPlantsList }) => {
                 </p>
 
                 <p>
-                  Plantation: {plant.periode_regions['debut_semi-month_aquitaine']} à {plant.periode_regions['fin_semi-month_aquitaine']}
+                  Semi: {plant.periode_regions['debut_semi-month_aquitaine']} à {plant.periode_regions['fin_semi-month_aquitaine']}
                 </p>
 
                 <p>
