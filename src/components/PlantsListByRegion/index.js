@@ -17,6 +17,20 @@ const PlantsListByRegion = ({ plantsSchedules, selectedRegion, fetchPlants }) =>
   return (
     <div className="accordion">
       {plantsSchedules.map((plant) => {
+        let semis = plant.periode_regions['debut_semi-month_aquitaine']?.[0];
+        let planting = plant.periode_regions['debut_plant-month_aquitaine']?.[0];
+        let harvest = plant.periode_regions['debut_recolte-month_aquitaine']?.[0];
+
+        if (plant.periode_regions['debut_semi-month_aquitaine']?.[0] !== plant.periode_regions['fin_semi-month_aquitaine']?.[0]) {
+          semis = `${plant.periode_regions['debut_semi-month_aquitaine']?.[0]} à ${plant.periode_regions['fin_semi-month_aquitaine']?.[0]}`;
+        }
+        if (plant.periode_regions['debut_plant-month_aquitaine']?.[0] !== plant.periode_regions['fin_plant-month_aquitaine']?.[0]) {
+          planting = `${plant.periode_regions['debut_plant-month_aquitaine']?.[0]} à ${plant.periode_regions['fin_plant-month_aquitaine']?.[0]}`;
+        }
+        if (plant.periode_regions['debut_recolte-month_aquitaine']?.[0] !== plant.periode_regions['fin_recolte-month_aquitaine']?.[0]) {
+          harvest = `${plant.periode_regions['debut_recolte-month_aquitaine']?.[0]} à ${plant.periode_regions['fin_recolte-month_aquitaine']?.[0]}`;
+        }
+
         if (plant.calendarId === selectedRegion && plant.period === 'semi') {
           return (
             <React.Fragment key={plant.id}>
@@ -33,17 +47,23 @@ const PlantsListByRegion = ({ plantsSchedules, selectedRegion, fetchPlants }) =>
                   />
                 </p>
 
-                <p>
-                  Semi: {plant.periode_regions['debut_semi-month_aquitaine']} à {plant.periode_regions['fin_semi-month_aquitaine']}
-                </p>
+                {semis && (
+                  <p>
+                    Semis: {semis}
+                  </p>
+                )}
 
-                <p>
-                  Plantation: {plant.periode_regions['debut_plant-month_aquitaine']} à {plant.periode_regions['fin_plant-month_aquitaine']}
-                </p>
+                {planting && (
+                  <p>
+                    Plantation: {planting}
+                  </p>
+                )}
 
-                <p>
-                  Récolte: {plant.periode_regions['debut_recolte-month_aquitaine']} à {plant.periode_regions['fin_recolte-month_aquitaine']}
-                </p>
+                {harvest && (
+                  <p>
+                    Récolte: {harvest}
+                  </p>
+                )}
 
                 <p dangerouslySetInnerHTML={createMarkup(plant.content.rendered)} />
 
@@ -66,7 +86,8 @@ PlantsListByRegion.propTypes = {
       periode_regions: PropTypes.object,
     }).isRequired,
   ).isRequired,
-  getPlantsList: PropTypes.func.isRequired,
+  selectedRegion: PropTypes.string.isRequired,
+  fetchPlants: PropTypes.func.isRequired,
 };
 
 export default PlantsListByRegion;
