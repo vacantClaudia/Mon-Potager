@@ -8,7 +8,7 @@ import { getPlantsList } from 'src/actions/plantsList';
 
 // === mapStateToProps
 const mapStateToProps = (state) => ({
-  plantsSchedules: state.plants.plantsSchedules,
+  plantsSchedules: state.visitorCalendar.plantsSchedules,
 });
 
 // === mapDispatchToProps

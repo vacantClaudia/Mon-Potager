@@ -1,6 +1,6 @@
 import React, { createRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import PlantsListByRegion from 'src/components/PlantsListByRegion';
+import PlantsListByRegion from 'src/containers/PlantsListByRegion';
 // == import externals libraries
 import Calendar from '@toast-ui/react-calendar';
 import 'tui-calendar/dist/tui-calendar.css';

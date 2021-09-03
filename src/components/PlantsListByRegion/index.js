@@ -4,14 +4,14 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import DOMPurify from 'dompurify';
 
-import 'src/components/PlantsList/plantsList.scss';
+import './plantsListByRegion.scss';
 
 function createMarkup(data) {
   return { __html: DOMPurify.sanitize(data) };
 }
 
 const PlantsListByRegion = ({ plantsSchedules, getPlantsList }) => {
-  console.log(plantsSchedules);
+  console.log('plantsSchedules', plantsSchedules);
   useEffect(() => {
     getPlantsList();
   }, []);
@@ -19,9 +19,10 @@ const PlantsListByRegion = ({ plantsSchedules, getPlantsList }) => {
   return (
     <div className="accordion">
       {plantsSchedules.map((plant) => {
-        if (!plant.isVisible) {
+        console.log(plant);
+        if (plant.isVisible === true) {
           return (
-            <React.Fragment key={plant.id}>
+            <React.Fragment key={plant.title.rendered}>
               <input type="radio" name="select" className="accordion-select" />
               <div className="accordion-title"><span>{plant.title.rendered}</span></div>
               <div className="accordion-content">
@@ -61,8 +62,8 @@ const PlantsListByRegion = ({ plantsSchedules, getPlantsList }) => {
 PlantsListByRegion.propTypes = {
   plantsSchedules: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      title: PropTypes.object.isRequired,
+      id: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
       content: PropTypes.object.isRequired,
       _embedded: PropTypes.object.isRequired,
       periode_regions: PropTypes.object,
