@@ -13,14 +13,14 @@ const Events = ({
   // useEffect(() => {
   //   getPlantsList();
   // }, []);
-  // console.log('plantsSchedules:', plantsSchedules);
+   console.log('plantsSchedules:', plantsSchedules);
 
   const sowing = plantsSchedules.filter((plant) => plant.period === 'semi' && plant.calendarId == selectedRegion).filter((plant) => plant.month == 'Septembre');
-  console.log(sowing);
-  const planting = plantsSchedules.filter((plant) => plant.period === 'plantation').filter((plant) => plant.month == 'Septembre');
-  // console.log(planting);
-  const harvest = plantsSchedules.filter((plant) => plant.period === 'recolte').filter((plant) => plant.month == 'Septembre');
-  // console.log(harvest);
+  console.log('sowing:', sowing);
+  const planting = plantsSchedules.filter((plant) => plant.period === 'plantation' && plant.calendarId == selectedRegion).filter((plant) => plant.month == 'Septembre');
+  console.log(planting);
+  const harvest = plantsSchedules.filter((plant) => plant.period === 'recolte' && plant.calendarId == selectedRegion).filter((plant) => plant.month == 'Septembre');
+  console.log(harvest);
 
   // Le mois en cours
   const currentDate = new Date();
@@ -31,34 +31,41 @@ const Events = ({
 
   return (
     <div className="events">
-      <h2 className="events-title">Les évenements à venir du potager {currentMonth}</h2>
+      <h2 className="events-title">Les évenements à venir du potager en {currentMonth}</h2>
 
-      <div className="sowing">
-        <h3 className="sowing-title">Les semis à venir </h3>
-        <ul className="plantList">
-          {/* {sowing.map((plant) => (
-            <li key={plant.id}>{plant.title} : {plant.month}</li>
-          ))} */}
-        </ul>
-      </div>
+      { sowing && (
+        <div className="sowing">
+          <h3 className="sowing-title">Les semis à venir </h3>
+          <ul className="plantList">
+            {sowing.map((plant) => (
+              <li key={plant.id}>{plant.title} : {plant.month}</li>
+            ))}
+          </ul>
+        </div>
+      )}
 
-      <div className="planting">
-        <h3 className="planting-title">Les plantations à venir</h3>
-        <ul className="plantList">
-          {/* {planting.map((plant) => (
-            <li key={plant.id}>{plant.title} : {plant.month}</li>
-          ))} */}
-        </ul>
-      </div>
+      { planting && (
+        <div className="planting">
+          <h3 className="planting-title">Les plantations à venir</h3>
+          <ul className="plantList">
+            {planting.map((plant) => (
+              <li key={plant.id}>{plant.title} : {plant.month}</li>
+            ))}
+          </ul>
+        </div>
+      )}
 
-      <div className="harvest">
-        <h3 className="harvest-title">Les récoltes à venir</h3>
-        <ul className="plantList">
-          {/* {harvest.map((plant) => (
-            <li key={plant.id}>{plant.title} : {plant.month}</li>
-          ))} */}
-        </ul>
-      </div>
+      { harvest && (
+        <div className="harvest">
+          <h3 className="harvest-title">Les récoltes à venir</h3>
+          <ul className="plantList">
+            {harvest.map((plant) => (
+              <li key={plant.id}>{plant.title} : {plant.month}</li>
+            ))}
+          </ul>
+        </div>
+      )}
+
     </div>
   );
 };
@@ -74,28 +81,8 @@ Events.propTypes = {
       title: PropTypes.object.isRequired,
       content: PropTypes.object.isRequired,
       _embedded: PropTypes.object.isRequired,
-      // media_details: PropTypes.objectOf({
-      //   sizes: PropTypes.objectOf({
-      //     thumbnail: PropTypes.object.isRequired,
-      //   }).isRequired,
-      // }).isRequired,
     }).isRequired,
   ).isRequired,
 };
 
 export default Events;
-
-/**
- *   <ul>
-          {sowing.map((plant) => (
-            <li>{plant.title} {plant.start}</li>
-          ))}
-          {sowing.filter((plant) => plant.start)
-            .map((plant) => Date.parse(plant.start))
-            .map((date) => new Date(date))
-            .map((date) => (date.toLocaleString('fr-FR', {
-                  timeZone: 'Europe/Paris',
-                  month: 'long',})
-            ))}
-        </ul>
- */
