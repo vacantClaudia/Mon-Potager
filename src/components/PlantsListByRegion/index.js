@@ -11,7 +11,7 @@ function createMarkup(data) {
 }
 
 const PlantsListByRegion = ({ plantsSchedules, getPlantsList }) => {
-  console.log('plantsSchedules', plantsSchedules);
+  // console.log('plantsSchedules', plantsSchedules);
   useEffect(() => {
     getPlantsList();
   }, []);
@@ -19,7 +19,7 @@ const PlantsListByRegion = ({ plantsSchedules, getPlantsList }) => {
   return (
     <div className="accordion">
       {plantsSchedules.map((plant) => {
-        console.log(plant);
+        // console.log(plant);
         if (plant.isVisible === true) {
           return (
             <React.Fragment key={plant.title.rendered}>
