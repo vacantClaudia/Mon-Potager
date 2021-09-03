@@ -21,23 +21,16 @@ const UserCalendar = ({
   daynames,
   startDayOfWeek,
   myTheme,
-  plantsSchedules,
+  userPlants,
   isReadOnly,
   plantsCalendars,
   addPlant,
-  plants,
-  getPlantsList,
 }) => {
-  // == to use Api plants list in TUI CALENDAR
-  useEffect(() => {
-    getPlantsList();
-  }, []);
-
   // TODO bien utiliser addPlant et peut être créer d'autres actions pour gérer
   // TODO l'ajout, suppression et modification d'events
 
   // == ref to calendar to get instance
-  const calendarRef = useRef();
+  const calendarRef = createRef();
 
   // == get current date to display on the top of calendar
   // == today's date
@@ -181,50 +174,15 @@ const UserCalendar = ({
     );
   }, []);
 
-  function getFormattedTime(time) {
-    const date = new Date(time);
-    const h = date.getHours();
-    const m = date.getMinutes();
-
-    return `${h}:${m}`;
-  }
-
-  function getTimeTemplate(schedule, isAllDay) {
-    const html = [];
-
-    if (!isAllDay) {
-      html.push('<strong>' + getFormattedTime(schedule.start) + '</strong> ');
-    }
-    if (schedule.isPrivate) {
-      html.push('<span class="calendar-font-icon ic-lock-b"></span>');
-      html.push(' Private');
-    }
-    else {
-      if (schedule.isReadOnly) {
-        html.push('<span class="calendar-font-icon ic-readonly-b"></span>');
-      } else if (schedule.recurrenceRule) {
-        html.push('<span class="calendar-font-icon ic-repeat-b"></span>');
-      } else if (schedule.attendees.length) {
-        html.push('<span class="calendar-font-icon ic-user-b"></span>');
-      } else if (schedule.location) {
-        html.push('<span class="calendar-font-icon ic-location-b"></span>');
-      }
-      html.push(' ' + schedule.title);
-    }
-
-    return html.join('');
-  }
-
-  const templates = {
-    time: function (schedule) {
-      console.log(schedule);
-      return getTimeTemplate(schedule, false);
-    },
+  const handleTestButton = () => {
+    const calendarInstance = calendarRef.current;
+    console.log(calendarInstance);
   };
 
   return (
     <div className="userCalendar">
       <div className="userCalendar-buttonsTodayMonth">
+        <button type="button" className="userCalendar-buttonsTodayMonth-button" onClick={handleTestButton}>Test-Ref</button>
         <button type="button" className="userCalendar-buttonsTodayMonth-button" onClick={handleClickTodayButton}>Today</button>
         <button type="button" className="userCalendar-buttonsTodayMonth-button" onClick={handleClickPrevButton}>
           <ChevronLeft size={12} />
@@ -248,14 +206,14 @@ const UserCalendar = ({
          // == layout calendar and schedules
         theme={myTheme}
         // == plants schedules data
-        schedules={plantsSchedules}
+        schedules={userPlants}
         // == plants calendars data
         calendars={plantsCalendars}
         // == possible or not to click on calendar or schedules (boolean)
         isReadOnly={isReadOnly}
         useCreationPopup={true}
         useDetailPopup={true}
-        template={templates}
+
         onClickSchedule={onClickSchedule}
         onBeforeCreateSchedule={onBeforeCreateSchedule}
         onBeforeDeleteSchedule={onBeforeDeleteSchedule}
@@ -271,11 +229,9 @@ UserCalendar.propTypes = {
   startDayOfWeek: PropTypes.number.isRequired,
   isReadOnly: PropTypes.bool.isRequired,
   myTheme: PropTypes.object.isRequired,
-  plantsSchedules: PropTypes.array.isRequired,
+  userPlants: PropTypes.array.isRequired,
   plantsCalendars: PropTypes.array.isRequired,
   addPlant: PropTypes.func.isRequired,
-  plants: PropTypes.array.isRequired,
-  getPlantsList: PropTypes.func.isRequired,
 };
 
 // == Export

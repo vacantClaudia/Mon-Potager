@@ -5,8 +5,10 @@ import {
   saveUserData,
   SUBMIT_REGISTER,
   saveUserRegister,
-  // userPlants
 } from '../actions/auth';
+import {
+  FETCH_USER_PLANTS, fetchUserPlants, saveUserPlants
+} from '../actions/userCalendar';
 
 const authMiddleware = (store) => (next) => (action) => {
   // console.log('on est dans le middleware, action');
@@ -19,7 +21,7 @@ const authMiddleware = (store) => (next) => (action) => {
 
       axios.post(
         // URL
-        'http://ec2-54-89-4-11.compute-1.amazonaws.com/projet-mon-potager-back/public/wp-json/jwt-auth/v1/token',
+        'http://ec2-54-89-4-11.compute-1.amazonaws.com/projet-mon-potager-back/public/wp-json/wp/v2/plante?_embed=true&per_page=100',
         // paramètres
         {
           username: userName,
@@ -33,7 +35,7 @@ const authMiddleware = (store) => (next) => (action) => {
             response.data.logged,
           );
           store.dispatch(newAction);
-          // store.dispatch(userPlants());
+          store.dispatch(fetchUserPlants());
         })
         .catch((error) => {
           // TODO message d'erreur
@@ -41,32 +43,31 @@ const authMiddleware = (store) => (next) => (action) => {
           console.log(error);
         });
       break;
-    };
-    // case USER_PLANTS:
-    //   // console.log('on va aller chercher les recettes préférées');
+    }
+    case FETCH_USER_PLANTS:
 
-    //   // on envoie le token : dans le header Authorization, en précisant le mot
-    //   // "Bearer" avant le token
-    //   axios.post(
-    //     // URL
-    //     'http://userPlants',
-    //     // données
-    //     {},
-    //     // options, notamment les headers
-    //     {
-    //       headers: {
-    //         Authorization: `Bearer ${store.getState().auth.token}`,
-    //       },
-    //     },
-    //   )
-    //     .then((response) => {
-    //       // console.log(response);
-    //       store.dispatch(saveUserPLants(response.data.userPlants));
-    //     })
-    //     .catch((error) => {
-    //       console.log(error);
-    //     });
-    //   break;
+      // on envoie le token : dans le header Authorization, en précisant le mot
+      // "Bearer" avant le token
+      axios.post(
+        // URL
+        'http://ec2-54-89-4-11.compute-1.amazonaws.com/projet-mon-potager-back/public/wp-json/jwt-auth/v1/plantation-save',
+        // données
+        {},
+        // options, notamment les headers
+        {
+          headers: {
+            Authorization: `Bearer ${store.getState().auth.token}`,
+          },
+        },
+      )
+        .then((response) => {
+          // console.log(response);
+          store.dispatch(saveUserPlants(response.data.userPlants));
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      break;
     case SUBMIT_REGISTER: {
       // console.log('on va envoyer la requête');
 

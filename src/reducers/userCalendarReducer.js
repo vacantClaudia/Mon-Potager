@@ -1,5 +1,5 @@
 import {
-  ADD_PLANT,
+  ADD_PLANT, SAVE_USER_PLANTS
 } from 'src/actions/userCalendar';
 
 // == Visitor Calendar initialState : just calendar display, not data schedules
@@ -150,7 +150,7 @@ const initialState = {
     },
   ],
   // == List of plants
-  plantsSchedules: [],
+  userPlants: [],
 
   // == to click on the calendar
   isReadOnly: false,
@@ -164,6 +164,12 @@ function userCalendarReducer(state = initialState, action = {}) {
         plantsSchedules: [...state.plantsSchedules, action.plant],
       };
     }
+
+    case SAVE_USER_PLANTS:
+      return {
+        ...state,
+        userPlants: action.userPlants,
+      };
 
     default:
       return state;

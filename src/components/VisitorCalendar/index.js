@@ -40,7 +40,7 @@ const VisitorCalendar = ({
     fetchPlants();
   }, []);
   // TODO peut-être mettre un loader le temps que ça charge - peut être pas la peine en prode
-  console.log(plantsSchedules);
+  // console.log(plantsSchedules);
   // == ref to calendar to get instance
   const calendarRef = createRef();
 
