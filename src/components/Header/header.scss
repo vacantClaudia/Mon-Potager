@@ -2,11 +2,13 @@
 
 .header{
   
+
   .header-logo{
     max-width: 100%;
     background-size: cover;
     border: 1px none rgb(176, 211, 176);
     border-bottom: 1px solid vars.$black;
+    
     @media(min-width:600px){
       height: 20em;
     }

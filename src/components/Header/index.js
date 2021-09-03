@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { Icon } from 'semantic-ui-react';
 
 import './header.scss';
-import logo from 'src/assets/images/Logo2.jpg';
+import logo from 'src/assets/images/Logo2.png';
 
 const Header = ({ nickname, isLogged, handleLogout, selected }) => (
   <div className="header">

@@ -36,27 +36,27 @@ const Events = ({
       <div className="sowing">
         <h3 className="sowing-title">Les semis à venir </h3>
         <ul className="plantList">
-          {sowing.map((plant) => (
+          {/* {sowing.map((plant) => (
             <li key={plant.id}>{plant.title} : {plant.month}</li>
-          ))}
+          ))} */}
         </ul>
       </div>
 
       <div className="planting">
         <h3 className="planting-title">Les plantations à venir</h3>
         <ul className="plantList">
-          {planting.map((plant) => (
+          {/* {planting.map((plant) => (
             <li key={plant.id}>{plant.title} : {plant.month}</li>
-          ))}
+          ))} */}
         </ul>
       </div>
 
       <div className="harvest">
         <h3 className="harvest-title">Les récoltes à venir</h3>
         <ul className="plantList">
-          {harvest.map((plant) => (
+          {/* {harvest.map((plant) => (
             <li key={plant.id}>{plant.title} : {plant.month}</li>
-          ))}
+          ))} */}
         </ul>
       </div>
     </div>
