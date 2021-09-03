@@ -19,14 +19,17 @@ const QuiSommesNous = () => (
       <h2>Team Front</h2>
       <div className="team-dev">
         <div className="dev">
+          <img src="" alt="avatar" />
           <h3>Claudia</h3>
           <p>Product Owner</p>
         </div>
         <div className="dev">
+          <img src="" alt="avatar" />
           <h3>Fouzia</h3>
           <p> Lead Dev</p>
         </div>
         <div className="dev">
+          <img src="" alt="avatar" />
           <h3>Jonathan</h3>
           <p>Referent technique</p>
         </div>
@@ -36,10 +39,12 @@ const QuiSommesNous = () => (
       <h2>Team back</h2>
       <div className="team-dev">
         <div className="dev">
+          <img src="" alt="avatar" />
           <h3>Mathieu</h3>
           <p>Scrum Master</p>
         </div>
         <div className="dev">
+          <img src="" alt="avatar" />
           <h3>Mathieu</h3>
           <p>Lead Dev</p>
         </div>

@@ -3,13 +3,24 @@
 // footer menu
 .nav {
   position: relative;
-  top: 30rem;
+  @media(max-width: 600px){
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  margin: auto;
+  padding-bottom: 3.5em;
+  }
+
+
 
   &-item {
     display: inline-block;  
     padding: 1rem;
     padding-left: 2rem;
     color: vars.$black;
+    @media(max-width:600px){
+      padding: 0em;
+    }
 
     &--active {
       text-decoration: underline;
