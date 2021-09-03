@@ -10,30 +10,27 @@ function createMarkup(data) {
   return { __html: DOMPurify.sanitize(data) };
 }
 
-const PlantsListByRegion = ({ plantsSchedules, getPlantsList }) => {
-  // console.log('plantsSchedules', plantsSchedules);
+const PlantsListByRegion = ({ plantsSchedules, selectedRegion, fetchPlants }) => {
   useEffect(() => {
-    getPlantsList();
+    fetchPlants();
   }, []);
-
   return (
     <div className="accordion">
       {plantsSchedules.map((plant) => {
-        // console.log(plant);
-        if (plant.isVisible === true) {
+        if (plant.calendarId === selectedRegion && plant.period === 'semi') {
           return (
-            <React.Fragment key={plant.title.rendered}>
+            <React.Fragment key={plant.id}>
               <input type="radio" name="select" className="accordion-select" />
-              <div className="accordion-title"><span>{plant.title.rendered}</span></div>
+              <div className="accordion-title"><span>{plant.title}</span></div>
               <div className="accordion-content">
 
                 <p className="container-image">
-                  {/* <img
+                  <img
                     // eslint-disable-next-line no-underscore-dangle
                     src={plant._embedded['wp:featuredmedia'][0].media_details.sizes.thumbnail.source_url}
                     alt="plante"
                     className="accordion-image"
-                  /> */}
+                  />
                 </p>
 
                 <p>

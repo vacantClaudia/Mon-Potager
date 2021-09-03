@@ -10,7 +10,7 @@ const plantsMiddleware = (store) => (next) => (action) => {
     case FETCH_PLANTS: {
       // loop by region
       for (let calendarId = 0; calendarId < regionId.length; calendarId += 1) {
-        axios.get(`http://ec2-54-89-4-11.compute-1.amazonaws.com/projet-mon-potager-back/public/wp-json/wp/v2/plante?regions=${regionId[calendarId]}`)
+        axios.get(`http://ec2-54-89-4-11.compute-1.amazonaws.com/projet-mon-potager-back/public/wp-json/wp/v2/plante?_embed=true&per_page=100&regions=${regionId[calendarId]}`)
           .then((response) => {
             const apiData = response.data;
             // eslint-disable-next-line array-callback-return
@@ -258,7 +258,7 @@ const plantsMiddleware = (store) => (next) => (action) => {
             // To put api data in plantsSchedules
             const newAction = savePlants(apiPlantsSchedules);
             store.dispatch(newAction);
-            console.log(newAction);
+            // console.log(newAction);
           })
           .catch((error) => {
             // eslint-disable-next-line no-console
