@@ -47,6 +47,7 @@ const authMiddleware = (store) => (next) => (action) => {
     }
     case FETCH_USER_PLANTS:
       // TODO j'ai l'impression que l'action passe 2 fois : pourquoi
+      console.log('middleware fetch user plants auth', store.getState().auth);
       // on envoie le token : dans le header Authorization, en précisant le mot
       // "Bearer" avant le token
       axios.get(
@@ -54,6 +55,7 @@ const authMiddleware = (store) => (next) => (action) => {
         'http://ec2-54-89-4-11.compute-1.amazonaws.com/projet-mon-potager-back/public/wp-json/monpotager/v1/plantation-select',
         // données
         {
+          
         },
         // options, notamment les headers
         {
@@ -82,18 +84,16 @@ const authMiddleware = (store) => (next) => (action) => {
         // données
         {
           // TODO voir s'il faut retravailler ces données
-          id_plante: plant.id,
-          // data: {
-          //   id: plant.id,
-          //   calendarId: plant.calendarId,
-          //   title: plant.title,
-          //   start: plant.start,
-          //   end: plant.end,
-          //   color: plant.color,
-          //   bgColor: plant.bgColor,
-          //   dragBgColor: plant.dragBgColor,
-          //   borderColor: plant.borderColor,
-          // },
+          id_plante: Math.floor(Math.random() * 1000000),
+          id: plant.id,
+          calendarId: plant.calendarId,
+          title: plant.title,
+          start: plant.start,
+          end: plant.end,
+          color: plant.color,
+          bgColor: plant.bgColor,
+          dragBgColor: plant.dragBgColor,
+          borderColor: plant.borderColor,
         },
         {
           headers: {
@@ -103,21 +103,21 @@ const authMiddleware = (store) => (next) => (action) => {
       )
         .then((response) => {
           console.log('middleware plant plantation save from state', plant);
-          console.log('middleware response.data plantation save', response.data);
+          console.log('middleware response plantation save', response);
           // TODO tester de boucler sur response.data et transmettre ex data.id = userPlants.id;
           const newPlant = [response.data];
           // eslint-disable-next-line array-callback-return
           newPlant.map((data) => {
-            data.id_plante = plant.id;
-            data.id = plant.id;
-            data.calendarId = plant.calendarId;
-            data.title = plant.title;
-            data.start = plant.start;
-            data.end = plant.end;
-            data.color = plant.color;
-            data.bgColor = plant.bgColor;
-            data.dragBgColor = plant.dragBgColor;
-            data.borderColor = plant.borderColor;
+            data.id_plante = response.data.id_plante;
+            data.id = response.data.id;
+            data.calendarId = response.data.calendarId;
+            data.title = response.data.title;
+            data.start = response.data.start;
+            data.end = response.data.end;
+            data.color = response.data.color;
+            data.bgColor = response.data.bgColor;
+            data.dragBgColor = response.data.dragBgColor;
+            data.borderColor = response.data.borderColor;
           });
           console.log('middleware new Plant plantation save', newPlant);
           // TODO peut être à retravailler
@@ -154,7 +154,7 @@ const authMiddleware = (store) => (next) => (action) => {
         },
       )
         .then((response) => {
-          // console.log(response);
+          console.log(response);
           const newAction = saveUserRegister(
             response.data.token,
             // console.log(response.data.token),
