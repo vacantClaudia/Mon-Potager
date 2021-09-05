@@ -83,15 +83,17 @@ const authMiddleware = (store) => (next) => (action) => {
         {
           // TODO voir s'il faut retravailler ces données
           id_plante: plant.id,
-          id: plant.id,
-          calendarId: plant.calendarId,
-          title: plant.title,
-          start: plant.start,
-          end: plant.end,
-          color: plant.color,
-          bgColor: plant.bgColor,
-          dragBgColor: plant.dragBgColor,
-          borderColor: plant.borderColor,
+          // data: {
+          //   id: plant.id,
+          //   calendarId: plant.calendarId,
+          //   title: plant.title,
+          //   start: plant.start,
+          //   end: plant.end,
+          //   color: plant.color,
+          //   bgColor: plant.bgColor,
+          //   dragBgColor: plant.dragBgColor,
+          //   borderColor: plant.borderColor,
+          // },
         },
         {
           headers: {
