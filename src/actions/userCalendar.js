@@ -1,12 +1,23 @@
 // === action types
 // == to add user plant schedule in state
+export const NEW_PLANT = 'NEW_PLANT';
 export const ADD_PLANT = 'ADD_PLANT';
+export const SAVE_NEW_PLANT = 'SAVE_NEW_PLANT';
 export const FETCH_USER_PLANTS = 'FETCH_USER_PLANTS';
 export const SAVE_USER_PLANTS = 'SAVE_USER_PLANTS';
 
 // === action creators
-export const addPlant = (plant) => ({
+export const newPlant = (plant) => ({
+  type: NEW_PLANT,
+  plant,
+});
+
+export const addPlant = () => ({
   type: ADD_PLANT,
+});
+
+export const saveNewPlant = (plant) => ({
+  type: SAVE_NEW_PLANT,
   plant,
 });
 
@@ -16,5 +27,5 @@ export const fetchUserPlants = () => ({
 
 export const saveUserPlants = (userPlants) => ({
   type: SAVE_USER_PLANTS,
-  userPlants: userPlants,
+  userPlants,
 });

@@ -1,4 +1,4 @@
-import React, { createRef, useCallback, useEffect, useRef } from 'react';
+import React, { createRef, useCallback, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 // == import externals libraries
@@ -24,6 +24,9 @@ const UserCalendar = ({
   userPlants,
   isReadOnly,
   plantsCalendars,
+  fetchUserPlants,
+  // plant, maybe prop to not use
+  newPlant,
   addPlant,
 }) => {
   // TODO bien utiliser addPlant et peut être créer d'autres actions pour gérer
@@ -31,6 +34,11 @@ const UserCalendar = ({
 
   // == ref to calendar to get instance
   const calendarRef = createRef();
+
+  // TODO dependance userPlants ?
+  useEffect(() => {
+    fetchUserPlants();
+  }, [userPlants]);
 
   // == get current date to display on the top of calendar
   // == today's date
@@ -88,12 +96,12 @@ const UserCalendar = ({
   }, []);
 
   const onBeforeCreateSchedule = useCallback((scheduleData) => {
-    console.log(scheduleData);
+    // console.log(scheduleData);
     let schedule = {};
-    // TODO gerer les couleurs en fonction du calendarId
     if (scheduleData.calendarId === '1') {
       schedule = {
         id: String(Math.random()),
+        calendarId: '1',
         title: scheduleData.title,
         isAllDay: scheduleData.isAllDay,
         start: scheduleData.start,
@@ -114,6 +122,7 @@ const UserCalendar = ({
     else if (scheduleData.calendarId === '2') {
       schedule = {
         id: String(Math.random()),
+        calendarId: '2',
         title: scheduleData.title,
         isAllDay: scheduleData.isAllDay,
         start: scheduleData.start,
@@ -134,6 +143,7 @@ const UserCalendar = ({
     else if (scheduleData.calendarId === '3') {
       schedule = {
         id: String(Math.random()),
+        calendarId: '3',
         title: scheduleData.title,
         isAllDay: scheduleData.isAllDay,
         start: scheduleData.start,
@@ -151,38 +161,34 @@ const UserCalendar = ({
         borderColor: '#daece5',
       };
     }
-    calendarRef.current.calendarInst.createSchedules([schedule]);
+    // calendarRef.current.calendarInst.createSchedules([schedule]);
+    console.log('schedule component', schedule);
+    newPlant(schedule);
+    addPlant();
   }, []);
 
   const onBeforeDeleteSchedule = useCallback((res) => {
     console.log(res);
 
-    const { id, calendarId } = res.schedule;
+    // const { id, calendarId } = res.schedule;
 
-    calendarRef.current.calendarInst.deleteSchedule(id, calendarId);
+    // calendarRef.current.calendarInst.deleteSchedule(id, calendarId);
   }, []);
 
   const onBeforeUpdateSchedule = useCallback((e) => {
     console.log(e);
 
-    const { schedule, changes } = e;
+    // const { schedule, changes } = e;
 
-    calendarRef.current.calendarInst.updateSchedule(
-      schedule.id,
-      schedule.calendarId,
-      changes,
-    );
+    // calendarRef.current.calendarInst.updateSchedule(
+    //   schedule.id,
+    //   schedule.calendarId,
+    //   changes,
+    // );
   }, []);
-
-  const handleTestButton = () => {
-    const calendarInstance = calendarRef.current;
-    console.log(calendarInstance);
-  };
-
   return (
     <div className="userCalendar">
       <div className="userCalendar-buttonsTodayMonth">
-        <button type="button" className="userCalendar-buttonsTodayMonth-button" onClick={handleTestButton}>Test-Ref</button>
         <button type="button" className="userCalendar-buttonsTodayMonth-button" onClick={handleClickTodayButton}>Today</button>
         <button type="button" className="userCalendar-buttonsTodayMonth-button" onClick={handleClickPrevButton}>
           <ChevronLeft size={12} />
@@ -213,7 +219,6 @@ const UserCalendar = ({
         isReadOnly={isReadOnly}
         useCreationPopup={true}
         useDetailPopup={true}
-
         onClickSchedule={onClickSchedule}
         onBeforeCreateSchedule={onBeforeCreateSchedule}
         onBeforeDeleteSchedule={onBeforeDeleteSchedule}
@@ -229,9 +234,11 @@ UserCalendar.propTypes = {
   startDayOfWeek: PropTypes.number.isRequired,
   isReadOnly: PropTypes.bool.isRequired,
   myTheme: PropTypes.object.isRequired,
-  userPlants: PropTypes.array.isRequired,
+  // userPlants: PropTypes.array.isRequired,
   plantsCalendars: PropTypes.array.isRequired,
   addPlant: PropTypes.func.isRequired,
+  fetchUserPlants: PropTypes.func.isRequired,
+  newPlant: PropTypes.func.isRequired,
 };
 
 // == Export

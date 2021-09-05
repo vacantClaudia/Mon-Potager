@@ -4,10 +4,8 @@ import { connect } from 'react-redux';
 import UserCalendar from 'src/components/UserCalendar';
 
 // import actions creators
-import { getPlantsList } from 'src/actions/plantsList';
-
 import {
-  addPlant,
+  addPlant, newPlant, fetchUserPlants,
 } from 'src/actions/userCalendar';
 
 // === mapStateToProps
@@ -17,6 +15,7 @@ const mapStateToProps = (state) => ({
   startDayOfWeek: state.userCalendar.startDayOfWeek,
   myTheme: state.userCalendar.myTheme,
   userPlants: state.userCalendar.userPlants,
+  // plant: state.userCalendar.plant,
   plantsCalendars: state.userCalendar.plantsCalendars,
   isReadOnly: state.userCalendar.isReadOnly,
 });
@@ -24,12 +23,19 @@ const mapStateToProps = (state) => ({
 // === mapDispatchToProps
 const mapDispatchToProps = (dispatch) => ({
   // == get new state plantsSchedules
-  addPlant: (plant) => {
-    const action = addPlant(plant);
+  addPlant: () => {
+    const action = addPlant();
     dispatch(action);
   },
-  getPlantsList: () => {
-    const action = getPlantsList();
+
+  newPlant: (plant) => {
+    const action = newPlant(plant);
+    dispatch(action);
+  },
+
+  // == get new state plantsSchedules
+  fetchUserPlants: () => {
+    const action = fetchUserPlants();
     dispatch(action);
   },
 }
