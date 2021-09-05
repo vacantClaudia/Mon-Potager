@@ -1,5 +1,10 @@
 import React from 'react';
 import './quiSommesNous.scss';
+import jona from 'src/assets/images/jona.png';
+import claudia from 'src/assets/images/claudia.png';
+import paul from 'src/assets/images/paul.png';
+import mathieu from 'src/assets/images/mathieu.png';
+import fouzia from 'src/assets/images/fouzia.jpeg';
 
 const QuiSommesNous = () => (
   <div className="quiSommesNous">
@@ -19,17 +24,32 @@ const QuiSommesNous = () => (
       <h2>Team Front</h2>
       <div className="team-dev">
         <div className="dev">
-          <img src="" alt="avatar" />
+          <img
+            src={claudia}
+            alt="avatar"
+            height="120"
+            width="120"
+          />
           <h3>Claudia</h3>
           <p>Product Owner</p>
         </div>
         <div className="dev">
-          <img src="" alt="avatar" />
+          <img
+            src={fouzia}
+            alt="avatar"
+            height="120"
+            width="120"
+          />
           <h3>Fouzia</h3>
           <p> Lead Dev</p>
         </div>
         <div className="dev">
-          <img src="" alt="avatar" />
+          <img
+            src={jona}
+            alt="avatar"
+            height="120"
+            width="120"
+          />
           <h3>Jonathan</h3>
           <p>Referent technique</p>
         </div>
@@ -39,13 +59,24 @@ const QuiSommesNous = () => (
       <h2>Team back</h2>
       <div className="team-dev">
         <div className="dev">
-          <img src="" alt="avatar" />
+          <img
+            src={mathieu}
+            alt="avatar"
+            height="120"
+            width="120"
+          />
           <h3>Mathieu</h3>
           <p>Scrum Master</p>
         </div>
+
         <div className="dev">
-          <img src="" alt="avatar" />
-          <h3>Mathieu</h3>
+          <img
+            src={paul}
+            alt="avatar"
+            height="120"
+            width="120"
+          />
+          <h3>Paul</h3>
           <p>Lead Dev</p>
         </div>
       </div>

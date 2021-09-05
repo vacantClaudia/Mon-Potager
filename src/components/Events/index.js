@@ -1,88 +1,93 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import semer from 'src/assets/images/semer.png';
+import planter from 'src/assets/images/planter.png';
+import recolter from 'src/assets/images/recolter.png';
 
 import './events.scss';
 
 const Events = ({
-  getPlantsList,
-  plants,
-  selectedRegion,
-  plantsSchedules,
-  selected
+  sowingEvents,
+  plantingEvents,
+  harvestEvents,
+  region,
+  period,
+  getPlantsEvents,
 }) => {
-  // useEffect(() => {
-  //   getPlantsList();
-  // }, []);
-   console.log('plantsSchedules:', plantsSchedules);
+  useEffect(() => {
+    getPlantsEvents();
+  }, []);
 
-  const sowing = plantsSchedules.filter((plant) => plant.period === 'semi' && plant.calendarId == selectedRegion).filter((plant) => plant.month == 'Septembre');
-  console.log('sowing:', sowing);
-  const planting = plantsSchedules.filter((plant) => plant.period === 'plantation' && plant.calendarId == selectedRegion).filter((plant) => plant.month == 'Septembre');
-  console.log(planting);
-  const harvest = plantsSchedules.filter((plant) => plant.period === 'recolte' && plant.calendarId == selectedRegion).filter((plant) => plant.month == 'Septembre');
-  console.log(harvest);
-
-  // Le mois en cours
-  const currentDate = new Date();
-  const currentMonth = currentDate.toLocaleString('fr-FR', {
-    timeZone: 'Europe/Paris',
-    month: 'long',
-  });
+  // console.log('harvestEvents:', harvestEvents);
+  // console.log('period:', period);
+  // console.log('region:', region);
 
   return (
     <div className="events">
-      <h2 className="events-title">Les évenements à venir du potager en {currentMonth}</h2>
 
-      { sowing && (
-        <div className="sowing">
-          <h3 className="sowing-title">Les semis à venir </h3>
-          <ul className="plantList">
-            {sowing.map((plant) => (
-              <li key={plant.id}>{plant.title} : {plant.month}</li>
-            ))}
-          </ul>
-        </div>
-      )}
+      <h2 className="events-title">
+        Quoi de prévu au potager pour 
+        <div className="period">{period.startDate}</div>
+        <br /> en 
+        <div className="region">{region.name}</div>
+      </h2>
 
-      { planting && (
-        <div className="planting">
-          <h3 className="planting-title">Les plantations à venir</h3>
-          <ul className="plantList">
-            {planting.map((plant) => (
-              <li key={plant.id}>{plant.title} : {plant.month}</li>
-            ))}
-          </ul>
-        </div>
-      )}
+      <div className="sowing">
+        <h3 className="sowing-title">
+          <img src={semer} alt="semis" height="30" />
+          Les semis à venir
+        </h3>
+        <ul className="plantList">
+          {sowingEvents.map((plant) => (
+            <li key={plant.id}>{plant.name}</li>
+          ))}
+        </ul>
+      </div>
 
-      { harvest && (
-        <div className="harvest">
-          <h3 className="harvest-title">Les récoltes à venir</h3>
-          <ul className="plantList">
-            {harvest.map((plant) => (
-              <li key={plant.id}>{plant.title} : {plant.month}</li>
-            ))}
-          </ul>
-        </div>
-      )}
+      <div className="planting">
+        <h3 className="planting-title">
+          <img src={planter} alt="semis" height="30" />
+          Les plantations à venir
+        </h3>
+        <ul className="plantList">
+          {plantingEvents.map((plant) => (
+            <li key={plant.id}>{plant.name}</li>
+          ))}
+        </ul>
+      </div>
+
+      <div className="harvest">
+        <h3 className="harvest-title">
+          <img src={recolter} alt="semis" height="30" />
+          Les récoltes à venir
+        </h3>
+        <ul className="plantList">
+          {harvestEvents.map((plant) => (
+            <li key={plant.id}>{plant.name}</li>
+          ))}
+        </ul>
+      </div>
 
     </div>
   );
 };
 
 Events.propTypes = {
-  getPlantsList: PropTypes.func.isRequired,
-  selectedRegion: PropTypes.string.isRequired,
-  selected: PropTypes.bool.isRequired,
-  plantsSchedules: PropTypes.array.isRequired,
-  plants: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      title: PropTypes.object.isRequired,
-      content: PropTypes.object.isRequired,
-      _embedded: PropTypes.object.isRequired,
-    }).isRequired,
-  ).isRequired,
+  sowingEvents: PropTypes.array,
+  plantingEvents: PropTypes.array,
+  harvestEvents: PropTypes.array,
+  region: PropTypes.object,
+  period: PropTypes.object,
+  getPlantsEvents: PropTypes.func.isRequired,
+
+};
+Events.defaultProps = {
+  sowingEvents: [],
+  plantingEvents: [],
+  harvestEvents: [],
+  region: [],
+  period: [],
+
 };
 
 export default Events;
