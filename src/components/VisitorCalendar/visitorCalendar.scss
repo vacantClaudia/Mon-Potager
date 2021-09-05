@@ -7,6 +7,45 @@
   margin: 3em auto 0;
   width: 95vw;
 
+  .toggle{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    .legend{
+      display: flex;
+      flex-direction: row;
+      .sowing{
+        background-color: vars.$yellow;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        margin: 1em;
+      }
+      .planting{
+        background-color: vars.$orange;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        margin: 1em;
+      }
+      .harvest{
+        background-color: vars.$green;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        margin: 1em;
+      }
+    }
+    .menu-btn{
+    align-self: center;
+    margin-top: 2px;
+    height: 30px;
+    border-radius: 1em;
+    background-color: vars.$yellow;
+    border: solid 1px vars.$yellow;
+    }
+  }
   .visitorCalendarSelectRegion, .toggle.menu-btn {
   border-radius: 5px;
   padding: 5px;
@@ -19,12 +58,6 @@
   .option {
     background-color: vars.$lightGreen;
     border: solid 1px vars.$lightGreen;  
-  }
-
-  .toggle.menu-btn {
-    margin-top: 20px;
-    background-color: vars.$yellow;
-    border: solid 1px vars.$yellow;
   }
 
   // == style css buttons Today Prev and Next
@@ -50,6 +83,7 @@
         transform: scale(0.8);
       }
     }
+   
     // == style css display text current month and year
     .visitorCalendar-currentMonth {
       color: vars.$orange;
@@ -58,5 +92,19 @@
       margin-top: 1em;
       text-transform: uppercase;
     }
+     .legend{
+      .sowing{
+        background-color: vars.$yellow;
+        width: 50px;
+        height: 50px;
+      }
+      .planting{
+        background-color: vars.$orange;
+      }
+      .harvest{
+        background-color: vars.$green;
+      }
+    }
   }
+
 }
