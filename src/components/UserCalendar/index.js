@@ -161,7 +161,39 @@ const UserCalendar = ({
     }
     // calendarRef.current.calendarInst.createSchedules([schedule]);
     // console.log('schedule component', schedule);
+    // == auto calendar harvest if schedule.calendarId === 1 || === 2
+    const scheduleDateStart = new Date(schedule.start);
+    scheduleDateStart.setMonth(scheduleDateStart.getMonth() + 1);
+    const scheduleDateEnd = new Date(schedule.end);
+    scheduleDateEnd.setMonth(scheduleDateEnd.getMonth() + 1);
+
+    let schedule2 = {};
+    if (schedule.calendarId === '1' || schedule.calendarId === '2') {
+      schedule2 = {
+        id: String(Math.random()),
+        calendarId: '3',
+        title: schedule.title,
+        isAllDay: schedule.isAllDay,
+        start: { dates: scheduleDateStart },
+        end: { dates: scheduleDateEnd },
+        category: schedule.isAllDay ? 'allday' : 'time',
+        dueDateClass: '',
+        location: schedule.location,
+        raw: {
+          class: schedule.raw['class'],
+        },
+        state: schedule.state,
+        color: '#474647',
+        bgColor: '#9ed2bf',
+        dragBgColor: '#daece5',
+        borderColor: '#daece5',
+      };
+    }
+    console.log(schedule.start);
+    console.log(schedule2.start);
     newPlant(schedule);
+    addPlant();
+    newPlant(schedule2);
     addPlant();
   }, []);
 
