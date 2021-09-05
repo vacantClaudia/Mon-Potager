@@ -4,7 +4,7 @@ import jona from 'src/assets/images/jona.png';
 import claudia from 'src/assets/images/claudia.png';
 import paul from 'src/assets/images/paul.png';
 import mathieu from 'src/assets/images/mathieu.png';
-import fouzia from 'src/assets/images/fouzia.jpeg';
+import fouzia from 'src/assets/images/fouzia.png';
 
 const QuiSommesNous = () => (
   <div className="quiSommesNous">
