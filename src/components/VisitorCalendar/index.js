@@ -10,6 +10,10 @@ import 'tui-date-picker/dist/tui-date-picker.css';
 import 'tui-time-picker/dist/tui-time-picker.css';
 
 import { ChevronLeft, ChevronRight } from 'react-feather';
+// picture for legend
+import semer from 'src/assets/images/semer.png';
+import planter from 'src/assets/images/planter.png';
+import recolter from 'src/assets/images/recolter.png';
 
 // == Import css
 import './visitorCalendar.scss';
@@ -132,8 +136,37 @@ const VisitorCalendar = ({
         {selected && (
           <>
             <div className="toggle">
+              <div className="legend">
+                    <div className="sowing">
+                      <img
+                        src={semer}
+                        alt="semis"
+                        width="20"
+                        height="20"
+                      />
+                      Semis
+                    </div>
+                    <div className="planting">
+                      <img
+                        src={planter}
+                        alt="semis"
+                        width="20"
+                        height="20"
+                      />
+                      Plantation
+                    </div>
+                    <div className="harvest">
+                      <img
+                        src={recolter}
+                        alt="semis"
+                        width="20"
+                        height="20"
+                      />
+                      Récolte
+                    </div>
+                  </div>
               <button
-                className="toggle menu-btn"
+                className="menu-btn"
                 type="button"
                 onClick={() => {
                   changeCalendarMode(!isCalendarMode);
