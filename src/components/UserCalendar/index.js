@@ -91,11 +91,11 @@ const UserCalendar = ({
     const { calendarId, id } = e.schedule;
     const el = calendarRef.current.calendarInst.getElement(id, calendarId);
 
-    console.log(e, el.getBoundingClientRect());
+    // console.log(e, el.getBoundingClientRect());
   }, []);
 
   const onBeforeCreateSchedule = useCallback((scheduleData) => {
-    console.log(scheduleData);
+    // console.log(scheduleData);
     let schedule = {};
     // TODO gerer les couleurs en fonction du calendarId
     if (scheduleData.calendarId === '1') {

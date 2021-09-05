@@ -9,7 +9,7 @@ function createMarkup(data) {
 }
 
 const PlantsList = ({ plants, getPlantsList }) => {
-  console.log(plants);
+  // console.log(plants);
   useEffect(() => {
     getPlantsList();
   }, []);

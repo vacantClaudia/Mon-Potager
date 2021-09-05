@@ -41,7 +41,7 @@ const authMiddleware = (store) => (next) => (action) => {
           console.log(error);
         });
       break;
-    };
+    }
     // case USER_PLANTS:
     //   // console.log('on va aller chercher les recettes préférées');
 
@@ -95,7 +95,7 @@ const authMiddleware = (store) => (next) => (action) => {
           // console.log(response);
           const newAction = saveUserRegister(
             response.data.token,
-            console.log(response.data.token),
+            // console.log(response.data.token),
             response.data.user_display_name,
             response.data.signed,
           );
