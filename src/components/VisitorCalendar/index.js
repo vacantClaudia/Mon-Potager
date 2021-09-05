@@ -136,35 +136,6 @@ const VisitorCalendar = ({
         {selected && (
           <>
             <div className="toggle">
-              <div className="legend">
-                    <div className="sowing">
-                      <img
-                        src={semer}
-                        alt="semis"
-                        width="20"
-                        height="20"
-                      />
-                      Semis
-                    </div>
-                    <div className="planting">
-                      <img
-                        src={planter}
-                        alt="semis"
-                        width="20"
-                        height="20"
-                      />
-                      Plantation
-                    </div>
-                    <div className="harvest">
-                      <img
-                        src={recolter}
-                        alt="semis"
-                        width="20"
-                        height="20"
-                      />
-                      Récolte
-                    </div>
-                  </div>
               <button
                 className="menu-btn"
                 type="button"
@@ -174,6 +145,35 @@ const VisitorCalendar = ({
               >
                 {isCalendarMode ? 'Désactiver' : 'Activer'} l'affichage en liste
               </button>
+            </div>
+            <div className="legend">
+              <div className="sowing">
+                <img
+                  src={semer}
+                  alt="semis"
+                  width="30"
+                  // height="20"
+                />
+                {/* Semis */}
+              </div>
+              <div className="planting">
+                <img
+                  src={planter}
+                  alt="semis"
+                  width="30"
+                  // height="20"
+                />
+                {/* Plantation */}
+              </div>
+              <div className="harvest">
+                <img
+                  src={recolter}
+                  alt="semis"
+                  width="30"
+                  // height="20"
+                />
+                {/* Récolte */}
+              </div>
             </div>
             {!isCalendarMode
               ? (

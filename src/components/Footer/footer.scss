@@ -23,11 +23,13 @@
     }
 
     &--active {
-      text-decoration: underline;
+      color: vars.$orange;
+      transform:scale(1.25)
     }
 
     &:hover {
-      color: vars.$green;
+      color: vars.$orange;
+      transform:scale(1.25)
     }
   }
 }
