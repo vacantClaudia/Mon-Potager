@@ -40,7 +40,7 @@ const authMiddleware = (store) => (next) => (action) => {
         })
         .catch((error) => {
           // TODO message d'erreur
-          alert('failed connection');
+          // alert('failed connection');
           console.log('error connexion', error);
         });
       break;
@@ -53,10 +53,6 @@ const authMiddleware = (store) => (next) => (action) => {
       axios.get(
         // URL
         'http://ec2-54-89-4-11.compute-1.amazonaws.com/projet-mon-potager-back/public/wp-json/monpotager/v1/plantation-select',
-        // données
-        {
-          
-        },
         // options, notamment les headers
         {
           headers: {
@@ -68,7 +64,7 @@ const authMiddleware = (store) => (next) => (action) => {
           // TODO userPlants devient une string vide car userPlants
           // TODO du reducer prend la valeur de respose.data qui est une string vide
           console.log('middleware response plantation select', response);
-          const apiDataUser = response.data;
+          const apiDataUser = response.data.plantations;
           const newAction = saveUserPlants(apiDataUser);
           store.dispatch(newAction);
           console.log('middleware newAction plantation select', newAction);
@@ -85,11 +81,11 @@ const authMiddleware = (store) => (next) => (action) => {
         {
           // TODO voir s'il faut retravailler ces données
           id_plante: Math.floor(Math.random() * 1000000),
-          id: plant.id,
           calendarId: plant.calendarId,
+          category: 'time',
           title: plant.title,
-          start: plant.start,
-          end: plant.end,
+          start: JSON.stringify(plant.start).slice(10, 20),
+          end: JSON.stringify(plant.end).slice(10, 20),
           color: plant.color,
           bgColor: plant.bgColor,
           dragBgColor: plant.dragBgColor,
@@ -107,18 +103,15 @@ const authMiddleware = (store) => (next) => (action) => {
           // TODO tester de boucler sur response.data et transmettre ex data.id = userPlants.id;
           const newPlant = [response.data];
           // eslint-disable-next-line array-callback-return
-          newPlant.map((data) => {
-            data.id_plante = response.data.id_plante;
-            data.id = response.data.id;
-            data.calendarId = response.data.calendarId;
-            data.title = response.data.title;
-            data.start = response.data.start;
-            data.end = response.data.end;
-            data.color = response.data.color;
-            data.bgColor = response.data.bgColor;
-            data.dragBgColor = response.data.dragBgColor;
-            data.borderColor = response.data.borderColor;
-          });
+          // newPlant.map((data) => {
+          //   data.title = response.data.title;
+          //   data.start = response.data.start;
+          //   data.end = response.data.end;
+          //   data.color = response.data.color;
+          //   data.bgColor = response.data.bgColor;
+          //   data.dragBgColor = response.data.dragBgColor;
+          //   data.borderColor = response.data.borderColor;
+          // });
           console.log('middleware new Plant plantation save', newPlant);
           // TODO peut être à retravailler
           const newAction = saveNewPlant(...newPlant);

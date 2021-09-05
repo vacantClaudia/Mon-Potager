@@ -38,7 +38,8 @@ const UserCalendar = ({
   // TODO dependance userPlants ?
   useEffect(() => {
     fetchUserPlants();
-  }, [userPlants]);
+  }, []);
+  console.log('userPlants dans le component', userPlants);
 
   // == get current date to display on the top of calendar
   // == today's date
