@@ -38,6 +38,11 @@ const VisitorCalendar = ({
   getSelectedRegion,
   selectedRegion,
 }) => {
+  // test response api action case fetchPlants
+  useEffect(() => {
+    fetchPlants();
+  }, []);
+  // TODO peut-être mettre un loader le temps que ça charge - peut être pas la peine en prode
   // console.log(plantsSchedules);
   // == ref to calendar to get instance
   const calendarRef = createRef();
@@ -108,11 +113,6 @@ const VisitorCalendar = ({
     // TODO NE SERT A RIEN ?
     // changeIsVisible(plantsSchedules);
   };
-
-  // test response api action case fetchPlants
-  useEffect(() => {
-    fetchPlants();
-  }, []);
 
   return (
     <>
