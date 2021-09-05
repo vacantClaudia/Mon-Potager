@@ -5,11 +5,11 @@
   .header-logo{
     max-width: 100%;
     background-size: cover;
-    border: 1px none rgb(176, 211, 176);
+    // border: 1px none rgb(176, 211, 176);
     border-bottom: 1px solid vars.$black;
-    
+
     @media(min-width:600px){
-      height: 20em;
+      height: 15em;
     }
   }
 
@@ -22,20 +22,17 @@
   .nav-item{
     padding: 2em;
     text-align: center;
-
     &--active {
       color: vars.$orange;
       transform:scale(1.25)
     }
-
     &:hover {
       color: vars.$orange;
     }
+    @media (max-width : 600px){
+      display: none;
+      }
   }
-
-  @media (max-width : 600px){
-    display: none;
-    }
   }
 
   .nav-item-connect{

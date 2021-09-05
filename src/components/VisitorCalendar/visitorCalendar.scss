@@ -4,8 +4,8 @@
 @use 'src/styles/vars';
 
 .visitorCalendar {
-  margin: 3em auto 0;
-  width: 95vw;
+  margin: auto;
+  width: 90vw;
 
   // select and option
   .visitorCalendarSelectRegion {
@@ -14,6 +14,7 @@
     background-color: vars.$green;
     border: solid 1px vars.$green;
     font-weight: vars.$fwBold;
+    border-radius: 10px;
   }
 
   .option {

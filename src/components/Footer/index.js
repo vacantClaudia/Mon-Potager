@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import './footer.scss';
 import { Icon } from 'semantic-ui-react';
 
-const Footer = ({selected}) => (
+const Footer = ({ selected }) => (
   // footer menu
   <>
     <div className="nav">
