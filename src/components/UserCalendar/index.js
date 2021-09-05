@@ -29,9 +29,6 @@ const UserCalendar = ({
   newPlant,
   addPlant,
 }) => {
-  // TODO bien utiliser addPlant et peut être créer d'autres actions pour gérer
-  // TODO l'ajout, suppression et modification d'events
-
   // == ref to calendar to get instance
   const calendarRef = createRef();
 
@@ -39,7 +36,7 @@ const UserCalendar = ({
   useEffect(() => {
     fetchUserPlants();
   }, []);
-  console.log('userPlants dans le component', userPlants);
+  // console.log('userPlants dans le component', userPlants);
 
   // == get current date to display on the top of calendar
   // == today's date
@@ -163,7 +160,7 @@ const UserCalendar = ({
       };
     }
     // calendarRef.current.calendarInst.createSchedules([schedule]);
-    console.log('schedule component', schedule);
+    // console.log('schedule component', schedule);
     newPlant(schedule);
     addPlant();
   }, []);

@@ -12,11 +12,8 @@ import {
 
 const authMiddleware = (store) => (next) => (action) => {
   const { plant } = store.getState().userCalendar;
-  // console.log('on est dans le middleware, action');
   switch (action.type) {
     case SUBMIT_LOGIN: {
-      // console.log('on va envoyer la requête');
-
       // on va piocher dans le state les infos nécessaires
       const { userName, password } = store.getState().auth;
 
@@ -30,7 +27,6 @@ const authMiddleware = (store) => (next) => (action) => {
         },
       )
         .then((response) => {
-          // console.log(response.data);
           const newAction = saveUserData(
             response.data.token,
             response.data.user_display_name,
@@ -39,15 +35,12 @@ const authMiddleware = (store) => (next) => (action) => {
           store.dispatch(newAction);
         })
         .catch((error) => {
-          // TODO message d'erreur
-          // alert('failed connection');
           console.log('error connexion', error);
         });
       break;
     }
     case FETCH_USER_PLANTS:
-      // TODO j'ai l'impression que l'action passe 2 fois : pourquoi
-      console.log('middleware fetch user plants auth', store.getState().auth);
+      // console.log('middleware fetch user plants auth', store.getState().auth);
       // on envoie le token : dans le header Authorization, en précisant le mot
       // "Bearer" avant le token
       axios.get(
@@ -61,13 +54,11 @@ const authMiddleware = (store) => (next) => (action) => {
         },
       )
         .then((response) => {
-          // TODO userPlants devient une string vide car userPlants
-          // TODO du reducer prend la valeur de respose.data qui est une string vide
-          console.log('middleware response plantation select', response);
+          // console.log('middleware response plantation select', response);
           const apiDataUser = response.data.plantations;
           const newAction = saveUserPlants(apiDataUser);
           store.dispatch(newAction);
-          console.log('middleware newAction plantation select', newAction);
+          // console.log('middleware newAction plantation select', newAction);
         })
         .catch((error) => {
           console.log('middleware error plantation select', error);
@@ -98,33 +89,19 @@ const authMiddleware = (store) => (next) => (action) => {
         },
       )
         .then((response) => {
-          console.log('middleware plant plantation save from state', plant);
-          console.log('middleware response plantation save', response);
-          // TODO tester de boucler sur response.data et transmettre ex data.id = userPlants.id;
+          // console.log('middleware plant plantation save from state', plant);
+          // console.log('middleware response plantation save', response);
           const newPlant = [response.data];
-          // eslint-disable-next-line array-callback-return
-          // newPlant.map((data) => {
-          //   data.title = response.data.title;
-          //   data.start = response.data.start;
-          //   data.end = response.data.end;
-          //   data.color = response.data.color;
-          //   data.bgColor = response.data.bgColor;
-          //   data.dragBgColor = response.data.dragBgColor;
-          //   data.borderColor = response.data.borderColor;
-          // });
-          console.log('middleware new Plant plantation save', newPlant);
-          // TODO peut être à retravailler
+          // console.log('middleware new Plant plantation save', newPlant);
           const newAction = saveNewPlant(...newPlant);
           store.dispatch(newAction);
-          console.log('middleware newAction plantation save', newAction);
+          // console.log('middleware newAction plantation save', newAction);
         })
         .catch((error) => {
           console.log('middleware error plantation save', error);
         });
       break;
     case SUBMIT_REGISTER: {
-      // console.log('on va envoyer la requête');
-
       // on va piocher dans le state les infos nécessaires
       const {
         username,
@@ -157,8 +134,6 @@ const authMiddleware = (store) => (next) => (action) => {
           store.dispatch(newAction);
         })
         .catch((error) => {
-          // TODO message d'erreur
-          // alert('failed register');
           console.log('error inscription', error);
         });
       break;
