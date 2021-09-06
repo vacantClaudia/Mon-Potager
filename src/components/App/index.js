@@ -26,52 +26,52 @@ const App = ({ fetchPlants }) => {
   }, []);
 
   return (
-  <div className="app">
+    <div className="app">
 
-    <Header />
+      <Header />
 
-    <Switch>
+      <Switch>
 
-      <Route path="/" exact>
-        <Home />
-      </Route>
+        <Route path="/" exact>
+          <Home />
+        </Route>
 
-      <Route path="/plantes" exact>
-        <PlantsList />
-      </Route>
+        <Route path="/plantes" exact>
+          <PlantsList />
+        </Route>
 
-      <Route path="/connexion" exact>
-        <Connect />
-      </Route>
+        <Route path="/connexion" exact>
+          <Connect />
+        </Route>
 
-      <Route path="/inscription" exact>
-        <SignUp />
-      </Route>
+        <Route path="/inscription" exact>
+          <SignUp />
+        </Route>
 
-      <Route path="/evenements" exact>
-        <Events />
-      </Route>
+        <Route path="/evenements" exact>
+          <Events />
+        </Route>
 
-      <Route path="/cgu" exact>
-        <Cgu />
-      </Route>
+        <Route path="/cgu" exact>
+          <Cgu />
+        </Route>
 
-      <Route path="/mentions-legales" exact>
-        <MentionsLegales />
-      </Route>
-      <Route path="/qui-sommes-nous" exact>
-        <QuiSommesNous />
-      </Route>
+        <Route path="/mentions-legales" exact>
+          <MentionsLegales />
+        </Route>
+        <Route path="/qui-sommes-nous" exact>
+          <QuiSommesNous />
+        </Route>
 
-      <Route>
-        <NotFound />
-      </Route>
+        <Route>
+          <NotFound />
+        </Route>
 
-    </Switch>
+      </Switch>
 
-    <Footer />
+      <Footer />
 
-  </div>
+    </div>
   );
 };
 

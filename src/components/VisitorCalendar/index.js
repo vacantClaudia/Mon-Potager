@@ -1,4 +1,4 @@
-import React, { createRef, useEffect, useMemo } from 'react';
+import React, { createRef } from 'react';
 import PropTypes from 'prop-types';
 import PlantsListByRegion from 'src/containers/PlantsListByRegion';
 // == import externals libraries
@@ -119,7 +119,7 @@ const VisitorCalendar = ({
             alt="arrow"
             width="30"
             height="30"
-            />
+          />
         </div>
       )}
       <div className="visitorCalendar">
@@ -234,7 +234,6 @@ VisitorCalendar.propTypes = {
   isReadOnly: PropTypes.bool.isRequired,
   selected: PropTypes.bool.isRequired,
   displayPlants: PropTypes.func.isRequired,
-  changeIsVisible: PropTypes.func.isRequired,
   isCalendarMode: PropTypes.bool.isRequired,
   changeCalendarMode: PropTypes.func.isRequired,
   getPlantsList: PropTypes.func.isRequired,
