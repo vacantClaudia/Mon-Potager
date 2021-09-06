@@ -1,14 +1,20 @@
 @use 'src/styles/vars';
 
 .quiSommesNous{
-  // background-image: url("https://images.unsplash.com/photo-1621459555843-9a77f1d03fae?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=634&q=80");
-  // background-size:cover;
+  display: flex;
+  flex-direction: column;
   width: 80%;
   margin: auto;
   border-radius: 1em ;
   .intro{
-    
+    display: flex;
+    flex-direction: column;
+    margin: 2em auto;
+    padding: 2em;
     h1{
+      display: flex;
+      justify-content: center;
+      align-items: center;
       background-color: vars.$lightGreen;
       width: 80%;
       margin: auto;
@@ -21,6 +27,7 @@
 
   }
   .team-front{
+  margin: 4em;
   
     h2{
       background-color: vars.$lightGreen;
