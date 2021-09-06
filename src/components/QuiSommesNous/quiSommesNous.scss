@@ -30,6 +30,7 @@
     }
     .team-front{
     margin: 4em;
+    margin-bottom: 1em;
     
       h2{
         background-color: vars.$lightGreen;
@@ -92,24 +93,26 @@
     margin-top: 4em;
     display: flex;
     flex-direction: column;
-    width: 80%;
+    width: 100%;
     margin: auto;
+    padding-top: 4em;
+    // justify-content: flex-start;
     // border-radius: 1em ;
     .intro{
       display: flex;
       flex-direction: column;
       margin: 2em auto;
-      padding: 2em;
+      // padding: 2em;
       h1{
         display: flex;
         justify-content: center;
-        align-items: center;
+         align-items: center;
         background-color: vars.$lightGreen;
         width: 100%;
-        margin: auto;
+      //   margin: auto;
         border-radius: 1em;
-        padding: 1em;
-      }
+         padding: 1em;
+       }
       p{
         width: 100%;
       }
@@ -118,6 +121,7 @@
     .team-front{
       
         flex-wrap: wrap;
+        padding-top: 6em;
         
       h2{
         background-color: vars.$lightGreen;
@@ -143,6 +147,10 @@
           border-radius: 50%;
           box-shadow: 2px 2px 3px vars.$green;
           margin-bottom: 2em;
+          .name{
+            margin-top: 0px;
+            margin-bottom: 0px;
+          }
         }
       }
    
@@ -171,6 +179,10 @@
           border-radius: 50%;
           box-shadow: 2px 2px 3px vars.$green;
           margin-bottom: 2em;
+          .name{
+            margin-top: 0px;
+            margin-bottom: 0px;
+          }
                   
         }
       }

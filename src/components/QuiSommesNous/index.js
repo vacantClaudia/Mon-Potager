@@ -30,7 +30,7 @@ const QuiSommesNous = () => (
             height="120"
             width="120"
           />
-          <h3>Claudia</h3>
+          <h3 className="name">Claudia</h3>
           <p>Product Owner</p>
         </div>
         <div className="dev">
@@ -40,7 +40,7 @@ const QuiSommesNous = () => (
             height="120"
             width="120"
           />
-          <h3>Fouzia</h3>
+          <h3 className="name">Fouzia</h3>
           <p> Lead Dev</p>
         </div>
         <div className="dev">
@@ -50,7 +50,7 @@ const QuiSommesNous = () => (
             height="120"
             width="120"
           />
-          <h3>Jonathan</h3>
+          <h3 className="name">Jonathan</h3>
           <p>Referent technique</p>
         </div>
       </div>
@@ -65,7 +65,7 @@ const QuiSommesNous = () => (
             height="120"
             width="120"
           />
-          <h3>Mathieu</h3>
+          <h3 className="name">Mathieu</h3>
           <p>Scrum Master</p>
         </div>
 
@@ -76,7 +76,7 @@ const QuiSommesNous = () => (
             height="120"
             width="120"
           />
-          <h3>Paul</h3>
+          <h3 className="name">Paul</h3>
           <p>Lead Dev</p>
         </div>
       </div>
