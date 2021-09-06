@@ -8,7 +8,6 @@ import PlantsListByRegion from 'src/components/PlantsListByRegion';
 import {
   changeIsVisible,
   displayPlants,
-  fetchPlants,
   changeCalendarMode,
   getSelectedRegion,
 } from 'src/actions/visitorCalendar';
@@ -40,11 +39,6 @@ const mapDispatchToProps = (dispatch) => ({
   // display all plants
   displayPlants: () => {
     const action = displayPlants();
-    dispatch(action);
-  },
-
-  fetchPlants: () => {
-    const action = fetchPlants();
     dispatch(action);
   },
   // toggle to change display on list
