@@ -124,13 +124,13 @@ const authMiddleware = (store) => (next) => (action) => {
         },
       )
         .then((response) => {
-          console.log('middleware plantToRemove plantation delete from state', plantSelected);
-          console.log('middleware response plantation delete', response);
+          // console.log('middleware plantToRemove plantation delete from state', plantSelected);
+          // console.log('middleware response plantation delete', response);
           const plantRemoved = response.data;
-          console.log('middleware plantRemoved plantation delete', plantRemoved);
+          // console.log('middleware plantRemoved plantation delete', plantRemoved);
           const newAction = plantToDelete(plantRemoved);
           store.dispatch(newAction);
-          console.log('middleware newAction plantation delete', newAction);
+          // console.log('middleware newAction plantation delete', newAction);
         })
         .catch((error) => {
           console.log('middleware error plantation save', error);

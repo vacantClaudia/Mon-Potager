@@ -94,7 +94,7 @@ const UserCalendar = ({
     // const { calendarId, id } = e.schedule;
     // const el = calendarRef.current.calendarInst.getElement(id, calendarId);
     // console.log(e, el.getBoundingClientRect());
-    console.log('component e.schedule', e.schedule);
+    // console.log('component e.schedule', e.schedule);
     selectPlant(e.schedule);
   }, []);
 
@@ -203,7 +203,7 @@ const UserCalendar = ({
   }, []);
 
   const onBeforeDeleteSchedule = useCallback((res) => {
-    console.log('res', res);
+    // console.log('res', res);
 
     // const { id, calendarId } = res.schedule;
     // calendarRef.current.calendarInst.deleteSchedule(id, calendarId);
@@ -212,7 +212,7 @@ const UserCalendar = ({
   }, []);
 
   const onBeforeUpdateSchedule = useCallback((e) => {
-    console.log(e);
+    // console.log(e);
 
     // const { schedule, changes } = e;
 

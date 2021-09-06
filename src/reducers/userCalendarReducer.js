@@ -174,7 +174,6 @@ function userCalendarReducer(state = initialState, action = {}) {
     case PLANT_TO_DELETE: {
       return {
         ...state,
-        // TODO voir ex peut être à retravailler
         plantToRemove: state.plantSelected,
         userPlants: state.userPlants.filter((item) => item.id !== action.plant.id_plantation),
       };
@@ -183,7 +182,6 @@ function userCalendarReducer(state = initialState, action = {}) {
     case SELECT_PLANT: {
       return {
         ...state,
-        // TODO voir ex peut être à retravailler
         plantSelected: action.plant,
       };
     }
