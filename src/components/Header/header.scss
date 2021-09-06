@@ -20,12 +20,15 @@
   .nav-item{
     padding: 2em;
     text-align: center;
+    transition: font-size 0.3s;
     &--active {
       color: vars.$orange;
-      transform:scale(1.25)
+      font-size: 20px;
+      
     }
     &:hover {
       color: vars.$orange;
+    
     }
     @media (max-width : 600px){
       display: none;

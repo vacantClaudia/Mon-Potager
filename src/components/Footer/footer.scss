@@ -2,7 +2,8 @@
 
 // footer menu
 .nav {
-  position: relative;
+  // position: relative;
+  // bottom: 0;
   @media(max-width: 600px){
   display: flex;
   flex-wrap: wrap;
@@ -16,6 +17,7 @@
     padding: 1rem;
     padding-left: 2rem;
     color: vars.$black;
+    transition: font-size 0.3s;
     @media(max-width:600px){
       padding: 0em;
       margin-bottom: 0.5rem;
@@ -28,7 +30,8 @@
 
     &:hover {
       color: vars.$orange;
-      transform:scale(1.25)
+      // transform:scale(1.25)
+      font-size: 20px;
     }
   }
 }
