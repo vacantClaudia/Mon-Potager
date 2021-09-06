@@ -10,6 +10,9 @@
   height: 3em;
   border-radius: 2em;
   text-shadow: vars.$black 1px 0 10px;
+  @media(max-width: 600px){
+    width: 80%;
+  }
 }
 .visitorCalendar {
   margin: 3em auto 0;

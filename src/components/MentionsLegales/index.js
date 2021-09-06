@@ -1,5 +1,6 @@
 import React from 'react';
 import './mentionsLegales.scss';
+import jovial from 'src/assets/images/jovial.png';
 
 const MentionsLegales = () => (
   <div className="mentionsLegales">
@@ -17,26 +18,13 @@ const MentionsLegales = () => (
       33000 BORD'EAU.
       <br />
       Hébergeur : https://surge.sh/
+      <br />
       Autres contributeurs : O'clock
-    </p>
-    <h2>2 - Propriété intellectuelle et contrefaçons.</h2>
-    <p>
-      Claudia, Fouzia, Jonathan, Mathieu et Paul,
-      sont les propriétaires des droits de propriété intellectuelle
-      et détient les droits d’usage sur tous les éléments accessibles sur le site internet,
-      notamment les textes, images, graphismes, logos, vidéos, architecture, icônes et sons.
       <br />
-      Toute reproduction, représentation, modification, publication,
-      adaptation de tout ou partie des éléments du site,
-      quel que soit le moyen ou le procédé utilisé,est interdite,
-      sauf autorisation écrite préalable de Claudia, Fouzia, Jonathan, Mathieu ou Paul.
-      <br />
-      Toute exploitation non autorisée du site ou de l’un quelconque
-      des éléments qu’il contient sera considérée comme constitutive
-      d’une contrefaçon et poursuivie conformément aux dispositions
-      des articles L.335-2 et suivants du Code de Propriété Intellectuelle.
+      <a href="https://www.stephanie-jovial.fr/">Designer grahiste : Stéphanie Jovial</a>
+
     </p>
-    <h2>3 - Limitations de responsabilité.</h2>
+    <h2>2 - Limitations de responsabilité.</h2>
     <p>
       Claudia,Fouzia,Jonathan,Mathieu et Paul
       ne pourront être tenu pour responsable des dommages directs et indirects causés au matériel de l’utilisateur, lors de l’accès au site http://mon-potager.surge.sh/.
@@ -60,7 +48,7 @@ const MentionsLegales = () => (
       notamment en cas de message à caractère raciste, injurieux, diffamant, ou pornographique,
       quel que soit le support utilisé (texte, photographie …).
     </p>
-    <h2>4 - CNIL et gestion des données personnelles.</h2>
+    <h2>3 - CNIL et gestion des données personnelles.</h2>
     <p>
       Conformément aux dispositions de la loi 78-17 du 6 janvier 1978 modifiée,
       l’utilisateur du site http://mon-potager.surge.sh/ dispose d’un droit d’accès,
@@ -69,9 +57,9 @@ const MentionsLegales = () => (
       (type de données, finalité, destinataire...), lisez notre Politique de Confidentialité.
       Il est également possible de déposer une réclamation auprès de la CNIL.
     </p>
-    <h2>5 - Liens hypertextes et cookies</h2>
+    <h2>4 - Liens hypertextes et cookies</h2>
     <p>
-      Le site http://mon-potager.surge.sh/ contient des liens hypertextes vers d’autres sites et dégage toute responsabilité à propos de ces liens externes ou des liens créés par d’autres sites vers http://mon-potager.surge.sh/.
+      Le site http://mon-potager.surge.sh/ contient des informations provenant d’autres sites (https://www.jardiner-malin.fr/fiche/potager) et dégage toute responsabilité à propos de ces liens externes ou des liens créés par d’autres sites vers http://mon-potager.surge.sh/.
     </p>
     <p>
       La navigation sur le site http://mon-potager.surge.sh/ est susceptible de provoquer l’installation de cookie(s) sur l’ordinateur de l’utilisateur.
@@ -92,7 +80,7 @@ const MentionsLegales = () => (
       Pour plus d'informations sur la façon dont nous faisons usage des cookies,
       lisez notre Politique de Confidentialité.
     </p>
-    <h2>6 - Droit applicable et attribution de juridiction.</h2>
+    <h2>5 - Droit applicable et attribution de juridiction.</h2>
     <p>
       Tout litige en relation avec l’utilisation du site http://mon-potager.surge.sh/ est soumis au droit français.
     </p>

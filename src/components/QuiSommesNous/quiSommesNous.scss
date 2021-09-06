@@ -1,84 +1,178 @@
 @use 'src/styles/vars';
 
-.quiSommesNous{
-  display: flex;
-  flex-direction: column;
-  width: 80%;
-  margin: auto;
-  border-radius: 1em ;
-  .intro{
+
+@media(min-width:600px){
+  .quiSommesNous{
     display: flex;
     flex-direction: column;
-    margin: 2em auto;
-    padding: 2em;
-    h1{
+    width: 80%;
+    margin: auto;
+    border-radius: 1em ;
+    .intro{
       display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: vars.$lightGreen;
-      width: 80%;
-      margin: auto;
-      border-radius: 1em;
-      padding: 1em;
-    }
-    p{
-      margin: 2em;
-    }
-
-  }
-  .team-front{
-  margin: 4em;
+      flex-direction: column;
+      margin: 2em auto;
+      padding: 2em;
+      h1{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: vars.$lightGreen;
+        width: 80%;
+        margin: auto;
+        border-radius: 1em;
+        padding: 1em;
+      }
+      p{
+        margin: 2em;
+      }
   
-    h2{
-      background-color: vars.$lightGreen;
-      width: 80%;
-      margin: auto;
-      border-radius: 1em;   
-      display: flex;
-      justify-content: space-around;
-      flex-direction: row;
     }
-    .team-dev{
-      display: flex;
-      justify-content: space-around;
-      flex-direction: row;
-      flex-wrap: wrap;
-      margin: 2em;
-      
-      .dev{ 
-        background-color: rgb(233, 240, 231);
-        width: 200px;
-        height: 200px;
-        border-radius: 50%;
-        box-shadow: 2px 2px 3px vars.$green;
+    .team-front{
+    margin: 4em;
+    
+      h2{
+        background-color: vars.$lightGreen;
+        width: 80%;
+        margin: auto;
+        border-radius: 1em;   
+        display: flex;
+        justify-content: space-around;
+        flex-direction: row;
+      }
+      .team-dev{
+        display: flex;
+        justify-content: space-around;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin: 2em;
+        
+        .dev{ 
+          flex-direction: row;
+          background-color: rgb(233, 240, 231);
+          width: 200px;
+          height: 200px;
+          border-radius: 50%;
+          box-shadow: 2px 2px 3px vars.$green;
+        }
+      }
+   
+  
+    }
+    .team-back{
+      h2{
+        background-color: rgba(255, 255, 255, 0.52);
+        width: 80%;
+        margin: auto;
+        border-radius: 1em;
+        background-color: vars.$lightGreen;
+      }
+      .team-dev{
+        display: flex;
+        justify-content: space-around;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin: 2em;
+  
+        .dev{
+          flex-direction: row;
+          background-color: rgb(233, 240, 231);
+          width: 200px;
+          height: 200px;
+          border-radius: 50%;
+          box-shadow: 2px 2px 3px vars.$green;
+                  
+        }
       }
     }
- 
-
   }
-  .team-back{
-    h2{
-      background-color: rgba(255, 255, 255, 0.52);
-      width: 80%;
-      margin: auto;
-      border-radius: 1em;
-      background-color: vars.$lightGreen;
-    }
-    .team-dev{
+}
+@media(max-width:600px){
+  .quiSommesNous{
+    margin-top: 4em;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: auto;
+    // border-radius: 1em ;
+    .intro{
       display: flex;
-      justify-content: space-around;
-      flex-direction: row;
-      flex-wrap: wrap;
-      margin: 2em;
-
-      .dev{
+      flex-direction: column;
+      margin: 2em auto;
+      padding: 2em;
+      h1{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: vars.$lightGreen;
+        width: 100%;
+        margin: auto;
+        border-radius: 1em;
+        padding: 1em;
+      }
+      p{
+        width: 100%;
+      }
+  
+    }
+    .team-front{
+      
+        flex-wrap: wrap;
+        
+      h2{
+        background-color: vars.$lightGreen;
+        width: 80%;
+        margin: auto;
+        border-radius: 1em;   
+        display: flex;
+        justify-content: space-around;
         flex-direction: row;
-        background-color: rgb(233, 240, 231);
-        width: 200px;
-        height: 200px;
-        border-radius: 50%;
-        box-shadow: 2px 2px 3px vars.$green;
-                
+      }
+      .team-dev{
+        display: flex;
+        justify-content: space-around;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin: 2em;
+        
+        .dev{ 
+          flex-direction: row;
+          background-color: rgb(233, 240, 231);
+          width: 200px;
+          height: 200px;
+          border-radius: 50%;
+          box-shadow: 2px 2px 3px vars.$green;
+          margin-bottom: 2em;
+        }
+      }
+   
+  
+    }
+    .team-back{
+      h2{
+        background-color: rgba(255, 255, 255, 0.52);
+        width: 80%;
+        margin: auto;
+        border-radius: 1em;
+        background-color: vars.$lightGreen;
+      }
+      .team-dev{
+        display: flex;
+        justify-content: space-around;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin: 2em;
+  
+        .dev{
+          flex-direction: row;
+          background-color: rgb(233, 240, 231);
+          width: 200px;
+          height: 200px;
+          border-radius: 50%;
+          box-shadow: 2px 2px 3px vars.$green;
+          margin-bottom: 2em;
+                  
+        }
       }
     }
   }
