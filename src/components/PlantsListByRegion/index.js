@@ -11,9 +11,10 @@ function createMarkup(data) {
 }
 
 const PlantsListByRegion = ({ plantsSchedules, selectedRegion, fetchPlants }) => {
-  useEffect(() => {
-    fetchPlants();
-  }, []);
+  // TODO inutile ? recharge la requête au passage du calendrier à la liste
+  // useEffect(() => {
+  //   fetchPlants();
+  // }, []);
   return (
     <div className="accordion">
       {plantsSchedules.map((plant) => {

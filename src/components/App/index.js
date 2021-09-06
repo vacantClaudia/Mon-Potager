@@ -1,5 +1,5 @@
 // == Import npm
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import 'semantic-ui-css/semantic.min.css';
 
@@ -20,7 +20,12 @@ import MentionsLegales from 'src/components/MentionsLegales';
 import QuiSommesNous from 'src/components/QuiSommesNous';
 
 // == App component
-const App = () => (
+const App = ({ fetchPlants }) => {
+  useEffect(() => {
+    fetchPlants();
+  }, []);
+
+  return (
   <div className="app">
 
     <Header />
@@ -67,7 +72,8 @@ const App = () => (
     <Footer />
 
   </div>
-);
+  );
+};
 
 // == Export
 export default App;
