@@ -119,13 +119,13 @@ const VisitorCalendar = ({
     <>
       {!selected && (
         <div className="intro">
-          <p>Selectionne ta région pour découvrir le calendrier du potager</p>
+          <p>Sélectionne ta région pour découvrir le calendrier du potager</p>
           <img
             src={arrow}
             alt="arrow"
             width="30"
             height="30"
-            />
+          />
         </div>
       )}
       <div className="visitorCalendar">
