@@ -1,11 +1,9 @@
 @use 'src/styles/vars';
 
 .header{
-  
   .header-logo{
     max-width: 100%;
     background-size: cover;
-    // border: 1px none rgb(176, 211, 176);
     border-bottom: 1px solid vars.$black;
 
     @media(min-width:600px){
@@ -72,5 +70,4 @@
      background-color: vars.$lightOrange;
      padding: 1rem;
      border-radius: 50px;
-  
   }
