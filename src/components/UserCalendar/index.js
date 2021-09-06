@@ -28,6 +28,10 @@ const UserCalendar = ({
   // plant, maybe prop to not use
   newPlant,
   addPlant,
+  deletePlant,
+  plantSelected,
+  selectPlant,
+  plantToRemove,
 }) => {
   // == ref to calendar to get instance
   const calendarRef = createRef();
@@ -87,10 +91,11 @@ const UserCalendar = ({
   };
 
   const onClickSchedule = useCallback((e) => {
-    const { calendarId, id } = e.schedule;
-    const el = calendarRef.current.calendarInst.getElement(id, calendarId);
-
+    // const { calendarId, id } = e.schedule;
+    // const el = calendarRef.current.calendarInst.getElement(id, calendarId);
     // console.log(e, el.getBoundingClientRect());
+    console.log('component e.schedule', e.schedule);
+    selectPlant(e.schedule);
   }, []);
 
   const onBeforeCreateSchedule = useCallback((scheduleData) => {
@@ -189,8 +194,8 @@ const UserCalendar = ({
         borderColor: '#daece5',
       };
     }
-    console.log(schedule.start);
-    console.log(schedule2.start);
+    // console.log(schedule.start);
+    // console.log(schedule2.start);
     newPlant(schedule);
     addPlant();
     newPlant(schedule2);
@@ -198,11 +203,12 @@ const UserCalendar = ({
   }, []);
 
   const onBeforeDeleteSchedule = useCallback((res) => {
-    console.log(res);
+    console.log('res', res);
 
     // const { id, calendarId } = res.schedule;
-
     // calendarRef.current.calendarInst.deleteSchedule(id, calendarId);
+    // console.log('res.schedule component', res.schedule);
+    deletePlant(res.plantSelected);
   }, []);
 
   const onBeforeUpdateSchedule = useCallback((e) => {

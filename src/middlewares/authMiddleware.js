@@ -7,11 +7,12 @@ import {
   saveUserRegister,
 } from '../actions/auth';
 import {
-  FETCH_USER_PLANTS, ADD_PLANT, saveUserPlants, saveNewPlant,
+  FETCH_USER_PLANTS, ADD_PLANT, saveUserPlants, saveNewPlant, DELETE_PLANT, plantToDelete,
 } from '../actions/userCalendar';
 
 const authMiddleware = (store) => (next) => (action) => {
   const { plant } = store.getState().userCalendar;
+  const { plantSelected } = store.getState().userCalendar;
   switch (action.type) {
     case SUBMIT_LOGIN: {
       // on va piocher dans le state les infos nécessaires
@@ -56,6 +57,9 @@ const authMiddleware = (store) => (next) => (action) => {
         .then((response) => {
           // console.log('middleware response plantation select', response);
           const apiDataUser = response.data.plantations;
+          apiDataUser.map((data) => {
+            data.id = data.id_plantation;
+          });
           const newAction = saveUserPlants(apiDataUser);
           store.dispatch(newAction);
           // console.log('middleware newAction plantation select', newAction);
@@ -92,10 +96,41 @@ const authMiddleware = (store) => (next) => (action) => {
           // console.log('middleware plant plantation save from state', plant);
           // console.log('middleware response plantation save', response);
           const newPlant = [response.data];
+          newPlant.map((data) => {
+            data.id = data.id_plante;
+          });
           // console.log('middleware new Plant plantation save', newPlant);
           const newAction = saveNewPlant(...newPlant);
           store.dispatch(newAction);
           // console.log('middleware newAction plantation save', newAction);
+        })
+        .catch((error) => {
+          console.log('middleware error plantation save', error);
+        });
+      break;
+    case DELETE_PLANT:
+      axios.post(
+        // URL
+        'http://ec2-54-89-4-11.compute-1.amazonaws.com/projet-mon-potager-back/public/wp-json/monpotager/v1/plantation-delete',
+        // données
+        {
+          // TODO voir s'il faut retravailler ces données
+          id_plantation: plantSelected.id,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${store.getState().auth.token}`,
+          },
+        },
+      )
+        .then((response) => {
+          console.log('middleware plantToRemove plantation delete from state', plantSelected);
+          console.log('middleware response plantation delete', response);
+          const plantRemoved = response.data;
+          console.log('middleware plantRemoved plantation delete', plantRemoved);
+          const newAction = plantToDelete(plantRemoved);
+          store.dispatch(newAction);
+          console.log('middleware newAction plantation delete', newAction);
         })
         .catch((error) => {
           console.log('middleware error plantation save', error);
