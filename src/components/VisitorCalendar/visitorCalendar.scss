@@ -1,8 +1,16 @@
-// == style css buttons Today Prev and Next
-
 // == use vars file
 @use 'src/styles/vars';
 
+.intro{
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  margin: auto;
+  width: 40em;
+  height: 3em;
+  border-radius: 2em;
+  text-shadow: vars.$black 1px 0 10px;
+}
 .visitorCalendar {
   margin: auto;
   width: 90vw;

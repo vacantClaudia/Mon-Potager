@@ -14,6 +14,7 @@ import { ChevronLeft, ChevronRight } from 'react-feather';
 import semer from 'src/assets/images/semer.png';
 import planter from 'src/assets/images/planter.png';
 import recolter from 'src/assets/images/recolter.png';
+import arrow from 'src/assets/images/arrow.png';
 
 // == Import css
 import './visitorCalendar.scss';
@@ -116,6 +117,17 @@ const VisitorCalendar = ({
 
   return (
     <>
+      {!selected && (
+        <div className="intro">
+          <p>Selectionne ta région pour découvrir le calendrier du potager</p>
+          <img
+            src={arrow}
+            alt="arrow"
+            width="30"
+            height="30"
+            />
+        </div>
+      )}
       <div className="visitorCalendar">
         <select className="visitorCalendarSelectRegion" onChange={handleOptionSelect} value={selectedRegion}>
           <option className="option" value="">Choisis ta région!</option>
@@ -152,27 +164,21 @@ const VisitorCalendar = ({
                   src={semer}
                   alt="semis"
                   width="30"
-                  // height="20"
                 />
-                {/* Semis */}
               </div>
               <div className="planting">
                 <img
                   src={planter}
                   alt="semis"
                   width="30"
-                  // height="20"
                 />
-                {/* Plantation */}
               </div>
               <div className="harvest">
                 <img
                   src={recolter}
                   alt="semis"
                   width="30"
-                  // height="20"
                 />
-                {/* Récolte */}
               </div>
             </div>
             {!isCalendarMode
