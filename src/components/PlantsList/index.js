@@ -9,7 +9,7 @@ function createMarkup(data) {
 }
 
 const PlantsList = ({ plants, getPlantsList }) => {
-  console.log(plants);
+  // console.log(plants);
   useEffect(() => {
     getPlantsList();
   }, []);
@@ -36,35 +36,38 @@ const PlantsList = ({ plants, getPlantsList }) => {
             <input type="radio" name="select" className="accordion-select" />
             <div className="accordion-title"><span>{plant.title.rendered}</span></div>
             <div className="accordion-content">
+              <div className="reponsive">
+                <div className="container-image">
+                  <img
+                    // eslint-disable-next-line no-underscore-dangle
+                    src={plant._embedded['wp:featuredmedia'][0].media_details.sizes.thumbnail.source_url}
+                    alt="plante"
+                    className="accordion-image"
+                  />
+                </div>
 
-              <p className="container-image">
-                <img
-                  // eslint-disable-next-line no-underscore-dangle
-                  src={plant._embedded['wp:featuredmedia'][0].media_details.sizes.thumbnail.source_url}
-                  alt="plante"
-                  className="accordion-image"
-                />
-              </p>
+                <div>
+                  {semis && (
+                    <p className="period-list">
+                      Semis: {semis}
+                    </p>
+                  )}
 
-              {semis && (
-                <p>
-                  Semis: {semis}
-                </p>
-              )}
+                  {planting && (
+                    <p className="period-list">
+                      Plantation: {planting}
+                    </p>
+                  )}
 
-              {planting && (
-                <p>
-                  Plantation: {planting}
-                </p>
-              )}
+                  {harvest && (
+                    <p className="period-list">
+                      Récolte: {harvest}
+                    </p>
+                  )}
 
-              {harvest && (
-                <p>
-                  Récolte: {harvest}
-                </p>
-              )}
-
-              <p dangerouslySetInnerHTML={createMarkup(plant.content.rendered)} />
+                  <p dangerouslySetInnerHTML={createMarkup(plant.content.rendered)} />
+                </div>
+              </div>
 
             </div>
           </React.Fragment>

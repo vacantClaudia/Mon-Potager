@@ -1,5 +1,5 @@
 import {
-  ADD_PLANT,
+  SAVE_USER_PLANTS, SAVE_NEW_PLANT, NEW_PLANT, PLANT_TO_DELETE, SELECT_PLANT,
 } from 'src/actions/userCalendar';
 
 // == Visitor Calendar initialState : just calendar display, not data schedules
@@ -150,7 +150,13 @@ const initialState = {
     },
   ],
   // == List of plants
-  plantsSchedules: [],
+  userPlants: [],
+
+  plant: {},
+
+  plantSelected: {},
+
+  plantToRemove: {},
 
   // == to click on the calendar
   isReadOnly: false,
@@ -158,12 +164,39 @@ const initialState = {
 
 function userCalendarReducer(state = initialState, action = {}) {
   switch (action.type) {
-    case ADD_PLANT: {
+    case NEW_PLANT: {
       return {
         ...state,
-        plantsSchedules: [...state.plantsSchedules, action.plant],
+        plant: action.plant,
       };
     }
+
+    case PLANT_TO_DELETE: {
+      return {
+        ...state,
+        plantToRemove: state.plantSelected,
+        userPlants: state.userPlants.filter((item) => item.id !== action.plant.id_plantation),
+      };
+    }
+
+    case SELECT_PLANT: {
+      return {
+        ...state,
+        plantSelected: action.plant,
+      };
+    }
+
+    case SAVE_USER_PLANTS:
+      return {
+        ...state,
+        userPlants: action.userPlants,
+      };
+
+    case SAVE_NEW_PLANT:
+      return {
+        ...state,
+        userPlants: [...state.userPlants, action.plant],
+      };
 
     default:
       return state;

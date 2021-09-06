@@ -4,20 +4,17 @@
  html body  {
   font-family: 'Raleway', sans-serif;
   font-weight: vars.$fwBold;
-  // background-color: vars.$lightGreen;
   font-size: 1.2rem;
   background-image: url("https://images.unsplash.com/15/leaf.JPG?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1055&q=80");
   background-size: cover;
   background-attachment: fixed;
 }
 
-/* 
-  // or you can import your own font
-  body {
-    font-family: 'Roboto', sans-serif;
-  }
-*/
   @font-face {
     font-family: 'Alagambe', sans-serif;
     src: url('../assets/fonts/alagambe.otf');
   }
+
+#root{
+  height: 100% !important ;
+}

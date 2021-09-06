@@ -10,6 +10,11 @@ import 'tui-date-picker/dist/tui-date-picker.css';
 import 'tui-time-picker/dist/tui-time-picker.css';
 
 import { ChevronLeft, ChevronRight } from 'react-feather';
+// picture for legend
+import semer from 'src/assets/images/semer.png';
+import planter from 'src/assets/images/planter.png';
+import recolter from 'src/assets/images/recolter.png';
+import arrow from 'src/assets/images/arrow.png';
 
 // == Import css
 import './visitorCalendar.scss';
@@ -34,6 +39,11 @@ const VisitorCalendar = ({
   getSelectedRegion,
   selectedRegion,
 }) => {
+  // test response api action case fetchPlants
+  useEffect(() => {
+    fetchPlants();
+  }, []);
+  // TODO peut-être mettre un loader le temps que ça charge - peut être pas la peine en prode
   // console.log(plantsSchedules);
   // == ref to calendar to get instance
   const calendarRef = createRef();
@@ -105,13 +115,19 @@ const VisitorCalendar = ({
     // changeIsVisible(plantsSchedules);
   };
 
-  // test response api action case fetchPlants
-  useEffect(() => {
-    fetchPlants();
-  }, []);
-
   return (
     <>
+      {!selected && (
+        <div className="intro">
+          <p>Sélectionne ta région pour découvrir le calendrier du potager</p>
+          <img
+            src={arrow}
+            alt="arrow"
+            width="30"
+            height="30"
+          />
+        </div>
+      )}
       <div className="visitorCalendar">
         <select className="visitorCalendarSelectRegion" onChange={handleOptionSelect} value={selectedRegion}>
           <option className="option" value="">Choisis ta région!</option>
@@ -133,7 +149,7 @@ const VisitorCalendar = ({
           <>
             <div className="toggle">
               <button
-                className="toggle menu-btn"
+                className="menu-btn"
                 type="button"
                 onClick={() => {
                   changeCalendarMode(!isCalendarMode);
@@ -141,6 +157,29 @@ const VisitorCalendar = ({
               >
                 {isCalendarMode ? 'Désactiver' : 'Activer'} l'affichage en liste
               </button>
+            </div>
+            <div className="legend">
+              <div className="sowing">
+                <img
+                  src={semer}
+                  alt="semis"
+                  width="30"
+                />
+              </div>
+              <div className="planting">
+                <img
+                  src={planter}
+                  alt="semis"
+                  width="30"
+                />
+              </div>
+              <div className="harvest">
+                <img
+                  src={recolter}
+                  alt="semis"
+                  width="30"
+                />
+              </div>
             </div>
             {!isCalendarMode
               ? (

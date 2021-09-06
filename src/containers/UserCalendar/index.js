@@ -4,10 +4,8 @@ import { connect } from 'react-redux';
 import UserCalendar from 'src/components/UserCalendar';
 
 // import actions creators
-import { getPlantsList } from 'src/actions/plantsList';
-
 import {
-  addPlant,
+  addPlant, newPlant, fetchUserPlants, deletePlant, selectPlant,
 } from 'src/actions/userCalendar';
 
 // === mapStateToProps
@@ -16,21 +14,39 @@ const mapStateToProps = (state) => ({
   daynames: state.userCalendar.daynames,
   startDayOfWeek: state.userCalendar.startDayOfWeek,
   myTheme: state.userCalendar.myTheme,
-  plantsSchedules: state.userCalendar.plantsSchedules,
+  userPlants: state.userCalendar.userPlants,
+  // plant: state.userCalendar.plant,
   plantsCalendars: state.userCalendar.plantsCalendars,
   isReadOnly: state.userCalendar.isReadOnly,
-  plants: state.plants.plants,
+  plantToRemove: state.userCalendar.plantToRemove,
 });
 
 // === mapDispatchToProps
 const mapDispatchToProps = (dispatch) => ({
   // == get new state plantsSchedules
-  addPlant: (plant) => {
-    const action = addPlant(plant);
+  addPlant: () => {
+    const action = addPlant();
     dispatch(action);
   },
-  getPlantsList: () => {
-    const action = getPlantsList();
+
+  newPlant: (plant) => {
+    const action = newPlant(plant);
+    dispatch(action);
+  },
+
+  selectPlant: (plant) => {
+    const action = selectPlant(plant);
+    dispatch(action);
+  },
+
+  deletePlant: (plant) => {
+    const action = deletePlant(plant);
+    dispatch(action);
+  },
+
+  // == get new state plantsSchedules
+  fetchUserPlants: () => {
+    const action = fetchUserPlants();
     dispatch(action);
   },
 }

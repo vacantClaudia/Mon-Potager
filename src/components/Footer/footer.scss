@@ -2,7 +2,8 @@
 
 // footer menu
 .nav {
-  position: relative;
+  // position: relative;
+  // bottom: 0;
   @media(max-width: 600px){
   display: flex;
   flex-wrap: wrap;
@@ -11,23 +12,26 @@
   padding-bottom: 3.5em;
   }
 
-
-
   &-item {
     display: inline-block;  
     padding: 1rem;
     padding-left: 2rem;
     color: vars.$black;
+    transition: font-size 0.3s;
     @media(max-width:600px){
       padding: 0em;
+      margin-bottom: 0.5rem;
     }
 
     &--active {
-      text-decoration: underline;
+      color: vars.$orange;
+      transform:scale(1.25)
     }
 
     &:hover {
-      color: vars.$green;
+      color: vars.$orange;
+      // transform:scale(1.25)
+      font-size: 20px;
     }
   }
 }
@@ -39,10 +43,8 @@
   }
 
   width: 100%;
-  height: 3.4em;
-  border: 0.5px solid vars.$green;
-  border-top-left-radius: 0.5em;
-  border-top-right-radius: 0.5em;
+  height: 4em;
+  border-top: 0.5px solid vars.$green;
   position: fixed;
   display: flex;
   justify-content: space-around;
@@ -54,11 +56,6 @@
      align-items: center;
      align-self: flex-end;
      flex-direction: column;
-  
-    .nav-icon{
-    border: 1px solid vars.$yellow;
-    background-color: vars.$lightYellow;
-    border-radius: 50px; 
-    }
+     margin-bottom: 0.5em;
   }
 }

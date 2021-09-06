@@ -1,36 +1,86 @@
-// == style css buttons Today Prev and Next
-
 // == use vars file
 @use 'src/styles/vars';
 
+.intro{
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  margin: auto;
+  width: 40em;
+  height: 3em;
+  border-radius: 2em;
+  text-shadow: vars.$black 1px 0 10px;
+  @media(max-width: 600px){
+    width: 80%;
+  }
+}
 .visitorCalendar {
   margin: 3em auto 0;
-  width: 95vw;
+  width: 90vw;
 
-  .visitorCalendarSelectRegion, .toggle.menu-btn {
-  border-radius: 5px;
-  padding: 5px;
-  font-family: 'Raleway',sans-serif;
-  background-color: vars.$green;
-  border: solid 1px vars.$green;
-  font-weight: vars.$fwBold;
+  // select and option
+  .visitorCalendarSelectRegion {
+    font-family: 'Raleway', sans-serif;
+    padding: 5px;
+    background-color: vars.$green;
+    border: solid 1px vars.$green;
+    font-weight: vars.$fwBold;
+    border-radius: 10px;
   }
 
   .option {
     background-color: vars.$lightGreen;
-    border: solid 1px vars.$lightGreen;  
+    border: solid 1px vars.$lightGreen;
+    font-size: 0.9rem;
   }
 
-  .toggle.menu-btn {
-    margin-top: 20px;
-    background-color: vars.$yellow;
-    border: solid 1px vars.$yellow;
+  // toggle for display list or calendar
+  .toggle {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    .menu-btn {
+      font-family: 'Raleway', sans-serif;
+      align-self: center;
+      margin-top: 10px;
+      height: 30px;
+      border-radius: 5px;
+      background-color: vars.$yellow;
+      border: solid 1px vars.$yellow;
+      font-weight: vars.$fwBold;
+    }
   }
 
+  .legend {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+
+    .sowing, .planting, .harvest {
+      background-color: vars.$yellow;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      padding-top: 10px;
+    }
+
+    .planting {
+      background-color: vars.$orange;
+      margin-right: 10px;
+      margin-left: 10px;
+    }
+
+    .harvest {
+      background-color: vars.$green;
+    }
+  }
+  
   // == style css buttons Today Prev and Next
   .visitorCalendar-buttonsTodayMonth {
     margin: 1em 0;
-    
+
     .visitorCalendar-buttonsTodayMonth-button {
       background-color: vars.$grey;
       border: none;
@@ -39,17 +89,18 @@
       margin-right: 1em;
       padding: 0.6em;
       transition: 0.3s ease-out;
-  
+
       &.visitorCalendar-buttonsTodayMonth-button:hover {
         background-color: vars.$orange;
         color: vars.$black;
       }
-  
+
       &.visitorCalendar-buttonsTodayMonth-button:active {
         background-color: vars.$lightOrange;
         transform: scale(0.8);
       }
     }
+
     // == style css display text current month and year
     .visitorCalendar-currentMonth {
       color: vars.$orange;

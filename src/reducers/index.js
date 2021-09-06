@@ -6,6 +6,7 @@ import authReducer from './authReducer';
 import plantsListReducer from './plantsListReducer';
 import userCalendarReducer from './userCalendarReducer';
 import registerReducer from './registerReducer';
+import eventsReducer from './eventsReducer';
 
 const rootReducer = combineReducers({
   visitorCalendar: visitorCalendarReducer,
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   plants: plantsListReducer,
   userCalendar: userCalendarReducer,
   register: registerReducer,
+  events: eventsReducer,
 });
 
 export default rootReducer;

@@ -4,18 +4,19 @@ import { connect } from 'react-redux';
 import PlantsListByRegion from 'src/components/PlantsListByRegion';
 
 // import actions creators
-import { getPlantsList } from 'src/actions/plantsList';
+import { fetchPlants } from 'src/actions/visitorCalendar';
 
 // === mapStateToProps
 const mapStateToProps = (state) => ({
   plantsSchedules: state.visitorCalendar.plantsSchedules,
+  selectedRegion: state.visitorCalendar.selectedRegion,
 });
 
 // === mapDispatchToProps
 const mapDispatchToProps = (dispatch) => ({
 
-  getPlantsList: () => {
-    const action = getPlantsList();
+  fetchPlants: () => {
+    const action = fetchPlants();
     dispatch(action);
   },
 });
