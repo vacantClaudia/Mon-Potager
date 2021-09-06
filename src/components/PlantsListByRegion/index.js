@@ -48,19 +48,19 @@ const PlantsListByRegion = ({ plantsSchedules, selectedRegion, fetchPlants }) =>
                 </p>
 
                 {semis && (
-                  <p>
+                  <p className="period-list">
                     Semis: {semis}
                   </p>
                 )}
 
                 {planting && (
-                  <p>
+                  <p className="period-list">
                     Plantation: {planting}
                   </p>
                 )}
 
                 {harvest && (
-                  <p>
+                  <p className="period-list">
                     Récolte: {harvest}
                   </p>
                 )}

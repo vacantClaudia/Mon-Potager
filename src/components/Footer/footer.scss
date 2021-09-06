@@ -11,8 +11,6 @@
   padding-bottom: 3.5em;
   }
 
-
-
   &-item {
     display: inline-block;  
     padding: 1rem;
@@ -44,8 +42,6 @@
   width: 100%;
   height: 4em;
   border-top: 0.5px solid vars.$green;
-  // border-top-left-radius: 0.5em;
-  // border-top-right-radius: 0.5em;
   position: fixed;
   display: flex;
   justify-content: space-around;
@@ -58,11 +54,5 @@
      align-self: flex-end;
      flex-direction: column;
      margin-bottom: 0.5em;
-  
-    // .nav-icon{
-    // border: 1px solid vars.$yellow;
-    // background-color: vars.$lightYellow;
-    // border-radius: 50px; 
-    // }
   }
 }
