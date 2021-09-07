@@ -7,8 +7,8 @@ const initialState = {
   sowingEvents: [],
   plantingEvents: [],
   harvestEvents: [],
-  region: [],
-  period: [],
+  region: {},
+  period: {},
 
 };
 
