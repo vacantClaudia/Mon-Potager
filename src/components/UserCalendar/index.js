@@ -11,6 +11,11 @@ import 'tui-time-picker/dist/tui-time-picker.css';
 
 import { ChevronLeft, ChevronRight } from 'react-feather';
 
+// Pictures
+import semer from 'src/assets/images/semer.png';
+import planter from 'src/assets/images/planter.png';
+import recolter from 'src/assets/images/recolter.png';
+
 // == Import css
 import './userCalendar.scss';
 
@@ -94,7 +99,7 @@ const UserCalendar = ({
     // const { calendarId, id } = e.schedule;
     // const el = calendarRef.current.calendarInst.getElement(id, calendarId);
     // console.log(e, el.getBoundingClientRect());
-    // console.log('component e.schedule', e.schedule);
+    console.log('component e.schedule', e.schedule);
     selectPlant(e.schedule);
   }, []);
 
@@ -203,7 +208,7 @@ const UserCalendar = ({
   }, []);
 
   const onBeforeDeleteSchedule = useCallback((res) => {
-    // console.log('res', res);
+    console.log('res', res);
 
     // const { id, calendarId } = res.schedule;
     // calendarRef.current.calendarInst.deleteSchedule(id, calendarId);
@@ -212,7 +217,7 @@ const UserCalendar = ({
   }, []);
 
   const onBeforeUpdateSchedule = useCallback((e) => {
-    // console.log(e);
+    console.log(e);
 
     // const { schedule, changes } = e;
 
@@ -233,6 +238,29 @@ const UserCalendar = ({
           <ChevronRight size={12} />
         </button>
         <p className="userCalendar-currentMonth">{currentMonthAndYear}</p>
+      </div>
+      <div className="legend">
+        <div className="sowing">
+          <img
+            src={semer}
+            alt="semis"
+            width="30"
+          />
+        </div>
+        <div className="planting">
+          <img
+            src={planter}
+            alt="semis"
+            width="30"
+          />
+        </div>
+        <div className="harvest">
+          <img
+            src={recolter}
+            alt="semis"
+            width="30"
+          />
+        </div>
       </div>
       <Calendar
         // == I put key here for new render

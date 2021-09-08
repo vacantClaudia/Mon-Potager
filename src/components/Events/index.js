@@ -76,8 +76,8 @@ Events.propTypes = {
   sowingEvents: PropTypes.array,
   plantingEvents: PropTypes.array,
   harvestEvents: PropTypes.array,
-  region: PropTypes.object,
-  period: PropTypes.object,
+  region: PropTypes.object.isRequired,
+  period: PropTypes.object.isRequired,
   getPlantsEvents: PropTypes.func.isRequired,
 
 };
@@ -85,8 +85,8 @@ Events.defaultProps = {
   sowingEvents: [],
   plantingEvents: [],
   harvestEvents: [],
-  region: [],
-  period: [],
+  // region: [],
+  // period: [],
 
 };
 

@@ -1,4 +1,4 @@
-import React, { createRef, useEffect, useMemo } from 'react';
+import React, { createRef } from 'react';
 import PropTypes from 'prop-types';
 import PlantsListByRegion from 'src/containers/PlantsListByRegion';
 // == import externals libraries
@@ -29,20 +29,14 @@ const VisitorCalendar = ({
   plantsSchedules,
   isReadOnly,
   plantsCalendars,
-  changeIsVisible,
   selected,
   displayPlants,
-  fetchPlants,
   isCalendarMode,
   changeCalendarMode,
   getPlantsList,
   getSelectedRegion,
   selectedRegion,
 }) => {
-  // test response api action case fetchPlants
-  useEffect(() => {
-    fetchPlants();
-  }, []);
   // TODO peut-être mettre un loader le temps que ça charge - peut être pas la peine en prode
   // console.log(plantsSchedules);
   // == ref to calendar to get instance
@@ -240,14 +234,12 @@ VisitorCalendar.propTypes = {
   isReadOnly: PropTypes.bool.isRequired,
   selected: PropTypes.bool.isRequired,
   displayPlants: PropTypes.func.isRequired,
-  changeIsVisible: PropTypes.func.isRequired,
   isCalendarMode: PropTypes.bool.isRequired,
   changeCalendarMode: PropTypes.func.isRequired,
   getPlantsList: PropTypes.func.isRequired,
   myTheme: PropTypes.object.isRequired,
   plantsSchedules: PropTypes.array.isRequired,
   plantsCalendars: PropTypes.array.isRequired,
-  fetchPlants: PropTypes.func.isRequired,
   getSelectedRegion: PropTypes.func.isRequired,
   selectedRegion: PropTypes.string.isRequired,
 };
