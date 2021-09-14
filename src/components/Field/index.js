@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import './field.scss';
@@ -13,6 +13,7 @@ const Field = ({
   type,
   value,
   changeField,
+
 }) => {
   const handleChange = (event) => {
     const { value: inputValue, name } = event.target;
@@ -34,6 +35,7 @@ const Field = ({
         value={value}
         onChange={handleChange}
         required
+        minLength="6"
       />
       <label
         className="label"
