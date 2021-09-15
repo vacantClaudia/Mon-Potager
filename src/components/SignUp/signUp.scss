@@ -11,7 +11,11 @@
     margin: auto;
     flex-direction: column;
     display: flex;
-
+   
+    .error {
+      font-size: 0.80em;
+      color:red;
+    }
     .signUp-submit {
       color: #fff;
       border: none;

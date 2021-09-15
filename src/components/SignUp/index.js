@@ -19,7 +19,7 @@ const SignUp = ({
 }) => {
   let errors = '';
   if (password !== confirmPassword) {
-    errors = 'Le mot de passe ne correspond pas';
+    errors = 'Saisissez le même mot de passe';
   }
 
   return (
@@ -32,10 +32,6 @@ const SignUp = ({
               event.preventDefault();
               if (errors.length === 0) {
                 handleSubmit();
-              }
-              else {
-                // eslint-disable-next-line no-alert
-                alert('Le mot de passe ne correspond pas');
               }
             }}
           >
@@ -58,19 +54,19 @@ const SignUp = ({
               }}
               value={password}
             />
+            <Field
+              identifier="confirmPassword"
+              placeholder="Confirmez votre mot de passe"
+              label="Confirmez votre mot de passe"
+              type="password"
+              changeField={(identifier, newValue) => {
+                changeFieldValue(identifier, newValue);
+              }}
+              value={confirmPassword}
+            />
             {errors
               && (
-              <Field
-                className="error"
-                identifier="confirmPassword"
-                placeholder="Confirmez votre mot de passe"
-                label="Confirmez votre mot de passe"
-                type="password"
-                changeField={(identifier, newValue) => {
-                  changeFieldValue(identifier, newValue);
-                }}
-                value={confirmPassword}
-              />
+                <span className="error">{errors}</span>
               )}
             <Field
               identifier="email"

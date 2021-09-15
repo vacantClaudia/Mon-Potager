@@ -35,7 +35,7 @@ const Field = ({
         value={value}
         onChange={handleChange}
         required
-        minLength="6"
+        minLength="3"
       />
       <label
         className="label"
