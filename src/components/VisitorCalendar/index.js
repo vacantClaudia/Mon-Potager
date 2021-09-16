@@ -1,6 +1,8 @@
 import React, { createRef } from 'react';
 import PropTypes from 'prop-types';
+
 import PlantsListByRegion from 'src/containers/PlantsListByRegion';
+
 // == import externals libraries
 import Calendar from '@toast-ui/react-calendar';
 import 'tui-calendar/dist/tui-calendar.css';
@@ -10,6 +12,7 @@ import 'tui-date-picker/dist/tui-date-picker.css';
 import 'tui-time-picker/dist/tui-time-picker.css';
 
 import { ChevronLeft, ChevronRight } from 'react-feather';
+
 // picture for legend
 import semer from 'src/assets/images/semer.png';
 import planter from 'src/assets/images/planter.png';
@@ -213,7 +216,6 @@ const VisitorCalendar = ({
                 </>
               )
               : (
-                // <p>Travail en cours</p>
                 <PlantsListByRegion
                   plantsSchedules={plantsSchedules}
                   getPlantsList={getPlantsList}
@@ -221,7 +223,6 @@ const VisitorCalendar = ({
               )}
           </>
         )}
-
       </div>
     </>
   );
