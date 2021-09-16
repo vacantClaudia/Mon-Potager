@@ -6,7 +6,6 @@ import PlantsListByRegion from 'src/components/PlantsListByRegion';
 
 // import actions creators
 import {
-  changeIsVisible,
   displayPlants,
   changeCalendarMode,
   getSelectedRegion,
@@ -32,11 +31,6 @@ const mapStateToProps = (state) => ({
 
 // === mapDispatchToProps
 const mapDispatchToProps = (dispatch) => ({
-  // == get new state plantsSchedules.isVisible
-  changeIsVisible: (newValue) => {
-    const action = changeIsVisible(newValue);
-    dispatch(action);
-  },
   // display all plants
   displayPlants: () => {
     const action = displayPlants();

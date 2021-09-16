@@ -22,157 +22,160 @@ const plantsMiddleware = (store) => (next) => (action) => {
               plant.isVisible = false;
               apiPlants.push(plant);
             });
+            // TODO : fix bug - plant with no date display on today
 
-            // get data by semi period
+            // apiPlants deep clone - get data by semi period
             const semiPlants = JSON.parse(JSON.stringify(apiPlants));
 
-            for (let semiIndex = 0; semiIndex < semiPlants.length; semiIndex += 1) {
-              if (semiPlants[semiIndex].calendarId === '6') {
-                semiPlants[semiIndex].start = semiPlants[semiIndex].periode_regions.debut_semi_auvergne[0];
-                semiPlants[semiIndex].end = semiPlants[semiIndex].periode_regions.fin_semi_auvergne[0];
-                semiPlants[semiIndex].month = semiPlants[semiIndex].periode_regions['debut_semi-month_auvergne'];
+            // eslint-disable-next-line array-callback-return
+            semiPlants.map((semi) => {
+              if (semi.calendarId === '6') {
+                semi.start = semi.periode_regions.debut_semi_auvergne[0];
+                semi.end = semi.periode_regions.fin_semi_auvergne[0];
+                semi.month = semi.periode_regions['debut_semi-month_auvergne'];
               }
-              else if (semiPlants[semiIndex].calendarId === '7') {
-                semiPlants[semiIndex].start = semiPlants[semiIndex].periode_regions.debut_semi_bourgogne[0];
-                semiPlants[semiIndex].end = semiPlants[semiIndex].periode_regions.fin_semi_bourgogne[0];
-                semiPlants[semiIndex].month = semiPlants[semiIndex].periode_regions['debut_semi-month_bourgogne'];
+              else if (semi.calendarId === '7') {
+                semi.start = semi.periode_regions.debut_semi_bourgogne[0];
+                semi.end = semi.periode_regions.fin_semi_bourgogne[0];
+                semi.month = semi.periode_regions['debut_semi-month_bourgogne'];
               }
-              else if (semiPlants[semiIndex].calendarId === '8') {
-                semiPlants[semiIndex].start = semiPlants[semiIndex].periode_regions.debut_semi_bretagne[0];
-                semiPlants[semiIndex].end = semiPlants[semiIndex].periode_regions.fin_semi_bretagne[0];
-                semiPlants[semiIndex].month = semiPlants[semiIndex].periode_regions['debut_semi-month_bretagne'];
+              else if (semi.calendarId === '8') {
+                semi.start = semi.periode_regions.debut_semi_bretagne[0];
+                semi.end = semi.periode_regions.fin_semi_bretagne[0];
+                semi.month = semi.periode_regions['debut_semi-month_bretagne'];
               }
-              else if (semiPlants[semiIndex].calendarId === '9') {
-                semiPlants[semiIndex].start = semiPlants[semiIndex].periode_regions.debut_semi_centre[0];
-                semiPlants[semiIndex].end = semiPlants[semiIndex].periode_regions.fin_semi_centre[0];
-                semiPlants[semiIndex].month = semiPlants[semiIndex].periode_regions['debut_semi-month_centre'];
+              else if (semi.calendarId === '9') {
+                semi.start = semi.periode_regions.debut_semi_centre[0];
+                semi.end = semi.periode_regions.fin_semi_centre[0];
+                semi.month = semi.periode_regions['debut_semi-month_centre'];
               }
-              else if (semiPlants[semiIndex].calendarId === '10') {
-                semiPlants[semiIndex].start = semiPlants[semiIndex].periode_regions.debut_semi_corse[0];
-                semiPlants[semiIndex].end = semiPlants[semiIndex].periode_regions.fin_semi_corse[0];
-                semiPlants[semiIndex].month = semiPlants[semiIndex].periode_regions['debut_semi-month_corse'];
+              else if (semi.calendarId === '10') {
+                semi.start = semi.periode_regions.debut_semi_corse[0];
+                semi.end = semi.periode_regions.fin_semi_corse[0];
+                semi.month = semi.periode_regions['debut_semi-month_corse'];
               }
-              else if (semiPlants[semiIndex].calendarId === '11') {
-                semiPlants[semiIndex].start = semiPlants[semiIndex].periode_regions.debut_semi_est[0];
-                semiPlants[semiIndex].end = semiPlants[semiIndex].periode_regions.fin_semi_est[0];
-                semiPlants[semiIndex].month = semiPlants[semiIndex].periode_regions['debut_semi-month_est'];
+              else if (semi.calendarId === '11') {
+                semi.start = semi.periode_regions.debut_semi_est[0];
+                semi.end = semi.periode_regions.fin_semi_est[0];
+                semi.month = semi.periode_regions['debut_semi-month_est'];
               }
-              else if (semiPlants[semiIndex].calendarId === '12') {
-                semiPlants[semiIndex].start = semiPlants[semiIndex].periode_regions.debut_semi_hauts[0];
-                semiPlants[semiIndex].end = semiPlants[semiIndex].periode_regions.fin_semi_hauts[0];
-                semiPlants[semiIndex].month = semiPlants[semiIndex].periode_regions['debut_semi-month_hauts'];
+              else if (semi.calendarId === '12') {
+                semi.start = semi.periode_regions.debut_semi_hauts[0];
+                semi.end = semi.periode_regions.fin_semi_hauts[0];
+                semi.month = semi.periode_regions['debut_semi-month_hauts'];
               }
-              else if (semiPlants[semiIndex].calendarId === '13') {
-                semiPlants[semiIndex].start = semiPlants[semiIndex].periode_regions.debut_semi_ile[0];
-                semiPlants[semiIndex].end = semiPlants[semiIndex].periode_regions.fin_semi_ile[0];
-                semiPlants[semiIndex].month = semiPlants[semiIndex].periode_regions['debut_semi-month_ile'];
+              else if (semi.calendarId === '13') {
+                semi.start = semi.periode_regions.debut_semi_ile[0];
+                semi.end = semi.periode_regions.fin_semi_ile[0];
+                semi.month = semi.periode_regions['debut_semi-month_ile'];
               }
-              else if (semiPlants[semiIndex].calendarId === '14') {
-                semiPlants[semiIndex].start = semiPlants[semiIndex].periode_regions.debut_semi_normandie[0];
-                semiPlants[semiIndex].end = semiPlants[semiIndex].periode_regions.fin_semi_normandie[0];
-                semiPlants[semiIndex].month = semiPlants[semiIndex].periode_regions['debut_semi-month_normandie'];
+              else if (semi.calendarId === '14') {
+                semi.start = semi.periode_regions.debut_semi_normandie[0];
+                semi.end = semi.periode_regions.fin_semi_normandie[0];
+                semi.month = semi.periode_regions['debut_semi-month_normandie'];
               }
-              else if (semiPlants[semiIndex].calendarId === '15') {
-                semiPlants[semiIndex].start = semiPlants[semiIndex].periode_regions.debut_semi_aquitaine[0];
-                semiPlants[semiIndex].end = semiPlants[semiIndex].periode_regions.fin_semi_aquitaine[0];
-                semiPlants[semiIndex].month = semiPlants[semiIndex].periode_regions['debut_semi-month_aquitaine'];
+              else if (semi.calendarId === '15') {
+                semi.start = semi.periode_regions.debut_semi_aquitaine[0];
+                semi.end = semi.periode_regions.fin_semi_aquitaine[0];
+                semi.month = semi.periode_regions['debut_semi-month_aquitaine'];
               }
-              else if (semiPlants[semiIndex].calendarId === '16') {
-                semiPlants[semiIndex].start = semiPlants[semiIndex].periode_regions.debut_semi_occitanie[0];
-                semiPlants[semiIndex].end = semiPlants[semiIndex].periode_regions.fin_semi_occitanie[0];
-                semiPlants[semiIndex].month = semiPlants[semiIndex].periode_regions['debut_semi-month_occitanie'];
+              else if (semi.calendarId === '16') {
+                semi.start = semi.periode_regions.debut_semi_occitanie[0];
+                semi.end = semi.periode_regions.fin_semi_occitanie[0];
+                semi.month = semi.periode_regions['debut_semi-month_occitanie'];
               }
-              else if (semiPlants[semiIndex].calendarId === '17') {
-                semiPlants[semiIndex].start = semiPlants[semiIndex].periode_regions.debut_semi_loire[0];
-                semiPlants[semiIndex].end = semiPlants[semiIndex].periode_regions.fin_semi_loire[0];
-                semiPlants[semiIndex].month = semiPlants[semiIndex].periode_regions['debut_semi-month_loire'];
+              else if (semi.calendarId === '17') {
+                semi.start = semi.periode_regions.debut_semi_loire[0];
+                semi.end = semi.periode_regions.fin_semi_loire[0];
+                semi.month = semi.periode_regions['debut_semi-month_loire'];
               }
-              else if (semiPlants[semiIndex].calendarId === '18') {
-                semiPlants[semiIndex].start = semiPlants[semiIndex].periode_regions.debut_semi_azur[0];
-                semiPlants[semiIndex].end = semiPlants[semiIndex].periode_regions.fin_semi_azur[0];
-                semiPlants[semiIndex].month = semiPlants[semiIndex].periode_regions['debut_semi-month_azur'];
+              else if (semi.calendarId === '18') {
+                semi.start = semi.periode_regions.debut_semi_azur[0];
+                semi.end = semi.periode_regions.fin_semi_azur[0];
+                semi.month = semi.periode_regions['debut_semi-month_azur'];
               }
-              semiPlants[semiIndex].period = 'semi';
-              semiPlants[semiIndex].color = '#474647';
-              semiPlants[semiIndex].bgColor = '#f3c465';
-              semiPlants[semiIndex].borderColor = '#fad689';
-            }
+              semi.period = 'semi';
+              semi.color = '#474647';
+              semi.bgColor = '#f3c465';
+              semi.borderColor = '#fad689';
+            });
 
-            // get data by plantation period
+            // apiPlants deep clone - get data by plantation period
             const plantationPlants = JSON.parse(JSON.stringify(apiPlants));
 
-            for (let plantationIndex = 0; plantationIndex < plantationPlants.length; plantationIndex += 1) {
-              if (plantationPlants[plantationIndex].calendarId === '6') {
-                plantationPlants[plantationIndex].start = plantationPlants[plantationIndex].periode_regions.debut_plant_auvergne[0];
-                plantationPlants[plantationIndex].end = plantationPlants[plantationIndex].periode_regions.fin_plant_auvergne[0];
-                plantationPlants[plantationIndex].month = plantationPlants[plantationIndex].periode_regions['debut_plant-month_auvergne'];
+            // eslint-disable-next-line array-callback-return
+            plantationPlants.map((plant) => {
+              if (plant.calendarId === '6') {
+                plant.start = plant.periode_regions.debut_plant_auvergne[0];
+                plant.end = plant.periode_regions.fin_plant_auvergne[0];
+                plant.month = plant.periode_regions['debut_plant-month_auvergne'];
               }
-              else if (plantationPlants[plantationIndex].calendarId === '7') {
-                plantationPlants[plantationIndex].start = plantationPlants[plantationIndex].periode_regions.debut_plant_bourgogne[0];
-                plantationPlants[plantationIndex].end = plantationPlants[plantationIndex].periode_regions.fin_plant_bourgogne[0];
-                plantationPlants[plantationIndex].month = plantationPlants[plantationIndex].periode_regions['debut_plant-month_bourgogne'];
+              else if (plant.calendarId === '7') {
+                plant.start = plant.periode_regions.debut_plant_bourgogne[0];
+                plant.end = plant.periode_regions.fin_plant_bourgogne[0];
+                plant.month = plant.periode_regions['debut_plant-month_bourgogne'];
               }
-              else if (plantationPlants[plantationIndex].calendarId === '8') {
-                plantationPlants[plantationIndex].start = plantationPlants[plantationIndex].periode_regions.debut_plant_bretagne[0];
-                plantationPlants[plantationIndex].end = plantationPlants[plantationIndex].periode_regions.fin_plant_bretagne[0];
-                plantationPlants[plantationIndex].month = plantationPlants[plantationIndex].periode_regions['debut_plant-month_bretagne'];
+              else if (plant.calendarId === '8') {
+                plant.start = plant.periode_regions.debut_plant_bretagne[0];
+                plant.end = plant.periode_regions.fin_plant_bretagne[0];
+                plant.month = plant.periode_regions['debut_plant-month_bretagne'];
               }
-              else if (plantationPlants[plantationIndex].calendarId === '9') {
-                plantationPlants[plantationIndex].start = plantationPlants[plantationIndex].periode_regions.debut_plant_centre[0];
-                plantationPlants[plantationIndex].end = plantationPlants[plantationIndex].periode_regions.fin_plant_centre[0];
-                plantationPlants[plantationIndex].month = plantationPlants[plantationIndex].periode_regions['debut_plant-month_centre'];
+              else if (plant.calendarId === '9') {
+                plant.start = plant.periode_regions.debut_plant_centre[0];
+                plant.end = plant.periode_regions.fin_plant_centre[0];
+                plant.month = plant.periode_regions['debut_plant-month_centre'];
               }
-              else if (plantationPlants[plantationIndex].calendarId === '10') {
-                plantationPlants[plantationIndex].start = plantationPlants[plantationIndex].periode_regions.debut_plant_corse[0];
-                plantationPlants[plantationIndex].end = plantationPlants[plantationIndex].periode_regions.fin_plant_corse[0];
-                plantationPlants[plantationIndex].month = plantationPlants[plantationIndex].periode_regions['debut_plant-month_corse'];
+              else if (plant.calendarId === '10') {
+                plant.start = plant.periode_regions.debut_plant_corse[0];
+                plant.end = plant.periode_regions.fin_plant_corse[0];
+                plant.month = plant.periode_regions['debut_plant-month_corse'];
               }
-              else if (plantationPlants[plantationIndex].calendarId === '11') {
-                plantationPlants[plantationIndex].start = plantationPlants[plantationIndex].periode_regions.debut_plant_est[0];
-                plantationPlants[plantationIndex].end = plantationPlants[plantationIndex].periode_regions.fin_plant_est[0];
-                plantationPlants[plantationIndex].month = plantationPlants[plantationIndex].periode_regions['debut_plant-month_est'];
+              else if (plant.calendarId === '11') {
+                plant.start = plant.periode_regions.debut_plant_est[0];
+                plant.end = plant.periode_regions.fin_plant_est[0];
+                plant.month = plant.periode_regions['debut_plant-month_est'];
               }
-              else if (plantationPlants[plantationIndex].calendarId === '12') {
-                plantationPlants[plantationIndex].start = plantationPlants[plantationIndex].periode_regions.debut_plant_hauts[0];
-                plantationPlants[plantationIndex].end = plantationPlants[plantationIndex].periode_regions.fin_plant_hauts[0];
-                plantationPlants[plantationIndex].month = plantationPlants[plantationIndex].periode_regions['debut_plant-month_hauts'];
+              else if (plant.calendarId === '12') {
+                plant.start = plant.periode_regions.debut_plant_hauts[0];
+                plant.end = plant.periode_regions.fin_plant_hauts[0];
+                plant.month = plant.periode_regions['debut_plant-month_hauts'];
               }
-              else if (plantationPlants[plantationIndex].calendarId === '13') {
-                plantationPlants[plantationIndex].start = plantationPlants[plantationIndex].periode_regions.debut_plant_ile[0];
-                plantationPlants[plantationIndex].end = plantationPlants[plantationIndex].periode_regions.fin_plant_ile[0];
-                plantationPlants[plantationIndex].month = plantationPlants[plantationIndex].periode_regions['debut_plant-month_ile'];
+              else if (plant.calendarId === '13') {
+                plant.start = plant.periode_regions.debut_plant_ile[0];
+                plant.end = plant.periode_regions.fin_plant_ile[0];
+                plant.month = plant.periode_regions['debut_plant-month_ile'];
               }
-              else if (plantationPlants[plantationIndex].calendarId === '14') {
-                plantationPlants[plantationIndex].start = plantationPlants[plantationIndex].periode_regions.debut_plant_normandie[0];
-                plantationPlants[plantationIndex].end = plantationPlants[plantationIndex].periode_regions.fin_plant_normandie[0];
-                plantationPlants[plantationIndex].month = plantationPlants[plantationIndex].periode_regions['debut_plant-month_normandie'];
+              else if (plant.calendarId === '14') {
+                plant.start = plant.periode_regions.debut_plant_normandie[0];
+                plant.end = plant.periode_regions.fin_plant_normandie[0];
+                plant.month = plant.periode_regions['debut_plant-month_normandie'];
               }
-              else if (plantationPlants[plantationIndex].calendarId === '15') {
-                plantationPlants[plantationIndex].start = plantationPlants[plantationIndex].periode_regions.debut_plant_aquitaine[0];
-                plantationPlants[plantationIndex].end = plantationPlants[plantationIndex].periode_regions.fin_plant_aquitaine[0];
-                plantationPlants[plantationIndex].month = plantationPlants[plantationIndex].periode_regions['debut_plant-month_aquitaine'];
+              else if (plant.calendarId === '15') {
+                plant.start = plant.periode_regions.debut_plant_aquitaine[0];
+                plant.end = plant.periode_regions.fin_plant_aquitaine[0];
+                plant.month = plant.periode_regions['debut_plant-month_aquitaine'];
               }
-              else if (plantationPlants[plantationIndex].calendarId === '16') {
-                plantationPlants[plantationIndex].start = plantationPlants[plantationIndex].periode_regions.debut_plant_occitanie[0];
-                plantationPlants[plantationIndex].end = plantationPlants[plantationIndex].periode_regions.fin_plant_occitanie[0];
-                plantationPlants[plantationIndex].month = plantationPlants[plantationIndex].periode_regions['debut_plant-month_occitanie'];
+              else if (plant.calendarId === '16') {
+                plant.start = plant.periode_regions.debut_plant_occitanie[0];
+                plant.end = plant.periode_regions.fin_plant_occitanie[0];
+                plant.month = plant.periode_regions['debut_plant-month_occitanie'];
               }
-              else if (plantationPlants[plantationIndex].calendarId === '17') {
-                plantationPlants[plantationIndex].start = plantationPlants[plantationIndex].periode_regions.debut_plant_loire[0];
-                plantationPlants[plantationIndex].end = plantationPlants[plantationIndex].periode_regions.fin_plant_loire[0];
-                plantationPlants[plantationIndex].month = plantationPlants[plantationIndex].periode_regions['debut_plant-month_loire'];
+              else if (plant.calendarId === '17') {
+                plant.start = plant.periode_regions.debut_plant_loire[0];
+                plant.end = plant.periode_regions.fin_plant_loire[0];
+                plant.month = plant.periode_regions['debut_plant-month_loire'];
               }
-              else if (plantationPlants[plantationIndex].calendarId === '18') {
-                plantationPlants[plantationIndex].start = plantationPlants[plantationIndex].periode_regions.debut_plant_azur[0];
-                plantationPlants[plantationIndex].end = plantationPlants[plantationIndex].periode_regions.fin_plant_azur[0];
-                plantationPlants[plantationIndex].month = plantationPlants[plantationIndex].periode_regions['debut_plant-month_azur'];
+              else if (plant.calendarId === '18') {
+                plant.start = plant.periode_regions.debut_plant_azur[0];
+                plant.end = plant.periode_regions.fin_plant_azur[0];
+                plant.month = plant.periode_regions['debut_plant-month_azur'];
               }
-              plantationPlants[plantationIndex].period = 'plantation';
-              plantationPlants[plantationIndex].color = '#474647';
-              plantationPlants[plantationIndex].bgColor = '#f46d5f';
-              plantationPlants[plantationIndex].borderColor = '#e4bd9f';
-            }
-
+              plant.period = 'plantation';
+              plant.color = '#474647';
+              plant.bgColor = '#f46d5f';
+              plant.borderColor = '#e4bd9f';
+            });
+            
             // get data by recolte period
             const recoltePlants = JSON.parse(JSON.stringify(apiPlants));
 
