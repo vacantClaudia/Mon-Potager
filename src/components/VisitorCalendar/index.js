@@ -1,6 +1,10 @@
 import React, { createRef } from 'react';
 import PropTypes from 'prop-types';
+
+// == import components and containers
 import PlantsListByRegion from 'src/containers/PlantsListByRegion';
+import Loader from 'src/components/Loader';
+
 // == import externals libraries
 import Calendar from '@toast-ui/react-calendar';
 import 'tui-calendar/dist/tui-calendar.css';
@@ -10,6 +14,7 @@ import 'tui-date-picker/dist/tui-date-picker.css';
 import 'tui-time-picker/dist/tui-time-picker.css';
 
 import { ChevronLeft, ChevronRight } from 'react-feather';
+
 // picture for legend
 import semer from 'src/assets/images/semer.png';
 import planter from 'src/assets/images/planter.png';
@@ -36,6 +41,7 @@ const VisitorCalendar = ({
   getPlantsList,
   getSelectedRegion,
   selectedRegion,
+  loading,
 }) => {
   // TODO peut-être mettre un loader le temps que ça charge - peut être pas la peine en prode
   // console.log(plantsSchedules);
@@ -111,6 +117,7 @@ const VisitorCalendar = ({
 
   return (
     <>
+      {loading && <Loader />}
       {!selected && (
         <div className="intro">
           <p>Sélectionne ta région pour découvrir le calendrier du potager</p>
@@ -213,7 +220,6 @@ const VisitorCalendar = ({
                 </>
               )
               : (
-                // <p>Travail en cours</p>
                 <PlantsListByRegion
                   plantsSchedules={plantsSchedules}
                   getPlantsList={getPlantsList}
@@ -221,7 +227,6 @@ const VisitorCalendar = ({
               )}
           </>
         )}
-
       </div>
     </>
   );
@@ -242,6 +247,7 @@ VisitorCalendar.propTypes = {
   plantsCalendars: PropTypes.array.isRequired,
   getSelectedRegion: PropTypes.func.isRequired,
   selectedRegion: PropTypes.string.isRequired,
+  loading: PropTypes.bool.isRequired,
 };
 
 // == Export

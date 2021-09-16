@@ -27,6 +27,7 @@ const mapStateToProps = (state) => ({
   isCalendarMode: state.visitorCalendar.isCalendarMode,
   plants: state.plants.plants,
   selectedRegion: state.visitorCalendar.selectedRegion,
+  loading: state.visitorCalendar.loading,
 });
 
 // === mapDispatchToProps

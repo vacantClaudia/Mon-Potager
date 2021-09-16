@@ -138,6 +138,7 @@ const initialState = {
 
   // == Selected region
   selectedRegion: '',
+  loading: true,
 };
 
 function visitorCalendarReducer(state = initialState, action = {}) {
@@ -160,6 +161,7 @@ function visitorCalendarReducer(state = initialState, action = {}) {
         ...state,
         // state save in plantsSchedules from api
         plantsSchedules: action.plantsSchedules,
+        loading: false,
       };
 
     case CHANGE_CALENDAR_MODE:
