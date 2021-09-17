@@ -43,8 +43,6 @@ const VisitorCalendar = ({
   selectedRegion,
   loading,
 }) => {
-  // == loader
-  {loading && <Loader />}
   // == ref to current calendar to get instance and use buttons prev month, next month and today
   const calendarRef = createRef();
   // == current date to display on the top of calendar
@@ -158,6 +156,7 @@ const VisitorCalendar = ({
           <option className="option" value="17">Pays de la Loire</option>
           <option className="option" value="18">Provence-Alpes-Côte d'Azur</option>
         </select>
+        {loading && <Loader />}
         {selected && (
           <>
             <div className="toggle">
