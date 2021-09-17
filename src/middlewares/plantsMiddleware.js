@@ -175,90 +175,89 @@ const plantsMiddleware = (store) => (next) => (action) => {
               plant.bgColor = '#f46d5f';
               plant.borderColor = '#e4bd9f';
             });
-            
-            // get data by recolte period
-            const recoltePlants = JSON.parse(JSON.stringify(apiPlants));
+            // apiPlants deep clone - get data by harvest period
+            const harvestPlants = JSON.parse(JSON.stringify(apiPlants));
 
-            for (let recolteIndex = 0; recolteIndex < recoltePlants.length; recolteIndex += 1) {
-              if (recoltePlants[recolteIndex].calendarId === '6') {
-                recoltePlants[recolteIndex].start = recoltePlants[recolteIndex].periode_regions.debut_recolte_auvergne[0];
-                recoltePlants[recolteIndex].end = recoltePlants[recolteIndex].periode_regions.fin_recolte_auvergne[0];
-                recoltePlants[recolteIndex].month = recoltePlants[recolteIndex].periode_regions['debut_recolte-month_auvergne'];
+            // eslint-disable-next-line array-callback-return
+            harvestPlants.map((harvest) => {
+              if (harvest.calendarId === '6') {
+                harvest.start = harvest.periode_regions.debut_recolte_auvergne[0];
+                harvest.end = harvest.periode_regions.fin_recolte_auvergne[0];
+                harvest.month = harvest.periode_regions['debut_recolte-month_auvergne'];
               }
-              else if (recoltePlants[recolteIndex].calendarId === '7') {
-                recoltePlants[recolteIndex].start = recoltePlants[recolteIndex].periode_regions.debut_recolte_bourgogne[0];
-                recoltePlants[recolteIndex].end = recoltePlants[recolteIndex].periode_regions.fin_recolte_bourgogne[0];
-                recoltePlants[recolteIndex].month = recoltePlants[recolteIndex].periode_regions['debut_recolte-month_bourgogne'];
+              else if (harvest.calendarId === '7') {
+                harvest.start = harvest.periode_regions.debut_recolte_bourgogne[0];
+                harvest.end = harvest.periode_regions.fin_recolte_bourgogne[0];
+                harvest.month = harvest.periode_regions['debut_recolte-month_bourgogne'];
               }
-              else if (recoltePlants[recolteIndex].calendarId === '8') {
-                recoltePlants[recolteIndex].start = recoltePlants[recolteIndex].periode_regions.debut_recolte_bretagne[0];
-                recoltePlants[recolteIndex].end = recoltePlants[recolteIndex].periode_regions.fin_recolte_bretagne[0];
-                recoltePlants[recolteIndex].month = recoltePlants[recolteIndex].periode_regions['debut_recolte-month_bretagne'];
+              else if (harvest.calendarId === '8') {
+                harvest.start = harvest.periode_regions.debut_recolte_bretagne[0];
+                harvest.end = harvest.periode_regions.fin_recolte_bretagne[0];
+                harvest.month = harvest.periode_regions['debut_recolte-month_bretagne'];
               }
-              else if (recoltePlants[recolteIndex].calendarId === '9') {
-                recoltePlants[recolteIndex].start = recoltePlants[recolteIndex].periode_regions.debut_recolte_centre[0];
-                recoltePlants[recolteIndex].end = recoltePlants[recolteIndex].periode_regions.fin_recolte_centre[0];
-                recoltePlants[recolteIndex].month = recoltePlants[recolteIndex].periode_regions['debut_recolte-month_centre'];
+              else if (harvest.calendarId === '9') {
+                harvest.start = harvest.periode_regions.debut_recolte_centre[0];
+                harvest.end = harvest.periode_regions.fin_recolte_centre[0];
+                harvest.month = harvest.periode_regions['debut_recolte-month_centre'];
               }
-              else if (recoltePlants[recolteIndex].calendarId === '10') {
-                recoltePlants[recolteIndex].start = recoltePlants[recolteIndex].periode_regions.debut_recolte_corse[0];
-                recoltePlants[recolteIndex].end = recoltePlants[recolteIndex].periode_regions.fin_recolte_corse[0];
-                recoltePlants[recolteIndex].month = recoltePlants[recolteIndex].periode_regions['debut_recolte-month_corse'];
+              else if (harvest.calendarId === '10') {
+                harvest.start = harvest.periode_regions.debut_recolte_corse[0];
+                harvest.end = harvest.periode_regions.fin_recolte_corse[0];
+                harvest.month = harvest.periode_regions['debut_recolte-month_corse'];
               }
-              else if (recoltePlants[recolteIndex].calendarId === '11') {
-                recoltePlants[recolteIndex].start = recoltePlants[recolteIndex].periode_regions.debut_recolte_est[0];
-                recoltePlants[recolteIndex].end = recoltePlants[recolteIndex].periode_regions.fin_recolte_est[0];
-                recoltePlants[recolteIndex].month = recoltePlants[recolteIndex].periode_regions['debut_recolte-month_est'];
+              else if (harvest.calendarId === '11') {
+                harvest.start = harvest.periode_regions.debut_recolte_est[0];
+                harvest.end = harvest.periode_regions.fin_recolte_est[0];
+                harvest.month = harvest.periode_regions['debut_recolte-month_est'];
               }
-              else if (recoltePlants[recolteIndex].calendarId === '12') {
-                recoltePlants[recolteIndex].start = recoltePlants[recolteIndex].periode_regions.debut_recolte_hauts[0];
-                recoltePlants[recolteIndex].end = recoltePlants[recolteIndex].periode_regions.fin_recolte_hauts[0];
-                recoltePlants[recolteIndex].month = recoltePlants[recolteIndex].periode_regions['debut_recolte-month_hauts'];
+              else if (harvest.calendarId === '12') {
+                harvest.start = harvest.periode_regions.debut_recolte_hauts[0];
+                harvest.end = harvest.periode_regions.fin_recolte_hauts[0];
+                harvest.month = harvest.periode_regions['debut_recolte-month_hauts'];
               }
-              else if (recoltePlants[recolteIndex].calendarId === '13') {
-                recoltePlants[recolteIndex].start = recoltePlants[recolteIndex].periode_regions.debut_recolte_ile[0];
-                recoltePlants[recolteIndex].end = recoltePlants[recolteIndex].periode_regions.fin_recolte_ile[0];
-                recoltePlants[recolteIndex].month = recoltePlants[recolteIndex].periode_regions['debut_recolte-month_ile'];
+              else if (harvest.calendarId === '13') {
+                harvest.start = harvest.periode_regions.debut_recolte_ile[0];
+                harvest.end = harvest.periode_regions.fin_recolte_ile[0];
+                harvest.month = harvest.periode_regions['debut_recolte-month_ile'];
               }
-              else if (recoltePlants[recolteIndex].calendarId === '14') {
-                recoltePlants[recolteIndex].start = recoltePlants[recolteIndex].periode_regions.debut_recolte_normandie[0];
-                recoltePlants[recolteIndex].end = recoltePlants[recolteIndex].periode_regions.fin_recolte_normandie[0];
-                recoltePlants[recolteIndex].month = recoltePlants[recolteIndex].periode_regions['debut_recolte-month_normandie'];
+              else if (harvest.calendarId === '14') {
+                harvest.start = harvest.periode_regions.debut_recolte_normandie[0];
+                harvest.end = harvest.periode_regions.fin_recolte_normandie[0];
+                harvest.month = harvest.periode_regions['debut_recolte-month_normandie'];
               }
-              else if (recoltePlants[recolteIndex].calendarId === '15') {
-                recoltePlants[recolteIndex].start = recoltePlants[recolteIndex].periode_regions.debut_recolte_aquitaine[0];
-                recoltePlants[recolteIndex].end = recoltePlants[recolteIndex].periode_regions.fin_recolte_aquitaine[0];
-                recoltePlants[recolteIndex].month = recoltePlants[recolteIndex].periode_regions['debut_recolte-month_aquitaine'];
+              else if (harvest.calendarId === '15') {
+                harvest.start = harvest.periode_regions.debut_recolte_aquitaine[0];
+                harvest.end = harvest.periode_regions.fin_recolte_aquitaine[0];
+                harvest.month = harvest.periode_regions['debut_recolte-month_aquitaine'];
               }
-              else if (recoltePlants[recolteIndex].calendarId === '16') {
-                recoltePlants[recolteIndex].start = recoltePlants[recolteIndex].periode_regions.debut_recolte_occitanie[0];
-                recoltePlants[recolteIndex].end = recoltePlants[recolteIndex].periode_regions.fin_recolte_occitanie[0];
-                recoltePlants[recolteIndex].month = recoltePlants[recolteIndex].periode_regions['debut_recolte-month_occitanie'];
+              else if (harvest.calendarId === '16') {
+                harvest.start = harvest.periode_regions.debut_recolte_occitanie[0];
+                harvest.end = harvest.periode_regions.fin_recolte_occitanie[0];
+                harvest.month = harvest.periode_regions['debut_recolte-month_occitanie'];
               }
-              else if (recoltePlants[recolteIndex].calendarId === '17') {
-                recoltePlants[recolteIndex].start = recoltePlants[recolteIndex].periode_regions.debut_recolte_loire[0];
-                recoltePlants[recolteIndex].end = recoltePlants[recolteIndex].periode_regions.fin_recolte_loire[0];
-                recoltePlants[recolteIndex].month = recoltePlants[recolteIndex].periode_regions['debut_recolte-month_loire'];
+              else if (harvest.calendarId === '17') {
+                harvest.start = harvest.periode_regions.debut_recolte_loire[0];
+                harvest.end = harvest.periode_regions.fin_recolte_loire[0];
+                harvest.month = harvest.periode_regions['debut_recolte-month_loire'];
               }
-              else if (recoltePlants[recolteIndex].calendarId === '18') {
-                recoltePlants[recolteIndex].start = recoltePlants[recolteIndex].periode_regions.debut_recolte_azur[0];
-                recoltePlants[recolteIndex].end = recoltePlants[recolteIndex].periode_regions.fin_recolte_azur[0];
-                recoltePlants[recolteIndex].month = recoltePlants[recolteIndex].periode_regions['debut_recolte-month_azur'];
+              else if (harvest.calendarId === '18') {
+                harvest.start = harvest.periode_regions.debut_recolte_azur[0];
+                harvest.end = harvest.periode_regions.fin_recolte_azur[0];
+                harvest.month = harvest.periode_regions['debut_recolte-month_azur'];
               }
-              recoltePlants[recolteIndex].period = 'recolte';
-              recoltePlants[recolteIndex].color = '#474647';
-              recoltePlants[recolteIndex].bgColor = '#9ed2bf';
-              recoltePlants[recolteIndex].borderColor = '#daece5';
-            }
+              harvest.period = 'recolte';
+              harvest.color = '#474647';
+              harvest.bgColor = '#9ed2bf';
+              harvest.borderColor = '#daece5';
+            });
 
             const apiPlantsSchedules = [
               ...semiPlants,
               ...plantationPlants,
-              ...recoltePlants,
+              ...harvestPlants,
             ];
 
-            // TODO balancer les données au state une que tout est chargé
-            // To put api data in plantsSchedules
+            // == put api data in plantsSchedules
             const newAction = savePlants(apiPlantsSchedules);
             store.dispatch(newAction);
             // console.log(newAction);
