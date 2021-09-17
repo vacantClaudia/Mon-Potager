@@ -30,69 +30,134 @@ const plantsMiddleware = (store) => (next) => (action) => {
             // eslint-disable-next-line array-callback-return
             semiPlants.map((semi) => {
               if (semi.calendarId === '6') {
-                semi.start = semi.periode_regions.debut_semi_auvergne[0];
-                semi.end = semi.periode_regions.fin_semi_auvergne[0];
-                semi.month = semi.periode_regions['debut_semi-month_auvergne'];
+                if (semi.periode_regions.debut_semi_auvergne[0] === '') {
+                  semi.start = '1940-01-01';
+                }
+                else {
+                  semi.start = semi.periode_regions.debut_semi_auvergne[0];
+                  semi.end = semi.periode_regions.fin_semi_auvergne[0];
+                  semi.month = semi.periode_regions['debut_semi-month_auvergne'];
+                }
               }
               else if (semi.calendarId === '7') {
-                semi.start = semi.periode_regions.debut_semi_bourgogne[0];
-                semi.end = semi.periode_regions.fin_semi_bourgogne[0];
-                semi.month = semi.periode_regions['debut_semi-month_bourgogne'];
+                if (semi.periode_regions.debut_semi_bourgogne[0] === '') {
+                  semi.start = '1940-01-01';
+                }
+                else {
+                  semi.start = semi.periode_regions.debut_semi_bourgogne[0];
+                  semi.end = semi.periode_regions.fin_semi_bourgogne[0];
+                  semi.month = semi.periode_regions['debut_semi-month_bourgogne'];
+                }
               }
               else if (semi.calendarId === '8') {
-                semi.start = semi.periode_regions.debut_semi_bretagne[0];
-                semi.end = semi.periode_regions.fin_semi_bretagne[0];
-                semi.month = semi.periode_regions['debut_semi-month_bretagne'];
+                if (semi.periode_regions.debut_semi_bretagne[0] === '') {
+                  semi.start = '1940-01-01';
+                }
+                else {
+                  semi.start = semi.periode_regions.debut_semi_bretagne[0];
+                  semi.end = semi.periode_regions.fin_semi_bretagne[0];
+                  semi.month = semi.periode_regions['debut_semi-month_bretagne'];
+                }
               }
               else if (semi.calendarId === '9') {
-                semi.start = semi.periode_regions.debut_semi_centre[0];
-                semi.end = semi.periode_regions.fin_semi_centre[0];
-                semi.month = semi.periode_regions['debut_semi-month_centre'];
+                if (semi.periode_regions.debut_semi_centre[0] === '') {
+                  semi.start = '1940-01-01';
+                }
+                else {
+                  semi.start = semi.periode_regions.debut_semi_centre[0];
+                  semi.end = semi.periode_regions.fin_semi_centre[0];
+                  semi.month = semi.periode_regions['debut_semi-month_centre'];
+                }
               }
               else if (semi.calendarId === '10') {
-                semi.start = semi.periode_regions.debut_semi_corse[0];
-                semi.end = semi.periode_regions.fin_semi_corse[0];
-                semi.month = semi.periode_regions['debut_semi-month_corse'];
+                if (semi.periode_regions.debut_semi_corse[0] === '') {
+                  semi.start = '1940-01-01';
+                }
+                else {
+                  semi.start = semi.periode_regions.debut_semi_corse[0];
+                  semi.end = semi.periode_regions.fin_semi_corse[0];
+                  semi.month = semi.periode_regions['debut_semi-month_corse'];
+                }
               }
               else if (semi.calendarId === '11') {
-                semi.start = semi.periode_regions.debut_semi_est[0];
-                semi.end = semi.periode_regions.fin_semi_est[0];
-                semi.month = semi.periode_regions['debut_semi-month_est'];
+                if (semi.periode_regions.debut_semi_est[0] === '') {
+                  semi.start = '1940-01-01';
+                }
+                else {
+                  semi.start = semi.periode_regions.debut_semi_est[0];
+                  semi.end = semi.periode_regions.fin_semi_est[0];
+                  semi.month = semi.periode_regions['debut_semi-month_est'];
+                }
               }
               else if (semi.calendarId === '12') {
-                semi.start = semi.periode_regions.debut_semi_hauts[0];
-                semi.end = semi.periode_regions.fin_semi_hauts[0];
-                semi.month = semi.periode_regions['debut_semi-month_hauts'];
+                if (semi.periode_regions.debut_semi_hauts[0] === '') {
+                  semi.start = '1940-01-01';
+                }
+                else {
+                  semi.start = semi.periode_regions.debut_semi_hauts[0];
+                  semi.end = semi.periode_regions.fin_semi_hauts[0];
+                  semi.month = semi.periode_regions['debut_semi-month_hauts'];
+                }
               }
               else if (semi.calendarId === '13') {
-                semi.start = semi.periode_regions.debut_semi_ile[0];
-                semi.end = semi.periode_regions.fin_semi_ile[0];
-                semi.month = semi.periode_regions['debut_semi-month_ile'];
+                if (semi.periode_regions.debut_semi_ile[0] === '') {
+                  semi.start = '1940-01-01';
+                }
+                else {
+                  semi.start = semi.periode_regions.debut_semi_ile[0];
+                  semi.end = semi.periode_regions.fin_semi_ile[0];
+                  semi.month = semi.periode_regions['debut_semi-month_ile'];
+                }
               }
               else if (semi.calendarId === '14') {
-                semi.start = semi.periode_regions.debut_semi_normandie[0];
-                semi.end = semi.periode_regions.fin_semi_normandie[0];
-                semi.month = semi.periode_regions['debut_semi-month_normandie'];
+                if (semi.periode_regions.debut_semi_normandie[0] === '') {
+                  semi.start = '1940-01-01';
+                }
+                else {
+                  semi.start = semi.periode_regions.debut_semi_normandie[0];
+                  semi.end = semi.periode_regions.fin_semi_normandie[0];
+                  semi.month = semi.periode_regions['debut_semi-month_normandie'];
+                }
               }
               else if (semi.calendarId === '15') {
-                semi.start = semi.periode_regions.debut_semi_aquitaine[0];
-                semi.end = semi.periode_regions.fin_semi_aquitaine[0];
-                semi.month = semi.periode_regions['debut_semi-month_aquitaine'];
+                if (semi.periode_regions.debut_semi_aquitaine[0] === '') {
+                  semi.start = '1940-01-01';
+                }
+                else {
+                  semi.start = semi.periode_regions.debut_semi_aquitaine[0];
+                  semi.end = semi.periode_regions.fin_semi_aquitaine[0];
+                  semi.month = semi.periode_regions['debut_semi-month_aquitaine'];
+                }
               }
               else if (semi.calendarId === '16') {
-                semi.start = semi.periode_regions.debut_semi_occitanie[0];
-                semi.end = semi.periode_regions.fin_semi_occitanie[0];
-                semi.month = semi.periode_regions['debut_semi-month_occitanie'];
+                if (semi.periode_regions.debut_semi_occitanie[0] === '') {
+                  semi.start = '1940-01-01';
+                }
+                else {
+                  semi.start = semi.periode_regions.debut_semi_occitanie[0];
+                  semi.end = semi.periode_regions.fin_semi_occitanie[0];
+                  semi.month = semi.periode_regions['debut_semi-month_occitanie'];
+                }
               }
               else if (semi.calendarId === '17') {
-                semi.start = semi.periode_regions.debut_semi_loire[0];
-                semi.end = semi.periode_regions.fin_semi_loire[0];
-                semi.month = semi.periode_regions['debut_semi-month_loire'];
+                if (semi.periode_regions.debut_semi_loire[0] === '') {
+                  semi.start = '1940-01-01';
+                }
+                else {
+                  semi.start = semi.periode_regions.debut_semi_loire[0];
+                  semi.end = semi.periode_regions.fin_semi_loire[0];
+                  semi.month = semi.periode_regions['debut_semi-month_loire'];
+                }
               }
               else if (semi.calendarId === '18') {
-                semi.start = semi.periode_regions.debut_semi_azur[0];
-                semi.end = semi.periode_regions.fin_semi_azur[0];
-                semi.month = semi.periode_regions['debut_semi-month_azur'];
+                if (semi.periode_regions.debut_semi_azur[0] === '') {
+                  semi.start = '1940-01-01';
+                }
+                else {
+                  semi.start = semi.periode_regions.debut_semi_azur[0];
+                  semi.end = semi.periode_regions.fin_semi_azur[0];
+                  semi.month = semi.periode_regions['debut_semi-month_azur'];
+                }
               }
               semi.period = 'semi';
               semi.color = '#474647';
@@ -106,69 +171,134 @@ const plantsMiddleware = (store) => (next) => (action) => {
             // eslint-disable-next-line array-callback-return
             plantationPlants.map((plant) => {
               if (plant.calendarId === '6') {
-                plant.start = plant.periode_regions.debut_plant_auvergne[0];
-                plant.end = plant.periode_regions.fin_plant_auvergne[0];
-                plant.month = plant.periode_regions['debut_plant-month_auvergne'];
+                if (plant.periode_regions.debut_plant_auvergne[0] === '') {
+                  plant.start = '1940-01-01';
+                }
+                else {
+                  plant.start = plant.periode_regions.debut_plant_auvergne[0];
+                  plant.end = plant.periode_regions.fin_plant_auvergne[0];
+                  plant.month = plant.periode_regions['debut_plant-month_auvergne'];
+                }
               }
               else if (plant.calendarId === '7') {
-                plant.start = plant.periode_regions.debut_plant_bourgogne[0];
-                plant.end = plant.periode_regions.fin_plant_bourgogne[0];
-                plant.month = plant.periode_regions['debut_plant-month_bourgogne'];
+                if (plant.periode_regions.debut_plant_bourgogne[0] === '') {
+                  plant.start = '1940-01-01';
+                }
+                else {
+                  plant.start = plant.periode_regions.debut_plant_bourgogne[0];
+                  plant.end = plant.periode_regions.fin_plant_bourgogne[0];
+                  plant.month = plant.periode_regions['debut_plant-month_bourgogne'];
+                }
               }
               else if (plant.calendarId === '8') {
-                plant.start = plant.periode_regions.debut_plant_bretagne[0];
-                plant.end = plant.periode_regions.fin_plant_bretagne[0];
-                plant.month = plant.periode_regions['debut_plant-month_bretagne'];
+                if (plant.periode_regions.debut_plant_bretagne[0] === '') {
+                  plant.start = '1940-01-01';
+                }
+                else {
+                  plant.start = plant.periode_regions.debut_plant_bretagne[0];
+                  plant.end = plant.periode_regions.fin_plant_bretagne[0];
+                  plant.month = plant.periode_regions['debut_plant-month_bretagne'];
+                }
               }
               else if (plant.calendarId === '9') {
-                plant.start = plant.periode_regions.debut_plant_centre[0];
-                plant.end = plant.periode_regions.fin_plant_centre[0];
-                plant.month = plant.periode_regions['debut_plant-month_centre'];
+                if (plant.periode_regions.debut_plant_centre[0] === '') {
+                  plant.start = '1940-01-01';
+                }
+                else {
+                  plant.start = plant.periode_regions.debut_plant_centre[0];
+                  plant.end = plant.periode_regions.fin_plant_centre[0];
+                  plant.month = plant.periode_regions['debut_plant-month_centre'];
+                }
               }
               else if (plant.calendarId === '10') {
-                plant.start = plant.periode_regions.debut_plant_corse[0];
-                plant.end = plant.periode_regions.fin_plant_corse[0];
-                plant.month = plant.periode_regions['debut_plant-month_corse'];
+                if (plant.periode_regions.debut_plant_corse[0] === '') {
+                  plant.start = '1940-01-01';
+                }
+                else {
+                  plant.start = plant.periode_regions.debut_plant_corse[0];
+                  plant.end = plant.periode_regions.fin_plant_corse[0];
+                  plant.month = plant.periode_regions['debut_plant-month_corse'];
+                }
               }
               else if (plant.calendarId === '11') {
-                plant.start = plant.periode_regions.debut_plant_est[0];
-                plant.end = plant.periode_regions.fin_plant_est[0];
-                plant.month = plant.periode_regions['debut_plant-month_est'];
+                if (plant.periode_regions.debut_plant_est[0] === '') {
+                  plant.start = '1940-01-01';
+                }
+                else {
+                  plant.start = plant.periode_regions.debut_plant_est[0];
+                  plant.end = plant.periode_regions.fin_plant_est[0];
+                  plant.month = plant.periode_regions['debut_plant-month_est'];
+                }
               }
               else if (plant.calendarId === '12') {
-                plant.start = plant.periode_regions.debut_plant_hauts[0];
-                plant.end = plant.periode_regions.fin_plant_hauts[0];
-                plant.month = plant.periode_regions['debut_plant-month_hauts'];
+                if (plant.periode_regions.debut_plant_hauts[0] === '') {
+                  plant.start = '1940-01-01';
+                }
+                else {
+                  plant.start = plant.periode_regions.debut_plant_hauts[0];
+                  plant.end = plant.periode_regions.fin_plant_hauts[0];
+                  plant.month = plant.periode_regions['debut_plant-month_hauts'];
+                }
               }
               else if (plant.calendarId === '13') {
-                plant.start = plant.periode_regions.debut_plant_ile[0];
-                plant.end = plant.periode_regions.fin_plant_ile[0];
-                plant.month = plant.periode_regions['debut_plant-month_ile'];
+                if (plant.periode_regions.debut_plant_ile[0] === '') {
+                  plant.start = '1940-01-01';
+                }
+                else {
+                  plant.start = plant.periode_regions.debut_plant_ile[0];
+                  plant.end = plant.periode_regions.fin_plant_ile[0];
+                  plant.month = plant.periode_regions['debut_plant-month_ile'];
+                }
               }
               else if (plant.calendarId === '14') {
-                plant.start = plant.periode_regions.debut_plant_normandie[0];
-                plant.end = plant.periode_regions.fin_plant_normandie[0];
-                plant.month = plant.periode_regions['debut_plant-month_normandie'];
+                if (plant.periode_regions.debut_plant_normandie[0] === '') {
+                  plant.start = '1940-01-01';
+                }
+                else {
+                  plant.start = plant.periode_regions.debut_plant_normandie[0];
+                  plant.end = plant.periode_regions.fin_plant_normandie[0];
+                  plant.month = plant.periode_regions['debut_plant-month_normandie'];
+                }
               }
               else if (plant.calendarId === '15') {
-                plant.start = plant.periode_regions.debut_plant_aquitaine[0];
-                plant.end = plant.periode_regions.fin_plant_aquitaine[0];
-                plant.month = plant.periode_regions['debut_plant-month_aquitaine'];
+                if (plant.periode_regions.debut_plant_aquitaine[0] === '') {
+                  plant.start = '1940-01-01';
+                }
+                else {
+                  plant.start = plant.periode_regions.debut_plant_aquitaine[0];
+                  plant.end = plant.periode_regions.fin_plant_aquitaine[0];
+                  plant.month = plant.periode_regions['debut_plant-month_aquitaine'];
+                }
               }
               else if (plant.calendarId === '16') {
-                plant.start = plant.periode_regions.debut_plant_occitanie[0];
-                plant.end = plant.periode_regions.fin_plant_occitanie[0];
-                plant.month = plant.periode_regions['debut_plant-month_occitanie'];
+                if (plant.periode_regions.debut_plant_occitanie[0] === '') {
+                  plant.start = '1940-01-01';
+                }
+                else {
+                  plant.start = plant.periode_regions.debut_plant_occitanie[0];
+                  plant.end = plant.periode_regions.fin_plant_occitanie[0];
+                  plant.month = plant.periode_regions['debut_plant-month_occitanie'];
+                }
               }
               else if (plant.calendarId === '17') {
-                plant.start = plant.periode_regions.debut_plant_loire[0];
-                plant.end = plant.periode_regions.fin_plant_loire[0];
-                plant.month = plant.periode_regions['debut_plant-month_loire'];
+                if (plant.periode_regions.debut_plant_loire[0] === '') {
+                  plant.start = '1940-01-01';
+                }
+                else {
+                  plant.start = plant.periode_regions.debut_plant_loire[0];
+                  plant.end = plant.periode_regions.fin_plant_loire[0];
+                  plant.month = plant.periode_regions['debut_plant-month_loire'];
+                }
               }
               else if (plant.calendarId === '18') {
-                plant.start = plant.periode_regions.debut_plant_azur[0];
-                plant.end = plant.periode_regions.fin_plant_azur[0];
-                plant.month = plant.periode_regions['debut_plant-month_azur'];
+                if (plant.periode_regions.debut_plant_azur[0] === '') {
+                  plant.start = '1940-01-01';
+                }
+                else {
+                  plant.start = plant.periode_regions.debut_plant_azur[0];
+                  plant.end = plant.periode_regions.fin_plant_azur[0];
+                  plant.month = plant.periode_regions['debut_plant-month_azur'];
+                }
               }
               plant.period = 'plantation';
               plant.color = '#474647';
@@ -181,69 +311,134 @@ const plantsMiddleware = (store) => (next) => (action) => {
             // eslint-disable-next-line array-callback-return
             harvestPlants.map((harvest) => {
               if (harvest.calendarId === '6') {
-                harvest.start = harvest.periode_regions.debut_recolte_auvergne[0];
-                harvest.end = harvest.periode_regions.fin_recolte_auvergne[0];
-                harvest.month = harvest.periode_regions['debut_recolte-month_auvergne'];
+                if (harvest.periode_regions.debut_recolte_auvergne[0] === '') {
+                  harvest.start = '1940-01-01';
+                }
+                else {
+                  harvest.start = harvest.periode_regions.debut_recolte_auvergne[0];
+                  harvest.end = harvest.periode_regions.fin_recolte_auvergne[0];
+                  harvest.month = harvest.periode_regions['debut_recolte-month_auvergne'];
+                }
               }
               else if (harvest.calendarId === '7') {
-                harvest.start = harvest.periode_regions.debut_recolte_bourgogne[0];
-                harvest.end = harvest.periode_regions.fin_recolte_bourgogne[0];
-                harvest.month = harvest.periode_regions['debut_recolte-month_bourgogne'];
+                if (harvest.periode_regions.debut_recolte_bourgogne[0] === '') {
+                  harvest.start = '1940-01-01';
+                }
+                else {
+                  harvest.start = harvest.periode_regions.debut_recolte_bourgogne[0];
+                  harvest.end = harvest.periode_regions.fin_recolte_bourgogne[0];
+                  harvest.month = harvest.periode_regions['debut_recolte-month_bourgogne'];
+                }
               }
               else if (harvest.calendarId === '8') {
-                harvest.start = harvest.periode_regions.debut_recolte_bretagne[0];
-                harvest.end = harvest.periode_regions.fin_recolte_bretagne[0];
-                harvest.month = harvest.periode_regions['debut_recolte-month_bretagne'];
+                if (harvest.periode_regions.debut_recolte_bretagne[0] === '') {
+                  harvest.start = '1940-01-01';
+                }
+                else {
+                  harvest.start = harvest.periode_regions.debut_recolte_bretagne[0];
+                  harvest.end = harvest.periode_regions.fin_recolte_bretagne[0];
+                  harvest.month = harvest.periode_regions['debut_recolte-month_bretagne'];
+                }
               }
               else if (harvest.calendarId === '9') {
-                harvest.start = harvest.periode_regions.debut_recolte_centre[0];
-                harvest.end = harvest.periode_regions.fin_recolte_centre[0];
-                harvest.month = harvest.periode_regions['debut_recolte-month_centre'];
+                if (harvest.periode_regions.debut_recolte_centre[0] === '') {
+                  harvest.start = '1940-01-01';
+                }
+                else {
+                  harvest.start = harvest.periode_regions.debut_recolte_centre[0];
+                  harvest.end = harvest.periode_regions.fin_recolte_centre[0];
+                  harvest.month = harvest.periode_regions['debut_recolte-month_centre'];
+                }
               }
               else if (harvest.calendarId === '10') {
-                harvest.start = harvest.periode_regions.debut_recolte_corse[0];
-                harvest.end = harvest.periode_regions.fin_recolte_corse[0];
-                harvest.month = harvest.periode_regions['debut_recolte-month_corse'];
+                if (harvest.periode_regions.debut_recolte_corse[0] === '') {
+                  harvest.start = '1940-01-01';
+                }
+                else {
+                  harvest.start = harvest.periode_regions.debut_recolte_corse[0];
+                  harvest.end = harvest.periode_regions.fin_recolte_corse[0];
+                  harvest.month = harvest.periode_regions['debut_recolte-month_corse'];
+                }
               }
               else if (harvest.calendarId === '11') {
-                harvest.start = harvest.periode_regions.debut_recolte_est[0];
-                harvest.end = harvest.periode_regions.fin_recolte_est[0];
-                harvest.month = harvest.periode_regions['debut_recolte-month_est'];
+                if (harvest.periode_regions.debut_recolte_est[0] === '') {
+                  harvest.start = '1940-01-01';
+                }
+                else {
+                  harvest.start = harvest.periode_regions.debut_recolte_est[0];
+                  harvest.end = harvest.periode_regions.fin_recolte_est[0];
+                  harvest.month = harvest.periode_regions['debut_recolte-month_est'];
+                }
               }
               else if (harvest.calendarId === '12') {
-                harvest.start = harvest.periode_regions.debut_recolte_hauts[0];
-                harvest.end = harvest.periode_regions.fin_recolte_hauts[0];
-                harvest.month = harvest.periode_regions['debut_recolte-month_hauts'];
+                if (harvest.periode_regions.debut_recolte_hauts[0] === '') {
+                  harvest.start = '1940-01-01';
+                }
+                else {
+                  harvest.start = harvest.periode_regions.debut_recolte_hauts[0];
+                  harvest.end = harvest.periode_regions.fin_recolte_hauts[0];
+                  harvest.month = harvest.periode_regions['debut_recolte-month_hauts'];
+                }
               }
               else if (harvest.calendarId === '13') {
-                harvest.start = harvest.periode_regions.debut_recolte_ile[0];
-                harvest.end = harvest.periode_regions.fin_recolte_ile[0];
-                harvest.month = harvest.periode_regions['debut_recolte-month_ile'];
+                if (harvest.periode_regions.debut_recolte_ile[0] === '') {
+                  harvest.start = '1940-01-01';
+                }
+                else {
+                  harvest.start = harvest.periode_regions.debut_recolte_ile[0];
+                  harvest.end = harvest.periode_regions.fin_recolte_ile[0];
+                  harvest.month = harvest.periode_regions['debut_recolte-month_ile'];
+                }
               }
               else if (harvest.calendarId === '14') {
-                harvest.start = harvest.periode_regions.debut_recolte_normandie[0];
-                harvest.end = harvest.periode_regions.fin_recolte_normandie[0];
-                harvest.month = harvest.periode_regions['debut_recolte-month_normandie'];
+                if (harvest.periode_regions.debut_recolte_normandie[0] === '') {
+                  harvest.start = '1940-01-01';
+                }
+                else {
+                  harvest.start = harvest.periode_regions.debut_recolte_normandie[0];
+                  harvest.end = harvest.periode_regions.fin_recolte_normandie[0];
+                  harvest.month = harvest.periode_regions['debut_recolte-month_normandie'];
+                }
               }
               else if (harvest.calendarId === '15') {
-                harvest.start = harvest.periode_regions.debut_recolte_aquitaine[0];
-                harvest.end = harvest.periode_regions.fin_recolte_aquitaine[0];
-                harvest.month = harvest.periode_regions['debut_recolte-month_aquitaine'];
+                if (harvest.periode_regions.debut_recolte_aquitaine[0] === '') {
+                  harvest.start = '1940-01-01';
+                }
+                else {
+                  harvest.start = harvest.periode_regions.debut_recolte_aquitaine[0];
+                  harvest.end = harvest.periode_regions.fin_recolte_aquitaine[0];
+                  harvest.month = harvest.periode_regions['debut_recolte-month_aquitaine'];
+                }
               }
               else if (harvest.calendarId === '16') {
-                harvest.start = harvest.periode_regions.debut_recolte_occitanie[0];
-                harvest.end = harvest.periode_regions.fin_recolte_occitanie[0];
-                harvest.month = harvest.periode_regions['debut_recolte-month_occitanie'];
+                if (harvest.periode_regions.debut_recolte_occitanie[0] === '') {
+                  harvest.start = '1940-01-01';
+                }
+                else {
+                  harvest.start = harvest.periode_regions.debut_recolte_occitanie[0];
+                  harvest.end = harvest.periode_regions.fin_recolte_occitanie[0];
+                  harvest.month = harvest.periode_regions['debut_recolte-month_occitanie'];
+                }
               }
               else if (harvest.calendarId === '17') {
-                harvest.start = harvest.periode_regions.debut_recolte_loire[0];
-                harvest.end = harvest.periode_regions.fin_recolte_loire[0];
-                harvest.month = harvest.periode_regions['debut_recolte-month_loire'];
+                if (harvest.periode_regions.debut_recolte_loire[0] === '') {
+                  harvest.start = '1940-01-01';
+                }
+                else {
+                  harvest.start = harvest.periode_regions.debut_recolte_loire[0];
+                  harvest.end = harvest.periode_regions.fin_recolte_loire[0];
+                  harvest.month = harvest.periode_regions['debut_recolte-month_loire'];
+                }
               }
               else if (harvest.calendarId === '18') {
-                harvest.start = harvest.periode_regions.debut_recolte_azur[0];
-                harvest.end = harvest.periode_regions.fin_recolte_azur[0];
-                harvest.month = harvest.periode_regions['debut_recolte-month_azur'];
+                if (harvest.periode_regions.debut_recolte_azur[0] === '') {
+                  harvest.start = '1940-01-01';
+                }
+                else {
+                  harvest.start = harvest.periode_regions.debut_recolte_azur[0];
+                  harvest.end = harvest.periode_regions.fin_recolte_azur[0];
+                  harvest.month = harvest.periode_regions['debut_recolte-month_azur'];
+                }
               }
               harvest.period = 'recolte';
               harvest.color = '#474647';
