@@ -43,12 +43,11 @@ const VisitorCalendar = ({
   selectedRegion,
   loading,
 }) => {
-  // TODO peut-être mettre un loader le temps que ça charge - peut être pas la peine en prode
-  // console.log(plantsSchedules);
-  // == ref to calendar to get instance
+  // == loader
+  {loading && <Loader />}
+  // == ref to current calendar to get instance and use buttons prev month, next month and today
   const calendarRef = createRef();
-
-  // == get current date to display on the top of calendar
+  // == current date to display on the top of calendar
   // == today's date
   const currentDate = new Date();
   // == Format the date to see just month and year, and change timezone to Paris
@@ -59,11 +58,14 @@ const VisitorCalendar = ({
   });
 
   // == functions to dynamise buttons today prev and next month
-  // == and display date on the top of calendar
   const handleClickTodayButton = () => {
     const calendarInstance = calendarRef.current.calendarInst;
+
+    // == today() is a Toast Ui Calendar method to come back today
     calendarInstance.today();
+
     const getDate = document.querySelector('.visitorCalendar-currentMonth');
+
     // eslint-disable-next-line no-underscore-dangle
     getDate.textContent = calendarInstance._renderDate._date.toLocaleString('fr-FR', {
       timeZone: 'Europe/Paris',
@@ -74,8 +76,12 @@ const VisitorCalendar = ({
 
   const handleClickPrevButton = () => {
     const calendarInstance = calendarRef.current.calendarInst;
+
+    // == prev() is a Toast Ui Calendar method to go to prev month
     calendarInstance.prev();
+
     const getDate = document.querySelector('.visitorCalendar-currentMonth');
+
     // eslint-disable-next-line no-underscore-dangle
     getDate.textContent = calendarInstance._renderDate._date.toLocaleString('fr-FR', {
       timeZone: 'Europe/Paris',
@@ -86,8 +92,12 @@ const VisitorCalendar = ({
 
   const handleClickNextButton = () => {
     const calendarInstance = calendarRef.current.calendarInst;
+
+    // == next() is a Toast Ui Calendar method to go to next month
     calendarInstance.next();
+
     const getDate = document.querySelector('.visitorCalendar-currentMonth');
+
     // eslint-disable-next-line no-underscore-dangle
     getDate.textContent = calendarInstance._renderDate._date.toLocaleString('fr-FR', {
       timeZone: 'Europe/Paris',
@@ -97,11 +107,16 @@ const VisitorCalendar = ({
   };
 
   // == function to display plants by region
-  // == (change isVisible on true if value of option === calendarId)
   const handleOptionSelect = (evt) => {
+    // == selected become true and display calendar and make select region invisible
     displayPlants();
+
     const getOptionValue = evt.target.value;
+
+    // get selected region and sent it to reducer
     getSelectedRegion(getOptionValue);
+
+    // == isVisible allows to display plants by selected region
     // eslint-disable-next-line array-callback-return
     plantsSchedules.map((item) => {
       if (item.calendarId === getOptionValue) {
@@ -111,13 +126,10 @@ const VisitorCalendar = ({
         item.isVisible = false;
       }
     });
-    // TODO NE SERT A RIEN ?
-    // changeIsVisible(plantsSchedules);
   };
 
   return (
     <>
-      {loading && <Loader />}
       {!selected && (
         <div className="intro">
           <p>Sélectionne ta région pour découvrir le calendrier du potager</p>
@@ -197,9 +209,9 @@ const VisitorCalendar = ({
                   </div>
 
                   <Calendar
-                    // == I put key here for new render
+                    // ==key for new render
                     key={selectedRegion}
-                    // == ref to current calendar ?
+                    // == ref to current calendar
                     ref={calendarRef}
                     // == view monthly
                     view={view}
