@@ -8,7 +8,7 @@ En tant que visiteur, vous aurez accès à un calendrier en fonction de la régi
 
 Pour aller plus loin, vous pouvez créer un compte et vous obtiendrez un calendrier vierge que vous pourrez personnaliser en ajoutant vos plantes. Vous aurez un suivi de votre potager avec les différentes périodes.
 
-http://mon-potager.surge.sh/
+https://mon-potagerv2.surge.sh/
 
 Le projet
 --------------------
